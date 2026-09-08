@@ -215,6 +215,18 @@ if (advisories.length > 0) {
   lines.push('### Advisories (not conflicts)');
   lines.push('');
   for (const c of advisories) lines.push(`- ${c.a} vs ${c.b} — ${c.reason}`);
+  lines.push('');
+  lines.push('**Reviewed and accepted.** Every advisory above is the intended parent/child');
+  lines.push('structure, not a problem to fix:');
+  lines.push('');
+  lines.push('- `/miami-pergolas/` owns the bare city term "pergolas Miami". The child pages');
+  lines.push('  own their modifiers — "aluminum pergolas Miami", "wood pergolas Miami",');
+  lines.push('  "pergola installation Miami" — which are distinct queries with distinct SERPs.');
+  lines.push('- `/faq/`, `/gallery/` and `/contact/` share the city but not the intent:');
+  lines.push('  informational, commercial-investigation and transactional respectively.');
+  lines.push('  They are meant to rank for different stages of the same search journey.');
+  lines.push('');
+  lines.push('Re-review this section whenever a page is added or retargeted.');
 }
 if (missingIntent.length > 0) {
   lines.push('');

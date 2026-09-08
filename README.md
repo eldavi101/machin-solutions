@@ -43,8 +43,21 @@ npm run brand   # regenerate the favicon, app icons and Open Graph card
 ```
 
 Requires **Node 20.3+ or 22+**. `npm run media` also needs **ffmpeg** on PATH for the
-video steps (the script falls back to `D:\Installed programs\ffmpeg.exe`, and skips
-videos entirely if it cannot find one).
+video steps: it re-encodes the clips and extracts each poster frame.
+
+> **On a fresh clone, install ffmpeg first.** The script tries `ffmpeg` on PATH and
+> then a hardcoded fallback at `D:\Installed programs\ffmpeg.exe`, which is the path on
+> the machine this site was built on and will not exist for anyone else. Without
+> ffmpeg the script still processes every photograph, but it prints
+> `! ffmpeg unavailable, skipped: ...` and produces **no MP4s and no video posters**.
+>
+> Install it (`winget install Gyan.FFmpeg`, `brew install ffmpeg`, or
+> `apt install ffmpeg`) and re-run, or edit `FFMPEG_CANDIDATES` at the top of
+> `scripts/process-media.mjs` to point at your own copy.
+>
+> This only matters when regenerating media from the `Gallery` originals. The
+> processed output in `public/media/` is committed, so an ordinary `npm run build`
+> never needs ffmpeg.
 
 ---
 

@@ -208,7 +208,7 @@ modifiers. Nothing is targeted twice.
 
 - **Title** (45 chars): Tiki Huts &amp; Chickee Huts in South Florida
 - **Meta description** (148 chars): Tiki hut and chickee hut builders across South Florida. Traditional thatched, open-sided structures for backyards, pool decks and commercial spaces.
-- **H1**: Tiki Huts and Chickee Huts for South Florida Backyards
+- **H1**: Tiki Huts and Chickee Huts, Built the Traditional Way
 - **Primary keyword**: tiki huts South Florida
 - **Search intent**: Commercial · service hub
 - **H2 outline**: Why a tiki hut and not a pergola · Tiki hut or chickee hut? · Tiki hut structures · Tiki hut photography · Materials and how they age · Permits · How a tiki hut project runs · Ask about a tiki hut · What people ask about tiki huts · Thinking about a hut in the backyard? · Pergolas · Tiki Huts · Company · Popular service areas
@@ -235,3 +235,15 @@ primary keywords reduce to the same query.
 - /miami-pergolas/ vs /pergolas/aluminum/ — primary keywords 67% similar — "pergolas Miami" vs "aluminum pergolas Miami" (shared: pergola, miami). Expected for a parent/child modifier split; check the modifier really is distinct.
 - /miami-pergolas/ vs /pergolas/installation/ — primary keywords 67% similar — "pergolas Miami" vs "pergola installation Miami" (shared: pergola, miami). Expected for a parent/child modifier split; check the modifier really is distinct.
 - /miami-pergolas/ vs /pergolas/wood/ — primary keywords 67% similar — "pergolas Miami" vs "wood pergolas Miami" (shared: pergola, miami). Expected for a parent/child modifier split; check the modifier really is distinct.
+
+**Reviewed and accepted.** Every advisory above is the intended parent/child
+structure, not a problem to fix:
+
+- `/miami-pergolas/` owns the bare city term "pergolas Miami". The child pages
+  own their modifiers — "aluminum pergolas Miami", "wood pergolas Miami",
+  "pergola installation Miami" — which are distinct queries with distinct SERPs.
+- `/faq/`, `/gallery/` and `/contact/` share the city but not the intent:
+  informational, commercial-investigation and transactional respectively.
+  They are meant to rank for different stages of the same search journey.
+
+Re-review this section whenever a page is added or retargeted.
