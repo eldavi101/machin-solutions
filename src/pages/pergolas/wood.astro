@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Picture from '../../components/Picture.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import { image as findImage } from '../../lib/media';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../../lib/schema';
+
+const path = '/pergolas/wood/';
+const title = 'Wood Pergolas Miami | Timber & Wood-Look Structures';
+const description =
+  'Wood pergolas in Miami and South Florida — when real timber is the right call, what it costs you in maintenance, and the wood-look alternatives that avoid it.';
+
+const crumbs = [{ href: '/pergolas/', label: 'Pergolas' }, { label: 'Wood Pergolas' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Wood pergola design and construction',
+    description,
+    path,
+    serviceType: 'Wood pergola construction',
+    offers: ['Timber pergola construction', 'Wood-look soffit and slat systems', 'Timber pergola replacement'],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+---
+
+<BaseLayout title={title} description={description} path={path} crumbs={crumbs} schema={schema}>
+  <PageHeader
+    eyebrow="Wood pergolas"
+    title="Wood Pergolas: When Timber Is Genuinely the Right Choice"
+    lede="Nothing looks like real wood, and no honest builder pretends otherwise. But in a climate with year-round UV, endemic termites and a rainy season, timber is a commitment — so it is worth being clear about when it pays off and when a wood-look finish gets you the same result without the upkeep."
+    facts={[
+      { label: 'Best suited to', value: 'Shaded lots, older homes, and spaces where character leads' },
+      { label: 'The trade-off', value: 'A real refinishing cycle and eventual board replacement' },
+      { label: 'Alternative', value: 'Aluminium frame with wood-look soffit and slat panels' },
+      { label: 'Also offered', value: 'Replacing failed timber structures' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell split">
+      <div class="prose">
+        <h2>The case for timber</h2>
+        <p>
+          Real wood has a depth of grain, a colour that shifts with the light, and a
+          softness underfoot and overhead that engineered materials approximate but never
+          quite reach. On an older Miami house — a 1950s ranch, a Spanish-style home with
+          timber detailing already in play — a wood pergola can be the only thing that looks
+          like it belongs there.
+        </p>
+        <p>
+          Timber also performs better than its reputation suggests when the conditions are
+          right. Under a mature tree canopy, out of the worst of the direct UV and away from
+          salt air, a well-built and properly finished wood structure has a long and
+          attractive life. The failures people remember are usually structures that sat in
+          full sun, unsealed, for a decade.
+        </p>
+
+        <h2>What timber costs you, honestly</h2>
+        <p>
+          A wood pergola in South Florida is a maintained object, not a fitted one. Expect a
+          real cycle: cleaning, sanding back, and re-sealing or re-staining on a schedule
+          that depends on exposure. Expect some movement — cupping, checking, split ends at
+          fixings — because timber responds to moisture and this is a humid place. And expect
+          that, eventually, individual members get replaced.
+        </p>
+        <p>
+          Termites are the other consideration and they are not hypothetical here. Pressure
+          treatment and correct detailing — keeping timber off the ground, ventilated, and
+          out of standing water — slow the risk down considerably. They do not remove it.
+        </p>
+        <p>
+          None of that is a reason not to build in wood. It is a reason to go in knowing what
+          you are signing up for, so the structure gets maintained instead of quietly
+          failing.
+        </p>
+
+        <h2>The middle road: wood-look on an aluminium frame</h2>
+        <p>
+          A lot of people who ask for a wood pergola actually want the warmth of wood rather
+          than the timber itself. If that describes you, the strongest option is usually a
+          powder-coated{' '}
+          <a href="/pergolas/aluminum/">aluminium frame</a> carrying wood-look composite
+          soffit and slat panels: the grain and tone overhead where you see it most, and a
+          structure that does not rot, warp, feed termites or need refinishing.
+        </p>
+        <p>
+          Several of the structures in our{' '}
+          <a href="/gallery/">gallery</a> are built exactly this way — a graphite aluminium
+          frame with a warm timber-toned ceiling. In photographs, and standing under them,
+          they read as wood.
+        </p>
+
+        <h2>Replacing a timber pergola that has failed</h2>
+        <p>
+          If you already have a wood structure that has gone — soft posts at the base,
+          split beams, a roof that never really shed water — replacement is straightforward
+          work and a good moment to reconsider the material. We will tell you honestly
+          whether what you have is repairable or whether you are better off starting again.
+        </p>
+      </div>
+
+      <figure class="side-figure">
+        <Picture
+          image={findImage('covered-patio-wood-soffit-miami-01')}
+          sizes="(min-width: 62rem) 34vw, 92vw"
+          ratio="4 / 3"
+        />
+        <figcaption>
+          A wood-look soffit and slat wall on an engineered frame — the warmth of timber
+          overhead, without the refinishing cycle underneath it.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell split-form">
+      <div class="prose">
+        <h2>How to decide</h2>
+        <p>Three questions usually settle it:</p>
+        <ol>
+          <li>
+            <strong>How exposed is the spot?</strong> Full sun all day, or near open water,
+            pushes hard toward aluminium. Deep shade under mature trees opens the door to
+            timber.
+          </li>
+          <li>
+            <strong>Will it actually get maintained?</strong> If the honest answer is that
+            nobody is going to sand and re-seal a pergola every few years, choose the
+            material that does not need it.
+          </li>
+          <li>
+            <strong>Do you want wood, or the look of wood?</strong> If it is the look, a
+            wood-look soffit gets you most of the way for a fraction of the long-term cost.
+          </li>
+        </ol>
+        <p>
+          Tell us which way you are leaning and why, and you will get a straight
+          recommendation — including when that recommendation is not to build in timber.
+        </p>
+      </div>
+
+      <div class="form-column">
+        <h2 class="form-title">Ask about a timber build</h2>
+        <p class="form-hint">Mention the exposure and the look you are after.</p>
+        <QuoteForm service="Pergola" compact />
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Wood, aluminium, or something in between?"
+    body="Send a photo of the spot and the house it sits against. Material is easier to advise on than most people expect once you can see the context."
+    secondaryLabel="Compare with aluminium"
+    secondaryHref="/pergolas/aluminum/"
+  />
+</BaseLayout>
+
+<style>
+  .split { display: grid; gap: var(--space-xl); }
+  .side-figure { margin: 0; }
+  .side-figure :global(img) { width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
+  .side-figure figcaption { margin-top: 0.7rem; font-size: 0.88rem; color: var(--ink-faint); line-height: 1.6; }
+
+  .split-form { display: grid; gap: var(--space-xl); }
+  .form-column { align-self: start; }
+  .form-title { font-size: var(--step-2); }
+  .form-hint { margin: 0.4rem 0 var(--space-s); color: var(--ink-soft); font-size: 0.95rem; }
+
+  @media (min-width: 62rem) {
+    .split { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: var(--space-2xl); align-items: start; }
+    .split-form { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: var(--space-2xl); }
+    .form-column { position: sticky; top: 6rem; }
+  }
+</style>

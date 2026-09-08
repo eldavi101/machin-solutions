@@ -1,0 +1,227 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import ProcessSteps from '../../components/ProcessSteps.astro';
+import Picture from '../../components/Picture.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import { image as findImage } from '../../lib/media';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../../lib/schema';
+
+const path = '/pergolas/installation/';
+const title = 'Pergola Installation Miami | Construction & Fitting';
+const description =
+  'Pergola installation across Miami and South Florida — footings, framing, roof and finishing. What actually happens on site, how long it takes and how your yard is left.';
+
+const crumbs = [{ href: '/pergolas/', label: 'Pergolas' }, { label: 'Pergola Installation' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Pergola installation and construction',
+    description,
+    path,
+    serviceType: 'Pergola installation',
+    offers: ['Freestanding pergola installation', 'Attached pergola installation', 'Pergola replacement', 'Pergola upgrades and screening'],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+
+const onsite = [
+  {
+    title: 'Set-out',
+    body: 'The structure is marked on the ground in its real position before anything is dug. This is the last easy moment to move it six inches, and it is worth walking it with us.',
+  },
+  {
+    title: 'Footings',
+    body: 'Excavation, reinforcement and pour, sized for the loads the structure will actually see — including uplift, which is the load that matters in a storm. Curing time is not negotiable.',
+  },
+  {
+    title: 'Frame',
+    body: 'Posts set and plumbed to the anchors, beams landed and connected. The frame goes up faster than people expect; the accuracy comes from the set-out and the footings underneath it.',
+  },
+  {
+    title: 'Roof',
+    body: 'Rafters, louvres or insulated panels installed and sealed, with falls set so water goes where it is supposed to rather than off the front edge onto your seating.',
+  },
+  {
+    title: 'Finishing',
+    body: 'Soffit panels, slat screening, lighting, fans, speakers and any television mount. This is where a structure stops looking like a frame and starts looking finished.',
+  },
+  {
+    title: 'Clean-up and handover',
+    body: 'Spoil removed, deck washed down, offcuts and packaging taken away. You get walked through what was built and how anything moving is operated.',
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} crumbs={crumbs} schema={schema}>
+  <PageHeader
+    eyebrow="Pergola installation"
+    title="Pergola Installation in Miami & South Florida"
+    lede="A pergola is only as good as the day it goes in. Most of what separates a structure that is still square in ten years from one that is not happens below the deck and inside the connections — before anybody sees a finished beam."
+    facts={[
+      { label: 'Covers', value: 'Freestanding, attached, replacement and upgrade installations' },
+      { label: 'On site', value: 'Set-out, footings, frame, roof, finishing, clean-up' },
+      { label: 'Works around', value: 'Existing pools, decks, screen enclosures and landscaping' },
+      { label: 'Service area', value: 'Miami-Dade, Broward and the Upper Keys' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell split">
+      <div class="prose">
+        <h2>Freestanding or attached</h2>
+        <p>
+          <strong>Attached structures</strong> tie into the house — usually into the fascia or
+          the roof structure — and extend the roof line outward. They feel like part of the
+          building, need a smaller footprint, and put fewer posts in the yard. The critical
+          detail is the connection and the flashing: water has to be shed away from the wall,
+          not into it, and the tie-in has to carry load into something that can take it.
+        </p>
+        <p>
+          <strong>Freestanding structures</strong> stand on their own four (or six, or eight)
+          posts and go wherever the shade is actually needed — mid-deck, across a pool, around
+          a firepit, at the far end of the yard. They avoid touching the house at all, which
+          on older or unusual roof structures is often the cleaner answer. Most of the pool
+          projects in our{' '}
+          <a href="/gallery/">gallery</a> are freestanding for exactly that reason.
+        </p>
+
+        <h2>Working around what is already there</h2>
+        <p>
+          Almost no installation happens on a blank slab. Pool shells, plumbing runs, deck
+          drains, irrigation lines, electrical, tree roots, screen enclosures and property
+          setbacks all rule out post positions, and they are found before the design is
+          finalised rather than on the morning of the dig.
+        </p>
+        <p>
+          Access matters as much as the yard itself. Long aluminium extrusions and insulated
+          panels have to physically reach the back of the property. Narrow side gates, tight
+          corners and neighbours' fences are all normal, and all worth checking at the site
+          visit rather than discovering with a truck on the street.
+        </p>
+
+        <h2>How long it takes</h2>
+        <p>
+          The build itself is usually the shortest part of the calendar. Most of the elapsed
+          time goes to design revisions, engineering drawings where they are required,
+          building department review, and lead time on custom-fabricated aluminium — none of
+          which happens in your yard.
+        </p>
+        <p>
+          On site, footings and their cure are the fixed cost in time; the frame goes up
+          quickly, and the finishing work is what fills the remaining days.{' '}
+          <span class="placeholder-token">[LEAD_TIME]</span> — realistic typical durations
+          should be filled in here once they can be stated accurately.
+        </p>
+
+        <h2>Permits and approvals</h2>
+        <p>
+          Permitting is set by your local building department and depends on the structure's
+          size, height, how it is anchored, and where it sits on the lot. Requirements are not
+          the same across Miami-Dade, Broward and Monroe County, and it is not something to
+          take a general answer on from any website.{' '}
+          <span class="placeholder-token">[PERMIT_POLICY]</span> — describe here exactly how
+          Machin Solutions handles permit applications and engineering drawings.
+        </p>
+      </div>
+
+      <figure class="side-figure">
+        <Picture
+          image={findImage('rain-curtain-pool-cabana-miami-02')}
+          sizes="(min-width: 62rem) 32vw, 92vw"
+          ratio="3 / 4"
+        />
+        <figcaption>
+          A freestanding structure going in beside a finished pool — set out and founded so it
+          clears the shell, the coping and the deck drainage.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">On site</p>
+        <h2>What actually happens in your yard</h2>
+      </div>
+      <ol class="onsite">
+        {
+          onsite.map((step, index) => (
+            <li>
+              <span class="onsite-num" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+              <h3>{step.title}</h3>
+              <p>{step.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <ProcessSteps
+    eyebrow="End to end"
+    title="The full project sequence"
+    intro="Installation is the visible part. Here is where it sits in the whole job."
+  />
+
+  <section class="section section-sand">
+    <div class="shell form-band">
+      <div class="prose">
+        <h2>Book a site visit</h2>
+        <p>
+          The fastest route to a real answer is someone standing in the space with a tape
+          measure. Send photos and rough dimensions and we will arrange it.
+        </p>
+      </div>
+      <QuoteForm service="Pergola" compact />
+    </div>
+  </section>
+
+  <CtaBand
+    title="Ready to get it built?"
+    body="Tell us what you want covered and where. We will tell you what it takes to install it there."
+    secondaryLabel="See pergola options"
+    secondaryHref="/pergolas/"
+  />
+</BaseLayout>
+
+<style>
+  .split { display: grid; gap: var(--space-xl); }
+  .side-figure { margin: 0; }
+  .side-figure :global(img) { width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
+  .side-figure figcaption { margin-top: 0.7rem; font-size: 0.88rem; color: var(--ink-faint); line-height: 1.6; }
+
+  .onsite {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-m);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  }
+  .onsite li {
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: var(--space-m);
+  }
+  .onsite-num {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.3rem;
+  }
+  .onsite h3 { font-size: var(--step-1); }
+  .onsite p { margin-top: 0.45rem; color: var(--ink-soft); font-size: 0.95rem; }
+
+  .form-band { display: grid; gap: var(--space-l); }
+  @media (min-width: 62rem) {
+    .split { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: var(--space-2xl); align-items: start; }
+    .form-band { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--space-2xl); align-items: start; }
+  }
+</style>

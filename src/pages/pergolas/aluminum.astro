@@ -1,0 +1,224 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Picture from '../../components/Picture.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import { image as findImage } from '../../lib/media';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../../lib/schema';
+
+const path = '/pergolas/aluminum/';
+const title = 'Aluminum Pergolas Miami | Machin Solutions';
+const description =
+  'Aluminum pergolas built for Miami and South Florida — powder-coated frames that resist rot, termites, salt air and UV, with louvered or solid insulated roof options.';
+
+const crumbs = [{ href: '/pergolas/', label: 'Pergolas' }, { label: 'Aluminum Pergolas' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Aluminum pergola design and installation',
+    description,
+    path,
+    serviceType: 'Aluminum pergola installation',
+    offers: ['Fixed-roof aluminum pergolas', 'Louvered aluminum pergolas', 'Insulated panel patio covers', 'Aluminum cabana structures'],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+
+const comparison = [
+  { attribute: 'Rot and termites', aluminium: 'Not possible — there is nothing organic to attack.', wood: 'A real, ongoing risk in this climate. Pressure treatment slows it; it does not stop it.' },
+  { attribute: 'Warping and splitting', aluminium: 'Holds its line. Extrusions stay straight through heat and humidity cycles.', wood: 'Moves with moisture. Cupping, checking and split ends are normal over time.' },
+  { attribute: 'Finish over time', aluminium: 'Factory powder coat, baked on. Holds colour through years of UV.', wood: 'Stain or paint on a wearing surface. Expect to refinish on a cycle.' },
+  { attribute: 'Maintenance', aluminium: 'Wash it. That is the maintenance.', wood: 'Clean, sand, re-seal, replace failed boards.' },
+  { attribute: 'Salt air', aluminium: 'Very good, with the right alloy, coating and stainless fixings.', wood: 'Poor near open water unless very well protected.' },
+  { attribute: 'Span for a given size', aluminium: 'Longer clear spans from slimmer members — fewer posts in your way.', wood: 'Needs more depth or more posts for the same span.' },
+  { attribute: 'Warmth and character', aluminium: 'Modern and precise. Wood-look soffit panels get some of the warmth back.', wood: 'Real timber grain. Nothing matches it, and that is a legitimate reason to choose it.' },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} crumbs={crumbs} schema={schema}>
+  <PageHeader
+    eyebrow="Aluminum pergolas"
+    title="Aluminum Pergolas for Miami Heat, Rain and Salt Air"
+    lede="Aluminium is the default answer in South Florida for one reason: it is the material that does not lose an argument with this climate. No rot, no termites, no warping, no annual refinishing — and slimmer members that clear longer spans with fewer posts in your way."
+    facts={[
+      { label: 'Frame', value: 'Powder-coated structural aluminium extrusions' },
+      { label: 'Roof options', value: 'Open rafter, louvered, or solid insulated panel' },
+      { label: 'Finishes', value: 'Colour-matched frames with wood-look soffit and slat panels' },
+      { label: 'Maintenance', value: 'Washing — no sealing, sanding or refinishing cycle' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell split">
+      <div class="prose">
+        <h2>Why aluminium wins here specifically</h2>
+        <p>
+          South Florida is an unusually hard environment for outdoor structures. Ultraviolet
+          exposure is close to year-round, humidity keeps timber moving, summer storms soak
+          everything repeatedly, termites are endemic, and anywhere near open water there is
+          salt in the air. A material that merely survives a temperate climate does not
+          necessarily survive this one.
+        </p>
+        <p>
+          Aluminium removes most of that list outright. It has nothing for termites to eat,
+          nothing to rot, and no grain to cup or split. The colour is a baked powder coat
+          rather than a surface stain, so it holds up under UV instead of chalking off. And
+          because the extrusions are strong relative to their size, a structure can clear a
+          pool deck with slimmer beams and fewer posts — which is usually what people
+          actually want visually, not just structurally.
+        </p>
+        <p>
+          The salt-air case deserves its own note. Near the water, the alloy, the coating and
+          every fastener matter. Stainless hardware and a properly specified coating are the
+          difference between a structure that looks new in five years and one that streaks
+          and pits. If your property is on a canal, on the coast, or in the Keys, say so
+          early — it changes the specification.
+        </p>
+
+        <h2>What an aluminium structure can carry</h2>
+        <p>
+          Aluminium is also the easier material to build things into. Extrusions are hollow,
+          so wiring runs inside the frame instead of in surface conduit. That is why recessed
+          downlights, flush speakers, rated fan mounts and concealed television wiring are
+          normal on these structures rather than an upcharge with visible compromises.
+        </p>
+        <p>
+          It pairs well with composite and wood-look soffit panels, which is how most of the
+          projects in our{' '}
+          <a href="/gallery/">gallery</a> get warmth back into a metal structure — an
+          aluminium frame carrying a timber-toned ceiling reads far softer than bare metal,
+          with none of the maintenance.
+        </p>
+      </div>
+
+      <figure class="side-figure">
+        <Picture
+          image={findImage('poolside-pergola-outdoor-kitchen-miami-01')}
+          sizes="(min-width: 62rem) 32vw, 92vw"
+          ratio="3 / 4"
+        />
+        <figcaption>
+          An aluminium frame with a wood-look soffit over a poolside outdoor kitchen —
+          recessed lights, speakers and wiring all run inside the structure.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Aluminium vs. wood</p>
+        <h2>An honest comparison</h2>
+        <p class="lede" style="margin-top:var(--space-s)">
+          Aluminium is the right call for most South Florida yards, but not for all of them.
+          Here is the trade-off without the sales gloss.
+        </p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Consideration</th>
+              <th scope="col">Aluminium</th>
+              <th scope="col">Wood</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              comparison.map((row) => (
+                <tr>
+                  <th scope="row">{row.attribute}</th>
+                  <td>{row.aluminium}</td>
+                  <td>{row.wood}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <p class="table-note">
+        If character matters more than maintenance to you, read the case for{' '}
+        <a href="/pergolas/wood/">wood pergolas</a> before deciding.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell split-form">
+      <div class="prose">
+        <h2>Louvered or solid?</h2>
+        <p>
+          On an aluminium frame the roof is a separate decision, and it is the one that
+          determines what the space can be used for.
+        </p>
+        <p>
+          <strong>Louvered roofs</strong> have blades that rotate: open for light and airflow,
+          closed for shade and rain cover. They suit a space you use every day, or a yard
+          where the sun angle swings a lot between morning and late afternoon. They cost more
+          and add moving parts, which is a fair trade when the flexibility gets used.
+        </p>
+        <p>
+          <strong>Solid insulated panels</strong> seal the roof completely. The space stays
+          dry in a downpour and noticeably cooler underneath, and you get a real ceiling to
+          recess lighting and fans into. This is what makes an outdoor kitchen or a mounted
+          television practical rather than optimistic.
+        </p>
+        <p>
+          <strong>Open rafters</strong> are the classic pergola look — shade and a moving
+          pattern of light, but rain comes through. Beautiful over a patio, wrong over
+          equipment.
+        </p>
+        <p>
+          Plenty of the larger structures we build combine two of these: solid over the
+          kitchen, open or louvered over the seating.
+        </p>
+      </div>
+
+      <div class="form-column">
+        <h2 class="form-title">Price an aluminium pergola</h2>
+        <p class="form-hint">Tell us the span and what goes under it.</p>
+        <QuoteForm service="Pergola" compact />
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Not sure which roof your yard needs?"
+    body="Describe how you use the space and which direction it faces. That is usually enough to give you a straight recommendation before anyone visits."
+    secondaryLabel="See wood pergolas"
+    secondaryHref="/pergolas/wood/"
+  />
+</BaseLayout>
+
+<style>
+  .split { display: grid; gap: var(--space-xl); }
+  .side-figure { margin: 0; }
+  .side-figure :global(img) { width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
+  .side-figure figcaption { margin-top: 0.7rem; font-size: 0.88rem; color: var(--ink-faint); line-height: 1.6; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--bg-raised); }
+  table { border-collapse: collapse; width: 100%; min-width: 40rem; font-size: 0.94rem; }
+  th, td { padding: 0.85rem 1rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+  thead th { background: var(--sand-100); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  tbody th { font-weight: 650; width: 12rem; }
+  td { color: var(--ink-soft); }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+
+  .table-note { margin-top: var(--space-s); font-size: 0.93rem; color: var(--ink-soft); }
+
+  .split-form { display: grid; gap: var(--space-xl); }
+  .form-column { align-self: start; }
+  .form-title { font-size: var(--step-2); }
+  .form-hint { margin: 0.4rem 0 var(--space-s); color: var(--ink-soft); font-size: 0.95rem; }
+
+  @media (min-width: 62rem) {
+    .split { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: var(--space-2xl); align-items: start; }
+    .split-form { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: var(--space-2xl); }
+    .form-column { position: sticky; top: 6rem; }
+  }
+</style>

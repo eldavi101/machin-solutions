@@ -1,0 +1,67 @@
+---
+export interface Props {
+  eyebrow?: string;
+  title: string;
+  lede: string;
+  /** Optional short list of at-a-glance facts. */
+  facts?: Array<{ label: string; value: string }>;
+  dark?: boolean;
+}
+
+const { eyebrow, title, lede, facts = [], dark = false } = Astro.props;
+---
+
+<section class:list={['page-header', dark && 'section-dark']}>
+  <div class="shell">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h1>{title}</h1>
+    <p class="lede page-lede">{lede}</p>
+
+    {
+      facts.length > 0 && (
+        <dl class="facts">
+          {facts.map((fact) => (
+            <div class="fact">
+              <dt>{fact.label}</dt>
+              <dd>{fact.value}</dd>
+            </div>
+          ))}
+        </dl>
+      )
+    }
+
+    <div class="btn-row header-actions">
+      <a class="btn btn-primary" href="/contact/">Get a Free Estimate</a>
+      <a class="btn btn-ghost" href="/gallery/">View Our Work</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .page-header {
+    padding-block: var(--space-xl) var(--space-2xl);
+    border-bottom: 1px solid var(--line);
+  }
+  .page-header h1 { max-width: 22ch; }
+  .page-lede { margin-top: var(--space-m); }
+  .header-actions { margin-top: var(--space-m); }
+
+  .facts {
+    margin-top: var(--space-l);
+    display: grid;
+    gap: var(--space-m);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+    max-width: 58rem;
+  }
+  .fact { border-top: 2px solid var(--line-strong); padding-top: 0.7rem; }
+  .fact dt {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .fact dd { margin: 0.3rem 0 0; font-size: 0.96rem; color: var(--ink-soft); }
+  .section-dark .fact { border-top-color: color-mix(in srgb, var(--ink-inverse) 25%, transparent); }
+  .section-dark .fact dd { color: var(--ink-inverse-soft); }
+</style>

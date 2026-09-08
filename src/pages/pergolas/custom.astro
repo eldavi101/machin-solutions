@@ -1,0 +1,220 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Picture from '../../components/Picture.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import { image as findImage } from '../../lib/media';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../../lib/schema';
+
+const path = '/pergolas/custom/';
+const title = 'Custom Pergolas Miami | Designed for Your Yard';
+const description =
+  'Custom pergolas designed and built for Miami backyards — spans, post positions, roof type and finishes drawn for your space instead of picked from stock sizes.';
+
+const crumbs = [{ href: '/pergolas/', label: 'Pergolas' }, { label: 'Custom Pergolas' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Custom pergola design and construction',
+    description,
+    path,
+    serviceType: 'Custom pergola design',
+    offers: ['Custom pergola design', 'Cantilevered pergola construction', 'Integrated outdoor kitchen covers', 'Media wall and lighting integration'],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+
+const decisions = [
+  {
+    q: 'How far does it need to span?',
+    a: 'Span drives everything — beam depth, post size, footing size and cost. A structure that clears a pool deck without a post in the middle of it is a different build from one that can land posts where it likes.',
+  },
+  {
+    q: 'Where can posts actually go?',
+    a: 'Pool shells, plumbing runs, deck drains, irrigation, tree roots and setbacks all rule out positions. Post placement is usually the first real constraint we find on site.',
+  },
+  {
+    q: 'What are you doing under it?',
+    a: 'Dining needs different headroom and lighting from lounging. A kitchen needs a dry roof and power. A television needs a wall, a mount and shade on the screen at the hours you use it.',
+  },
+  {
+    q: 'Which way does the sun come in?',
+    a: 'A roof that shades perfectly at noon can be useless at four in the afternoon. Low western sun is the one that ruins otherwise good structures, and it is fixed with an end panel or a louvered section — if it is planned for.',
+  },
+  {
+    q: 'How does it meet the house?',
+    a: 'An attached structure has to tie into the fascia or the roof line cleanly and shed water away from the wall. A freestanding one has to look deliberate rather than parked.',
+  },
+  {
+    q: 'What is it made of, and what finish?',
+    a: 'Material sets the maintenance; the finish sets whether it reads as premium or as a kit. Slat detailing, concealed fixings and a consistent colour across posts, beams and soffit are where the difference shows.',
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} crumbs={crumbs} schema={schema}>
+  <PageHeader
+    eyebrow="Custom pergolas"
+    title="Custom Pergolas, Drawn for the Yard They Go Into"
+    lede="Stock pergolas come in stock sizes. Real backyards have a pool in the wrong place, a door that opens where a post wants to be, and afternoon sun that arrives from one specific direction. A custom structure resolves all of that before anything is fabricated."
+    facts={[
+      { label: 'What it covers', value: 'Design, engineering coordination, fabrication and installation' },
+      { label: 'Materials', value: 'Powder-coated aluminium, timber, composite slat and soffit systems' },
+      { label: 'Typical uses', value: 'Pool decks, outdoor kitchens, patios, driveways and entryways' },
+      { label: 'Where', value: 'Miami-Dade, Broward and the Upper Keys' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell split">
+      <div class="prose">
+        <h2>What "custom" means here</h2>
+        <p>
+          Every structure we build starts as a drawing of your yard, not a catalogue page.
+          That is not a premium tier — it is the only way to get a structure that lands its
+          posts where they can actually go, spans what needs spanning, and shades the deck at
+          the hours you are outside.
+        </p>
+        <p>
+          In practice, custom work means the beam depth is calculated for your span rather
+          than assumed, the post grid is set around your pool shell and plumbing, the roof
+          type is chosen for what you do under it, and lighting, fans, speakers and screens
+          are designed into the frame instead of bolted onto it afterwards. It also means
+          the finishes are picked to sit with your house — the colour of the frame, the
+          direction of the slats, whether fixings are visible.
+        </p>
+
+        <h2>The six decisions that shape the structure</h2>
+        <p>
+          A custom design is really a series of decisions made in the right order. These are
+          the ones that matter, and the ones we will walk you through on the site visit.
+        </p>
+      </div>
+
+      <figure class="side-figure">
+        <Picture
+          image={findImage('cantilevered-pergola-media-wall-miami-03')}
+          sizes="(min-width: 62rem) 32vw, 92vw"
+          ratio="3 / 4"
+        />
+        <figcaption>
+          Post-to-beam detailing on a custom frame. Concealed structure, exposed rhythm — the
+          part that decides whether a pergola reads as architecture or as a kit.
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="shell">
+      <ol class="decisions">
+        {
+          decisions.map((item) => (
+            <li class="decision">
+              <h3>{item.q}</h3>
+              <p>{item.a}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell split-form">
+      <div class="prose">
+        <h2>What gets built in</h2>
+        <p>
+          The things that make an outdoor structure genuinely usable are all things that have
+          to be planned before the frame is fabricated. Retrofitting any of them means
+          surface conduit, visible brackets and a worse result.
+        </p>
+        <ul>
+          <li><strong>Recessed lighting</strong> — downlights set into the soffit rather than clamped to a beam.</li>
+          <li><strong>Ceiling fans</strong> — with blocking and a rated mount designed into the roof structure.</li>
+          <li><strong>Outdoor televisions</strong> — on a purpose-built wall, with the screen shaded at the hours it gets used.</li>
+          <li><strong>Speakers</strong> — flush-mounted, wired inside the frame.</li>
+          <li><strong>Privacy and shade screens</strong> — fixed slat panels or roll-down screens on the exposed side.</li>
+          <li><strong>Outdoor kitchens and bars</strong> — coordinated with the roof so services, venting and headroom all work.</li>
+        </ul>
+        <p>
+          You can see all of these in the{' '}
+          <a href="/gallery/">completed projects gallery</a> — the media walls, the recessed
+          lighting, the slat screening. None of it was added afterwards.
+        </p>
+
+        <h2>Custom does not have to mean large</h2>
+        <p>
+          A small yard often benefits more from a custom structure than a big one does. When
+          there is no room for error, the difference between a pergola that fits and one that
+          crowds the space is a matter of a few inches in post position and beam overhang —
+          exactly the thing a stock size cannot give you. If your yard is tight, say so; it
+          is a solvable problem, not a disqualifying one.
+        </p>
+      </div>
+
+      <div class="form-column">
+        <h2 class="form-title">Start a custom design</h2>
+        <p class="form-note">Photos and rough dimensions are enough to begin.</p>
+        <QuoteForm service="Pergola" compact />
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Every yard has a structure that fits it."
+    body="Send photos of your space and we will tell you what will work in it — including when the honest answer is something smaller than you were picturing."
+    secondaryLabel="Compare materials"
+    secondaryHref="/pergolas/aluminum/"
+  />
+</BaseLayout>
+
+<style>
+  .split { display: grid; gap: var(--space-xl); }
+  .side-figure { margin: 0; }
+  .side-figure :global(img) { width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
+  .side-figure figcaption {
+    margin-top: 0.7rem;
+    font-size: 0.88rem;
+    color: var(--ink-faint);
+    line-height: 1.6;
+  }
+
+  .decisions {
+    margin-top: var(--space-xl);
+    padding: 0;
+    list-style: none;
+    counter-reset: decision;
+    display: grid;
+    gap: var(--space-m);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  }
+  .decision {
+    counter-increment: decision;
+    padding: var(--space-m);
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+  }
+  .decision h3 { font-size: var(--step-1); }
+  .decision h3::before {
+    content: counter(decision, decimal-leading-zero);
+    display: block;
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.3rem;
+  }
+  .decision p { margin-top: 0.45rem; color: var(--ink-soft); font-size: 0.95rem; }
+
+  .split-form { display: grid; gap: var(--space-xl); }
+  .form-column { align-self: start; }
+  .form-title { font-size: var(--step-2); }
+  .form-note { margin: 0.4rem 0 var(--space-s); color: var(--ink-soft); font-size: 0.95rem; }
+
+  @media (min-width: 62rem) {
+    .split { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: var(--space-2xl); align-items: start; }
+    .split-form { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: var(--space-2xl); }
+    .form-column { position: sticky; top: 6rem; }
+  }
+</style>

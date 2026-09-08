@@ -1,0 +1,311 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import Gallery from '../../components/Gallery.astro';
+import ProcessSteps from '../../components/ProcessSteps.astro';
+import Faq from '../../components/Faq.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import { pergolaFaqs } from '../../data/faqs';
+import { projectsIn } from '../../lib/media';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../../lib/schema';
+
+const path = '/pergolas/';
+const title = 'Custom Pergolas in South Florida | Machin Solutions';
+const description =
+  'Custom pergolas designed, built and installed across South Florida — aluminium, wood, louvered and solid-roof structures for pool decks, patios and outdoor kitchens.';
+
+const crumbs = [{ label: 'Pergolas' }];
+
+const types = [
+  {
+    name: 'Custom pergolas',
+    href: '/pergolas/custom/',
+    body: 'Drawn from scratch for the span, the sightlines and the way you use the space. This is the default here, not an upgrade.',
+  },
+  {
+    name: 'Aluminum pergolas',
+    href: '/pergolas/aluminum/',
+    body: 'Powder-coated aluminium frames that do not rot, warp or feed termites, and hold their finish through years of sun and salt air.',
+  },
+  {
+    name: 'Wood pergolas',
+    href: '/pergolas/wood/',
+    body: 'Real timber where the warmth matters and the maintenance is understood — usually under canopy or against an older house.',
+  },
+  {
+    name: 'Modern pergolas',
+    href: '/pergolas/custom/',
+    body: 'Clean spans, concealed fixings, deep cantilevers and slat detailing. The look most of the projects in our gallery are built around.',
+  },
+  {
+    name: 'Freestanding pergolas',
+    href: '/pergolas/installation/',
+    body: 'Set anywhere the shade is actually needed — over a pool deck, around a firepit, at the far end of the yard — with no tie-in to the house.',
+  },
+  {
+    name: 'Attached pergolas',
+    href: '/pergolas/installation/',
+    body: 'Extending the roof line off the house so the covered space reads as part of the building rather than an addition to the garden.',
+  },
+];
+
+const roofs = [
+  {
+    name: 'Open rafters',
+    body: 'Classic pergola: a rhythm of beams that breaks the sun and throws a moving pattern across the deck. Filters light, does not stop rain.',
+    best: 'Best for: patios where you want shade and character rather than a dry room.',
+  },
+  {
+    name: 'Louvered roof',
+    body: 'Blades that rotate so you can open the roof to the sky or close it tight against rain. One structure that does both jobs on demand.',
+    best: 'Best for: spaces used daily, where the sun angle shifts a lot across the day.',
+  },
+  {
+    name: 'Solid insulated panel',
+    body: 'A sealed roof that keeps the space fully dry and noticeably cooler underneath, and gives you a ceiling to recess lights and fans into.',
+    best: 'Best for: outdoor kitchens, mounted televisions and furniture you do not want to move.',
+  },
+  {
+    name: 'Combination',
+    body: 'A solid section over the equipment and an open or louvered section over the seating. Most of the larger structures we build end up here.',
+    best: 'Best for: bigger spans doing more than one job at once.',
+  },
+];
+
+const schema = [
+  serviceSchema({
+    name: 'Custom pergola design, construction and installation',
+    description,
+    path,
+    serviceType: 'Pergola construction',
+    offers: [
+      'Custom pergola design',
+      'Aluminum pergola installation',
+      'Wood pergola construction',
+      'Louvered pergola installation',
+      'Solid-roof patio cover construction',
+      'Pergola replacement and upgrades',
+    ],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+---
+
+<BaseLayout title={title} description={description} path={path} crumbs={crumbs} schema={schema}>
+  <Hero
+    eyebrow="Pergolas"
+    title="Custom Pergolas Built for South Florida Backyards"
+    body="A pergola here has to do more than look good in a brochure. It has to hold up to full sun, summer downpours and hurricane season, and it has to make a hot, unused patio into somewhere you sit at two in the afternoon."
+    imageSlug="cantilevered-pergola-media-wall-miami-01"
+    primaryLabel="Get a Free Estimate"
+    secondaryLabel="See pergola projects"
+    secondaryHref="/gallery/"
+    bullets={['Design, build and install', 'Aluminium, wood and louvered', 'Miami-Dade, Broward & the Keys']}
+  />
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>What a pergola actually changes</h2>
+      <p>
+        A South Florida backyard is usually unusable for most of the daylight hours. The sun
+        is direct, the pool deck is hot enough to be unpleasant barefoot, and the furniture
+        you bought sits empty until sunset. A pergola gives you a defined, shaded room in
+        the yard — and once that room exists, everything else follows: the grill moves out
+        there, the table gets used, and the pool stops being something you look at from
+        indoors.
+      </p>
+      <p>
+        The practical gains stack up. Shade over a pool deck drops the surface temperature
+        enough to change how the space feels. A covered structure protects outdoor furniture,
+        a television or an outdoor kitchen from the sun and the rain that ages them. And a
+        well-built, permitted structure reads as finished square footage rather than a
+        temporary add-on — which is how it shows up when you eventually sell.
+      </p>
+      <p>
+        The other half of it is simply appearance. A pergola is the largest single object
+        you will ever put in a backyard. Get the proportions and the finish right and it
+        anchors the whole space; get them wrong and it looks like a carport. That is the part
+        worth spending time on before anything is ordered.
+      </p>
+
+      <h2>Pergola types we build</h2>
+      <p>
+        Every project starts as a custom drawing, but these are the categories most people
+        arrive with. If you are not sure which one applies to your yard, that is a normal
+        place to start — describe the space and we will tell you.
+      </p>
+    </div>
+
+    <div class="shell type-wrap">
+      <ul class="type-grid">
+        {
+          types.map((type) => (
+            <li class="type-card">
+              <h3>
+                <a href={type.href}>{type.name}</a>
+              </h3>
+              <p>{type.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Roof options</p>
+        <h2>Choosing the roof is the real decision</h2>
+        <p class="lede" style="margin-top:var(--space-s)">
+          Material sets the maintenance. The roof sets what the space can actually be used
+          for — and it is the choice people most often get wrong when they buy on price.
+        </p>
+      </div>
+
+      <div class="roof-grid">
+        {
+          roofs.map((roof) => (
+            <article class="roof-card">
+              <h3>{roof.name}</h3>
+              <p>{roof.body}</p>
+              <p class="roof-best">{roof.best}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Pergola services</p>
+        <h2>Design, construction, installation and upgrades</h2>
+      </div>
+      <div class="service-split">
+        <div class="prose">
+          <h3>Pergola design</h3>
+          <p>
+            Measurements, sun angles, door and window positions, pool coping, drainage and
+            where footings can physically go — then a drawing that resolves all of it. You
+            see the structure before it exists, and changes cost nothing at this stage.
+          </p>
+
+          <h3>Pergola construction</h3>
+          <p>
+            Footings sized for the loads the structure will actually see, anchor hardware
+            rated for uplift, and beam-to-post connections that transfer force instead of
+            resting on it. Frames are fabricated to the approved dimensions rather than cut
+            to fit on site.
+          </p>
+
+          <h3>Pergola installation</h3>
+          <p>
+            Set-out, footings, frame, roof, then the finishing work — soffit panels,
+            lighting, fans, screens. Material staging is planned around your access, and the
+            site is cleared before the crew leaves.{' '}
+            <a href="/pergolas/installation/">More on how installation runs →</a>
+          </p>
+
+          <h3>Replacement and upgrades</h3>
+          <p>
+            Existing wood structure past saving, a roof that never kept the rain off, or a
+            frame that is sound but needs lighting, fans, screens or a solid roof added.
+            Replacement and upgrade work is quoted the same way as new construction.
+          </p>
+        </div>
+
+        <div class="form-column">
+          <h3 class="form-title">Get a pergola estimate</h3>
+          <QuoteForm service="Pergola" compact />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Our work</p>
+        <h2>Pergolas we have built</h2>
+      </div>
+      <Gallery projects={projectsIn('pergolas')} />
+      <p style="margin-top:var(--space-l)">
+        <a class="btn btn-dark" href="/gallery/">See every project</a>
+      </p>
+    </div>
+  </section>
+
+  <ProcessSteps
+    eyebrow="How it works"
+    title="How a pergola project runs"
+    intro="Same sequence every time, whether it is a two-post cover over a grill or a cantilevered structure across a pool deck."
+  />
+
+  <Faq
+    faqs={pergolaFaqs}
+    eyebrow="Pergola questions"
+    title="What people ask about pergolas"
+  />
+
+  <CtaBand
+    title="Tell us what you want to cover."
+    body="Photos of the space and rough dimensions are enough for a real answer on what will fit and what it takes to build."
+    secondaryLabel="Explore tiki huts"
+    secondaryHref="/tiki-huts/"
+  />
+</BaseLayout>
+
+<style>
+  .type-wrap { margin-top: var(--space-l); }
+  .type-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-m);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  }
+  .type-card {
+    padding-top: var(--space-s);
+    border-top: 2px solid var(--line-strong);
+  }
+  .type-card h3 { font-size: var(--step-1); }
+  .type-card h3 a { text-decoration: none; }
+  .type-card h3 a:hover { color: var(--accent); text-decoration: underline; }
+  .type-card p { margin-top: 0.4rem; color: var(--ink-soft); font-size: 0.96rem; }
+
+  .roof-grid {
+    display: grid;
+    gap: var(--space-m);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  }
+  .roof-card {
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: var(--space-m);
+    box-shadow: var(--shadow-sm);
+  }
+  .roof-card h3 { font-size: var(--step-1); }
+  .roof-card p { margin-top: 0.5rem; color: var(--ink-soft); font-size: 0.95rem; }
+  .roof-best {
+    font-size: 0.88rem !important;
+    font-weight: 600;
+    color: var(--ink) !important;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .service-split { display: grid; gap: var(--space-xl); }
+  .form-column { align-self: start; }
+  .form-title { margin-bottom: var(--space-s); font-size: var(--step-2); }
+
+  @media (min-width: 62rem) {
+    .service-split { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: var(--space-2xl); }
+    .form-column { position: sticky; top: 6rem; }
+  }
+</style>
