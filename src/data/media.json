@@ -2,7 +2,7 @@
   "$comment": "Single source of truth for the gallery. `src` is the untouched original in the Gallery folder; `slug` becomes the SEO-friendly filename. Run `npm run media` after editing to regenerate optimized derivatives in public/media/.",
   "sourceDir": "Gallery",
   "outDir": "public/media",
-  "widths": [420, 640, 900, 1280, 1600],
+  "widths": [400, 560, 760, 1000, 1280, 1600],
   "projects": [
     {
       "id": "rain-curtain-pool-cabana",

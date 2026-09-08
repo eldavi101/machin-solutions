@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-08T02:27:19.296Z",
+  "generatedAt": "2026-09-08T02:30:12.057Z",
   "projects": [
     {
       "id": "rain-curtain-pool-cabana",
@@ -23,16 +23,20 @@
           "hero": true,
           "sizes": [
             {
-              "width": 420,
-              "height": 196
+              "width": 400,
+              "height": 187
             },
             {
-              "width": 640,
-              "height": 299
+              "width": 560,
+              "height": 261
             },
             {
-              "width": 900,
-              "height": 420
+              "width": 760,
+              "height": 355
+            },
+            {
+              "width": 1000,
+              "height": 467
             },
             {
               "width": 1280,
@@ -54,16 +58,20 @@
           "hero": false,
           "sizes": [
             {
-              "width": 420,
-              "height": 560
+              "width": 400,
+              "height": 533
             },
             {
-              "width": 640,
-              "height": 853
+              "width": 560,
+              "height": 747
             },
             {
-              "width": 900,
-              "height": 1200
+              "width": 760,
+              "height": 1013
+            },
+            {
+              "width": 1000,
+              "height": 1333
             },
             {
               "width": 1280,
@@ -105,16 +113,20 @@
           "hero": false,
           "sizes": [
             {
-              "width": 420,
-              "height": 560
+              "width": 400,
+              "height": 533
             },
             {
-              "width": 640,
-              "height": 853
+              "width": 560,
+              "height": 747
             },
             {
-              "width": 900,
-              "height": 1200
+              "width": 760,
+              "height": 1013
+            },
+            {
+              "width": 1000,
+              "height": 1333
             },
             {
               "width": 1280,
@@ -132,16 +144,20 @@
           "hero": false,
           "sizes": [
             {
-              "width": 420,
-              "height": 560
+              "width": 400,
+              "height": 533
             },
             {
-              "width": 640,
-              "height": 853
+              "width": 560,
+              "height": 747
             },
             {
-              "width": 900,
-              "height": 1200
+              "width": 760,
+              "height": 1013
+            },
+            {
+              "width": 1000,
+              "height": 1333
             },
             {
               "width": 1280,
@@ -174,16 +190,20 @@
           "hero": false,
           "sizes": [
             {
-              "width": 420,
-              "height": 560
+              "width": 400,
+              "height": 533
             },
             {
-              "width": 640,
-              "height": 853
+              "width": 560,
+              "height": 747
             },
             {
-              "width": 900,
-              "height": 1200
+              "width": 760,
+              "height": 1013
+            },
+            {
+              "width": 1000,
+              "height": 1333
             },
             {
               "width": 1280,
@@ -201,16 +221,20 @@
           "hero": false,
           "sizes": [
             {
-              "width": 420,
-              "height": 560
+              "width": 400,
+              "height": 533
             },
             {
-              "width": 640,
-              "height": 853
+              "width": 560,
+              "height": 747
             },
             {
-              "width": 900,
-              "height": 1200
+              "width": 760,
+              "height": 1013
+            },
+            {
+              "width": 1000,
+              "height": 1333
             },
             {
               "width": 1280,
@@ -228,16 +252,20 @@
           "hero": false,
           "sizes": [
             {
-              "width": 420,
-              "height": 560
+              "width": 400,
+              "height": 533
             },
             {
-              "width": 640,
-              "height": 853
+              "width": 560,
+              "height": 747
             },
             {
-              "width": 900,
-              "height": 1200
+              "width": 760,
+              "height": 1013
+            },
+            {
+              "width": 1000,
+              "height": 1333
             },
             {
               "width": 1280,
@@ -270,16 +298,20 @@
           "hero": false,
           "sizes": [
             {
-              "width": 420,
-              "height": 560
+              "width": 400,
+              "height": 533
             },
             {
-              "width": 640,
-              "height": 853
+              "width": 560,
+              "height": 747
             },
             {
-              "width": 900,
-              "height": 1200
+              "width": 760,
+              "height": 1013
+            },
+            {
+              "width": 1000,
+              "height": 1333
             },
             {
               "width": 1280,
@@ -312,16 +344,20 @@
           "hero": false,
           "sizes": [
             {
-              "width": 420,
-              "height": 236
+              "width": 400,
+              "height": 225
             },
             {
-              "width": 640,
-              "height": 360
+              "width": 560,
+              "height": 315
             },
             {
-              "width": 900,
-              "height": 506
+              "width": 760,
+              "height": 428
+            },
+            {
+              "width": 1000,
+              "height": 563
             },
             {
               "width": 1280,
@@ -358,16 +394,20 @@
           "hero": false,
           "sizes": [
             {
-              "width": 420,
-              "height": 560
+              "width": 400,
+              "height": 533
             },
             {
-              "width": 640,
-              "height": 853
+              "width": 560,
+              "height": 747
             },
             {
-              "width": 900,
-              "height": 1200
+              "width": 760,
+              "height": 1013
+            },
+            {
+              "width": 1000,
+              "height": 1333
             },
             {
               "width": 1280,
@@ -400,12 +440,16 @@
           "hero": false,
           "sizes": [
             {
-              "width": 420,
-              "height": 560
+              "width": 400,
+              "height": 533
             },
             {
-              "width": 640,
-              "height": 853
+              "width": 560,
+              "height": 747
+            },
+            {
+              "width": 760,
+              "height": 1013
             },
             {
               "width": 768,

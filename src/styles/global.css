@@ -264,17 +264,21 @@ a:hover { text-decoration-color: currentColor; }
 }
 .skip-link:focus { top: 0.75rem; }
 
+/* Developer-facing marker for unfilled business data. Opaque and self-coloured so
+   it keeps 12.8:1 wherever it lands — over a hero photograph, on the near-black
+   footer, or inline in body copy. Inheriting the surrounding colour put it at
+   4.18:1 inside the muted "prefer to talk it through?" line. */
 .placeholder-token {
   font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   font-size: 0.9em;
   letter-spacing: 0.01em;
-  background: color-mix(in srgb, var(--teak-400) 20%, transparent);
-  border-bottom: 1px dashed var(--teak-500);
+  background: #f3e3d0;
+  color: #2a1f14;
+  border-bottom: 1px dashed #95592b;
   padding: 0.05em 0.3em;
   border-radius: 3px;
   white-space: nowrap;
 }
-.section-dark .placeholder-token { background: color-mix(in srgb, var(--teak-400) 26%, transparent); }
 
 .rule { border: 0; border-top: 1px solid var(--line); margin-block: var(--space-l); }
 .section-dark .rule { border-color: color-mix(in srgb, var(--ink-inverse) 18%, transparent); }
