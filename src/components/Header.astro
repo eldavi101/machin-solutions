@@ -22,7 +22,10 @@ const phone = real(site.phone);
 
 <header class="site-header">
   <div class="shell header-inner">
-    <a href="/" class="brand" aria-label={`${site.name} — home`}>
+    {/* No aria-label: the visible text is the accessible name. An aria-label that
+        does not contain the visible text breaks WCAG 2.5.3 (Label in Name) and
+        leaves voice-control users unable to say what they can read. */}
+    <a href="/" class="brand">
       <span class="brand-mark" aria-hidden="true">
         <svg viewBox="0 0 32 32" width="30" height="30" focusable="false">
           <path d="M2 12 16 4l14 8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square" />

@@ -169,7 +169,7 @@ export function videoObjectSchema(video: MediaVideo, projectTitle: string) {
     '@type': 'VideoObject',
     name: `${projectTitle} — ${video.title}`,
     description: video.title,
-    thumbnailUrl: absolute(`/media/${video.slug}-poster.jpg`),
+    thumbnailUrl: absolute(`/media/${video.slug}-poster.webp`),
     contentUrl: absolute(`/media/${video.slug}.mp4`),
     encodingFormat: 'video/mp4',
     width: video.width,

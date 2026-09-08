@@ -6,7 +6,7 @@
  * web-optimized derivatives into public/media/:
  *
  *   <slug>-<width>.avif / .webp / .jpg   responsive still images
- *   <slug>-poster.jpg                    poster frame for each video
+ *   <slug>-poster.webp                   poster frame for each video
  *   <slug>.mp4                           re-muxed video with faststart
  *   manifest.json                        real pixel dimensions, for explicit width/height
  *
@@ -54,7 +54,7 @@ async function processImage(image, opts) {
   // Never upscale, and never exceed the cap: a 3060px-wide original still tops out at
   // the largest useful width rather than shipping a 1.7 MB derivative nobody requests.
   const isPortrait = (image.orientation ?? (meta.width >= meta.height ? 'landscape' : 'portrait')) === 'portrait';
-  const cap = Math.min(meta.width, isPortrait ? 1440 : Math.max(...widths));
+  const cap = Math.min(meta.width, isPortrait ? 1280 : Math.max(...widths));
   const targets = [...new Set([...widths.filter((w) => w < cap), cap])].sort((a, b) => a - b);
   const sizes = [];
 
@@ -95,14 +95,18 @@ async function processVideo(video, opts, ffmpeg) {
   }
 
   const posterRaw = path.join(outDir, `${video.slug}-poster-raw.png`);
-  const posterOut = path.join(outDir, `${video.slug}-poster.jpg`);
+  const posterOut = path.join(outDir, `${video.slug}-poster.webp`);
   const videoOut = path.join(outDir, `${video.slug}.mp4`);
 
-  // Grab a representative frame a couple of seconds in, past any lead-in shake.
-  await execFileAsync(ffmpeg, ['-hide_banner', '-loglevel', 'error', '-ss', '2', '-i', inputPath, '-frames:v', '1', '-y', posterRaw]);
+  // Grab a representative frame past any lead-in shake. `posterAt` lets a clip pick
+  // its own moment: a frame full of fine detail (falling water, foliage) can encode
+  // several times larger than a calmer one from the same clip, and the poster is
+  // fetched eagerly even with preload="none".
+  const posterAt = String(video.posterAt ?? 2);
+  await execFileAsync(ffmpeg, ['-hide_banner', '-loglevel', 'error', '-ss', posterAt, '-i', inputPath, '-frames:v', '1', '-y', posterRaw]);
   const poster = sharp(posterRaw);
   const posterMeta = await poster.metadata();
-  await poster.jpeg({ quality: 78, mozjpeg: true }).toFile(posterOut);
+  await poster.webp({ quality: 55 }).toFile(posterOut);
   // The originals are WhatsApp re-encodes at ~1.6 Mbps; re-encoding at CRF 28 cuts the
   // download by roughly two thirds with no visible loss at this resolution.
   await execFileAsync(ffmpeg, [

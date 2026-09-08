@@ -2,7 +2,7 @@
   "$comment": "Single source of truth for the gallery. `src` is the untouched original in the Gallery folder; `slug` becomes the SEO-friendly filename. Run `npm run media` after editing to regenerate optimized derivatives in public/media/.",
   "sourceDir": "Gallery",
   "outDir": "public/media",
-  "widths": [480, 960, 1440, 1920],
+  "widths": [420, 640, 900, 1280, 1600],
   "projects": [
     {
       "id": "rain-curtain-pool-cabana",
@@ -15,7 +15,7 @@
         { "src": "IMG-20260907-WA0016.jpg", "slug": "rain-curtain-pool-cabana-miami-02", "alt": "Rain curtain falling from the edge of a modern pool cabana roof, seen across a pool with a bubbling spa in the foreground" }
       ],
       "videos": [
-        { "src": "VID-20260907-WA0012.mp4", "slug": "rain-curtain-pool-cabana-water-feature", "title": "Rain-curtain water feature running from the cabana roof edge" }
+        { "src": "VID-20260907-WA0012.mp4", "slug": "rain-curtain-pool-cabana-water-feature", "title": "Rain-curtain water feature running from the cabana roof edge", "posterAt": 14 }
       ]
     },
     {
