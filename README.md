@@ -37,6 +37,7 @@ npm run dev     # local dev server at http://localhost:4321
 npm run build   # production build into dist/
 npm run preview # serve the built site locally
 npm run audit   # post-build audit (see below) — run after npm run build
+npm run seo     # regenerate docs/seo-audit.md from the build (keyword map + cannibalization)
 npm run media   # regenerate optimized images and video from the Gallery folder
 npm run brand   # regenerate the favicon, app icons and Open Graph card
 ```
@@ -238,13 +239,23 @@ It also prints a checklist of every intentional `[PLACEHOLDER]` and which pages 
 Warnings (long titles, meta descriptions outside 120–160 characters) are reported but do
 not fail the build.
 
+`npm run seo` is separate and does not gate the build. It writes `docs/seo-audit.md`:
+the keyword → page map, every page's title / description / H1 / H2 outline, and a
+cannibalization check. That check distinguishes a **conflict** (two URLs aiming at the
+same query — a real problem) from an **advisory** (two keywords that merely share
+words, which is what a normal parent/child modifier split looks like).
+
 ---
 
 ## SEO implemented
 
-- **One primary keyword per URL.** The pergola hub targets the regional head term while
-  `/miami-pergolas/` targets the city term, so they do not compete. `/faq/` deliberately
-  answers questions that appear nowhere else on the site.
+The full keyword map, per-page metadata and cannibalization check live in
+[`docs/seo-audit.md`](docs/seo-audit.md), regenerated from the build with `npm run seo`.
+
+- **One primary keyword per URL.** The service hubs own the regional head terms
+  ("pergola builders South Florida"), the location pages own the city terms ("pergolas
+  Miami"), and the child pages own their modifiers ("aluminum pergolas Miami"). `/faq/`
+  deliberately answers questions that appear nowhere else on the site.
 - Unique title, meta description, canonical and single `<h1>` on every page.
 - Open Graph and Twitter Card metadata; the share card is generated from a real project
   photograph by `npm run brand`.
