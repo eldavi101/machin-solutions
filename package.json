@@ -11,8 +11,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "media": "node scripts/process-media.mjs",
-    "audit:links": "node scripts/check-build.mjs",
-    "brand": "node scripts/make-brand-assets.mjs"
+    "brand": "node scripts/make-brand-assets.mjs",
+    "audit": "node scripts/check-build.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",
