@@ -151,10 +151,14 @@ export function breadcrumbSchema(crumbs: Array<{ href?: string; label: string }>
 
 export function imageObjectSchema(image: MediaImage, projectTitle: string) {
   const largest = image.sizes[image.sizes.length - 1];
+  // Both URLs come from the manifest rather than an assumed width. A hardcoded
+  // thumbnail width silently 404s the moment the ladder in media.json changes,
+  // and a 404 in ImageObject is invisible on the page — only a crawler sees it.
+  const smallest = image.sizes[0];
   return {
     '@type': 'ImageObject',
     contentUrl: absolute(`/media/${image.slug}-${largest.width}.jpg`),
-    thumbnailUrl: absolute(`/media/${image.slug}-480.jpg`),
+    thumbnailUrl: absolute(`/media/${image.slug}-${smallest.width}.jpg`),
     width: largest.width,
     height: largest.height,
     caption: image.alt,

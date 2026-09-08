@@ -20,6 +20,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dist = path.join(root, 'dist');
+const SITE_ORIGIN = 'https://machinsolutions.com';
 
 const problems = [];
 const warnings = [];
@@ -50,6 +51,29 @@ const attr = (html, re) => {
 };
 
 /** Turn a site-relative URL into the file that should serve it. */
+// Walk any JSON-LD value and yield every on-site URL it contains, as a path.
+// Off-site URLs (schema.org vocabulary, social profiles) are skipped, and so are
+// the "#organization"-style @id fragments, which are internal node identifiers
+// rather than addresses that have to resolve to a file.
+function* schemaUrls(node) {
+  if (Array.isArray(node)) {
+    for (const item of node) yield* schemaUrls(item);
+    return;
+  }
+  if (!node || typeof node !== 'object') return;
+  for (const [key, value] of Object.entries(node)) {
+    if (key === '@context') continue;
+    if (typeof value === 'string') {
+      if (!value.startsWith(SITE_ORIGIN)) continue;
+      const pathname = value.slice(SITE_ORIGIN.length) || '/';
+      if (pathname.startsWith('#')) continue;
+      yield pathname;
+    } else {
+      yield* schemaUrls(value);
+    }
+  }
+}
+
 function resolveTarget(href) {
   const clean = href.split('#')[0].split('?')[0];
   if (clean === '' || clean === '/') return path.join(dist, 'index.html');
@@ -78,6 +102,7 @@ async function main() {
 
   let linkCount = 0;
   let assetCount = 0;
+  let schemaUrlCount = 0;
   let schemaCount = 0;
 
   for (const file of pages) {
@@ -126,6 +151,16 @@ async function main() {
         const parsed = JSON.parse(json);
         if (!parsed['@context']) fail(rel, 'JSON-LD block has no @context');
         if (!parsed['@type']) fail(rel, 'JSON-LD block has no @type');
+
+        // Every URL inside the structured data has to resolve too. A 404 in an
+        // ImageObject or a BreadcrumbList is invisible on the page and in the
+        // browser console — only a crawler ever sees it, and by then it counts
+        // against the site. This caught a hardcoded thumbnail width that had
+        // been left behind when the image ladder changed.
+        for (const url of schemaUrls(parsed)) {
+          schemaUrlCount += 1;
+          if (!resolveTarget(url)) fail(rel, `JSON-LD points at a missing target -> ${url}`);
+        }
       } catch (error) {
         fail(rel, `invalid JSON-LD: ${(error).message}`);
       }
@@ -229,6 +264,7 @@ async function main() {
   console.log(`\npages: ${pages.length}`);
   console.log(`internal links checked: ${linkCount}`);
   console.log(`asset references checked: ${assetCount}`);
+  console.log(`JSON-LD URLs resolved: ${schemaUrlCount}`);
   console.log(`JSON-LD blocks parsed: ${schemaCount}`);
   console.log(`media payload in dist: ${(mediaBytes / 1e6).toFixed(1)} MB`);
 
