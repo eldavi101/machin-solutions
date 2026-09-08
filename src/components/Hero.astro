@@ -85,37 +85,55 @@ const phone = real(site.phone);
 <style>
   .hero { position: relative; }
 
-  /* --- full-bleed photographic hero (home) -------------------------------- */
-  .hero-full { display: grid; }
-  .hero-full > * { grid-area: 1 / 1; }
+  /* --- full-bleed photographic hero (home) --------------------------------
+     Phones get a stacked layout: the photograph at its own aspect ratio, then
+     the copy on a solid ground beneath it. Overlaying text on a 2.1:1 landscape
+     shot at 390px wide means cropping it to a narrow vertical slice, which
+     zooms the image past the point where it reads as anything. */
+  .hero-full { background: var(--graphite-900); color: #fff; }
 
   .hero-full .hero-media { position: relative; }
   .hero-full .hero-media :global(img) {
     width: 100%;
-    height: 100%;
-    min-height: 32rem;
-    max-height: 44rem;
+    aspect-ratio: 16 / 10;
+    max-height: 52vh;
     object-fit: cover;
-    object-position: 50% 58%;
+    object-position: 50% 56%;
   }
   .hero-full .hero-media::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      180deg,
-      rgb(13 16 15 / 0.62) 0%,
-      rgb(13 16 15 / 0.44) 42%,
-      rgb(13 16 15 / 0.78) 100%
-    );
+    background: linear-gradient(180deg, rgb(13 16 15 / 0.1) 55%, rgb(22 26 24 / 0.9) 100%);
   }
 
   .hero-full .hero-body {
     position: relative;
     display: grid;
     align-items: end;
-    padding-block: var(--space-2xl) var(--space-xl);
-    color: #fff;
+    padding-block: var(--space-l) var(--space-xl);
+  }
+
+  @media (min-width: 48rem) {
+    .hero-full { display: grid; }
+    .hero-full > * { grid-area: 1 / 1; }
+
+    .hero-full .hero-media :global(img) {
+      height: 100%;
+      aspect-ratio: auto;
+      min-height: 32rem;
+      max-height: 44rem;
+      object-position: 50% 58%;
+    }
+    .hero-full .hero-media::after {
+      background: linear-gradient(
+        180deg,
+        rgb(13 16 15 / 0.62) 0%,
+        rgb(13 16 15 / 0.44) 42%,
+        rgb(13 16 15 / 0.78) 100%
+      );
+    }
+    .hero-full .hero-body { padding-block: var(--space-2xl) var(--space-xl); }
   }
   .hero-full .hero-copy {
     width: min(100% - 2.5rem, var(--shell));

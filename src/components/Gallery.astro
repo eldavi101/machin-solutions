@@ -1,6 +1,6 @@
 ---
 import Picture from './Picture.astro';
-import { categoryLabels, type Project } from '../lib/media';
+import { categoryLabels, largest, srcset, type Project } from '../lib/media';
 
 export interface Props {
   projects: Project[];
@@ -17,8 +17,19 @@ const categories = [...new Set(shown.map((project) => project.category))];
 const Heading = headingLevel;
 
 // Flat, ordered list of every openable item, so the lightbox can step through them.
+// The srcset is baked in from the manifest rather than assembled in the browser: not
+// every photo has a 1440px derivative (a small original stops at its native width), so
+// guessing widths client-side would 404.
 const items = shown.flatMap((project) =>
-  project.images.map((image) => ({ slug: image.slug, alt: image.alt, project: project.title })),
+  project.images.map((image) => ({
+    slug: image.slug,
+    alt: image.alt,
+    project: project.title,
+    src: `/media/${image.slug}-${largest(image).width}.jpg`,
+    srcset: srcset(image, 'jpg'),
+    width: largest(image).width,
+    height: largest(image).height,
+  })),
 );
 ---
 
@@ -114,7 +125,9 @@ const items = shown.flatMap((project) =>
   </button>
 </dialog>
 
-<script is:inline define:vars={{ items }} type="application/json" data-lightbox-items set:html={JSON.stringify(items)} />
+{/* The lightbox index travels as inert JSON, not as a define:vars binding — Astro
+    wraps define:vars output in an IIFE, which would corrupt a JSON payload. */}
+<script is:inline type="application/json" data-lightbox-items set:html={JSON.stringify(items)} />
 
 <style>
   .filter-bar {
@@ -278,6 +291,10 @@ const items = shown.flatMap((project) =>
     slug: string;
     alt: string;
     project: string;
+    src: string;
+    srcset: string;
+    width: number;
+    height: number;
   }
 
   const dataNode = document.querySelector<HTMLScriptElement>('[data-lightbox-items]');
@@ -293,10 +310,11 @@ const items = shown.flatMap((project) =>
     const show = (next: number) => {
       index = (next + items.length) % items.length;
       const item = items[index];
-      // The 1440px derivative is the largest generated; it is plenty for a lightbox.
-      img.src = `/media/${item.slug}-1440.jpg`;
-      img.srcset = [480, 960, 1440].map((w) => `/media/${item.slug}-${w}.jpg ${w}w`).join(', ');
+      img.src = item.src;
+      img.srcset = item.srcset;
       img.sizes = '(min-width: 75rem) 1100px, 92vw';
+      img.width = item.width;
+      img.height = item.height;
       img.alt = item.alt;
       caption.textContent = `${item.project} — ${item.alt}`;
     };

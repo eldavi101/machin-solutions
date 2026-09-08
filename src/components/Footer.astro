@@ -167,7 +167,9 @@ const columns = [
     font-size: 0.7rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--ink-faint);
+    /* Not --ink-faint: that token is tuned for light grounds and only reaches
+       3.6:1 against the near-black footer. */
+    color: #8f938b;
     font-weight: 650;
     min-width: 3.2rem;
   }
@@ -191,11 +193,13 @@ const columns = [
     padding: 0;
     margin: 0;
   }
-  .footer-nav li + li { margin-top: 0.45rem; }
+  .footer-nav li + li { margin-top: 0.5rem; }
   .footer-nav a, .area-links a {
+    display: inline-block;
     color: var(--ink-inverse-soft);
     text-decoration: none;
     font-size: 0.95rem;
+    padding-block: 0.15rem;
   }
   .footer-nav a:hover, .area-links a:hover { color: var(--ink-inverse); text-decoration: underline; }
 

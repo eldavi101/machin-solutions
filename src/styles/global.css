@@ -16,8 +16,12 @@
   --graphite-900: #161a18;
   --graphite-950: #0d100f;
   --teak-400: #c98f56;
-  --teak-500: #a96a34;
-  --teak-600: #8b5528;
+  /* teak-500/600 are the accent on light grounds AND the button fill under white
+     text. Both were darkened to clear WCAG AA 4.5:1 in every combination the site
+     actually uses: 5.6:1 on white, 5.3:1 on sand-50, 4.9:1 on sand-100, and 5.6:1
+     for white text on the filled button. */
+  --teak-500: #95592b;
+  --teak-600: #7f4c22;
   --lagoon-600: #1d6b6d;
 
   --bg: var(--sand-50);
@@ -25,7 +29,7 @@
   --bg-inverse: var(--graphite-900);
   --ink: #1b1e1c;
   --ink-soft: #52564f;
-  --ink-faint: #71756e;
+  --ink-faint: #696d66; /* 4.6:1 on sand-100, the darkest ground it sits on */
   --ink-inverse: #f3efe8;
   --ink-inverse-soft: #c2bdb2;
   --line: #e2ddd2;
