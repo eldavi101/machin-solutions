@@ -1,10 +1,19 @@
 # Machin Solutions
 
+> ### 👉 Empieza por [`PROJECT_STATE.md`](./PROJECT_STATE.md)
+>
+> **Si vas a hacer cambios en este proyecto — y especialmente si eres un agente —
+> lee [`PROJECT_STATE.md`](./PROJECT_STATE.md) antes de tocar nada.** Ahí está el estado
+> actual, las decisiones ya tomadas, las reglas que no se pueden romper (datos que no se
+> pueden inventar, carpetas que no se pueden tocar), las trampas conocidas y lo que
+> falta. Este README explica *cómo funciona el proyecto*; ese archivo explica *en qué
+> punto está y qué no debes romper*.
+
 Marketing site for **Machin Solutions** — custom pergolas, tiki huts and outdoor living
 structures in Miami and South Florida.
 
-Live site: <https://machinsolutions.com> (once DNS is pointed — see
-[Custom domain](#custom-domain))
+Live site: <https://machinsolutions.com> — **live now**, served by GitHub Pages over
+HTTPS. See [Custom domain](#custom-domain) for the DNS setup.
 
 ---
 
@@ -219,7 +228,7 @@ domain, so all paths are root-relative. Setting `base: '/machin-solutions/'` wou
 every link and asset once the domain resolves; `<user>.github.io/machin-solutions/`
 redirects to the custom domain instead.
 
-**Current state of the domain (checked 7 Sep 2026):** `machinsolutions.com` is
+**Current state of the domain (checked 8 Sep 2026):** `machinsolutions.com` is
 registered and resolving to `76.223.105.230` / `13.248.243.5`, where it serves a
 **GoDaddy Website Builder placeholder page**. Nothing of value is hosted there, but
 the records below have to *replace* GoDaddy's parking records, not sit alongside
