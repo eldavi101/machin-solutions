@@ -1,0 +1,187 @@
+---
+import Picture from './Picture.astro';
+import { callHref, site, real } from '../config/site';
+import { image as findImage, srcset } from '../lib/media';
+
+export interface Props {
+  eyebrow?: string;
+  title: string;
+  body: string;
+  /** Slug of a generated image to use as the backdrop. */
+  imageSlug: string;
+  imageAlt?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+  /** Small proof points under the buttons. */
+  bullets?: string[];
+  /** Full-bleed photographic hero (home page) vs. compact split hero (inner pages). */
+  variant?: 'full' | 'split';
+}
+
+const {
+  eyebrow,
+  title,
+  body,
+  imageSlug,
+  imageAlt,
+  primaryLabel = 'Get a Free Estimate',
+  primaryHref = '/contact/',
+  secondaryLabel = 'View Our Work',
+  secondaryHref = '/gallery/',
+  bullets = [],
+  variant = 'split',
+} = Astro.props;
+
+const hero = findImage(imageSlug);
+const phone = real(site.phone);
+---
+
+<section class:list={['hero', `hero-${variant}`]}>
+  <div class="hero-media">
+    <Picture
+      image={hero}
+      alt={imageAlt}
+      sizes={variant === 'full' ? '100vw' : '(min-width: 60rem) 50vw, 100vw'}
+      loading="eager"
+      fetchpriority="high"
+      decoding="sync"
+      ratio={variant === 'full' ? undefined : '4 / 3'}
+    />
+  </div>
+
+  <div class="hero-body">
+    <div class="hero-copy">
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      <h1>{title}</h1>
+      <p class="hero-lede">{body}</p>
+
+      <div class="btn-row hero-actions">
+        <a class="btn btn-primary" href={primaryHref}>{primaryLabel}</a>
+        <a class="btn btn-ghost" href={secondaryHref}>{secondaryLabel}</a>
+      </div>
+
+      <p class="hero-call">
+        Prefer to talk it through?{' '}
+        <a href={callHref()}>
+          {phone ? phone : <span class="placeholder-token">[PHONE_NUMBER]</span>}
+        </a>
+      </p>
+
+      {
+        bullets.length > 0 && (
+          <ul class="hero-bullets">
+            {bullets.map((bullet) => (
+              <li>{bullet}</li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero { position: relative; }
+
+  /* --- full-bleed photographic hero (home) -------------------------------- */
+  .hero-full { display: grid; }
+  .hero-full > * { grid-area: 1 / 1; }
+
+  .hero-full .hero-media { position: relative; }
+  .hero-full .hero-media :global(img) {
+    width: 100%;
+    height: 100%;
+    min-height: 32rem;
+    max-height: 44rem;
+    object-fit: cover;
+    object-position: 50% 58%;
+  }
+  .hero-full .hero-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgb(13 16 15 / 0.62) 0%,
+      rgb(13 16 15 / 0.44) 42%,
+      rgb(13 16 15 / 0.78) 100%
+    );
+  }
+
+  .hero-full .hero-body {
+    position: relative;
+    display: grid;
+    align-items: end;
+    padding-block: var(--space-2xl) var(--space-xl);
+    color: #fff;
+  }
+  .hero-full .hero-copy {
+    width: min(100% - 2.5rem, var(--shell));
+    margin-inline: auto;
+    max-width: 46rem;
+  }
+  .hero-full h1 { color: #fff; text-shadow: 0 2px 18px rgb(10 12 11 / 0.4); }
+  .hero-full .hero-lede { color: #ece7de; }
+  .hero-full .eyebrow { color: var(--teak-400); }
+  .hero-full .hero-call { color: #d9d3c8; }
+  .hero-full .hero-call a { color: #fff; }
+  .hero-full .btn-ghost { color: #fff; border-color: rgb(255 255 255 / 0.55); }
+  .hero-full .btn-ghost:hover { background: rgb(255 255 255 / 0.14); border-color: #fff; }
+  .hero-full .hero-bullets { color: #ded8cd; }
+  .hero-full .hero-bullets li::before { background: var(--teak-400); }
+
+  /* --- split hero (inner pages) ------------------------------------------- */
+  .hero-split {
+    display: grid;
+    gap: var(--space-l);
+    padding-block: var(--space-xl) var(--space-2xl);
+    width: min(100% - 2.5rem, var(--shell));
+    margin-inline: auto;
+    align-items: center;
+  }
+  .hero-split .hero-media :global(img) {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+  .hero-split .hero-copy { max-width: 44rem; }
+
+  @media (min-width: 60rem) {
+    .hero-split { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: var(--space-2xl); }
+    .hero-split .hero-media { order: 2; }
+  }
+
+  /* --- shared ------------------------------------------------------------- */
+  .hero-lede {
+    margin-top: var(--space-s);
+    font-size: var(--step-1);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 52ch;
+  }
+  .hero-actions { margin-top: var(--space-m); }
+  .hero-call { margin-top: var(--space-s); font-size: 0.95rem; color: var(--ink-faint); }
+  .hero-call a { font-weight: 650; }
+
+  .hero-bullets {
+    margin-top: var(--space-m);
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.4rem;
+    font-size: 0.94rem;
+    color: var(--ink-soft);
+  }
+  .hero-bullets li { display: flex; align-items: center; gap: 0.5rem; }
+  .hero-bullets li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex: none;
+  }
+</style>

@@ -1,0 +1,132 @@
+---
+import type { Faq } from '../data/faqs';
+
+export interface Props {
+  faqs: Faq[];
+  title?: string;
+  eyebrow?: string;
+  intro?: string;
+  /** Emit FAQPage structured data. Only one block per page, so turn it off on pages
+   *  that already carry a richer FAQ set elsewhere. */
+  schema?: boolean;
+  headingLevel?: 'h2' | 'h3';
+}
+
+const {
+  faqs,
+  title = 'Frequently asked questions',
+  eyebrow,
+  intro,
+  schema = true,
+  headingLevel = 'h2',
+} = Astro.props;
+
+const Heading = headingLevel;
+
+/** Turns [PLACEHOLDER_TOKENS] into visibly marked spans without allowing raw HTML through. */
+function render(answer: string): string {
+  return answer
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/\[([A-Z0-9_]+)\]/g, '<span class="placeholder-token">[$1]</span>');
+}
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<section class="faq-section">
+  <div class="shell faq-inner">
+    <div class="faq-head">
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      <Heading>{title}</Heading>
+      {intro && <p class="lede faq-intro">{intro}</p>}
+    </div>
+
+    <div class="faq-list">
+      {
+        faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary>
+              <span>{faq.question}</span>
+              <span class="faq-icon" aria-hidden="true" />
+            </summary>
+            <div class="faq-answer">
+              <p set:html={render(faq.answer)} />
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+{schema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+
+<style>
+  .faq-section { padding-block: var(--space-2xl); }
+  .faq-inner { display: grid; gap: var(--space-l); }
+  .faq-head { max-width: 40ch; }
+  .faq-intro { margin-top: var(--space-s); }
+
+  .faq-list { display: grid; gap: 0; border-top: 1px solid var(--line-strong); }
+
+  .faq-item { border-bottom: 1px solid var(--line-strong); }
+
+  summary {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-s);
+    padding: 1.1rem 0;
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    list-style: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary:hover { color: var(--accent); }
+
+  .faq-icon {
+    position: relative;
+    flex: none;
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-top: 0.35em;
+  }
+  .faq-icon::before,
+  .faq-icon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    background: currentColor;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  .faq-icon::before { width: 100%; height: 2px; }
+  .faq-icon::after { width: 2px; height: 100%; }
+  [open] .faq-icon::after { transform: scaleY(0); opacity: 0; }
+
+  .faq-answer {
+    padding-bottom: 1.2rem;
+    max-width: var(--measure);
+    color: var(--ink-soft);
+  }
+
+  @media (min-width: 60rem) {
+    .faq-inner { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr); gap: var(--space-2xl); }
+    .faq-list { border-top: 0; }
+    .faq-item:first-child { border-top: 1px solid var(--line-strong); }
+  }
+</style>

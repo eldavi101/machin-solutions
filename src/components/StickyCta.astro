@@ -1,0 +1,97 @@
+---
+import { site, callHref, real } from '../config/site';
+
+const phone = real(site.phone);
+---
+
+<div class="sticky-cta" data-sticky-cta>
+  <a class="sticky-btn sticky-call" href={callHref()}>
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+      <path
+        d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z"
+        fill="currentColor"
+      />
+    </svg>
+    <span>{phone ? 'Call now' : 'Contact us'}</span>
+  </a>
+  <a class="sticky-btn sticky-quote" href="/contact/">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+      <path d="M4 5h16v3H4zm0 5.5h16v3H4zM4 16h10v3H4z" fill="currentColor" />
+    </svg>
+    <span>Get a quote</span>
+  </a>
+</div>
+
+<style>
+  .sticky-cta {
+    position: fixed;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 90;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: color-mix(in srgb, var(--graphite-900) 22%, transparent);
+    border-top: 1px solid color-mix(in srgb, var(--graphite-900) 18%, transparent);
+    box-shadow: 0 -6px 24px rgb(22 26 24 / 0.16);
+    transform: translateY(110%);
+    transition: transform 0.25s ease;
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+  .sticky-cta[data-visible] { transform: translateY(0); }
+
+  .sticky-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3.4rem;
+    padding: 0.6rem 0.75rem;
+    font-weight: 650;
+    font-size: 0.97rem;
+    text-decoration: none;
+  }
+  .sticky-call { background: var(--graphite-900); color: var(--ink-inverse); }
+  .sticky-quote { background: var(--accent); color: #fff; }
+  .sticky-btn:active { filter: brightness(0.94); }
+
+  /* The bar only exists on phones, where a thumb-reachable call button earns its
+     space. On larger screens the header CTA is always visible instead. */
+  @media (min-width: 48rem) {
+    .sticky-cta { display: none; }
+  }
+</style>
+
+<script>
+  const bar = document.querySelector<HTMLElement>('[data-sticky-cta]');
+  const narrow = window.matchMedia('(max-width: 47.99rem)');
+
+  if (bar) {
+    const setHeight = () => {
+      const active = narrow.matches && bar.hasAttribute('data-visible');
+      document.documentElement.style.setProperty(
+        '--sticky-cta-height',
+        active ? `${bar.offsetHeight}px` : '0px',
+      );
+    };
+
+    // Hold the bar back until the visitor has actually started reading, so the first
+    // screenful stays clean and the bar never covers the hero CTAs.
+    const sentinel = document.createElement('div');
+    sentinel.setAttribute('aria-hidden', 'true');
+    sentinel.style.cssText = 'position:absolute;top:70vh;height:1px;width:1px;pointer-events:none;';
+    document.body.appendChild(sentinel);
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.boundingClientRect.top < 0) bar.setAttribute('data-visible', '');
+        else bar.removeAttribute('data-visible');
+        setHeight();
+      },
+      { threshold: 0 },
+    );
+    observer.observe(sentinel);
+
+    window.addEventListener('resize', setHeight, { passive: true });
+  }
+</script>

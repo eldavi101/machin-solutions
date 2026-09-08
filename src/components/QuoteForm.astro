@@ -1,0 +1,327 @@
+---
+import { site, callHref, real } from '../config/site';
+import { areas } from '../data/areas';
+
+export interface Props {
+  /** Pre-select a service when the form sits on a service page. */
+  service?: 'Pergola' | 'Tiki Hut' | 'Other Outdoor Project';
+  /** Pre-fill the city on a location landing page. */
+  city?: string;
+  compact?: boolean;
+}
+
+const { service, city, compact = false } = Astro.props;
+
+const endpoint = site.formEndpoint;
+const phone = real(site.phone);
+const email = real(site.email);
+const cities = areas.map((area) => area.name);
+---
+
+<form
+  class:list={['quote-form', compact && 'quote-form-compact']}
+  action={endpoint ?? undefined}
+  method={endpoint ? 'POST' : undefined}
+  novalidate
+  data-quote-form
+  data-endpoint={endpoint ?? ''}
+  aria-describedby="quote-form-note"
+>
+  <div class="field-grid">
+    <p class="field">
+      <label for="qf-name">Name <span class="req" aria-hidden="true">*</span></label>
+      <input
+        type="text"
+        id="qf-name"
+        name="name"
+        autocomplete="name"
+        required
+        aria-describedby="qf-name-error"
+      />
+      <span class="error" id="qf-name-error" data-error-for="qf-name" hidden></span>
+    </p>
+
+    <p class="field">
+      <label for="qf-phone">Phone <span class="req" aria-hidden="true">*</span></label>
+      <input
+        type="tel"
+        id="qf-phone"
+        name="phone"
+        autocomplete="tel"
+        inputmode="tel"
+        required
+        placeholder="(305) 000-0000"
+        aria-describedby="qf-phone-error"
+      />
+      <span class="error" id="qf-phone-error" data-error-for="qf-phone" hidden></span>
+    </p>
+
+    <p class="field">
+      <label for="qf-email">Email <span class="req" aria-hidden="true">*</span></label>
+      <input
+        type="email"
+        id="qf-email"
+        name="email"
+        autocomplete="email"
+        required
+        aria-describedby="qf-email-error"
+      />
+      <span class="error" id="qf-email-error" data-error-for="qf-email" hidden></span>
+    </p>
+
+    <p class="field">
+      <label for="qf-city">City</label>
+      <input
+        type="text"
+        id="qf-city"
+        name="city"
+        list="qf-city-options"
+        autocomplete="address-level2"
+        value={city ?? ''}
+      />
+      <datalist id="qf-city-options">
+        {cities.map((name) => <option value={name}></option>)}
+      </datalist>
+    </p>
+
+    <p class="field field-wide">
+      <label for="qf-service">Service needed <span class="req" aria-hidden="true">*</span></label>
+      <select id="qf-service" name="service" required aria-describedby="qf-service-error">
+        <option value="">Choose a service…</option>
+        <option value="Pergola" selected={service === 'Pergola'}>Pergola</option>
+        <option value="Tiki Hut" selected={service === 'Tiki Hut'}>Tiki Hut</option>
+        <option value="Other Outdoor Project" selected={service === 'Other Outdoor Project'}>
+          Other Outdoor Project
+        </option>
+      </select>
+      <span class="error" id="qf-service-error" data-error-for="qf-service" hidden></span>
+    </p>
+
+    <p class="field field-wide">
+      <label for="qf-message">Project description</label>
+      <textarea
+        id="qf-message"
+        name="message"
+        rows="5"
+        placeholder="Rough size of the area, whether there is a pool or existing deck, and what you want to use the space for."
+      ></textarea>
+      <span class="hint">
+        Photos help a lot. Mention that you have them and you will be told where to send them.
+      </span>
+    </p>
+  </div>
+
+  {/* Simple honeypot: real visitors never see or fill this. */}
+  <p class="hp" aria-hidden="true">
+    <label for="qf-company">Company</label>
+    <input type="text" id="qf-company" name="_gotcha" tabindex="-1" autocomplete="off" />
+  </p>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">Request My Free Estimate</button>
+    <a class="btn btn-ghost" href={callHref()}>
+      {phone ? `Call ${phone}` : 'Prefer to call?'}
+    </a>
+  </div>
+
+  <p class="form-note" id="quote-form-note">
+    {
+      endpoint ? (
+        <>No obligation. Your details are used to prepare your estimate and nothing else.</>
+      ) : (
+        <>
+          <strong>Setup note for the site owner:</strong> this form validates but is not yet
+          wired to a backend — GitHub Pages serves static files only. Set{' '}
+          <code>formEndpoint</code> in <code>src/config/site.ts</code> to a form service URL
+          (Formspree, Basin, Web3Forms, a Cloudflare Worker…) and submissions start being
+          delivered. Nothing else needs changing.
+        </>
+      )
+    }
+  </p>
+
+  <div class="form-status" data-form-status role="status" aria-live="polite" hidden></div>
+</form>
+
+<style>
+  .quote-form {
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: var(--space-m);
+    box-shadow: var(--shadow-sm);
+  }
+  @media (min-width: 40rem) {
+    .quote-form { padding: var(--space-l); }
+  }
+
+  .field-grid {
+    display: grid;
+    gap: var(--space-s);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  }
+  .field-wide { grid-column: 1 / -1; }
+
+  .field { display: grid; gap: 0.35rem; margin: 0; }
+
+  label { font-weight: 600; font-size: 0.93rem; }
+  .req { color: var(--accent); }
+
+  input, select, textarea {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.65rem 0.8rem;
+    background: var(--sand-50);
+    border: 1.5px solid var(--line-strong);
+    border-radius: var(--radius);
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+  }
+  textarea { min-height: 7rem; resize: vertical; line-height: 1.55; }
+  input:hover, select:hover, textarea:hover { border-color: var(--ink-faint); }
+  input:focus, select:focus, textarea:focus { background: #fff; }
+  input[aria-invalid='true'], select[aria-invalid='true'] { border-color: #a4342a; }
+
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2352564f' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.9rem center;
+    background-size: 12px 8px;
+    padding-right: 2.4rem;
+  }
+
+  .hint { font-size: 0.85rem; color: var(--ink-faint); }
+  .error { font-size: 0.85rem; color: #a4342a; font-weight: 600; }
+
+  .hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .form-actions {
+    margin-top: var(--space-m);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .form-actions .btn { flex: 1 1 14rem; }
+
+  .form-note {
+    margin-top: var(--space-s);
+    font-size: 0.86rem;
+    color: var(--ink-faint);
+    line-height: 1.55;
+  }
+  .form-note code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.92em;
+    background: var(--sand-100);
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+  }
+
+  .form-status {
+    margin-top: var(--space-s);
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius);
+    border: 1.5px solid var(--line-strong);
+    background: var(--sand-100);
+    font-size: 0.95rem;
+  }
+  .form-status[data-tone='ok'] { border-color: #2f6d4f; background: #eef6f0; }
+  .form-status[data-tone='error'] { border-color: #a4342a; background: #fbeeec; }
+</style>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-quote-form]');
+
+  if (form) {
+    const status = form.querySelector<HTMLElement>('[data-form-status]');
+    const endpoint = form.dataset.endpoint;
+
+    const messages: Record<string, string> = {
+      'qf-name': 'Please tell us your name.',
+      'qf-phone': 'A phone number lets us call you back with an answer.',
+      'qf-email': 'Please enter an email address we can reply to.',
+      'qf-service': 'Let us know which kind of project this is.',
+    };
+
+    const setError = (field: HTMLInputElement | HTMLSelectElement, message: string | null) => {
+      const target = form.querySelector<HTMLElement>(`[data-error-for="${field.id}"]`);
+      if (message) {
+        field.setAttribute('aria-invalid', 'true');
+        if (target) { target.textContent = message; target.hidden = false; }
+      } else {
+        field.removeAttribute('aria-invalid');
+        if (target) { target.textContent = ''; target.hidden = true; }
+      }
+    };
+
+    const validateField = (field: HTMLInputElement | HTMLSelectElement) => {
+      const valid = field.checkValidity();
+      setError(field, valid ? null : (messages[field.id] ?? 'Please check this field.'));
+      return valid;
+    };
+
+    form.querySelectorAll<HTMLInputElement | HTMLSelectElement>('[required]').forEach((field) => {
+      field.addEventListener('blur', () => validateField(field));
+      field.addEventListener('input', () => {
+        if (field.getAttribute('aria-invalid') === 'true') validateField(field);
+      });
+    });
+
+    const show = (tone: 'ok' | 'error', message: string) => {
+      if (!status) return;
+      status.dataset.tone = tone;
+      status.textContent = message;
+      status.hidden = false;
+    };
+
+    form.addEventListener('submit', async (event) => {
+      const fields = Array.from(
+        form.querySelectorAll<HTMLInputElement | HTMLSelectElement>('[required]'),
+      );
+      const invalid = fields.filter((field) => !validateField(field));
+
+      if (invalid.length > 0) {
+        event.preventDefault();
+        invalid[0].focus();
+        show('error', 'A few details are still missing — they are marked above.');
+        return;
+      }
+
+      if (!endpoint) {
+        // No backend is configured yet, so keep the visitor moving rather than
+        // pretending the message was sent.
+        event.preventDefault();
+        show(
+          'ok',
+          'Thanks — everything checks out. This demo form is not connected to a mailbox yet, so please call or email us directly and we will pick it up straight away.',
+        );
+        return;
+      }
+
+      event.preventDefault();
+      const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      if (button) { button.disabled = true; button.textContent = 'Sending…'; }
+
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(form),
+        });
+        if (!response.ok) throw new Error(String(response.status));
+        form.reset();
+        show('ok', 'Thanks — your request is in. We will be in touch to arrange a site visit.');
+      } catch {
+        show('error', 'Something went wrong sending that. Please call or email us instead.');
+      } finally {
+        if (button) { button.disabled = false; button.textContent = 'Request My Free Estimate'; }
+      }
+    });
+  }
+</script>

@@ -1,0 +1,58 @@
+---
+import { callHref, site, real } from '../config/site';
+
+export interface Props {
+  title?: string;
+  body?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+  headingLevel?: 'h2' | 'h3';
+}
+
+const {
+  title = 'Tell us about your backyard.',
+  body = 'Send a couple of photos and rough dimensions and you will get a real answer about what fits, what it takes and what it costs — not a brochure.',
+  primaryLabel = 'Get a Free Estimate',
+  primaryHref = '/contact/',
+  secondaryLabel,
+  secondaryHref,
+  headingLevel = 'h2',
+} = Astro.props;
+
+const Heading = headingLevel;
+const phone = real(site.phone);
+const fallbackSecondaryLabel = phone ? `Call ${phone}` : 'Call us';
+---
+
+<section class="cta-band section-dark">
+  <div class="shell cta-inner">
+    <div class="cta-copy">
+      <Heading>{title}</Heading>
+      <p>{body}</p>
+    </div>
+    <div class="btn-row cta-actions">
+      <a class="btn btn-primary" href={primaryHref}>{primaryLabel}</a>
+      <a class="btn btn-ghost" href={secondaryHref ?? callHref()}>
+        {secondaryLabel ?? fallbackSecondaryLabel}
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-band { padding-block: var(--space-xl); }
+  .cta-inner {
+    display: grid;
+    gap: var(--space-m);
+    align-items: center;
+  }
+  .cta-copy { max-width: 52ch; }
+  .cta-copy p { margin-top: var(--space-xs); }
+  .cta-actions { flex-shrink: 0; }
+
+  @media (min-width: 56rem) {
+    .cta-inner { grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-xl); }
+  }
+</style>

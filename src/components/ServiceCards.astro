@@ -1,0 +1,134 @@
+---
+import Picture from './Picture.astro';
+import TikiPlaceholder from './TikiPlaceholder.astro';
+import { image as findImage } from '../lib/media';
+
+export interface ServiceCard {
+  title: string;
+  href: string;
+  body: string;
+  points: string[];
+  /** Generated image slug, or `null` for services we have no photography for yet. */
+  imageSlug: string | null;
+  cta?: string;
+}
+
+export interface Props {
+  cards: ServiceCard[];
+  headingLevel?: 'h2' | 'h3';
+}
+
+const { cards, headingLevel = 'h3' } = Astro.props;
+const Heading = headingLevel;
+---
+
+<div class="service-cards">
+  {
+    cards.map((card) => (
+      <article class="service-card">
+        <div class="service-media">
+          {card.imageSlug ? (
+            <a href={card.href} tabindex="-1" aria-hidden="true">
+              <Picture
+                image={findImage(card.imageSlug)}
+                sizes="(min-width: 60rem) 46vw, 92vw"
+                ratio="16 / 11"
+              />
+            </a>
+          ) : (
+            <TikiPlaceholder compact caption="Tiki hut photography is on its way." />
+          )}
+        </div>
+
+        <div class="service-body">
+          <Heading class="service-title">
+            <a href={card.href}>{card.title}</a>
+          </Heading>
+          <p class="service-text">{card.body}</p>
+          <ul class="service-points">
+            {card.points.map((point) => (
+              <li>{point}</li>
+            ))}
+          </ul>
+          <a class="service-link" href={card.href}>
+            {card.cta ?? `Explore ${card.title.toLowerCase()}`}
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </article>
+    ))
+  }
+</div>
+
+<style>
+  .service-cards {
+    display: grid;
+    gap: var(--space-l);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr));
+  }
+
+  .service-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.22s ease, transform 0.22s ease;
+  }
+  .service-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+  .service-media { background: var(--sand-200); }
+  .service-media :global(img) { width: 100%; }
+  .service-media :global(.tiki-figure) {
+    border: 0;
+    border-radius: 0;
+    grid-template-columns: 1fr;
+  }
+
+  .service-body {
+    padding: var(--space-m);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .service-title { font-size: var(--step-2); }
+  .service-title a { text-decoration: none; }
+  .service-title a:hover { color: var(--accent); }
+
+  .service-text { margin-top: 0.5rem; color: var(--ink-soft); }
+
+  .service-points {
+    margin-top: var(--space-s);
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.35rem;
+    font-size: 0.94rem;
+    color: var(--ink-soft);
+  }
+  .service-points li { display: flex; gap: 0.55rem; align-items: baseline; }
+  .service-points li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex: none;
+    transform: translateY(-2px);
+  }
+
+  .service-link {
+    margin-top: auto;
+    padding-top: var(--space-m);
+    font-weight: 650;
+    color: var(--accent);
+    text-decoration: none;
+    display: inline-flex;
+    gap: 0.4rem;
+    align-items: center;
+  }
+  .service-link:hover { text-decoration: underline; }
+</style>

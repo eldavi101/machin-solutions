@@ -1,0 +1,57 @@
+---
+import { srcset, largest, type MediaImage } from '../lib/media';
+
+export interface Props {
+  image: MediaImage;
+  /** The `sizes` attribute — tell the browser how wide this renders, or it guesses 100vw. */
+  sizes: string;
+  /** Override the manifest alt text when the surrounding copy already says it. */
+  alt?: string;
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'low' | 'auto';
+  decoding?: 'async' | 'sync' | 'auto';
+  class?: string;
+  /** CSS aspect-ratio to crop into, e.g. "4 / 3". Omit to keep the native ratio. */
+  ratio?: string;
+  objectPosition?: string;
+}
+
+const {
+  image,
+  sizes,
+  alt,
+  loading = 'lazy',
+  fetchpriority,
+  decoding = 'async',
+  class: className,
+  ratio,
+  objectPosition,
+} = Astro.props;
+
+const fallback = largest(image);
+const style = [
+  ratio ? `aspect-ratio:${ratio}` : null,
+  ratio ? 'object-fit:cover' : null,
+  objectPosition ? `object-position:${objectPosition}` : null,
+]
+  .filter(Boolean)
+  .join(';');
+---
+
+<picture>
+  <source type="image/avif" srcset={srcset(image, 'avif')} sizes={sizes} />
+  <source type="image/webp" srcset={srcset(image, 'webp')} sizes={sizes} />
+  <img
+    src={`/media/${image.slug}-${fallback.width}.jpg`}
+    srcset={srcset(image, 'jpg')}
+    sizes={sizes}
+    width={image.width}
+    height={image.height}
+    alt={alt ?? image.alt}
+    loading={loading}
+    fetchpriority={fetchpriority}
+    decoding={decoding}
+    class={className}
+    style={style || undefined}
+  />
+</picture>

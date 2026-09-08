@@ -1,0 +1,127 @@
+---
+export interface Prop {
+  title: string;
+  body: string;
+  icon: 'draw' | 'anchor' | 'sun' | 'local' | 'finish' | 'clean';
+}
+
+export interface Props {
+  eyebrow?: string;
+  title?: string;
+  items?: Prop[];
+  headingLevel?: 'h2' | 'h3';
+  dark?: boolean;
+}
+
+const defaults: Prop[] = [
+  {
+    icon: 'draw',
+    title: 'Drawn for your yard, not picked from a catalogue',
+    body: 'Spans, post positions and roof type follow the space, the pool, the door you walk out of and where the sun actually lands.',
+  },
+  {
+    icon: 'sun',
+    title: 'Built for South Florida weather',
+    body: 'Full sun, driving summer rain, salt air near the water and hurricane season are the design conditions here, not edge cases.',
+  },
+  {
+    icon: 'anchor',
+    title: 'The connections are the structure',
+    body: 'Footings sized for the loads, anchor hardware rated for uplift, and beam-to-post connections that transfer force instead of just resting on it.',
+  },
+  {
+    icon: 'finish',
+    title: 'Finished, not just framed',
+    body: 'Lighting, fans, speakers, soffit panels and screens are planned into the frame from the start rather than surface-mounted afterwards.',
+  },
+  {
+    icon: 'local',
+    title: 'One crew, start to finish',
+    body: 'The people who measure your yard are the people who build in it. Nothing gets handed off to a subcontractor who never saw the site.',
+  },
+  {
+    icon: 'clean',
+    title: 'You get your yard back',
+    body: 'Material staging is planned around your access, and the site is cleared and cleaned before the crew leaves it.',
+  },
+];
+
+const {
+  eyebrow = 'Why Machin Solutions',
+  title = 'What actually separates a good structure from a cheap one',
+  items = defaults,
+  headingLevel = 'h2',
+  dark = false,
+} = Astro.props;
+
+const Heading = headingLevel;
+
+const paths: Record<Prop['icon'], string> = {
+  draw: 'M4 20V6l8-2 8 2v14M4 12h16M12 4v16',
+  anchor: 'M12 7v13M12 7a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5M5 13a7 7 0 0 0 14 0M4 13h3M17 13h3',
+  sun: 'M12 6.5A5.5 5.5 0 1 0 12 17.5 5.5 5.5 0 0 0 12 6.5M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.5 1.5M17.6 17.6l1.5 1.5M19.1 4.9l-1.5 1.5M6.4 17.6l-1.5 1.5',
+  local: 'M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11M12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5',
+  finish: 'M4 20h16M6 20V9l6-5 6 5v11M10 20v-5h4v5',
+  clean: 'M4 12l5 5L20 6',
+};
+---
+
+<section class:list={['section', dark && 'section-dark']}>
+  <div class="shell">
+    <div class="section-head">
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      <Heading>{title}</Heading>
+    </div>
+
+    <ul class="props">
+      {
+        items.map((item) => (
+          <li class="prop">
+            <span class="prop-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="24" height="24" focusable="false">
+                <path
+                  d={paths[item.icon]}
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+            <h3 class="prop-title">{item.title}</h3>
+            <p class="prop-body">{item.body}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .props {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-l) var(--space-m);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  }
+
+  .prop-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    border: 1.5px solid var(--line-strong);
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .section-dark .prop-icon { border-color: color-mix(in srgb, var(--ink-inverse) 24%, transparent); }
+
+  .prop-title { font-size: var(--step-1); }
+  .prop-body { margin-top: 0.4rem; color: var(--ink-soft); font-size: 0.97rem; }
+  .section-dark .prop-body { color: var(--ink-inverse-soft); }
+</style>

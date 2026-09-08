@@ -1,0 +1,355 @@
+---
+import Picture from './Picture.astro';
+import { categoryLabels, type Project } from '../lib/media';
+
+export interface Props {
+  projects: Project[];
+  /** Show the category filter bar (only useful when several categories are present). */
+  filters?: boolean;
+  /** Cap the number of projects rendered — used for the "recent work" strip on the home page. */
+  limit?: number;
+  headingLevel?: 'h2' | 'h3';
+}
+
+const { projects, filters = false, limit, headingLevel = 'h3' } = Astro.props;
+const shown = typeof limit === 'number' ? projects.slice(0, limit) : projects;
+const categories = [...new Set(shown.map((project) => project.category))];
+const Heading = headingLevel;
+
+// Flat, ordered list of every openable item, so the lightbox can step through them.
+const items = shown.flatMap((project) =>
+  project.images.map((image) => ({ slug: image.slug, alt: image.alt, project: project.title })),
+);
+---
+
+{
+  filters && categories.length > 1 && (
+    <div class="filter-bar" role="group" aria-label="Filter projects by type" data-filter-bar>
+      <button type="button" class="filter" data-filter="all" aria-pressed="true">
+        All projects
+      </button>
+      {categories.map((category) => (
+        <button type="button" class="filter" data-filter={category} aria-pressed="false">
+          {categoryLabels[category]}
+        </button>
+      ))}
+    </div>
+  )
+}
+
+<div class="gallery" data-gallery>
+  {
+    shown.map((project) => (
+      <article class="project" data-category={project.category}>
+        <div class="project-media">
+          {project.images.map((image, index) => (
+            <button
+              type="button"
+              class:list={['shot', index === 0 && project.images.length > 1 ? 'shot-lead' : null]}
+              data-lightbox={image.slug}
+              aria-label={`View larger: ${image.alt}`}
+            >
+              <Picture
+                image={image}
+                sizes="(min-width: 64rem) 33vw, (min-width: 40rem) 50vw, 92vw"
+                ratio={image.orientation === 'landscape' ? '16 / 10' : '3 / 4'}
+              />
+            </button>
+          ))}
+          {project.videos.map((clip) => (
+            <div class="shot shot-video">
+              <video
+                controls
+                preload="none"
+                playsinline
+                width={clip.width}
+                height={clip.height}
+                poster={`/media/${clip.slug}-poster.jpg`}
+                aria-label={clip.title}
+              >
+                <source src={`/media/${clip.slug}.mp4`} type="video/mp4" />
+                Your browser cannot play this video.
+                <a href={`/media/${clip.slug}.mp4`}>Download the clip</a> instead.
+              </video>
+            </div>
+          ))}
+        </div>
+
+        <div class="project-body">
+          <p class="project-tag">{categoryLabels[project.category]}</p>
+          <Heading class="project-title">{project.title}</Heading>
+          <p class="project-summary">{project.summary}</p>
+          {project.features.length > 0 && (
+            <ul class="project-features">
+              {project.features.map((feature) => (
+                <li>{feature}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </article>
+    ))
+  }
+</div>
+
+<dialog class="lightbox" data-lightbox-dialog aria-label="Project photo viewer">
+  <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close photo viewer">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+      <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" />
+    </svg>
+  </button>
+  <button type="button" class="lightbox-nav lightbox-prev" data-lightbox-prev aria-label="Previous photo">
+    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+      <path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+  <figure class="lightbox-figure">
+    <img data-lightbox-img alt="" width="1440" height="1920" />
+    <figcaption data-lightbox-caption></figcaption>
+  </figure>
+  <button type="button" class="lightbox-nav lightbox-next" data-lightbox-next aria-label="Next photo">
+    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+      <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+</dialog>
+
+<script is:inline define:vars={{ items }} type="application/json" data-lightbox-items set:html={JSON.stringify(items)} />
+
+<style>
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: var(--space-l);
+  }
+  .filter {
+    min-height: 2.6rem;
+    padding: 0.45rem 1rem;
+    border: 1.5px solid var(--line-strong);
+    border-radius: 999px;
+    background: transparent;
+    font-weight: 600;
+    font-size: 0.92rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
+  .filter:hover { border-color: var(--ink-faint); }
+  .filter[aria-pressed='true'] {
+    background: var(--graphite-900);
+    border-color: var(--graphite-900);
+    color: var(--ink-inverse);
+  }
+
+  .gallery { display: grid; gap: var(--space-xl); }
+
+  .project { display: grid; gap: var(--space-m); }
+
+  .project-media {
+    display: grid;
+    gap: 0.6rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  }
+
+  .shot {
+    padding: 0;
+    border: 0;
+    background: var(--sand-200);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    cursor: zoom-in;
+    position: relative;
+  }
+  .shot :global(img) { width: 100%; transition: transform 0.4s ease; }
+  .shot:hover :global(img) { transform: scale(1.03); }
+  .shot-video { cursor: default; }
+  .shot-video video {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    background: var(--graphite-900);
+  }
+
+  @media (min-width: 48rem) {
+    .shot-lead { grid-column: span 2; }
+  }
+
+  .project-body { max-width: 60ch; }
+  .project-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .project-title { margin-top: 0.3rem; font-size: var(--step-2); }
+  .project-summary { margin-top: 0.55rem; color: var(--ink-soft); }
+  .project-features {
+    margin-top: var(--space-s);
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .project-features li {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.7rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    color: var(--ink-soft);
+  }
+
+  /* --- lightbox ---------------------------------------------------------- */
+  .lightbox {
+    width: min(96vw, 1200px);
+    max-width: 96vw;
+    max-height: 94vh;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-lg);
+    background: var(--graphite-950);
+    color: var(--ink-inverse);
+    overflow: visible;
+  }
+  .lightbox::backdrop { background: rgb(10 12 11 / 0.86); }
+  .lightbox[open] {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+  }
+
+  .lightbox-figure {
+    margin: 0;
+    display: grid;
+    gap: 0.5rem;
+    justify-items: center;
+    padding: 0.75rem 0;
+    min-width: 0;
+  }
+  .lightbox-figure img {
+    max-height: 78vh;
+    width: auto;
+    max-width: 100%;
+    border-radius: 4px;
+    background: var(--graphite-800);
+  }
+  .lightbox-figure figcaption {
+    font-size: 0.87rem;
+    color: var(--ink-inverse-soft);
+    text-align: center;
+    max-width: 60ch;
+    padding-inline: 0.75rem;
+  }
+
+  .lightbox-nav, .lightbox-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 0;
+    color: var(--ink-inverse);
+    cursor: pointer;
+    border-radius: 999px;
+  }
+  .lightbox-nav { width: 3rem; height: 100%; min-height: 3rem; }
+  .lightbox-nav:hover, .lightbox-close:hover { background: color-mix(in srgb, #fff 12%, transparent); }
+  .lightbox-close {
+    position: absolute;
+    top: -0.75rem;
+    right: -0.75rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    background: var(--graphite-800);
+    border: 1px solid color-mix(in srgb, #fff 20%, transparent);
+    z-index: 2;
+  }
+
+  @media (max-width: 40rem) {
+    .lightbox-nav { width: 2.4rem; }
+    .lightbox-figure img { max-height: 66vh; }
+    .lightbox-close { top: 0.4rem; right: 0.4rem; }
+  }
+</style>
+
+<script>
+  interface LightboxItem {
+    slug: string;
+    alt: string;
+    project: string;
+  }
+
+  const dataNode = document.querySelector<HTMLScriptElement>('[data-lightbox-items]');
+  const dialog = document.querySelector<HTMLDialogElement>('[data-lightbox-dialog]');
+  const img = document.querySelector<HTMLImageElement>('[data-lightbox-img]');
+  const caption = document.querySelector<HTMLElement>('[data-lightbox-caption]');
+
+  if (dataNode && dialog && img && caption) {
+    const items: LightboxItem[] = JSON.parse(dataNode.textContent || '[]');
+    let index = 0;
+    let opener: HTMLElement | null = null;
+
+    const show = (next: number) => {
+      index = (next + items.length) % items.length;
+      const item = items[index];
+      // The 1440px derivative is the largest generated; it is plenty for a lightbox.
+      img.src = `/media/${item.slug}-1440.jpg`;
+      img.srcset = [480, 960, 1440].map((w) => `/media/${item.slug}-${w}.jpg ${w}w`).join(', ');
+      img.sizes = '(min-width: 75rem) 1100px, 92vw';
+      img.alt = item.alt;
+      caption.textContent = `${item.project} — ${item.alt}`;
+    };
+
+    document.querySelectorAll<HTMLButtonElement>('[data-lightbox]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const slug = button.dataset.lightbox;
+        const found = items.findIndex((item) => item.slug === slug);
+        if (found < 0) return;
+        opener = button;
+        show(found);
+        dialog.showModal();
+      });
+    });
+
+    document.querySelector('[data-lightbox-close]')?.addEventListener('click', () => dialog.close());
+    document.querySelector('[data-lightbox-prev]')?.addEventListener('click', () => show(index - 1));
+    document.querySelector('[data-lightbox-next]')?.addEventListener('click', () => show(index + 1));
+
+    dialog.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') { event.preventDefault(); show(index - 1); }
+      if (event.key === 'ArrowRight') { event.preventDefault(); show(index + 1); }
+    });
+
+    // Clicking the backdrop (outside the dialog box) closes it.
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+
+    // Native dialogs restore focus themselves in modern browsers; do it explicitly so
+    // older Safari also puts the visitor back where they were.
+    dialog.addEventListener('close', () => {
+      opener?.focus();
+      opener = null;
+      img.removeAttribute('src');
+      img.removeAttribute('srcset');
+    });
+  }
+
+  // --- category filter ------------------------------------------------------
+  const bar = document.querySelector<HTMLElement>('[data-filter-bar]');
+  if (bar) {
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-category]'));
+    bar.addEventListener('click', (event) => {
+      const button = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-filter]');
+      if (!button) return;
+      const wanted = button.dataset.filter;
+      bar.querySelectorAll<HTMLButtonElement>('[data-filter]').forEach((other) => {
+        other.setAttribute('aria-pressed', String(other === button));
+      });
+      cards.forEach((card) => {
+        card.hidden = wanted !== 'all' && card.dataset.category !== wanted;
+      });
+    });
+  }
+</script>

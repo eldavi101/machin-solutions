@@ -1,0 +1,96 @@
+{
+  "$comment": "Single source of truth for the gallery. `src` is the untouched original in the Gallery folder; `slug` becomes the SEO-friendly filename. Run `npm run media` after editing to regenerate optimized derivatives in public/media/.",
+  "sourceDir": "Gallery",
+  "outDir": "public/media",
+  "widths": [480, 960, 1440, 1920],
+  "projects": [
+    {
+      "id": "rain-curtain-pool-cabana",
+      "title": "Rain-Curtain Pool Cabana",
+      "category": "outdoor-living",
+      "summary": "A freestanding cabana in bronze aluminum with slatted privacy walls, an integrated outdoor kitchen and a rain-curtain water feature that falls from the roof edge into the pool deck.",
+      "features": ["Freestanding aluminum structure", "Slatted privacy screening", "Rain-curtain water feature", "Recessed lighting"],
+      "images": [
+        { "src": "IMG-20260907-WA0000.jpg", "slug": "rain-curtain-pool-cabana-miami-01", "alt": "Bronze aluminum pool cabana with slatted privacy walls and a rain-curtain water feature falling beside a South Florida swimming pool", "orientation": "landscape", "hero": true },
+        { "src": "IMG-20260907-WA0016.jpg", "slug": "rain-curtain-pool-cabana-miami-02", "alt": "Rain curtain falling from the edge of a modern pool cabana roof, seen across a pool with a bubbling spa in the foreground" }
+      ],
+      "videos": [
+        { "src": "VID-20260907-WA0012.mp4", "slug": "rain-curtain-pool-cabana-water-feature", "title": "Rain-curtain water feature running from the cabana roof edge" }
+      ]
+    },
+    {
+      "id": "poolside-pergola-outdoor-kitchen",
+      "title": "Poolside Pergola & Outdoor Kitchen",
+      "category": "outdoor-living",
+      "summary": "An attached pergola over a travertine pool deck, wrapping a full outdoor kitchen and bar with a wood-look soffit, recessed lights and speakers.",
+      "features": ["Attached to the house", "Wood-look soffit panels", "Built-in kitchen and bar", "Recessed lighting and speakers"],
+      "images": [
+        { "src": "IMG-20260907-WA0019.jpg", "slug": "poolside-pergola-outdoor-kitchen-miami-01", "alt": "Dark aluminum pergola with a wood-look soffit covering an outdoor kitchen and bar beside a travertine pool deck" },
+        { "src": "IMG-20260907-WA0017.jpg", "slug": "poolside-pergola-outdoor-kitchen-miami-02", "alt": "Poolside view of an aluminum pergola sheltering an outdoor kitchen, dining table and seating on a South Florida patio" }
+      ]
+    },
+    {
+      "id": "cantilevered-pergola-media-wall",
+      "title": "Cantilevered Pergola with Media Wall",
+      "category": "pergolas",
+      "summary": "A freestanding pergola with a deep cantilever over the pool edge, built around a fluted media wall with a mounted television, outdoor speakers and a ceiling fan.",
+      "features": ["Cantilevered roof span", "Fluted media wall", "Outdoor TV and speakers", "Ceiling fan and downlights"],
+      "images": [
+        { "src": "IMG-20260907-WA0020.jpg", "slug": "cantilevered-pergola-media-wall-miami-01", "alt": "Freestanding aluminum pergola with a cantilevered roof and a fluted media wall holding an outdoor television beside a pool" },
+        { "src": "IMG-20260907-WA0018.jpg", "slug": "cantilevered-pergola-media-wall-miami-02", "alt": "Modern pergola framing a pale fluted wall with a wall-mounted outdoor television and ceiling fan, reflected in a swimming pool" },
+        { "src": "IMG-20260907-WA0021.jpg", "slug": "cantilevered-pergola-media-wall-miami-03", "alt": "Close view of the bolted aluminum post and beam connection on a modern pergola, with alternating dark and light vertical slats" }
+      ]
+    },
+    {
+      "id": "white-canopy-patio-pergola",
+      "title": "White Canopy Patio Pergola",
+      "category": "pergolas",
+      "summary": "A compact solid-roof pergola in a walled courtyard, giving a grill and lounge area full shade while keeping the patio open to the garden.",
+      "features": ["Solid insulated roof", "Slim two-post layout", "Integrated downlights", "Built around an existing palm"],
+      "images": [
+        { "src": "IMG-20260907-WA0015.jpg", "slug": "white-canopy-patio-pergola-miami-01", "alt": "Small white solid-roof pergola on a stamped concrete patio shading a grill and lounge seating against a white garden wall" }
+      ]
+    },
+    {
+      "id": "covered-patio-wood-soffit",
+      "title": "Covered Patio with Wood-Look Soffit",
+      "category": "outdoor-living",
+      "summary": "A wide covered patio finished with warm wood-look ceiling panels and a matching slat feature wall, opening onto the yard through a white pergola frame.",
+      "features": ["Wide clear span", "Wood-look ceiling panels", "Slat feature wall", "Open pergola frame extension"],
+      "images": [
+        { "src": "IMG-20260907-WA0003.jpg", "slug": "covered-patio-wood-soffit-miami-01", "alt": "Covered patio with a warm wood-look soffit and slat feature wall, looking out through a white pergola frame onto a South Florida garden", "orientation": "landscape" }
+      ]
+    },
+    {
+      "id": "backlit-evening-cabana",
+      "title": "Backlit Evening Cabana",
+      "category": "outdoor-living",
+      "summary": "A poolside lounge structure with a dark slat back wall, integrated television niche and uplighting that washes the courtyard wall after sunset.",
+      "features": ["Dark slat back wall", "Recessed television niche", "Landscape uplighting", "Wood-look soffit"],
+      "images": [
+        { "src": "IMG-20260907-WA0014.jpg", "slug": "backlit-evening-cabana-miami-01", "alt": "Poolside cabana at dusk with a dark slat wall, recessed television niche and warm uplighting washing the courtyard wall behind it" }
+      ]
+    },
+    {
+      "id": "outdoor-kitchen-pergola-stone-bar",
+      "title": "Outdoor Kitchen Pergola with Stone Bar",
+      "category": "pergolas",
+      "summary": "An open-rafter pergola built over a stacked-stone bar and grill run, with louvered end panels that cut the low afternoon sun beside the pool.",
+      "features": ["Open rafter roof", "Louvered end panels", "Stacked-stone bar", "Poolside placement"],
+      "images": [
+        { "src": "IMG-20260907-WA0005.jpg", "slug": "outdoor-kitchen-pergola-stone-bar-miami-01", "alt": "Dark open-rafter pergola with louvered end panels over a stacked-stone outdoor kitchen bar next to a backyard pool" }
+      ]
+    },
+    {
+      "id": "louvered-pergola-pool-deck",
+      "title": "Louvered Pergola over a Pool Deck",
+      "category": "pergolas",
+      "summary": "A louvered pergola section that lets the homeowner dial shade up or down over a pool-deck seating area as the sun moves across the yard.",
+      "features": ["Adjustable louvered roof", "Slat privacy screen", "Pool-deck seating area"],
+      "images": [],
+      "videos": [
+        { "src": "VID-20260907-WA0011.mp4", "slug": "louvered-pergola-pool-deck-walkthrough", "title": "Walkthrough of a louvered pergola over a pool-deck seating area" }
+      ]
+    }
+  ]
+}

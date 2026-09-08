@@ -1,0 +1,22 @@
+{
+  "name": "machin-solutions",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Machin Solutions — custom pergolas & tiki huts in Miami and South Florida.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "media": "node scripts/process-media.mjs",
+    "audit:links": "node scripts/check-build.mjs",
+    "brand": "node scripts/make-brand-assets.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.6.0",
+    "astro": "^5.14.1",
+    "sharp": "^0.34.4"
+  }
+}

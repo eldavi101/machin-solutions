@@ -1,0 +1,228 @@
+---
+import { site, callHref, emailHref, real } from '../config/site';
+import { landingAreas } from '../data/areas';
+
+const year = new Date().getFullYear();
+const phone = real(site.phone);
+const email = real(site.email);
+const mailto = emailHref();
+const licence = real(site.licenseNumber);
+
+const columns = [
+  {
+    title: 'Pergolas',
+    links: [
+      { href: '/pergolas/', label: 'Pergolas overview' },
+      { href: '/pergolas/custom/', label: 'Custom pergolas' },
+      { href: '/pergolas/aluminum/', label: 'Aluminum pergolas' },
+      { href: '/pergolas/wood/', label: 'Wood pergolas' },
+      { href: '/pergolas/installation/', label: 'Pergola installation' },
+    ],
+  },
+  {
+    title: 'Tiki Huts',
+    links: [
+      { href: '/tiki-huts/', label: 'Tiki huts overview' },
+      { href: '/tiki-huts/chickee-huts/', label: 'Chickee huts' },
+      { href: '/tiki-huts/construction/', label: 'Tiki hut construction' },
+      { href: '/outdoor-living/', label: 'Outdoor living structures' },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { href: '/gallery/', label: 'Our work' },
+      { href: '/about/', label: 'About us' },
+      { href: '/service-areas/', label: 'Service areas' },
+      { href: '/faq/', label: 'FAQ' },
+      { href: '/contact/', label: 'Request a quote' },
+    ],
+  },
+];
+---
+
+<footer class="site-footer">
+  <div class="shell">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <p class="footer-name">Machin Solutions</p>
+        <p class="footer-tag">
+          Custom pergolas, tiki huts and outdoor living structures built for South Florida
+          backyards — Miami-Dade, Broward and the Upper Keys.
+        </p>
+        <div class="footer-contact">
+          <a class="btn btn-primary" href="/contact/">Get a Free Estimate</a>
+          <a class="footer-line" href={callHref()}>
+            <span class="footer-label">Call</span>
+            {phone ? phone : <span class="placeholder-token">[PHONE_NUMBER]</span>}
+          </a>
+          {
+            mailto ? (
+              <a class="footer-line" href={mailto}>
+                <span class="footer-label">Email</span>
+                {email}
+              </a>
+            ) : (
+              <span class="footer-line">
+                <span class="footer-label">Email</span>
+                <span class="placeholder-token">[EMAIL]</span>
+              </span>
+            )
+          }
+        </div>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer">
+        {
+          columns.map((column) => (
+            <div class="footer-col">
+              <h2 class="footer-col-title">{column.title}</h2>
+              <ul>
+                {column.links.map((link) => (
+                  <li>
+                    <a href={link.href}>{link.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </nav>
+    </div>
+
+    <div class="footer-areas">
+      <h2 class="footer-col-title">Popular service areas</h2>
+      <ul class="area-links">
+        {
+          landingAreas.map((area) => (
+            <li>
+              <a href={area.landing}>
+                {area.name === 'Miami' ? 'Pergolas in Miami' : `Pergolas in ${area.name}`}
+              </a>
+            </li>
+          ))
+        }
+        <li><a href="/miami-tiki-huts/">Tiki huts in Miami</a></li>
+        <li><a href="/service-areas/">All South Florida service areas</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {year} Machin Solutions. All rights reserved.</p>
+      <p class="footer-meta">
+        {
+          licence ? (
+            <span>Licence {licence}</span>
+          ) : (
+            <span>
+              Licence <span class="placeholder-token">[LICENSE_NUMBER]</span>
+            </span>
+          )
+        }
+        <span aria-hidden="true">·</span>
+        <span>Serving Miami-Dade, Broward &amp; the Upper Keys</span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--graphite-950);
+    color: var(--ink-inverse-soft);
+    padding-block: var(--space-2xl) var(--space-l);
+    margin-top: var(--space-2xl);
+  }
+
+  .footer-top {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  .footer-name {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 600;
+    color: var(--ink-inverse);
+    letter-spacing: -0.015em;
+  }
+  .footer-tag { margin-top: var(--space-xs); max-width: 34ch; }
+
+  .footer-contact {
+    margin-top: var(--space-m);
+    display: grid;
+    gap: 0.7rem;
+    justify-items: start;
+  }
+  .footer-line {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    color: var(--ink-inverse);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .footer-line:hover { text-decoration: underline; }
+  .footer-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 650;
+    min-width: 3.2rem;
+  }
+
+  .footer-nav {
+    display: grid;
+    gap: var(--space-l);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+  }
+  .footer-col-title {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--teak-400);
+    margin-bottom: 0.8rem;
+  }
+  .footer-nav ul, .area-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .footer-nav li + li { margin-top: 0.45rem; }
+  .footer-nav a, .area-links a {
+    color: var(--ink-inverse-soft);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  .footer-nav a:hover, .area-links a:hover { color: var(--ink-inverse); text-decoration: underline; }
+
+  .footer-areas {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-m);
+    border-top: 1px solid color-mix(in srgb, var(--ink-inverse) 14%, transparent);
+  }
+  .area-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 1.35rem;
+  }
+
+  .footer-bottom {
+    margin-top: var(--space-l);
+    padding-top: var(--space-m);
+    border-top: 1px solid color-mix(in srgb, var(--ink-inverse) 14%, transparent);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem var(--space-m);
+    justify-content: space-between;
+    font-size: 0.87rem;
+  }
+  .footer-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+
+  @media (min-width: 56rem) {
+    .footer-top { grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.55fr); gap: var(--space-2xl); }
+  }
+</style>

@@ -1,0 +1,14 @@
+{
+  "name": "Machin Solutions — Pergolas & Tiki Huts",
+  "short_name": "Machin Solutions",
+  "description": "Custom pergolas, tiki huts and outdoor living structures in Miami and South Florida.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "background_color": "#faf8f4",
+  "theme_color": "#161a18",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

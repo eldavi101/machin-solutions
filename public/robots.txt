@@ -1,0 +1,5 @@
+# https://machinsolutions.com/robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://machinsolutions.com/sitemap-index.xml

@@ -1,0 +1,103 @@
+---
+export interface Step {
+  title: string;
+  body: string;
+}
+
+export interface Props {
+  eyebrow?: string;
+  title?: string;
+  intro?: string;
+  steps?: Step[];
+  headingLevel?: 'h2' | 'h3';
+}
+
+const defaultSteps: Step[] = [
+  {
+    title: 'Tell us what you want to build',
+    body: 'Send photos of the space, rough dimensions and what you want to do under the structure. That is enough for a first, honest read on what will work.',
+  },
+  {
+    title: 'Site visit and measurements',
+    body: 'We come out, measure properly, check access for materials, look at where footings can go, and see how the structure would meet the house and the pool deck.',
+  },
+  {
+    title: 'Design and written estimate',
+    body: 'You get a design drawn for your yard — spans, post positions, roof type, finishes and everything built in — with a written estimate against it.',
+  },
+  {
+    title: 'Approvals and fabrication',
+    body: 'Drawings and paperwork go where they need to go, and the frame is fabricated to the approved dimensions while that runs.',
+  },
+  {
+    title: 'Installation',
+    body: 'Footings, frame, roof, then the finishing work — lighting, fans, screens, soffit panels. Your yard gets cleaned up before we leave it.',
+  },
+];
+
+const {
+  eyebrow = 'How it works',
+  title = 'From first message to finished structure',
+  intro,
+  steps = defaultSteps,
+  headingLevel = 'h2',
+} = Astro.props;
+
+const Heading = headingLevel;
+---
+
+<section class="section process">
+  <div class="shell">
+    <div class="section-head">
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      <Heading>{title}</Heading>
+      {intro && <p class="lede" style="margin-top:var(--space-s)">{intro}</p>}
+    </div>
+
+    <ol class="steps">
+      {
+        steps.map((step, index) => (
+          <li class="step">
+            <span class="step-num" aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <h3 class="step-title">{step.title}</h3>
+            <p class="step-body">{step.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-m);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14.5rem), 1fr));
+    counter-reset: step;
+  }
+
+  .step {
+    padding-top: var(--space-s);
+    border-top: 2px solid var(--line-strong);
+  }
+
+  .step-num {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.4rem;
+  }
+
+  .step-title { font-size: var(--step-1); }
+  .step-body { margin-top: 0.4rem; color: var(--ink-soft); font-size: 0.97rem; }
+
+  .section-dark .step { border-top-color: color-mix(in srgb, var(--ink-inverse) 25%, transparent); }
+</style>

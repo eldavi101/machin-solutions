@@ -1,0 +1,113 @@
+---
+/**
+ * Tiki hut pages carry no photography.
+ *
+ * The Gallery folder supplied for this build contains 18 photographs and 2 videos, and
+ * every one of them is a pergola, cabana or outdoor kitchen — there is not a single
+ * tiki or chickee hut among them. Rather than caption a pergola as a tiki hut, these
+ * pages use a drawn structure and say plainly that the photography is still to come.
+ *
+ * TO FILL THIS IN: add tiki hut photographs to the Gallery folder, register them under
+ * a project with "category": "tiki-huts" in src/data/media.json, run `npm run media`,
+ * and replace this component with <Gallery projects={projectsIn('tiki-huts')} />.
+ */
+
+export interface Props {
+  /** Shown to visitors above the drawing. */
+  caption?: string;
+  compact?: boolean;
+}
+
+const {
+  caption = 'Tiki hut photography is being added to this gallery.',
+  compact = false,
+} = Astro.props;
+---
+
+<figure class:list={['tiki-figure', compact && 'tiki-figure-compact']}>
+  <div class="tiki-art">
+    <svg viewBox="0 0 400 260" role="img" aria-labelledby="tiki-art-title" class="tiki-svg">
+      <title id="tiki-art-title">
+        Line drawing of an open-sided chickee hut: four corner posts carrying a steeply
+        pitched palm-thatch roof over an open deck.
+      </title>
+      <defs>
+        <pattern id="thatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(-14)">
+          <path d="M0 7h9" stroke="currentColor" stroke-width="1" opacity="0.4" />
+        </pattern>
+      </defs>
+
+      <!-- thatch roof -->
+      <path d="M200 24 348 128H52Z" fill="url(#thatch)" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+      <path d="M200 24 348 128" stroke="currentColor" stroke-width="2" fill="none" />
+      <path d="M74 118h252" stroke="currentColor" stroke-width="1.4" opacity="0.5" fill="none" />
+      <path d="M96 104h208" stroke="currentColor" stroke-width="1.4" opacity="0.5" fill="none" />
+      <path d="M120 90h160" stroke="currentColor" stroke-width="1.4" opacity="0.5" fill="none" />
+      <path d="M146 76h108" stroke="currentColor" stroke-width="1.4" opacity="0.5" fill="none" />
+
+      <!-- ridge cap -->
+      <path d="M186 30h28" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none" />
+
+      <!-- posts and beams -->
+      <path d="M52 128h296" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none" />
+      <path d="M78 128v92M322 128v92M132 128v78M268 128v78" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none" />
+      <path d="M78 176h54M268 176h54" stroke="currentColor" stroke-width="2" fill="none" opacity="0.7" />
+
+      <!-- deck -->
+      <path d="M40 220h320" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none" />
+      <path d="M62 232h276" stroke="currentColor" stroke-width="1.6" opacity="0.45" fill="none" />
+    </svg>
+  </div>
+
+  <figcaption class="tiki-caption">
+    <p class="tiki-caption-lead">{caption}</p>
+    <p class="tiki-caption-note">
+      Every photograph on this site is a structure we actually built, so nothing goes here
+      until the tiki hut photography does. Placeholder tag for the site owner:{' '}
+      <span class="placeholder-token">[TIKI_HUT_PHOTOS_NEEDED]</span>
+    </p>
+    <p class="tiki-caption-note">
+      In the meantime, the <a href="/gallery/">pergola and outdoor living gallery</a> shows
+      the framing, finishing and site work that go into every structure we build.
+    </p>
+  </figcaption>
+</figure>
+
+<style>
+  .tiki-figure {
+    margin: 0;
+    display: grid;
+    gap: var(--space-m);
+    align-items: center;
+    background: var(--sand-100);
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius-lg);
+    padding: var(--space-m);
+  }
+
+  .tiki-art {
+    display: grid;
+    place-items: center;
+    background: var(--bg-raised);
+    border-radius: var(--radius);
+    padding: var(--space-s);
+  }
+  .tiki-svg { width: 100%; max-width: 26rem; height: auto; color: var(--graphite-700); }
+
+  .tiki-caption { max-width: 46ch; }
+  .tiki-caption-lead { font-weight: 650; color: var(--ink); }
+  .tiki-caption-note { margin-top: 0.6rem; font-size: 0.9rem; color: var(--ink-soft); line-height: 1.6; }
+
+  .section-dark .tiki-figure {
+    background: color-mix(in srgb, var(--ink-inverse) 6%, transparent);
+    border-color: color-mix(in srgb, var(--ink-inverse) 22%, transparent);
+  }
+  .section-dark .tiki-art { background: color-mix(in srgb, var(--ink-inverse) 10%, transparent); }
+  .section-dark .tiki-svg { color: var(--sand-200); }
+  .section-dark .tiki-caption-lead { color: var(--ink-inverse); }
+
+  @media (min-width: 52rem) {
+    .tiki-figure { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: var(--space-l); padding: var(--space-l); }
+    .tiki-figure-compact { grid-template-columns: 1fr; }
+  }
+</style>
