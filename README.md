@@ -219,6 +219,13 @@ domain, so all paths are root-relative. Setting `base: '/machin-solutions/'` wou
 every link and asset once the domain resolves; `<user>.github.io/machin-solutions/`
 redirects to the custom domain instead.
 
+**Current state of the domain (checked 7 Sep 2026):** `machinsolutions.com` is
+registered and resolving to `76.223.105.230` / `13.248.243.5`, where it serves a
+**GoDaddy Website Builder placeholder page**. Nothing of value is hosted there, but
+the records below have to *replace* GoDaddy's parking records, not sit alongside
+them. If the domain is managed inside the GoDaddy Website Builder product rather
+than plain DNS, detach it there first or the A records cannot be edited.
+
 **DNS records to create at your registrar:**
 
 | Type | Host | Value |
@@ -231,10 +238,19 @@ redirects to the custom domain instead.
 | AAAA | `@` | `2606:50c0:8001::153` |
 | AAAA | `@` | `2606:50c0:8002::153` |
 | AAAA | `@` | `2606:50c0:8003::153` |
-| CNAME | `www` | `<github-username>.github.io.` |
+| CNAME | `www` | `eldavi101.github.io.` |
 
-Then Settings → Pages → Custom domain → `machinsolutions.com`, and tick **Enforce
-HTTPS** once the certificate is issued (this can take up to 24 hours).
+The custom domain is **already set** on the repository, so nothing needs doing in
+Settings → Pages. Once the records above resolve, GitHub issues the certificate
+automatically (usually minutes, occasionally up to 24 hours) and **Enforce HTTPS**
+becomes tickable — it is off until then because the certificate cannot be issued
+while the domain points elsewhere.
+
+Until the DNS is cut over, `https://eldavi101.github.io/machin-solutions/` is **not**
+a working preview of the site. The build is compiled for the apex domain, so its
+stylesheets, images and links are all root-relative and 404 under the
+`/machin-solutions/` path prefix. Use `npm run dev` to review the site locally
+before the domain is live.
 
 ---
 
