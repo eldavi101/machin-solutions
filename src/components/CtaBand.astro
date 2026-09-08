@@ -1,5 +1,5 @@
 ---
-import { callHref, site, real } from '../config/site';
+import { callHref, phoneLabel } from '../config/site';
 
 export interface Props {
   title?: string;
@@ -22,7 +22,7 @@ const {
 } = Astro.props;
 
 const Heading = headingLevel;
-const phone = real(site.phone);
+const phone = phoneLabel();
 const fallbackSecondaryLabel = phone ? `Call ${phone}` : 'Call us';
 ---
 

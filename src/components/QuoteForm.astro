@@ -1,5 +1,5 @@
 ---
-import { site, callHref, real } from '../config/site';
+import { site, callHref, real, phoneLabel } from '../config/site';
 import { areas } from '../data/areas';
 
 export interface Props {
@@ -13,7 +13,7 @@ export interface Props {
 const { service, city, compact = false } = Astro.props;
 
 const endpoint = site.formEndpoint;
-const phone = real(site.phone);
+const phone = phoneLabel();
 const email = real(site.email);
 const cities = areas.map((area) => area.name);
 ---

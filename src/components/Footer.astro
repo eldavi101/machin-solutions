@@ -1,11 +1,15 @@
 ---
-import { site, callHref, emailHref, real } from '../config/site';
+import { site, callHref, emailHref, real, phoneLabel, phoneAltLabel, callAltHref, emailAltHref } from '../config/site';
 import { landingAreas } from '../data/areas';
 
 const year = new Date().getFullYear();
-const phone = real(site.phone);
+const phone = phoneLabel();
 const email = real(site.email);
 const mailto = emailHref();
+const phoneAlt = phoneAltLabel();
+const callAlt = callAltHref();
+const emailAlt = real(site.emailAlt);
+const mailtoAlt = emailAltHref();
 const licence = real(site.licenseNumber);
 
 const columns = [
@@ -57,6 +61,14 @@ const columns = [
             {phone ? phone : <span class="placeholder-token">[PHONE_NUMBER]</span>}
           </a>
           {
+            phoneAlt && callAlt && (
+              <a class="footer-line" href={callAlt}>
+                <span class="footer-label">Or</span>
+                {phoneAlt}
+              </a>
+            )
+          }
+          {
             mailto ? (
               <a class="footer-line" href={mailto}>
                 <span class="footer-label">Email</span>
@@ -67,6 +79,14 @@ const columns = [
                 <span class="footer-label">Email</span>
                 <span class="placeholder-token">[EMAIL]</span>
               </span>
+            )
+          }
+          {
+            emailAlt && mailtoAlt && (
+              <a class="footer-line" href={mailtoAlt}>
+                <span class="footer-label">Or</span>
+                {emailAlt}
+              </a>
             )
           }
         </div>

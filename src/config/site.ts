@@ -33,9 +33,15 @@ export const site = {
   // ---------------------------------------------------------------------------
   // CONTACT — replace these placeholders with the real details.
   // ---------------------------------------------------------------------------
-  phone: '[PHONE_NUMBER]',
-  phoneDisplay: '[PHONE_NUMBER]',
-  email: '[EMAIL]',
+  // `phone` is the dialable form (used in tel: links and JSON-LD); `phoneDisplay` is
+  // what visitors read. Always render phoneDisplay via phoneLabel() — rendering
+  // `phone` directly puts "+17869926153" on the page.
+  phone: '+17869926153',
+  phoneDisplay: '(786) 992-6153',
+  phoneAlt: '+17867750816',
+  phoneAltDisplay: '(786) 775-0816',
+  email: 'machindavid2@gmail.com',
+  emailAlt: 'machinfarms@gmail.com',
   address: {
     street: '[BUSINESS_ADDRESS]',
     locality: 'Miami',
@@ -72,6 +78,38 @@ export const site = {
   /** Geographic centre used for the LocalBusiness service radius. */
   geo: { latitude: 25.7617, longitude: -80.1918, radiusKm: 80 },
 } as const;
+
+/** The human-readable phone number, or null while it is still a placeholder. */
+export function phoneLabel(): string | null {
+  return real(site.phoneDisplay) ?? real(site.phone);
+}
+
+/** The secondary number, human-readable, or null if there isn't one. */
+export function phoneAltLabel(): string | null {
+  return real(site.phoneAltDisplay) ?? real(site.phoneAlt);
+}
+
+/** Where the secondary "Call" link should point, or null if there isn't one. */
+export function callAltHref(): string | null {
+  const phone = real(site.phoneAlt);
+  return phone ? `tel:${phone.replace(/[^+\d]/g, '')}` : null;
+}
+
+/** Where a secondary "Email us" link should point, or null if there isn't one. */
+export function emailAltHref(): string | null {
+  const email = real(site.emailAlt);
+  return email ? `mailto:${email}` : null;
+}
+
+/** Every verified phone number, dialable form — for JSON-LD. */
+export function allPhones(): string[] {
+  return [real(site.phone), real(site.phoneAlt)].filter((v): v is string => v !== null);
+}
+
+/** Every verified email address — for JSON-LD. */
+export function allEmails(): string[] {
+  return [real(site.email), real(site.emailAlt)].filter((v): v is string => v !== null);
+}
 
 /** Where a "Call now" button should point, given what we actually know. */
 export function callHref(): string {

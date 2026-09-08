@@ -6,7 +6,7 @@
  * omitted entirely while they are still placeholders — an invented aggregateRating is
  * both a Google policy problem and a lie about the business.
  */
-import { site, real, sameAs, absolute } from '../config/site';
+import { site, real, sameAs, absolute, allPhones, allEmails } from '../config/site';
 import type { MediaImage, MediaVideo } from './media';
 
 const ORG_ID = `${site.url}/#organization`;
@@ -14,8 +14,8 @@ const WEBSITE_ID = `${site.url}/#website`;
 
 /** LocalBusiness / HomeAndConstructionBusiness node for the whole site. */
 export function organizationSchema(): Record<string, unknown> {
-  const phone = real(site.phone);
-  const email = real(site.email);
+  const phones = allPhones();
+  const emails = allEmails();
   const street = real(site.address.street);
   const postalCode = real(site.address.postalCode);
   const profiles = sameAs();
@@ -63,8 +63,10 @@ export function organizationSchema(): Record<string, unknown> {
     })),
   };
 
-  if (phone) node.telephone = phone;
-  if (email) node.email = email;
+  // schema.org accepts a single value or an array for both. Emit a bare string when
+  // there is one, so the common case stays the simplest shape a parser can read.
+  if (phones.length > 0) node.telephone = phones.length === 1 ? phones[0] : phones;
+  if (emails.length > 0) node.email = emails.length === 1 ? emails[0] : emails;
   if (profiles.length > 0) node.sameAs = profiles;
 
   // Only publish an address once the street line is real; a region-only address is

@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import QuoteForm from '../components/QuoteForm.astro';
 import Faq from '../components/Faq.astro';
 import { contactFaqs } from '../data/faqs';
-import { site, callHref, emailHref, real } from '../config/site';
+import { site, callHref, emailHref, real, phoneLabel, phoneAltLabel, callAltHref, emailAltHref } from '../config/site';
 import { breadcrumbSchema, webPageSchema, organizationSchema } from '../lib/schema';
 
 const path = '/contact/';
@@ -13,9 +13,13 @@ const description =
 
 const crumbs = [{ label: 'Request a Quote' }];
 
-const phone = real(site.phone);
+const phone = phoneLabel();
 const email = real(site.email);
 const mailto = emailHref();
+const phoneAlt = phoneAltLabel();
+const callAlt = callAltHref();
+const emailAlt = real(site.emailAlt);
+const mailtoAlt = emailAltHref();
 
 const schema = [
   organizationSchema(),
@@ -48,6 +52,12 @@ const hoursLines = site.hours.map((slot) => {
               <a href={callHref()}>
                 {phone ? phone : <span class="placeholder-token">[PHONE_NUMBER]</span>}
               </a>
+              {phoneAlt && callAlt && (
+                <>
+                  <br />
+                  <a href={callAlt}>{phoneAlt}</a>
+                </>
+              )}
             </dd>
           </div>
           <div>
@@ -60,6 +70,12 @@ const hoursLines = site.hours.map((slot) => {
                   <span class="placeholder-token">[EMAIL]</span>
                 )
               }
+              {emailAlt && mailtoAlt && (
+                <>
+                  <br />
+                  <a href={mailtoAlt}>{emailAlt}</a>
+                </>
+              )}
             </dd>
           </div>
           <div>

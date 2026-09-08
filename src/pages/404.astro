@@ -1,12 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { callHref, site, real } from '../config/site';
+import { callHref, site, phoneLabel } from '../config/site';
 
 const path = '/404/';
 const title = 'Page Not Found | Machin Solutions';
 const description = 'That page does not exist. Here is where to find pergolas, tiki huts, our work and a quote.';
 
-const phone = real(site.phone);
+const phone = phoneLabel();
 
 const links = [
   { href: '/pergolas/', label: 'Pergolas', note: 'Custom, aluminium, wood, louvered and solid-roof structures.' },
