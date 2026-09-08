@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Gallery from '../components/Gallery.astro';
+import CtaBand from '../components/CtaBand.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import { projectsIn } from '../lib/media';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../lib/schema';
+
+const path = '/hialeah-pergolas/';
+const title = 'Pergolas Hialeah FL | Patio Covers for Small Yards';
+const description =
+  'Pergolas and patio covers in Hialeah — attached structures sized for compact lots, driveway and carport covers, and getting real usable shade out of a small backyard.';
+
+const crumbs = [{ href: '/service-areas/', label: 'Service Areas' }, { label: 'Hialeah' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Pergola and patio cover installation in Hialeah, Florida',
+    description,
+    path,
+    serviceType: 'Pergola construction',
+    areaServed: ['Hialeah, Florida', 'Miami-Dade County, Florida'],
+    offers: ['Attached patio covers', 'Compact custom pergolas', 'Driveway and carport covers', 'Aluminum pergolas'],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+---
+
+<BaseLayout title={title} description={description} path={path} crumbs={crumbs} schema={schema}>
+  <PageHeader
+    eyebrow="Hialeah"
+    title="Pergolas in Hialeah: Getting Real Shade Out of a Small Yard"
+    lede="Hialeah backyards are compact, hard-working and usually bounded by a wall or a fence on every side. That is not a limitation on what you can build — it is a design brief. When there is no room for error, proportions and post positions matter far more than they do on a big open lot, and a well-fitted structure transforms the space in a way an oversized one never will."
+    facts={[
+      { label: 'Typical lot', value: 'Compact, walled or fenced, often with limited side access' },
+      { label: 'Typical build', value: 'Attached patio covers and slim freestanding structures' },
+      { label: 'Design driver', value: 'Maximum usable shade from minimum footprint' },
+      { label: 'Also common', value: 'Driveway, carport and entryway covers' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>Small yards reward custom work more, not less</h2>
+      <p>
+        There is a common assumption that a custom structure is something you do on a big
+        property and a stock-sized cover is what you settle for on a small one. In practice
+        it is the other way round.
+      </p>
+      <p>
+        On a large lot, a structure that is a foot too deep or has a post six inches off is
+        barely noticeable. On a Hialeah backyard, that same error is the difference between a
+        space you can walk around comfortably and one where you turn sideways to get past the
+        table. Post positions, beam overhang and headroom all have to be right, and a stock
+        size cannot give you that by definition.
+      </p>
+      <p>
+        The good news is that small structures are the least expensive kind of custom work.
+        Shorter spans mean lighter members, smaller footings and a faster build. Custom here
+        is not the premium option; it is the sensible one.
+      </p>
+
+      <h2>Attached is usually the answer</h2>
+      <p>
+        In a compact yard, every post you plant is floor area you lose. An attached structure
+        — one that ties into the house and extends the roof line outward — puts only two posts
+        in the yard instead of four, which on a small deck is a substantial difference in how
+        the space feels and how furniture can be arranged.
+      </p>
+      <p>
+        The detail that matters is the tie-in. It has to carry load into something that can
+        take it, and it has to shed water away from the wall rather than into the junction.
+        On the flat-roofed and tile-roofed houses common across Hialeah, both are entirely
+        solvable — they just need doing properly rather than quickly. More on this on the{' '}
+        <a href="/pergolas/installation/">pergola installation page</a>.
+      </p>
+
+      <h2>Walls, sun and privacy</h2>
+      <p>
+        A yard enclosed by masonry walls holds heat, and the walls themselves bounce sun back
+        into the space in the afternoon. A solid or insulated roof helps considerably more
+        than an open rafter roof does in this situation, because it stops the direct load
+        rather than just filtering it — and it gives you a ceiling for a fan, which in an
+        enclosed yard makes a real difference.
+      </p>
+      <p>
+        Privacy usually comes free with the walls, but overlooking from a neighbouring second
+        storey is common. A slat screen on one side of the structure resolves it without
+        closing the space in, and it doubles as protection against low western sun.
+      </p>
+
+      <h2>Driveways, carports and entryways</h2>
+      <p>
+        Not every structure in Hialeah goes in the backyard. Covers over a driveway parking
+        area, a carport extension, or a shaded entryway are all common requests, and they are
+        built the same way as any other structure — set-out, footings, frame, roof. The
+        constraints are different (vehicle headroom, setbacks, visibility from the street)
+        but the principles are identical.
+      </p>
+      <p>
+        <a href="/pergolas/aluminum/">Aluminium</a> is almost always the material here: it
+        holds a clean line, needs no refinishing, and looks right against the rendered and
+        painted masonry that dominates the neighbourhood.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Our work</p>
+        <h2>Compact structures, properly proportioned</h2>
+      </div>
+      <Gallery projects={projectsIn('pergolas')} limit={2} />
+      <p style="margin-top:var(--space-l)">
+        <a class="btn btn-dark" href="/gallery/">See every project</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell form-band">
+      <div class="prose">
+        <h2>Get a pergola quote in Hialeah</h2>
+        <p>
+          Photograph the yard from the back door and from the far corner, and give us the
+          rough dimensions of the space including the wall or fence lines. Mention the width
+          of the side gate — on a compact lot that decides how the structure gets staged.
+        </p>
+        <p>
+          Also see <a href="/miami-pergolas/">Miami</a>,{' '}
+          <a href="/kendall-pergolas/">Kendall</a> and the full{' '}
+          <a href="/service-areas/">service areas list</a>.
+        </p>
+      </div>
+      <QuoteForm service="Pergola" city="Hialeah" compact />
+    </div>
+  </section>
+
+  <CtaBand
+    title="A small yard is a solvable problem."
+    body="Send photographs and dimensions and you will get an honest read on what fits — including when the right structure is smaller than you were picturing."
+    secondaryLabel="Pergola options"
+    secondaryHref="/pergolas/"
+  />
+</BaseLayout>
+
+<style>
+  .form-band { display: grid; gap: var(--space-l); }
+  @media (min-width: 62rem) {
+    .form-band { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--space-2xl); align-items: start; }
+  }
+</style>

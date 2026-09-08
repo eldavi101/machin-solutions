@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import AreaGrid from '../components/AreaGrid.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { areasByCounty, landingAreas } from '../data/areas';
+import { breadcrumbSchema, webPageSchema, serviceSchema } from '../lib/schema';
+
+const path = '/service-areas/';
+const title = 'Service Areas | Pergola Builders in South Florida';
+const description =
+  'Where Machin Solutions builds — Miami-Dade, Broward and the Upper Keys. City-by-city service areas for pergolas, tiki huts and outdoor living structures.';
+
+const crumbs = [{ label: 'Service Areas' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Pergola and tiki hut construction across South Florida',
+    description,
+    path,
+    serviceType: 'Outdoor structure construction',
+    areaServed: ['Miami-Dade County, Florida', 'Broward County, Florida', 'Monroe County, Florida'],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+---
+
+<BaseLayout title={title} description={description} path={path} crumbs={crumbs} schema={schema}>
+  <PageHeader
+    eyebrow="Service areas"
+    title="Building Across Miami-Dade, Broward and the Keys"
+    lede="Backyards are not the same across South Florida. A Homestead subdivision with a wide, treeless lot needs a different structure from a Coral Gables plot under a mature canopy, and a canal-front property in Fort Lauderdale changes the specification before anything is drawn. Here is where we work and what tends to be different about each."
+    facts={[
+      { label: 'Counties', value: 'Miami-Dade, Broward and Monroe' },
+      { label: 'Cities listed', value: `${areasByCounty.reduce((n, g) => n + g.areas.length, 0)} across South Florida` },
+      { label: 'City pages', value: `${landingAreas.length} cities with dedicated pages` },
+      { label: 'Outside the list?', value: 'Ask anyway — the footprint is a guide, not a fence' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>What changes from city to city</h2>
+      <p>
+        The design conditions genuinely differ across a region this size, and they change the
+        structure rather than just the drive time.
+      </p>
+      <p>
+        <strong>Exposure</strong> is the biggest one. Newer subdivisions in Homestead,
+        Pembroke Pines and parts of Doral tend to have wide, flat lots with little mature
+        planting — full sun most of the day and open-field wind with nothing to break it.
+        Established areas like Coral Gables, Pinecrest and older Kendall have canopy, which
+        softens the sun and opens up material options that would be a bad idea in the open.
+      </p>
+      <p>
+        <strong>Proximity to water</strong> changes the specification outright. On canals in
+        Fort Lauderdale, on the coastal edge in Cutler Bay, and anywhere in the Keys, salt in
+        the air makes alloy choice, coating and fastener metallurgy decisive rather than
+        incidental. A structure specified for an inland Hialeah backyard would not be the
+        right one for Islamorada.
+      </p>
+      <p>
+        <strong>Lot size and access</strong> decide as much as anything. Long aluminium
+        extrusions and insulated panels have to physically reach the back of the property.
+        Tight side gates and narrow setbacks are common in older Miami neighbourhoods and are
+        entirely workable — they just need to be known before a truck is on the street.
+      </p>
+      <p>
+        <strong>Local review</strong> differs too. Requirements are not identical across
+        Miami-Dade, Broward and Monroe County, and HOA design review is a factor in a lot of
+        the newer planned communities.
+      </p>
+    </div>
+  </section>
+
+  <AreaGrid
+    featuredOnly
+    eyebrow="City pages"
+    title="Cities with a page of their own"
+    intro="These are the areas we get asked about most, each with content specific to what building there actually involves."
+  />
+
+  <AreaGrid
+    eyebrow="Full list"
+    title="Every city we serve"
+    intro="Grouped by county. Cities in bold have a dedicated page; the rest are served exactly the same way."
+  />
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>Not on the list?</h2>
+      <p>
+        This footprint is a guide rather than a boundary. If you are just outside it, or you
+        are not sure whether your address counts as Miami-Dade or Broward, ask — the worst
+        outcome is a straight no, and it takes one message.
+      </p>
+      <p>
+        For commercial work, the practical radius is usually wider than for residential
+        projects. Tell us where and what, and you will get an honest answer about whether we
+        are the right people for it.
+      </p>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Building somewhere in South Florida?"
+    body="Tell us the city and what you want covered. If we work there, you will get a real answer on the same message."
+    secondaryLabel="See our work"
+    secondaryHref="/gallery/"
+  />
+</BaseLayout>

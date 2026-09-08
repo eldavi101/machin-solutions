@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Gallery from '../components/Gallery.astro';
+import CtaBand from '../components/CtaBand.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import { projectsIn } from '../lib/media';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../lib/schema';
+
+const path = '/kendall-pergolas/';
+const title = 'Pergolas Kendall FL | Patio Covers & Pool Structures';
+const description =
+  'Pergolas in Kendall — extending established patios, working around existing screen enclosures and pool cages, and replacing timber structures that have had their day.';
+
+const crumbs = [{ href: '/service-areas/', label: 'Service Areas' }, { label: 'Kendall' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Pergola design and installation in Kendall, Florida',
+    description,
+    path,
+    serviceType: 'Pergola construction',
+    areaServed: ['Kendall, Florida', 'Miami-Dade County, Florida'],
+    offers: ['Custom pergolas', 'Attached patio covers', 'Pergola replacement', 'Screen enclosure extensions'],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+---
+
+<BaseLayout title={title} description={description} path={path} crumbs={crumbs} schema={schema}>
+  <PageHeader
+    eyebrow="Kendall"
+    title="Pergolas in Kendall, Working With What Is Already There"
+    lede="Kendall is established. Most of the houses have been there for decades, most of the yards have mature planting, and a very large number of them already have something out back — a screened pool enclosure, a slab that was poured for a patio, or a timber structure that has quietly reached the end of its life. Building here is usually about extending or replacing rather than starting from nothing."
+    facts={[
+      { label: 'Typical lot', value: 'Established home, mature landscaping, existing patio or enclosure' },
+      { label: 'Typical build', value: 'Attached covers, enclosure extensions and replacements' },
+      { label: 'Design driver', value: 'Tying cleanly into what is already on the property' },
+      { label: 'Frequent job', value: 'Replacing failed timber structures' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>Screen enclosures and pool cages</h2>
+      <p>
+        A large share of Kendall homes have a screened pool enclosure, and that is the single
+        biggest factor in how a new structure gets designed. There are three workable
+        approaches, and which one applies depends on the cage and on what you actually want.
+      </p>
+      <p>
+        <strong>Build clear of it.</strong> A freestanding structure set outside the enclosure
+        footprint, giving you a genuinely open, unscreened space beside the caged pool. This
+        is often the best of both — screened swimming, open dining.
+      </p>
+      <p>
+        <strong>Extend beyond it.</strong> A covered area picking up where the cage ends,
+        usually attached to the house, with the tie-in detailed so water sheds away from both
+        the wall and the enclosure frame rather than into the junction.
+      </p>
+      <p>
+        <strong>Replace part of it.</strong> Where a cage is aging, removing a section and
+        putting a solid-roofed structure in its place gives you a dry, usable outdoor room
+        instead of a screened one. That is a bigger job and worth discussing honestly before
+        anyone commits to it.
+      </p>
+
+      <h2>Replacing a timber structure that has gone</h2>
+      <p>
+        Wood pergolas built in Kendall twenty or thirty years ago are, in a great many cases,
+        now due. The signs are consistent: soft posts at the base, split beams around
+        fixings, a roof that never really shed water, and a general sagging that no amount of
+        re-staining fixes.
+      </p>
+      <p>
+        Replacement is straightforward work and a good moment to reconsider the material. If
+        the spot is under mature canopy and out of the direct sun, timber remains a legitimate
+        choice — see the honest version of that argument on the{' '}
+        <a href="/pergolas/wood/">wood pergolas page</a>. If it sits in the open, this is the
+        moment to move to{' '}
+        <a href="/pergolas/aluminum/">aluminium</a> and stop the maintenance cycle for good.
+      </p>
+      <p>
+        We will tell you plainly whether what you have is worth repairing or whether you are
+        better off starting again. Sometimes the frame is sound and only the roof needs
+        replacing, which is a much smaller job than most people expect.
+      </p>
+
+      <h2>Mature landscaping changes the design</h2>
+      <p>
+        Established Kendall yards usually have real trees, and that is an advantage worth
+        designing around rather than removing. Existing canopy takes the edge off the sun,
+        which opens up material options and often means a smaller structure does the job.
+      </p>
+      <p>
+        The practical constraint is roots. Mature root systems rule out footing positions the
+        same way pool plumbing does, and they are found on the site visit rather than on the
+        morning of the dig. Overhanging branches also matter for a{' '}
+        <a href="/tiki-huts/">thatched roof</a>, where constant leaf litter shortens the life
+        of the thatch considerably.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Our work</p>
+        <h2>Structures built around existing pools and decks</h2>
+      </div>
+      <Gallery projects={projectsIn('pergolas')} limit={2} />
+      <p style="margin-top:var(--space-l)">
+        <a class="btn btn-dark" href="/gallery/">See every project</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell form-band">
+      <div class="prose">
+        <h2>Get a pergola quote in Kendall</h2>
+        <p>
+          If there is already a structure or an enclosure out back, photograph it from
+          underneath as well as from the yard — that is what shows whether a frame is sound.
+          Rough dimensions and which way the back of the house faces complete the picture.
+        </p>
+        <p>
+          Also see <a href="/miami-pergolas/">Miami</a>,{' '}
+          <a href="/homestead-pergolas/">Homestead</a> and the full{' '}
+          <a href="/service-areas/">service areas list</a>.
+        </p>
+      </div>
+      <QuoteForm service="Pergola" city="Kendall" compact />
+    </div>
+  </section>
+
+  <CtaBand
+    title="Extending, replacing, or starting fresh?"
+    body="Send photographs of what is there now. Half the answer is usually visible in them."
+    secondaryLabel="Pergola options"
+    secondaryHref="/pergolas/"
+  />
+</BaseLayout>
+
+<style>
+  .form-band { display: grid; gap: var(--space-l); }
+  @media (min-width: 62rem) {
+    .form-band { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--space-2xl); align-items: start; }
+  }
+</style>

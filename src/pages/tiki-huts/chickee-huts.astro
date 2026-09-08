@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import TikiPlaceholder from '../../components/TikiPlaceholder.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../../lib/schema';
+
+const path = '/tiki-huts/chickee-huts/';
+const title = 'Chickee Hut Builders Miami | Traditional Thatched Huts';
+const description =
+  'Chickee huts built in Miami and South Florida — the traditional open-sided, palm-thatched structure, how it is made, how it differs from a tiki hut, and what it costs to own.';
+
+const crumbs = [{ href: '/tiki-huts/', label: 'Tiki Huts' }, { label: 'Chickee Huts' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Chickee hut construction',
+    description,
+    path,
+    serviceType: 'Chickee hut construction',
+    offers: ['Chickee hut construction', 'Traditional palm thatch roofing', 'Chickee re-thatching'],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+---
+
+<BaseLayout title={title} description={description} path={path} crumbs={crumbs} schema={schema}>
+  <PageHeader
+    eyebrow="Chickee huts"
+    title="Chickee Huts: The Original South Florida Shade Structure"
+    lede="Before there were pergolas or patio covers here, there was the chickee — a raised open frame with no walls, carrying a steep roof of layered palm thatch. It is a building form developed by the Seminole and Miccosukee peoples specifically for this heat, this rain and this humidity, and nothing built since has improved on it for pure shade and airflow."
+    facts={[
+      { label: 'Form', value: 'Open-sided, no walls, steeply pitched thatch roof' },
+      { label: 'Frame', value: 'Cypress or pressure-treated timber' },
+      { label: 'Roof', value: 'Layered sabal palm thatch, or synthetic where upkeep must be low' },
+      { label: 'Same as', value: 'What most people call a tiki hut' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>Chickee, tiki hut, thatched hut — what is the difference?</h2>
+      <p>
+        For practical purposes, none. <strong>Chickee</strong> is the Seminole and Miccosukee
+        word for the open-sided thatched shelter, and it is the older and more accurate term
+        for the structure. <strong>Tiki hut</strong> is the name the same form picked up
+        commercially in Florida — it borrows from Polynesian imagery rather than from
+        anything local, but it is the phrase almost everybody now uses and searches for.
+      </p>
+      <p>
+        You will also see <em>thatched hut</em>, <em>palm hut</em> and{' '}
+        <em>tropical thatch roof</em>. They all describe the same thing: a frame, no walls,
+        and a thick roof of layered palm fronds at a steep pitch.
+      </p>
+      <p>
+        We use both names on this site because both are correct and people arrive using
+        both. What matters is the structure, not the label.
+      </p>
+
+      <h2>How a chickee is actually built</h2>
+      <p>
+        The construction logic is worth understanding, because it explains why the structure
+        works and where it goes wrong when it is built badly.
+      </p>
+      <p>
+        <strong>The frame</strong> is timber — traditionally cypress, which is naturally
+        durable, and today often pressure-treated stock. Posts are set into the ground or
+        onto footings, carrying a ring beam and then the rafters that give the roof its
+        pitch. The frame is the permanent part of the structure; done properly it long
+        outlasts the roof above it.
+      </p>
+      <p>
+        <strong>The roof</strong> is where the craft is. Sabal palm fronds are layered from
+        the bottom edge upward, each course overlapping the one below, until the roof is
+        thick enough that no water path runs through it. The steep pitch is not a stylistic
+        choice — it is what makes water run off the outer surface fast rather than working
+        into the layers. A shallow thatch roof leaks; a steep, thickly built one does not.
+      </p>
+      <p>
+        <strong>The open sides</strong> are equally deliberate. Walls would trap heat under a
+        roof that is already insulating well. Leaving the structure open lets the air move
+        through it, which is why standing under a good chickee on a hot day feels
+        dramatically different from standing under a solid roof of the same size.
+      </p>
+
+      <h2>What owning one involves</h2>
+      <p>
+        A thatch roof is a natural, wearing surface. It weathers, thins over time and
+        eventually needs renewing — that is the deal, and it is not a defect. How long a
+        roof lasts depends on sun exposure, rainfall, whether trees drop debris onto it, and
+        above all how thickly and skilfully it was laid.
+      </p>
+      <p>
+        Re-thatching keeps the frame and renews the roof, which is a substantially smaller
+        job than building from scratch.{' '}
+        <span class="placeholder-token">[THATCH_LIFESPAN]</span> — add the realistic lifespan
+        and re-thatch interval here.
+      </p>
+      <p>
+        Synthetic thatch is the low-maintenance alternative: much longer service life, far
+        less upkeep, at the cost of some of the texture that makes the real thing worth
+        having. For a commercial property or an owner who does not want a maintenance cycle,
+        it is often the sensible answer.
+      </p>
+
+      <h2>Permits and local rules</h2>
+      <p>
+        Requirements differ by jurisdiction and by structure, and some building departments
+        treat certain traditional chickee structures differently from other accessory
+        buildings. That is a genuine legal question about your specific address, not
+        something a web page should answer with confidence.{' '}
+        <span class="placeholder-token">[PERMIT_POLICY]</span> — fill in how this is handled.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Our work</p>
+        <h2>Chickee hut photography</h2>
+      </div>
+      <TikiPlaceholder caption="Photographs of completed chickee huts are being added here." />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell form-band">
+      <div class="prose">
+        <h2>Ask about a chickee hut</h2>
+        <p>
+          Tell us where it would go, roughly how large, and whether you want natural or
+          synthetic thatch. If you are not sure, describe how you would use it and we will
+          make a recommendation.
+        </p>
+        <p>
+          If you are still weighing a hut against a modern structure, the{' '}
+          <a href="/pergolas/">pergola pages</a> set out the other side of the trade-off.
+        </p>
+      </div>
+      <QuoteForm service="Tiki Hut" compact />
+    </div>
+  </section>
+
+  <CtaBand
+    title="A structure worth getting right."
+    body="Thatch is craft work, and the difference between a roof that lasts and one that does not is entirely in how it was laid. Start with a conversation about your space."
+    secondaryLabel="Tiki hut construction"
+    secondaryHref="/tiki-huts/construction/"
+  />
+</BaseLayout>
+
+<style>
+  .form-band { display: grid; gap: var(--space-l); }
+  @media (min-width: 62rem) {
+    .form-band { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--space-2xl); align-items: start; }
+  }
+</style>

@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import TikiPlaceholder from '../components/TikiPlaceholder.astro';
+import CtaBand from '../components/CtaBand.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../lib/schema';
+
+const path = '/miami-tiki-huts/';
+const title = 'Tiki Huts Miami FL | Tiki & Chickee Hut Builders';
+const description =
+  'Tiki hut builders in Miami — traditional palm-thatched chickee huts for backyards, pool decks and commercial spaces, plus re-thatching of existing structures.';
+
+const crumbs = [{ href: '/service-areas/', label: 'Service Areas' }, { label: 'Miami Tiki Huts' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Tiki hut and chickee hut construction in Miami, Florida',
+    description,
+    path,
+    serviceType: 'Tiki hut construction',
+    areaServed: ['Miami, Florida', 'Miami-Dade County, Florida'],
+    offers: [
+      'Backyard tiki hut construction',
+      'Poolside chickee huts',
+      'Commercial thatched structures',
+      'Tiki hut re-thatching',
+    ],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+---
+
+<BaseLayout title={title} description={description} path={path} crumbs={crumbs} schema={schema}>
+  <PageHeader
+    eyebrow="Miami tiki huts"
+    title="Tiki Huts and Chickee Huts in Miami"
+    lede="Of all the ways to shade a Miami backyard, the thatched hut is the only one that was invented here. An open frame under a steep sabal palm roof gives you the deepest shade available and lets the breeze pass straight through it — which on a still August afternoon beside a pool is worth more than any amount of engineering."
+    facts={[
+      { label: 'Structures', value: 'Backyard and poolside huts, tiki bars, commercial shade' },
+      { label: 'Thatch', value: 'Natural sabal palm, or synthetic where upkeep must stay low' },
+      { label: 'Also offered', value: 'Re-thatching and repair of existing huts' },
+      { label: 'Area', value: 'Miami and the wider Miami-Dade County' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>Why a hut works particularly well in Miami</h2>
+      <p>
+        Miami backyards tend to be enclosed — by walls, by fences, by neighbouring houses —
+        and enclosed spaces hold heat. That is exactly the condition an open-sided structure
+        is good at. A thatched roof insulates far better than its weight suggests, and because
+        there are no walls beneath it, whatever air movement exists in the yard passes through
+        rather than stopping at a wall.
+      </p>
+      <p>
+        The other reason is character. A{' '}
+        <a href="/pergolas/">modern pergola</a> reads as an extension of the house — precise,
+        engineered, part of the building. A hut reads as a destination in the yard, somewhere
+        separate that you walk out to. On a small Miami lot, that psychological difference is
+        surprisingly large.
+      </p>
+      <p>
+        The trade-off is honest and worth stating: a thatch roof is a natural, wearing
+        surface, and it is not the structure to hang an outdoor kitchen, a television and
+        recessed lighting off. If you want a dry, equipment-carrying room, you want a pergola
+        or a cabana. If you want shade, air and something with a bit of soul in it, this is
+        the better answer.
+      </p>
+
+      <h2>Where a hut goes in a Miami yard</h2>
+      <p>
+        Siting decides most of how good the structure will be, and in the city there are a
+        few consistent considerations.
+      </p>
+      <p>
+        <strong>Away from the house, not against it.</strong> A hut looks and works best with
+        space around it. Tucked tight against a rear wall it loses both the airflow and the
+        sense of being somewhere else.
+      </p>
+      <p>
+        <strong>Clear of overhanging trees.</strong> Mature canopy is an asset in most Miami
+        yards, but constant leaf litter and dripping shorten the life of a thatch roof
+        considerably. A hut in a clearing lasts noticeably longer than one under a ficus.
+      </p>
+      <p>
+        <strong>Beside the pool, not over it.</strong> The classic and best placement is at
+        the edge of the deck, giving you shade you can retreat to without shading the water
+        itself.
+      </p>
+      <p>
+        <strong>Access matters.</strong> Thatch and framing timber have to get to the back of
+        the property, and a lot of city lots have narrow side gates. It is workable — it just
+        needs knowing early.
+      </p>
+
+      <h2>Permits in Miami-Dade</h2>
+      <p>
+        Whether a hut needs a permit depends on your building department, the structure's size
+        and height, and how it is anchored. Some jurisdictions treat certain traditional
+        chickee structures differently from other accessory buildings, and this is a real
+        legal question about your specific address rather than something a web page should
+        answer with confidence.{' '}
+        <span class="placeholder-token">[PERMIT_POLICY]</span> — fill in exactly how Machin
+        Solutions handles permitting so visitors get a real answer here.
+      </p>
+
+      <h2>Re-thatching an existing Miami hut</h2>
+      <p>
+        Plenty of Miami properties already have a hut that has quietly reached the end of its
+        roof life. Thinning at the ridge or the eaves, light visible from underneath, and
+        water coming through in ordinary rain rather than wind-driven downpours all point the
+        same way. The frame usually stays; the roof gets rebuilt. More on that on the{' '}
+        <a href="/tiki-huts/construction/">construction and re-thatching page</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Our work</p>
+        <h2>Miami tiki hut photography</h2>
+      </div>
+      <TikiPlaceholder caption="Photographs of completed Miami tiki huts are being added here." />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell form-band">
+      <div class="prose">
+        <h2>Get a tiki hut quote in Miami</h2>
+        <p>
+          Photograph the spot where it would go, ideally from the house and from the far side
+          of the yard, and tell us roughly how much shade you want. If it is an existing hut,
+          shoot the roof from underneath as well.
+        </p>
+        <p>
+          Not sure between a hut and a modern structure? Describe how you would use the space
+          and you will get a straight recommendation. The{' '}
+          <a href="/tiki-huts/">tiki hut overview</a> and the{' '}
+          <a href="/pergolas/">pergola pages</a> set out both sides.
+        </p>
+      </div>
+      <QuoteForm service="Tiki Hut" city="Miami" compact />
+    </div>
+  </section>
+
+  <CtaBand
+    title="Shade, breeze and somewhere to go."
+    body="Send a photograph of where it would sit. You will get an honest read on whether a hut is right for the spot."
+    secondaryLabel="Tiki hut overview"
+    secondaryHref="/tiki-huts/"
+  />
+</BaseLayout>
+
+<style>
+  .form-band { display: grid; gap: var(--space-l); }
+  @media (min-width: 62rem) {
+    .form-band { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--space-2xl); align-items: start; }
+  }
+</style>

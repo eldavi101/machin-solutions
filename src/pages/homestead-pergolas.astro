@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Gallery from '../components/Gallery.astro';
+import CtaBand from '../components/CtaBand.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import { projectsIn } from '../lib/media';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../lib/schema';
+
+const path = '/homestead-pergolas/';
+const title = 'Pergolas Homestead FL | Custom Pergola Builders';
+const description =
+  'Pergolas built for Homestead backyards — wide, open, treeless lots with full sun and real wind exposure. Aluminium structures sized for the span and the conditions.';
+
+const crumbs = [{ href: '/service-areas/', label: 'Service Areas' }, { label: 'Homestead' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Pergola design and installation in Homestead, Florida',
+    description,
+    path,
+    serviceType: 'Pergola construction',
+    areaServed: ['Homestead, Florida', 'Miami-Dade County, Florida'],
+    offers: ['Custom pergolas', 'Aluminum pergolas', 'Freestanding pool structures', 'Outdoor kitchen covers'],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+---
+
+<BaseLayout title={title} description={description} path={path} crumbs={crumbs} schema={schema}>
+  <PageHeader
+    eyebrow="Homestead"
+    title="Pergolas in Homestead: Shade Where There Is None"
+    lede="Homestead has the opposite problem to central Miami. The lots are wide, flat and generous — and almost completely unshaded. New subdivisions come with a lawn, a slab and nothing tall enough to break the sun, which is why a structure here is usually the first shade the property has ever had."
+    facts={[
+      { label: 'Typical lot', value: 'Newer subdivision, wide and open, little mature planting' },
+      { label: 'Typical build', value: 'Larger freestanding structures with real span' },
+      { label: 'Design driver', value: 'Full-day sun and open-field wind exposure' },
+      { label: 'Common extras', value: 'Outdoor kitchens, screening and ceiling fans' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>What is different about building here</h2>
+      <p>
+        The defining feature of a Homestead backyard is exposure. On the newer developments
+        spreading south and west of the city, houses go up faster than landscaping matures,
+        which leaves a lot of properties with sun on the deck from mid-morning until it sets.
+        There is no borrowed shade from a neighbour's oak and nothing breaking the wind coming
+        across the open ground and the farmland beyond it.
+      </p>
+      <p>
+        That changes the design in two concrete ways. First, the structure has to be big
+        enough to matter — a small cover on a wide, bright lot creates a patch of shade that
+        nobody uses, and the honest recommendation is usually larger than people first ask
+        for. Second, wind is a genuine design load rather than a footnote. On an open lot the
+        structure sees more of it than the same structure would tucked between houses in the
+        city, and that flows straight through to footing size and anchor specification.
+      </p>
+      <p>
+        The upside is that Homestead lots are the easiest ones in South Florida to build on.
+        Access is usually straightforward, there is room to stage materials, and post
+        positions are rarely constrained by anything except the pool. When a yard gives you
+        that much freedom, the design can be about what you want rather than what fits.
+      </p>
+
+      <h2>Scale is the decision</h2>
+      <p>
+        With space available, the question stops being "will it fit" and becomes "how much of
+        the yard should this cover". A structure that shades a dining table is a different
+        proposition from one that covers a table, a lounge area, a grill run and part of the
+        pool deck — and on a Homestead lot both are physically possible.
+      </p>
+      <p>
+        Larger spans are exactly where{' '}
+        <a href="/pergolas/aluminum/">aluminium</a> earns its keep: slimmer members clear more
+        distance, which means fewer posts standing in the middle of an otherwise open yard.
+        Combining roof types also becomes worthwhile at this size — a solid insulated section
+        over the kitchen and seating, an open or louvered section over the rest.
+      </p>
+
+      <h2>Sun, wind and what to build in</h2>
+      <p>
+        On an unshaded lot, two additions do more than anything else for how usable the space
+        actually is. <strong>Ceiling fans</strong> under a solid roof move enough air to change
+        how the space feels in August, and they need blocking designed into the structure
+        rather than an afterthought. <strong>Screening</strong> on the western side — fixed
+        slats or roll-down screens — is what makes the space usable at five in the afternoon
+        rather than after sunset.
+      </p>
+      <p>
+        Newer Homestead developments frequently have an HOA design review covering anything
+        visible from the street or from neighbouring properties. Pull the guidelines before
+        the design gets far; colour and height constraints are easy to work with early and
+        expensive to discover late.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Our work</p>
+        <h2>Structures built for open lots</h2>
+      </div>
+      <Gallery projects={projectsIn('outdoor-living')} limit={2} />
+      <p style="margin-top:var(--space-l)">
+        <a class="btn btn-dark" href="/gallery/">See every project</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell form-band">
+      <div class="prose">
+        <h2>Get a pergola quote in Homestead</h2>
+        <p>
+          Photographs of the yard and rough dimensions of the area you want covered are
+          enough to start. Say which way the back of the house faces — on an open lot that
+          single fact changes the design more than anything else you can tell us.
+        </p>
+        <p>
+          Also see <a href="/kendall-pergolas/">Kendall</a>,{' '}
+          <a href="/miami-pergolas/">Miami</a> and the full{' '}
+          <a href="/service-areas/">service areas list</a>.
+        </p>
+      </div>
+      <QuoteForm service="Pergola" city="Homestead" compact />
+    </div>
+  </section>
+
+  <CtaBand
+    title="A yard with nothing but sun in it?"
+    body="That is the easiest kind of project to get right — and the one where a structure makes the biggest difference."
+    secondaryLabel="Pergola options"
+    secondaryHref="/pergolas/"
+  />
+</BaseLayout>
+
+<style>
+  .form-band { display: grid; gap: var(--space-l); }
+  @media (min-width: 62rem) {
+    .form-band { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--space-2xl); align-items: start; }
+  }
+</style>

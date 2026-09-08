@@ -1,0 +1,254 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import TikiPlaceholder from '../../components/TikiPlaceholder.astro';
+import ProcessSteps from '../../components/ProcessSteps.astro';
+import Faq from '../../components/Faq.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import { tikiFaqs } from '../../data/faqs';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../../lib/schema';
+
+const path = '/tiki-huts/';
+const title = 'Tiki Huts & Chickee Huts in Miami | Machin Solutions';
+const description =
+  'Custom tiki huts and chickee huts built for South Florida — traditional thatched, open-sided structures for backyards, pool decks and commercial spaces. Free estimate.';
+
+const crumbs = [{ label: 'Tiki Huts' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Tiki hut and chickee hut design and construction',
+    description,
+    path,
+    serviceType: 'Tiki hut construction',
+    offers: [
+      'Custom tiki hut construction',
+      'Chickee hut construction',
+      'Backyard and poolside tiki huts',
+      'Commercial tiki structures and thatched bars',
+      'Tiki hut re-thatching and repair',
+    ],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+
+const kinds = [
+  {
+    name: 'Backyard tiki huts',
+    body: 'A shaded destination in the yard rather than an extension of the house — somewhere the seating, the table and eventually everybody ends up.',
+  },
+  {
+    name: 'Poolside tiki huts',
+    body: 'Deep shade beside the water without shutting out the breeze, which is precisely what an open-sided thatched roof is good at in July.',
+  },
+  {
+    name: 'Chickee huts',
+    body: 'The traditional Seminole and Miccosukee form the whole style comes from: an open frame, no walls, a steep palm-thatch roof.',
+    href: '/tiki-huts/chickee-huts/',
+  },
+  {
+    name: 'Tiki bars',
+    body: 'A thatched roof over a bar run, with the framing planned around the counter, the equipment and the lighting from the start.',
+  },
+  {
+    name: 'Commercial structures',
+    body: 'Thatched shade for restaurants, resorts, marinas and event spaces, where durability and maintenance access matter more than anywhere.',
+  },
+  {
+    name: 'Re-thatching and repair',
+    body: 'Thatch is a wearing surface. When it thins, the frame usually stays and the roof gets renewed.',
+    href: '/tiki-huts/construction/',
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} crumbs={crumbs} schema={schema}>
+  <PageHeader
+    eyebrow="Tiki huts & chickee huts"
+    title="Custom Tiki Huts and Chickee Huts in South Florida"
+    lede="An open-sided frame under a steep palm-thatch roof is one of the few structures genuinely designed for this climate — it throws deep shade, lets the breeze straight through, and sheds a summer downpour off the outside while staying dry underneath. It also happens to be the oldest form of shelter built in South Florida."
+    facts={[
+      { label: 'Structures', value: 'Tiki huts, chickee huts, thatched bars and shade shelters' },
+      { label: 'Thatch', value: 'Natural sabal palm, or synthetic thatch where upkeep has to be low' },
+      { label: 'For', value: 'Residential backyards, pool decks and commercial spaces' },
+      { label: 'Also', value: 'Re-thatching and repair of existing structures' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>Why a tiki hut and not a pergola</h2>
+      <p>
+        They solve the same problem in opposite ways. A{' '}
+        <a href="/pergolas/">pergola</a> is a modern, engineered structure: precise lines, a
+        roof you can seal completely, and the ability to carry a kitchen, a television and
+        recessed lighting. A tiki hut is a traditional one: no walls at all, a thick thatch
+        roof at a steep pitch, and a feeling that is closer to being under a tree than under
+        a ceiling.
+      </p>
+      <p>
+        The practical difference is airflow and depth of shade. Thatch is thick and it
+        insulates — the space underneath runs noticeably cooler than open deck — and because
+        there are no walls, whatever breeze exists moves straight through it. That
+        combination is why the form has survived here for centuries, and why it still works
+        beside a pool on a still August afternoon.
+      </p>
+      <p>
+        The trade-off is that a thatched roof is a natural, wearing surface rather than a
+        sealed one, and it is not the structure to hang an outdoor kitchen and a television
+        off. If you want a dry, equipment-carrying room, you want a pergola. If you want
+        shade, breeze and character, you want this.
+      </p>
+
+      <h2>Tiki hut or chickee hut?</h2>
+      <p>
+        In South Florida the two words describe the same structure and are used
+        interchangeably. <strong>Chickee</strong> is the Seminole and Miccosukee term for the
+        open-sided, thatched shelter the form originates from — a raised frame, no walls, and
+        a steeply pitched sabal palm roof. <strong>Tiki hut</strong> is the name the same
+        structure acquired commercially, and it is what most people search for.
+      </p>
+      <p>
+        We build both, because they are the same thing.{' '}
+        <a href="/tiki-huts/chickee-huts/">More on chickee huts and the tradition behind them →</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">What we build</p>
+        <h2>Tiki hut structures</h2>
+      </div>
+      <ul class="kind-grid">
+        {
+          kinds.map((kind) => (
+            <li class="kind-card">
+              <h3>{kind.href ? <a href={kind.href}>{kind.name}</a> : kind.name}</h3>
+              <p>{kind.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Our work</p>
+        <h2>Tiki hut photography</h2>
+      </div>
+      <TikiPlaceholder caption="There are no tiki hut photographs in this gallery yet." />
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="shell prose">
+      <h2>Materials and how they age</h2>
+      <p>
+        A traditional hut is a timber frame — cypress or pressure-treated — carrying a thatch
+        roof built from layered sabal palm fronds. The pitch is steep on purpose: water runs
+        off the outer surface fast enough that it never soaks through to the layers
+        underneath, which is what keeps the space dry.
+      </p>
+      <p>
+        Natural thatch is a wearing surface. It weathers, thins and eventually needs
+        replacing, and how quickly depends on sun exposure, rainfall, overhanging trees and
+        how well the roof was built in the first place. Re-thatching is a normal part of
+        owning one, not a failure: the frame stays, the roof is renewed.{' '}
+        <span class="placeholder-token">[THATCH_LIFESPAN]</span> — add the lifespan and
+        re-thatch interval you are prepared to stand behind.
+      </p>
+      <p>
+        Synthetic thatch is the alternative. It lasts considerably longer with far less
+        upkeep, and it is often the right call for commercial sites or for anyone who does
+        not want a maintenance cycle. It gives up some of the texture and character of the
+        real thing, which for a backyard structure is a genuine loss worth weighing.
+      </p>
+      <p>
+        Fire treatment is a separate question and often a requirement, particularly for
+        commercial structures.{' '}
+        <span class="placeholder-token">[FIRE_RETARDANT_POLICY]</span> — state here what is
+        offered and where it is required.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>Permits</h2>
+      <p>
+        Whether a tiki hut needs a permit depends on your local building department, the size
+        and height of the structure, and how it is anchored — and the rules are not the same
+        in Miami-Dade, Broward and Monroe County. Some jurisdictions treat certain
+        traditional chickee structures differently from other accessory buildings.
+      </p>
+      <p>
+        We are not going to give you a legal answer on a web page, because a general answer
+        is worth nothing against your specific address and structure.{' '}
+        <span class="placeholder-token">[PERMIT_POLICY]</span> — fill in exactly how Machin
+        Solutions handles this so visitors get a real answer here.
+      </p>
+    </div>
+  </section>
+
+  <ProcessSteps
+    eyebrow="How it works"
+    title="How a tiki hut project runs"
+    intro="The same sequence as any structure we build: understand the space, design it, agree it in writing, then build it."
+  />
+
+  <section class="section section-sand">
+    <div class="shell form-band">
+      <div class="prose">
+        <h2>Ask about a tiki hut</h2>
+        <p>
+          Tell us roughly how much shade you want, where it would sit in the yard, and
+          whether it is residential or commercial. Photos of the spot help more than
+          anything else.
+        </p>
+      </div>
+      <QuoteForm service="Tiki Hut" compact />
+    </div>
+  </section>
+
+  <Faq faqs={tikiFaqs} eyebrow="Tiki hut questions" title="What people ask about tiki huts" />
+
+  <CtaBand
+    title="Thinking about a hut in the backyard?"
+    body="Send a photo of where it would go. You will get an honest read on whether a thatched hut or a pergola suits the space better."
+    secondaryLabel="Compare with pergolas"
+    secondaryHref="/pergolas/"
+  />
+</BaseLayout>
+
+<style>
+  .kind-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-m);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  }
+  .kind-card {
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: var(--space-m);
+    box-shadow: var(--shadow-sm);
+  }
+  .kind-card h3 { font-size: var(--step-1); }
+  .kind-card h3 a { text-decoration: none; }
+  .kind-card h3 a:hover { color: var(--accent); text-decoration: underline; }
+  .kind-card p { margin-top: 0.45rem; color: var(--ink-soft); font-size: 0.95rem; }
+
+  .form-band { display: grid; gap: var(--space-l); }
+  @media (min-width: 62rem) {
+    .form-band { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--space-2xl); align-items: start; }
+  }
+</style>

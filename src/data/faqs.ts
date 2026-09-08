@@ -147,3 +147,59 @@ export const contactFaqs: Faq[] = [
     answer: '[ESTIMATE_POLICY] — state here whether estimates and site visits are free, and any conditions attached.',
   },
 ];
+
+/**
+ * The /faq/ page.
+ *
+ * Deliberately does NOT repeat the questions already answered on the pergola, tiki hut,
+ * gallery or contact pages — duplicating them across URLs would put those pages in
+ * competition with each other for the same queries. These are the questions that do not
+ * belong to a single service page: cost drivers, weather, maintenance, HOAs, timing.
+ */
+export const siteFaqs: Faq[] = [
+  {
+    question: 'What actually drives the cost of an outdoor structure?',
+    answer:
+      'Five things, roughly in order. Span — how far the roof has to reach without a post under it, which sets beam depth and everything downstream of it. Roof type — an open rafter roof, a louvered roof and a solid insulated roof are three very different builds. Size and height. What gets built in: lighting, fans, a television wall, screening, an outdoor kitchen. And site conditions — access for materials, what the footings have to be dug through, and how the structure meets the house.',
+  },
+  {
+    question: 'Why will nobody give me a price over the phone?',
+    answer:
+      'Because the honest ones cannot. Two structures of the same square footage can differ by a wide margin depending on span, roof type and what they carry, and post positions are frequently ruled out by things nobody can see in a photograph — pool plumbing, deck drains, irrigation, setbacks. A number given before the site visit is a guess, and guesses in this trade tend to be low on purpose.',
+  },
+  {
+    question: 'Will a pergola or tiki hut survive a hurricane?',
+    answer:
+      'That is decided by the footings, the anchors and the connections, not by how the structure looks. A properly engineered and permitted structure has footings sized for the real loads — including uplift, which is the load that matters in high wind — and hardware rated to transfer that force rather than just carry weight. Building department review exists precisely to check this. Nobody can responsibly promise a specific outcome in a specific storm, and you should be sceptical of anyone who does.',
+  },
+  {
+    question: 'How much maintenance is an outdoor structure?',
+    answer:
+      'It depends entirely on the material. A powder-coated aluminium structure needs washing and essentially nothing else. A timber structure needs a real cycle of cleaning, sanding and re-sealing, and eventually some board replacement. A natural thatch roof is a wearing surface that will need re-thatching at some point. None of these is a problem if you know about it going in.',
+  },
+  {
+    question: 'Will my HOA allow it?',
+    answer:
+      'Many South Florida HOAs run a design review for anything visible from the street or from a neighbouring property, and some have rules on colour, height and materials. It is worth pulling your HOA guidelines before the design gets far, because a small change made early is free and the same change made late is not. That review is separate from, and additional to, anything your building department requires.',
+  },
+  {
+    question: 'Can you build over an existing pool deck or screen enclosure?',
+    answer:
+      'Usually, yes — most of our work is exactly that. Footings get placed around existing pool shells, plumbing and deck drains, and structures are set so they clear an enclosure rather than fight it. Occasionally the honest answer is that the position you want is not available and a slightly different one is much better. That is found on the site visit, not after materials arrive.',
+  },
+  {
+    question: 'What is the best time of year to build in South Florida?',
+    answer:
+      'The dry season is easier on the schedule — footing pours and thatch work both prefer it, and there are fewer weather delays. That said, most of the elapsed time in a project is design, review and fabrication rather than days on site, so the practical answer is to start the conversation well before the season you want to use the space in.',
+  },
+  {
+    question: 'Do you offer financing?',
+    answer:
+      '[FINANCING] — state here whether financing is available and through whom. Do not leave this vague: it is one of the most common questions on a project of this size.',
+  },
+  {
+    question: 'Do you do commercial work?',
+    answer:
+      'Yes — restaurants, resorts, marinas and event spaces, for both modern structures and thatched huts. Commercial projects change the priorities: larger spans, heavier use, a maintenance plan that matters from day one, and fire-treatment requirements that are more likely to apply. Describe the site and the use and you will get a straight answer about whether we are the right people for it.',
+  },
+];

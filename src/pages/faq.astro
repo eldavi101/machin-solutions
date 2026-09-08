@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { siteFaqs } from '../data/faqs';
+import { breadcrumbSchema, webPageSchema } from '../lib/schema';
+
+const path = '/faq/';
+const title = 'Pergola & Tiki Hut FAQ | Cost, Permits, Maintenance';
+const description =
+  'Straight answers on what an outdoor structure costs in South Florida, why nobody quotes over the phone, storm performance, maintenance, HOAs and timing.';
+
+const crumbs = [{ label: 'FAQ' }];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: siteFaqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+    })),
+  },
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+
+const elsewhere = [
+  { href: '/pergolas/', label: 'Pergola questions', note: 'Materials, roof types, freestanding vs attached, anchoring.' },
+  { href: '/tiki-huts/', label: 'Tiki hut questions', note: 'Thatch, chickee huts, lifespan, re-thatching, poolside use.' },
+  { href: '/gallery/', label: 'Questions about our work', note: 'Whose projects these are and how close yours could get.' },
+  { href: '/contact/', label: 'Before you get in touch', note: 'What happens after you send the form, and what to include.' },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} crumbs={crumbs} schema={schema}>
+  <PageHeader
+    eyebrow="FAQ"
+    title="The Questions That Come Up Before Anyone Builds"
+    lede="Cost, storms, permits, maintenance and HOAs — the things people genuinely want to know and rarely get a straight answer about. Service-specific questions live on the pergola and tiki hut pages so nothing is answered twice."
+  />
+
+  <Faq
+    faqs={siteFaqs}
+    title="General questions"
+    intro="If your question is not here, send it through the quote form. It gets answered by a person, not a form letter."
+    schema={false}
+  />
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">More answers</p>
+        <h2>Service-specific questions</h2>
+        <p class="lede" style="margin-top:var(--space-s)">
+          These are answered in context on the pages they belong to, rather than repeated
+          here.
+        </p>
+      </div>
+      <ul class="elsewhere">
+        {
+          elsewhere.map((item) => (
+            <li>
+              <a href={item.href}>
+                <span class="elsewhere-label">{item.label}</span>
+                <span class="elsewhere-note">{item.note}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Still have a question?"
+    body="Ask it on the quote form with a photo of your space. You will get a real answer back rather than a callback script."
+    secondaryLabel="See our work"
+    secondaryHref="/gallery/"
+  />
+</BaseLayout>
+
+<style>
+  .elsewhere {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-s);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  }
+  .elsewhere a {
+    display: grid;
+    gap: 0.3rem;
+    height: 100%;
+    padding: var(--space-m);
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: border-color 0.18s ease, transform 0.18s ease;
+  }
+  .elsewhere a:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+  .elsewhere-label { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); }
+  .elsewhere-note { font-size: 0.92rem; color: var(--ink-soft); }
+</style>

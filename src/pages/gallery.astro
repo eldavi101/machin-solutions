@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Gallery from '../components/Gallery.astro';
+import TikiPlaceholder from '../components/TikiPlaceholder.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { galleryFaqs } from '../data/faqs';
+import { projects, allImages, allVideos, galleryStats } from '../lib/media';
+import {
+  breadcrumbSchema,
+  webPageSchema,
+  gallerySchema,
+  imageObjectSchema,
+  videoObjectSchema,
+} from '../lib/schema';
+
+const path = '/gallery/';
+const title = 'Our Work | Pergola & Outdoor Living Gallery, Miami';
+const description =
+  'Completed pergola, cabana and outdoor living projects across Miami and South Florida — real photographs of structures we built, several taken mid-installation.';
+
+const crumbs = [{ label: 'Our Work' }];
+
+const media = [
+  ...allImages.map((image) => imageObjectSchema(image, image.project.title)),
+  ...allVideos.map((clip) => videoObjectSchema(clip, clip.project.title)),
+];
+
+const schema = [
+  gallerySchema(path, media),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+---
+
+<BaseLayout title={title} description={description} path={path} crumbs={crumbs} schema={schema}>
+  <PageHeader
+    eyebrow="Our work"
+    title="Pergolas, Cabanas and Outdoor Living Projects"
+    lede="Every photograph here is a structure Machin Solutions built, shot on site. Some were taken with the ladders still up and the deck still dusty, because that is what a real project looks like a day before it is finished. No stock photography, no renders."
+    facts={[
+      { label: 'Projects', value: `${galleryStats.projects} completed structures` },
+      { label: 'Photographs', value: `${galleryStats.images} on-site photographs` },
+      { label: 'Video', value: `${galleryStats.videos} walkthrough clips` },
+      { label: 'Locations', value: 'Miami-Dade and Broward backyards' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell">
+      <Gallery projects={projects} filters />
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Tiki huts</p>
+        <h2>Tiki hut projects</h2>
+        <p class="lede" style="margin-top:var(--space-s)">
+          We build tiki and chickee huts, but there are no tiki hut photographs in this
+          gallery yet — and we are not going to caption a pergola as one.
+        </p>
+      </div>
+      <TikiPlaceholder caption="No tiki hut photographs have been supplied for this gallery yet." />
+    </div>
+  </section>
+
+  <Faq faqs={galleryFaqs} eyebrow="About these projects" title="Questions about our work" />
+
+  <CtaBand
+    title="See something close to what you want?"
+    body="Name the project on the quote form and tell us how your yard differs. That is a far better starting point than a blank page."
+    secondaryLabel="Explore pergolas"
+    secondaryHref="/pergolas/"
+  />
+</BaseLayout>

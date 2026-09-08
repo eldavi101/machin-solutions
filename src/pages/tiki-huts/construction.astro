@@ -1,0 +1,206 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import TikiPlaceholder from '../../components/TikiPlaceholder.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../../lib/schema';
+
+const path = '/tiki-huts/construction/';
+const title = 'Tiki Hut Construction & Installation | South Florida';
+const description =
+  'Tiki hut construction and installation in South Florida — how the frame and thatch roof go up, residential and commercial builds, plus re-thatching and repair of existing huts.';
+
+const crumbs = [{ href: '/tiki-huts/', label: 'Tiki Huts' }, { label: 'Construction & Installation' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Tiki hut construction, installation and re-thatching',
+    description,
+    path,
+    serviceType: 'Tiki hut installation',
+    offers: [
+      'Residential tiki hut construction',
+      'Commercial tiki hut construction',
+      'Tiki hut installation',
+      'Tiki hut re-thatching',
+      'Tiki hut repair',
+    ],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+
+const stages = [
+  {
+    title: 'Siting',
+    body: 'Where the hut goes decides most of how good it will be. Prevailing breeze, the sun path, distance from the pool and the house, and what you will be looking at from underneath it all get walked before anything is marked.',
+  },
+  {
+    title: 'Footings and posts',
+    body: 'Posts are set to carry the roof and, more importantly, to resist uplift. A thatch roof is light, which makes wind the governing load rather than weight.',
+  },
+  {
+    title: 'Frame and rafters',
+    body: 'Ring beam and rafters set the pitch. The pitch is what makes the roof shed water, so it is a structural decision rather than a stylistic one.',
+  },
+  {
+    title: 'Thatching',
+    body: 'Fronds are layered from the bottom edge upward, each course overlapping the last, until there is no water path through the roof. This is the slow part, and the part where skill shows.',
+  },
+  {
+    title: 'Trim and finish',
+    body: 'Ridge detail, edge trimming and any lighting or fan mounting. Then the site gets cleared of offcuts and thatch debris, which there is a lot of.',
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} crumbs={crumbs} schema={schema}>
+  <PageHeader
+    eyebrow="Construction & installation"
+    title="Tiki Hut Construction in South Florida"
+    lede="Building a tiki hut is two jobs in one: a timber structure that has to resist uplift in a storm, and a thatch roof that has to shed water purely through how it is layered. Neither part forgives shortcuts, and it is usually the roof that gives a rushed build away — within a season."
+    facts={[
+      { label: 'New builds', value: 'Residential backyard and poolside huts, and commercial structures' },
+      { label: 'Existing huts', value: 'Re-thatching, repair and maintenance' },
+      { label: 'Thatch', value: 'Natural sabal palm, or synthetic where upkeep must stay low' },
+      { label: 'Service area', value: 'Miami-Dade, Broward and the Upper Keys' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">On site</p>
+        <h2>How a hut goes up</h2>
+      </div>
+      <ol class="stages">
+        {
+          stages.map((stage, index) => (
+            <li>
+              <span class="stage-num" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+              <h3>{stage.title}</h3>
+              <p>{stage.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell prose">
+      <h2>Residential and commercial builds</h2>
+      <p>
+        <strong>Residential</strong> huts are usually about a single space doing one job well
+        — shade beside the pool, a covered spot for a table, a destination at the far end of
+        the yard. Scale is modest, access is often tight, and the finish matters because you
+        look at it every day from the kitchen window.
+      </p>
+      <p>
+        <strong>Commercial</strong> structures — restaurants, resorts, marinas, event spaces —
+        change the priorities. Spans get larger, the structure has to take heavier use, and
+        the maintenance plan matters from day one because a roof that needs attention in
+        three years is a very different proposition on a business property. Fire treatment
+        requirements are also more likely to apply.{' '}
+        <span class="placeholder-token">[FIRE_RETARDANT_POLICY]</span> — state what is offered
+        and where it is required.
+      </p>
+
+      <h2>Re-thatching and repair</h2>
+      <p>
+        Thatch wears out. That is the nature of the material, and re-thatching is a normal,
+        expected part of owning a hut rather than a sign that something went wrong. The frame
+        stays; the roof is stripped and rebuilt.
+      </p>
+      <p>
+        Signs a roof is due: visible thinning at the ridge or the eaves, light coming through
+        from underneath, water making it into the space during ordinary rain rather than
+        wind-driven downpours, and debris shedding heavily after storms. If you are seeing any
+        of that, it is worth looking at sooner rather than after the next hurricane season.
+      </p>
+      <p>
+        <span class="placeholder-token">[TIKI_SERVICE_SCOPE]</span> — confirm here whether
+        re-thatching and repair are offered on huts built by other contractors, and any limits
+        on what can be worked on.
+      </p>
+
+      <h2>Timelines and permits</h2>
+      <p>
+        Thatching is hand work and it sets the pace of the job. Beyond that, the elapsed time
+        depends on design, any required drawings, building department review and material
+        availability — none of which happens in your yard.{' '}
+        <span class="placeholder-token">[LEAD_TIME]</span> — add realistic durations once they
+        can be stated accurately.
+      </p>
+      <p>
+        Permit requirements vary by jurisdiction and by structure, and some building
+        departments treat traditional chickee structures differently from other accessory
+        buildings.{' '}
+        <span class="placeholder-token">[PERMIT_POLICY]</span> — describe exactly how this is
+        handled.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Our work</p>
+        <h2>Construction photography</h2>
+      </div>
+      <TikiPlaceholder caption="Build-stage photographs of tiki hut projects are being added here." />
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell form-band">
+      <div class="prose">
+        <h2>Get a tiki hut estimate</h2>
+        <p>
+          For a new hut, tell us roughly what size and where it would go. For an existing
+          structure, photographs of the roof — from underneath as well as outside — are the
+          fastest way to a useful answer.
+        </p>
+      </div>
+      <QuoteForm service="Tiki Hut" compact />
+    </div>
+  </section>
+
+  <CtaBand
+    title="New build or a roof that has had its day?"
+    body="Either way, start with photographs. They answer more questions than a phone call does."
+    secondaryLabel="About chickee huts"
+    secondaryHref="/tiki-huts/chickee-huts/"
+  />
+</BaseLayout>
+
+<style>
+  .stages {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-m);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  }
+  .stages li {
+    padding-top: var(--space-s);
+    border-top: 2px solid var(--line-strong);
+  }
+  .stage-num {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.3rem;
+  }
+  .stages h3 { font-size: var(--step-1); }
+  .stages p { margin-top: 0.45rem; color: var(--ink-soft); font-size: 0.95rem; }
+
+  .form-band { display: grid; gap: var(--space-l); }
+  @media (min-width: 62rem) {
+    .form-band { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--space-2xl); align-items: start; }
+  }
+</style>

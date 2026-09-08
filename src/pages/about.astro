@@ -1,0 +1,175 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ValueProps from '../components/ValueProps.astro';
+import Picture from '../components/Picture.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { image as findImage } from '../lib/media';
+import { site, real } from '../config/site';
+import { breadcrumbSchema, webPageSchema, organizationSchema } from '../lib/schema';
+
+const path = '/about/';
+const title = 'About Machin Solutions | Pergola & Tiki Hut Builders';
+const description =
+  'Who builds your structure: Machin Solutions designs and installs pergolas, tiki huts and outdoor living structures across Miami-Dade, Broward and the Upper Keys.';
+
+const crumbs = [{ label: 'About Us' }];
+
+const licence = real(site.licenseNumber);
+
+const schema = [
+  organizationSchema(),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+---
+
+<BaseLayout title={title} description={description} path={path} crumbs={crumbs} schema={schema}>
+  <PageHeader
+    eyebrow="About us"
+    title="The People Who Measure Your Yard Are the People Who Build In It"
+    lede="Machin Solutions designs, builds and installs pergolas, tiki huts and outdoor living structures across South Florida. That whole sentence is deliberate: we are not a sales operation that hands the job to whoever is available, and nothing gets built by a crew that never saw the site."
+  />
+
+  <section class="section">
+    <div class="shell split">
+      <div class="prose">
+        <h2>What we do</h2>
+        <p>
+          Two kinds of structure, done properly. Modern engineered{' '}
+          <a href="/pergolas/">pergolas and cabanas</a> — aluminium or timber, open, louvered
+          or solid-roofed, carrying lighting, fans, kitchens, televisions and screening. And
+          traditional{' '}
+          <a href="/tiki-huts/">tiki and chickee huts</a> — an open timber frame under a
+          steeply pitched palm-thatch roof, which is still the best pure shade structure ever
+          built for this climate.
+        </p>
+        <p>
+          Most of our work is residential: pool decks, patios and backyards across Miami-Dade
+          and Broward. We also build{' '}
+          <a href="/outdoor-living/">complete outdoor living spaces</a> where the structure,
+          the kitchen, the media wall and the lighting are drawn as one thing rather than
+          added in layers over five years.
+        </p>
+
+        <h2>How we work</h2>
+        <p>
+          Every project starts with someone standing in your yard with a tape measure. Not
+          because it is a nice touch, but because post positions, spans, sun angles, drainage
+          and material access are all decided by things you cannot see in a photograph. That
+          visit is what makes the estimate a real number rather than a hopeful one.
+        </p>
+        <p>
+          From there you get a design drawn for your space, a written estimate against it,
+          and a straight answer when the thing you asked for is not the right thing. We would
+          rather talk you into a smaller structure that works than a larger one that crowds
+          your yard.
+        </p>
+        <p>
+          On site, the priorities are the parts nobody photographs: footings sized for the
+          loads the structure will actually see, anchor hardware rated for uplift, and
+          connections that transfer force rather than rest on it. Those are what decide
+          whether a structure is still square in ten years.
+        </p>
+
+        <h2>What we will not do</h2>
+        <p>
+          We will not quote a number before seeing the space, because a figure given blind is
+          a guess dressed as an answer. We will not put a photograph on this website of
+          something we did not build — every image here is a Machin Solutions structure,
+          several of them shot mid-installation with the ladders still up. And we will not
+          give you a confident answer about permitting for your specific address on a web
+          page, because that is a real legal question and it deserves a real answer.
+        </p>
+      </div>
+
+      <figure class="side-figure">
+        <Picture
+          image={findImage('backlit-evening-cabana-miami-01')}
+          sizes="(min-width: 62rem) 34vw, 92vw"
+          ratio="3 / 4"
+        />
+        <figcaption>
+          A finished cabana at dusk — lighting, slat detailing and the media niche all
+          designed into the frame from the start.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <ValueProps
+    eyebrow="How we build"
+    title="What we care about, in order"
+    dark
+  />
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>Credentials</h2>
+      <p>
+        This section is deliberately empty of claims. Years in business, project counts,
+        licence numbers, insurance details, awards and certifications are all things that
+        should only appear on a website when they are true and verifiable — so they are
+        placeholders until the business fills them in.
+      </p>
+      <ul class="credential-list">
+        <li>
+          <strong>Licence:</strong>{' '}
+          {licence ? licence : <span class="placeholder-token">[LICENSE_NUMBER]</span>}
+        </li>
+        <li>
+          <strong>Insurance:</strong> <span class="placeholder-token">[INSURANCE_DETAILS]</span>
+        </li>
+        <li>
+          <strong>Years in business:</strong>{' '}
+          <span class="placeholder-token">[YEARS_IN_BUSINESS]</span>
+        </li>
+        <li>
+          <strong>Warranty:</strong> <span class="placeholder-token">[WARRANTY_TERMS]</span>
+        </li>
+        <li>
+          <strong>Google Business Profile:</strong>{' '}
+          <span class="placeholder-token">[GOOGLE_BUSINESS_PROFILE]</span>
+        </li>
+      </ul>
+      <p class="credential-note">
+        Filling these in is the single highest-value content change available on this site —
+        both for visitors deciding whether to trust the business and for local search.
+      </p>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Want to talk it through?"
+    body="Send photographs of the space and what you have in mind. You will hear back from a person who has read them."
+    secondaryLabel="See our work"
+    secondaryHref="/gallery/"
+  />
+</BaseLayout>
+
+<style>
+  .split { display: grid; gap: var(--space-xl); }
+  .side-figure { margin: 0; }
+  .side-figure :global(img) { width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
+  .side-figure figcaption { margin-top: 0.7rem; font-size: 0.88rem; color: var(--ink-faint); line-height: 1.6; }
+
+  .credential-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.6rem;
+    margin-top: var(--space-m);
+  }
+  .credential-list li {
+    padding: 0.65rem 0.9rem;
+    background: var(--sand-100);
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    font-size: 0.96rem;
+  }
+  .credential-note { font-size: 0.93rem; color: var(--ink-faint); }
+
+  @media (min-width: 62rem) {
+    .split { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: var(--space-2xl); align-items: start; }
+  }
+</style>

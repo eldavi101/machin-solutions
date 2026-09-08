@@ -1,0 +1,175 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Gallery from '../components/Gallery.astro';
+import CtaBand from '../components/CtaBand.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import { projectsIn } from '../lib/media';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../lib/schema';
+
+const path = '/outdoor-living/';
+const title = 'Outdoor Living Structures | Cabanas & Outdoor Kitchens';
+const description =
+  'Outdoor living structures for South Florida homes — pool cabanas, covered patios, outdoor kitchen covers and media walls, designed and built as one finished space.';
+
+const crumbs = [{ label: 'Outdoor Living' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Outdoor living structure design and construction',
+    description,
+    path,
+    serviceType: 'Outdoor living structure construction',
+    offers: [
+      'Pool cabana construction',
+      'Covered patio construction',
+      'Outdoor kitchen covers',
+      'Outdoor media walls',
+      'Privacy and shade screening',
+    ],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+
+const elements = [
+  {
+    name: 'Pool cabanas',
+    body: 'A freestanding structure at the far side of the pool that turns the deck into a destination rather than a walkway. Usually where the kitchen, the bar and the seating all end up.',
+  },
+  {
+    name: 'Covered patios',
+    body: 'A solid or insulated roof extending the house outward, giving you a genuinely dry, cooler room that furniture can live in permanently.',
+  },
+  {
+    name: 'Outdoor kitchens',
+    body: 'The structure and the kitchen designed together, so headroom, venting, power, water and counter runs all resolve instead of colliding.',
+  },
+  {
+    name: 'Media walls',
+    body: 'A purpose-built wall carrying a television and speakers, positioned so the screen is shaded at the hours you actually use it.',
+  },
+  {
+    name: 'Privacy screening',
+    body: 'Fixed slat panels or roll-down screens on the exposed side — for neighbours, for low western sun, or for both.',
+  },
+  {
+    name: 'Water features',
+    body: 'Rain curtains and similar features integrated into the roof edge rather than added beside it. See the cabana project in the gallery.',
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} crumbs={crumbs} schema={schema}>
+  <PageHeader
+    eyebrow="Outdoor living"
+    title="Outdoor Living Structures Built as One Finished Space"
+    lede="The best backyards in South Florida are not a pergola plus a grill plus a television. They are one structure that was designed to hold all of it — where the lighting is in the ceiling, the wiring is inside the frame, and the kitchen and the roof were drawn at the same time."
+    facts={[
+      { label: 'Structures', value: 'Cabanas, covered patios, outdoor kitchen covers, media walls' },
+      { label: 'Built in', value: 'Lighting, fans, speakers, screens and water features' },
+      { label: 'Works with', value: 'Existing pools, decks and screen enclosures' },
+      { label: 'Service area', value: 'Miami-Dade, Broward and the Upper Keys' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>Why designing it as one thing matters</h2>
+      <p>
+        Most backyards get built in layers, years apart. The pool goes in, then the deck,
+        then someone adds a grill, then a shade structure gets put over part of it, and
+        finally a television gets mounted somewhere it half works. Each step is reasonable on
+        its own, and the result is a space that never quite resolves.
+      </p>
+      <p>
+        Designing the structure and everything it carries at the same time changes the
+        outcome in specific, visible ways. Lighting sits recessed in a soffit instead of
+        clamped to a beam. Speaker and television wiring runs inside hollow extrusions
+        instead of in surface conduit down a post. A ceiling fan hangs from blocking that was
+        put there for it, at a height that actually works. Counter runs and roof edges line
+        up. The screen is shaded at four in the afternoon because someone checked where the
+        sun would be.
+      </p>
+      <p>
+        None of that is expensive to plan. All of it is expensive — or impossible — to
+        retrofit.
+      </p>
+
+      <h2>What goes into these structures</h2>
+    </div>
+
+    <div class="shell element-wrap">
+      <ul class="element-grid">
+        {
+          elements.map((element) => (
+            <li class="element">
+              <h3>{element.name}</h3>
+              <p>{element.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Our work</p>
+        <h2>Outdoor living projects</h2>
+        <p class="lede" style="margin-top:var(--space-s)">
+          Cabanas, covered patios and outdoor kitchens we have built across South Florida —
+          several photographed mid-installation.
+        </p>
+      </div>
+      <Gallery projects={projectsIn('outdoor-living')} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell form-band">
+      <div class="prose">
+        <h2>Where to start</h2>
+        <p>
+          The most useful first message is a description of how you want to use the space —
+          cooking, dining, lounging, watching something, all of it — plus photographs from a
+          couple of angles and rough dimensions.
+        </p>
+        <p>
+          From there we can tell you whether you are looking at a{' '}
+          <a href="/pergolas/">pergola</a>, a full cabana, or something in between, and what
+          it takes to build it where you want it.
+        </p>
+      </div>
+      <QuoteForm service="Other Outdoor Project" compact />
+    </div>
+  </section>
+
+  <CtaBand
+    title="One structure, planned properly."
+    body="Tell us everything you want the space to do. It is much cheaper to resolve it on paper than on site."
+    secondaryLabel="See the full gallery"
+    secondaryHref="/gallery/"
+  />
+</BaseLayout>
+
+<style>
+  .element-wrap { margin-top: var(--space-l); }
+  .element-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-m);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  }
+  .element { padding-top: var(--space-s); border-top: 2px solid var(--line-strong); }
+  .element h3 { font-size: var(--step-1); }
+  .element p { margin-top: 0.4rem; color: var(--ink-soft); font-size: 0.95rem; }
+
+  .form-band { display: grid; gap: var(--space-l); }
+  @media (min-width: 62rem) {
+    .form-band { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--space-2xl); align-items: start; }
+  }
+</style>

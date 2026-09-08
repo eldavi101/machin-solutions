@@ -1,0 +1,176 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Gallery from '../components/Gallery.astro';
+import CtaBand from '../components/CtaBand.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import { projectsIn } from '../lib/media';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../lib/schema';
+
+const path = '/miami-pergolas/';
+const title = 'Pergolas Miami FL | Pergola Contractors & Builders';
+const description =
+  'Pergola builders working across Miami — Coconut Grove, Coral Gables, Pinecrest, Shenandoah and the Roads. Custom aluminium and wood structures for city backyards.';
+
+const crumbs = [{ href: '/service-areas/', label: 'Service Areas' }, { label: 'Miami' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Pergola design and installation in Miami, Florida',
+    description,
+    path,
+    serviceType: 'Pergola construction',
+    areaServed: ['Miami, Florida', 'Miami-Dade County, Florida'],
+    offers: ['Custom pergolas', 'Aluminum pergolas', 'Attached patio covers', 'Pool cabanas'],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+
+const neighbourhoods = [
+  'Coconut Grove', 'Coral Gables', 'The Roads', 'Shenandoah', 'Brickell', 'Little Havana',
+  'Silver Bluff', 'Morningside', 'Upper Eastside', 'Pinecrest', 'South Miami', 'Key Biscayne',
+];
+---
+
+<BaseLayout title={title} description={description} path={path} crumbs={crumbs} schema={schema}>
+  <PageHeader
+    eyebrow="Miami"
+    title="Pergolas in Miami, Built for City Backyards"
+    lede="Miami yards are rarely generous and almost never square. Between older lots with mature trees, newer builds with strict HOA review, and the constant problem of low western sun coming over a neighbour's roof, a pergola here is a fitting exercise as much as a construction one."
+    facts={[
+      { label: 'Neighbourhoods', value: 'Grove, Gables, the Roads, Shenandoah, Pinecrest and across the city' },
+      { label: 'Typical build', value: 'Attached patio covers and compact freestanding structures' },
+      { label: 'Common constraint', value: 'Narrow side access and tight rear setbacks' },
+      { label: 'Materials', value: 'Aluminium as standard; timber where the house calls for it' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>What building a pergola in Miami actually involves</h2>
+      <p>
+        The city's housing stock is genuinely varied, and the structure follows from it.
+        Older neighbourhoods — the Roads, Shenandoah, Silver Bluff, parts of the Grove — tend
+        to mean smaller lots, mature planting and houses with real architectural character.
+        The structure has to defer to the building rather than compete with it, which usually
+        argues for a lower profile, a slimmer frame, and finishes that pick up something
+        already there.
+      </p>
+      <p>
+        Newer construction and gated communities have the opposite problem: plenty of space
+        but very little shade, and often a design review process to satisfy before anything
+        goes up. Colour, height and material can all be constrained, which is fine as long as
+        it is known at design stage rather than after fabrication.
+      </p>
+      <p>
+        The constraint that shows up almost everywhere in Miami is access. Long aluminium
+        extrusions and insulated roof panels have to physically get to the back of the
+        property, and a lot of city lots have a side gate barely wider than a wheelbarrow.
+        This is workable — it just changes how the structure is staged, and it is worth
+        checking on the first visit rather than with a truck parked on the street.
+      </p>
+
+      <h2>The sun problem nobody plans for</h2>
+      <p>
+        Miami backyards are frequently boxed in by neighbouring houses, which means the sun
+        that reaches them arrives low and from the side, particularly in the late afternoon.
+        A roof that shades the deck perfectly at midday can leave you squinting at four
+        o'clock, which is exactly when most people are actually outside.
+      </p>
+      <p>
+        The fix is straightforward when it is designed in: a fixed slat panel or a roll-down
+        screen on the western side, or a{' '}
+        <a href="/pergolas/aluminum/">louvered roof section</a> that can be closed down as the
+        sun drops. Retrofitting it later is possible and always looks like a retrofit.
+      </p>
+
+      <h2>Materials for a Miami lot</h2>
+      <p>
+        Aluminium is the default here for the reasons it is the default across South Florida —
+        no rot, no termites, no refinishing cycle, and slimmer members that clear a span with
+        fewer posts, which matters more in a small yard than a large one. On a Gables or Grove
+        property under real tree canopy, or against an older house with timber detailing,{' '}
+        <a href="/pergolas/wood/">wood</a> becomes a legitimate option again.
+      </p>
+      <p>
+        On Key Biscayne, along the bay, and anywhere with salt in the air, the specification
+        tightens: alloy, coating and every fastener matter. Mention it early and it costs
+        nothing; discover it later and it costs a structure.
+      </p>
+
+      <h2>Neighbourhoods we work in</h2>
+      <ul class="hoods">
+        {neighbourhoods.map((hood) => <li>{hood}</li>)}
+      </ul>
+      <p class="hood-note">
+        Elsewhere in Miami-Dade, see{' '}
+        <a href="/homestead-pergolas/">Homestead</a>, <a href="/kendall-pergolas/">Kendall</a>{' '}
+        and <a href="/hialeah-pergolas/">Hialeah</a>, or the full{' '}
+        <a href="/service-areas/">service areas list</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Our work</p>
+        <h2>Pergolas we have built around Miami</h2>
+      </div>
+      <Gallery projects={projectsIn('pergolas')} limit={2} />
+      <p style="margin-top:var(--space-l)">
+        <a class="btn btn-dark" href="/gallery/">See every project</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell form-band">
+      <div class="prose">
+        <h2>Get a pergola quote in Miami</h2>
+        <p>
+          Send photographs of the yard, rough dimensions, and a note about which direction it
+          faces. Mention the side-gate width if you know it — it saves a conversation.
+        </p>
+        <p>
+          If you are not sure whether you want a pergola or something more like a{' '}
+          <a href="/tiki-huts/">tiki hut</a>, describe how you would use the space and we will
+          tell you which suits the yard better.
+        </p>
+      </div>
+      <QuoteForm service="Pergola" city="Miami" compact />
+    </div>
+  </section>
+
+  <CtaBand
+    title="Miami backyard that needs shade?"
+    body="Photographs and rough dimensions are enough to start. You will get a real answer about what fits."
+    secondaryLabel="Pergola options"
+    secondaryHref="/pergolas/"
+  />
+</BaseLayout>
+
+<style>
+  .hoods {
+    list-style: none;
+    padding: 0;
+    margin-top: var(--space-s);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .hoods li {
+    font-size: 0.9rem;
+    padding: 0.25rem 0.7rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    color: var(--ink-soft);
+  }
+  .hood-note { font-size: 0.94rem; }
+
+  .form-band { display: grid; gap: var(--space-l); }
+  @media (min-width: 62rem) {
+    .form-band { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--space-2xl); align-items: start; }
+  }
+</style>

@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import Faq from '../components/Faq.astro';
+import { contactFaqs } from '../data/faqs';
+import { site, callHref, emailHref, real } from '../config/site';
+import { breadcrumbSchema, webPageSchema, organizationSchema } from '../lib/schema';
+
+const path = '/contact/';
+const title = 'Request a Quote | Machin Solutions, Miami';
+const description =
+  'Request a free estimate for a pergola, tiki hut or outdoor living structure in Miami and South Florida. Send photos and dimensions and get a real answer back.';
+
+const crumbs = [{ label: 'Request a Quote' }];
+
+const phone = real(site.phone);
+const email = real(site.email);
+const mailto = emailHref();
+
+const schema = [
+  organizationSchema(),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+
+const hoursLines = site.hours.map((slot) => {
+  const days = slot.days.length > 1 ? `${slot.days[0]}–${slot.days[slot.days.length - 1]}` : slot.days[0];
+  return `${days}: ${slot.opens} – ${slot.closes}`;
+});
+---
+
+<BaseLayout title={title} description={description} path={path} crumbs={crumbs} schema={schema}>
+  <section class="section contact-top">
+    <div class="shell contact-grid">
+      <div class="contact-copy">
+        <p class="eyebrow">Free estimate</p>
+        <h1>Tell Us About Your Project</h1>
+        <p class="lede">
+          The fastest way to a real answer is a few photographs and rough dimensions. Send
+          those and you will get a genuine read on what fits, what it takes to build and
+          what it costs — not a brochure and a follow-up call.
+        </p>
+
+        <dl class="contact-details">
+          <div>
+            <dt>Call</dt>
+            <dd>
+              <a href={callHref()}>
+                {phone ? phone : <span class="placeholder-token">[PHONE_NUMBER]</span>}
+              </a>
+            </dd>
+          </div>
+          <div>
+            <dt>Email</dt>
+            <dd>
+              {
+                mailto ? (
+                  <a href={mailto}>{email}</a>
+                ) : (
+                  <span class="placeholder-token">[EMAIL]</span>
+                )
+              }
+            </dd>
+          </div>
+          <div>
+            <dt>Serving</dt>
+            <dd>
+              Miami-Dade, Broward and the Upper Keys.{' '}
+              <a href="/service-areas/">See all service areas</a>
+            </dd>
+          </div>
+          <div>
+            <dt>Hours</dt>
+            <dd>
+              {hoursLines.map((line) => (
+                <span class="hours-line">{line}</span>
+              ))}
+            </dd>
+          </div>
+          <div>
+            <dt>Address</dt>
+            <dd>
+              <span class="placeholder-token">[BUSINESS_ADDRESS]</span>
+              <span class="detail-note">
+                Not published until confirmed — a business address is one of the strongest
+                local search signals there is, so it is worth filling in.
+              </span>
+            </dd>
+          </div>
+        </dl>
+
+        <div class="helpful">
+          <h2>What to send</h2>
+          <ul>
+            <li>Two or three photographs of the space, from different angles</li>
+            <li>Rough dimensions of the area you want covered</li>
+            <li>Whether there is a pool, deck or screen enclosure already there</li>
+            <li>What you want to do under it — dining, cooking, lounging, shade for the kids</li>
+            <li>Anything you already know you want built in: lighting, fans, a television, screens</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="form-column">
+        <QuoteForm />
+      </div>
+    </div>
+  </section>
+
+  <Faq faqs={contactFaqs} eyebrow="Before you send" title="What happens next" />
+</BaseLayout>
+
+<style>
+  .contact-top { padding-top: var(--space-xl); }
+  .contact-grid { display: grid; gap: var(--space-xl); }
+  .contact-copy .lede { margin-top: var(--space-m); }
+
+  .contact-details {
+    margin: var(--space-l) 0 0;
+    display: grid;
+    gap: var(--space-s);
+  }
+  .contact-details > div {
+    display: grid;
+    gap: 0.15rem;
+    padding-top: 0.7rem;
+    border-top: 1px solid var(--line);
+  }
+  .contact-details dt {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .contact-details dd { margin: 0; font-size: 0.98rem; }
+  .contact-details a { font-weight: 600; }
+  .hours-line { display: block; }
+  .detail-note {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 0.86rem;
+    color: var(--ink-faint);
+    line-height: 1.55;
+  }
+
+  .helpful { margin-top: var(--space-l); }
+  .helpful h2 { font-size: var(--step-2); }
+  .helpful ul {
+    margin-top: var(--space-s);
+    padding-left: 1.15rem;
+    color: var(--ink-soft);
+    display: grid;
+    gap: 0.35rem;
+    font-size: 0.97rem;
+  }
+
+  .form-column { align-self: start; }
+
+  @media (min-width: 62rem) {
+    .contact-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--space-2xl); }
+    .form-column { position: sticky; top: 6rem; }
+  }
+</style>

@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { callHref, site, real } from '../config/site';
+
+const path = '/404/';
+const title = 'Page Not Found | Machin Solutions';
+const description = 'That page does not exist. Here is where to find pergolas, tiki huts, our work and a quote.';
+
+const phone = real(site.phone);
+
+const links = [
+  { href: '/pergolas/', label: 'Pergolas', note: 'Custom, aluminium, wood, louvered and solid-roof structures.' },
+  { href: '/tiki-huts/', label: 'Tiki Huts', note: 'Traditional thatched tiki and chickee huts.' },
+  { href: '/outdoor-living/', label: 'Outdoor Living', note: 'Cabanas, covered patios and outdoor kitchens.' },
+  { href: '/gallery/', label: 'Our Work', note: 'Completed projects across South Florida.' },
+  { href: '/service-areas/', label: 'Service Areas', note: 'Where we build, city by city.' },
+  { href: '/contact/', label: 'Request a Quote', note: 'Send photos and get a real answer back.' },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} noindex>
+  <section class="section notfound">
+    <div class="shell">
+      <p class="eyebrow">404</p>
+      <h1>That page is not here</h1>
+      <p class="lede">
+        The link may be out of date, or the address may have a typo in it. Everything on the
+        site is one click away below.
+      </p>
+
+      <ul class="lost-links">
+        {
+          links.map((link) => (
+            <li>
+              <a href={link.href}>
+                <span class="lost-label">{link.label}</span>
+                <span class="lost-note">{link.note}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="btn-row notfound-actions">
+        <a class="btn btn-primary" href="/">Back to the home page</a>
+        <a class="btn btn-ghost" href={callHref()}>
+          {phone ? `Call ${phone}` : 'Contact us'}
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .notfound { padding-block: var(--space-2xl) var(--space-3xl); }
+  .notfound .lede { margin-top: var(--space-s); }
+
+  .lost-links {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-xl) 0 0;
+    display: grid;
+    gap: var(--space-s);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  }
+  .lost-links a {
+    display: grid;
+    gap: 0.25rem;
+    height: 100%;
+    padding: var(--space-m);
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: border-color 0.18s ease, transform 0.18s ease;
+  }
+  .lost-links a:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+  .lost-label { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); }
+  .lost-note { font-size: 0.9rem; color: var(--ink-soft); }
+
+  .notfound-actions { margin-top: var(--space-xl); }
+</style>
