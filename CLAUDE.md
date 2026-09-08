@@ -7,6 +7,9 @@ Contiene el estado actual, las decisiones ya tomadas y por qué, las trampas con
 lo que falta. No re-derives nada de eso leyendo el código: ya está escrito, y varias de
 las decisiones no son evidentes desde el código.
 
+Empieza por su **§0 "Para retomar"**: dice en qué estado quedó todo, la comprobación de
+30 segundos para confirmarlo, y qué conviene hacer a continuación por orden de impacto.
+
 Al terminar cualquier cambio, **actualiza `PROJECT_STATE.md`** (la fecha, el commit que
 describe, y lo que haya cambiado).
 

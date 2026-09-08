@@ -5,12 +5,65 @@
 > romper, y lo que falta. No re-derives nada de esto leyendo el código.
 
 **Última actualización:** 8 de septiembre de 2026
-**Commit que describe:** `6381be3` — *feat: fill in the real phone numbers and email addresses*
-**Estado general:** publicado, en producción y funcionando. Faltan datos del negocio, no código.
+**Último cambio funcional que describe:** `6b92372` — teléfonos y correos reales,
+desplegado y verificado en producción.
+**Estado general:** publicado, en producción y funcionando. `main` y `origin/main`
+sincronizados. Falta información del negocio, no código.
 
-Para comprobar si este archivo está desactualizado: `git log --oneline 6381be3..HEAD`.
-Si devuelve commits, algo cambió después de escribirse esto. Actualiza este archivo al
-terminar cualquier cambio.
+**Para saber si este archivo está desactualizado**, sin depender de un hash escrito a
+mano:
+
+```bash
+git log --oneline "$(git log -1 --format=%H -- PROJECT_STATE.md)"..HEAD
+```
+
+Lista todo lo que se commiteó después de la última actualización de este archivo. Si
+devuelve algo que no sea documentación, el archivo está viejo: léelo con cautela y
+actualízalo al terminar tu tarea.
+
+---
+
+## 0. Para retomar — siguiente sesión
+
+El sitio está **entero, desplegado y verificado**. No hay nada roto ni a medias, así que
+no hace falta arreglar nada antes de empezar: cualquier tarea nueva parte de una base
+limpia.
+
+**Comprobación de 30 segundos antes de tocar nada:**
+
+```bash
+cd "C:\datos D\Demos\Machin Solutions"
+git status                     # debe estar limpio y sincronizado con origin/main
+npm run build && npm run audit  # debe decir "No problems found."
+npm run dev                     # http://localhost:4321 para ver el estado real
+```
+
+**Lo más valioso que se puede hacer a continuación, por orden de impacto:**
+
+1. **Conectar el formulario de contacto.** Hoy valida pero no envía, y lo dice
+   honestamente. Es literalmente una línea: pon una URL de Formspree/Basin/Web3Forms en
+   `formEndpoint` dentro de `src/config/site.ts`. Sin esto, quien no quiera llamar por
+   teléfono no deja ningún dato. Es la única captación pasiva del sitio.
+2. **Número de licencia** (`[LICENSE_NUMBER]`, 21 páginas). Señal de confianza que los
+   competidores sí muestran, y además va al JSON-LD.
+3. **Fotos de tiki huts** (`[TIKI_HUT_PHOTOS_NEEDED]`, 6 páginas). Ver §9 — es el hueco
+   de contenido más grande del sitio.
+4. **Política de permisos** (`[PERMIT_POLICY]`, 6 páginas). "¿Necesito permiso para una
+   pérgola en Miami-Dade?" es tráfico con intención muy alta que hoy se está regalando.
+   **No lo inventes** (§8): hace falta el dato real.
+5. **Perfil de Google Business** en `site.profiles.googleBusiness`. Para búsquedas
+   locales pesa más que todo el trabajo on-page junto.
+
+Todos los demás placeholders están en §11.
+
+**Tarea pendiente que se le debe al dueño:** la auditoría competitiva detallada
+(§29 del encargo original) se hizo durante la construcción pero **no se guardó en disco**
+antes de que el contexto se compactara, así que esos hallazgos se perdieron. Si el dueño
+la pide, hay que rehacer la investigación y escribirla en `docs/competitive-audit.md`.
+No la reconstruyas de memoria ni la inventes.
+
+**Archivo suelto:** hay un `Estado Actual.docx` sin trackear en la carpeta del proyecto.
+No lo puso el proceso de build. **No lo borres ni lo commitees** sin preguntar.
 
 ---
 
@@ -400,12 +453,21 @@ estaba caducada y bloqueaba los push.
 - **`eldavi101.github.io/machin-solutions/` se ve roto.** Es esperado, ver §2.
 - **Imágenes que parecen "rotas" al inspeccionar el DOM.** Son lazy y aún no han cargado;
   desplázate al final y vuelve a comprobar.
+- **Un `git push` rechazado por "fetch first".** Ya pasó una vez: al fijar el dominio
+  personalizado por API, **GitHub creó por su cuenta un commit `Create CNAME`** en la
+  raíz del repositorio. No es un conflicto real — su contenido coincide con
+  `public/CNAME`. Se resuelve con `git pull --rebase origin main`, reconstruir, volver a
+  auditar y pushear. **Nunca con force-push:** ese commit es legítimo y borrarlo puede
+  romper la configuración del dominio.
+- **Hay un `CNAME` en la raíz *y* un `public/CNAME`.** No es duplicado por error. El que
+  se despliega es `public/CNAME`, que el build copia a `dist/CNAME`; el de la raíz lo
+  puso GitHub. Deja los dos con el mismo contenido y no toques ninguno.
 
 ---
 
 ## 14. Historial resumido
 
-14 commits. Los que explican decisiones vivas:
+16 commits. Los que explican decisiones vivas:
 
 - `94bda58` inicialización · `3f80e50` páginas de pérgolas · `a918fbd` tiki huts, outdoor
   living, galería y ciudades
@@ -417,4 +479,9 @@ estaba caducada y bloqueaba los push.
 - `302aad8` **thumbnails del JSON-LD apuntaban a un ancho retirado** (ver §7)
 - `243c4d5` estado real del dominio y qué NO es la URL de proyecto
 - `892a936` actualización de las actions a majors sobre Node 24
-- `6381be3` **teléfonos y correos reales** (ver §6)
+- `c99f7ce` `Create CNAME` — **commit creado por GitHub, no por nosotros** (ver §13)
+- `6b92372` **teléfonos y correos reales** (ver §6)
+- `032cde8` `PROJECT_STATE.md` y `CLAUDE.md` como punto de entrada
+
+Los dos últimos se rebasearon sobre el commit de GitHub, así que sus hashes cambiaron
+respecto a los originales locales. El contenido es el mismo.
