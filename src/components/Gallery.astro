@@ -1,8 +1,12 @@
 ---
 import Picture from './Picture.astro';
-import { categoryLabels, largest, srcset, type Project } from '../lib/media';
+import { largest, srcset, type Project } from '../lib/media';
+
+import { defaultLang, localizePath, type Lang } from '../i18n';
+import { useTranslations } from '../i18n/ui';
 
 export interface Props {
+  lang?: Lang;
   projects: Project[];
   /** Show the category filter bar (only useful when several categories are present). */
   filters?: boolean;
@@ -11,7 +15,16 @@ export interface Props {
   headingLevel?: 'h2' | 'h3';
 }
 
-const { projects, filters = false, limit, headingLevel = 'h3' } = Astro.props;
+const { projects, filters = false, limit, headingLevel = 'h3', lang = defaultLang } = Astro.props;
+const t = useTranslations(lang);
+
+// Category labels come from the dictionary, not from lib/media, so the filter bar
+// and the project tags follow the page language.
+const categoryLabels = {
+  pergolas: t('gallery.category.pergolas'),
+  'tiki-huts': t('gallery.category.tikiHuts'),
+  'outdoor-living': t('gallery.category.outdoorLiving'),
+} as const;
 const shown = typeof limit === 'number' ? projects.slice(0, limit) : projects;
 const categories = [...new Set(shown.map((project) => project.category))];
 const Heading = headingLevel;
@@ -35,9 +48,9 @@ const items = shown.flatMap((project) =>
 
 {
   filters && categories.length > 1 && (
-    <div class="filter-bar" role="group" aria-label="Filter projects by type" data-filter-bar>
+    <div class="filter-bar" role="group" aria-label={t('gallery.filterLabel')} data-filter-bar>
       <button type="button" class="filter" data-filter="all" aria-pressed="true">
-        All projects
+        {t('gallery.allProjects')}
       </button>
       {categories.map((category) => (
         <button type="button" class="filter" data-filter={category} aria-pressed="false">
@@ -79,8 +92,8 @@ const items = shown.flatMap((project) =>
                 aria-label={clip.title}
               >
                 <source src={`/media/${clip.slug}.mp4`} type="video/mp4" />
-                Your browser cannot play this video.
-                <a href={`/media/${clip.slug}.mp4`}>Download the clip</a> instead.
+                {t('gallery.videoUnsupported')}
+                <a href={`/media/${clip.slug}.mp4`}>{t('gallery.downloadClip')}</a> {t('gallery.instead')}
               </video>
             </div>
           ))}
@@ -103,13 +116,13 @@ const items = shown.flatMap((project) =>
   }
 </div>
 
-<dialog class="lightbox" data-lightbox-dialog aria-label="Project photo viewer">
-  <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close photo viewer">
+<dialog class="lightbox" data-lightbox-dialog aria-label={t('gallery.viewer')}>
+  <button type="button" class="lightbox-close" data-lightbox-close aria-label={t('gallery.close')}>
     <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
       <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" />
     </svg>
   </button>
-  <button type="button" class="lightbox-nav lightbox-prev" data-lightbox-prev aria-label="Previous photo">
+  <button type="button" class="lightbox-nav lightbox-prev" data-lightbox-prev aria-label={t('gallery.previous')}>
     <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
       <path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
@@ -118,7 +131,7 @@ const items = shown.flatMap((project) =>
     <img data-lightbox-img alt="" width="1440" height="1920" />
     <figcaption data-lightbox-caption></figcaption>
   </figure>
-  <button type="button" class="lightbox-nav lightbox-next" data-lightbox-next aria-label="Next photo">
+  <button type="button" class="lightbox-nav lightbox-next" data-lightbox-next aria-label={t('gallery.next')}>
     <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
       <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
     </svg>

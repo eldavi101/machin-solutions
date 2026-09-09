@@ -42,6 +42,11 @@ export const ui = {
     'cta.call': 'Call',
     'cta.email': 'Email',
     'cta.or': 'Or',
+    'cta.band.title': 'Tell us about your backyard.',
+    'cta.band.body':
+      'Send a couple of photos and rough dimensions and you will get a real answer about what fits, what it takes and what it costs — not a brochure.',
+    'areas.whereWeBuild': 'Where we build',
+    'tiki.caption': 'Tiki hut photography is being added to this gallery.',
 
     // --- breadcrumbs --------------------------------------------------------
     'crumb.home': 'Home',
@@ -89,6 +94,13 @@ export const ui = {
     'form.status.noEndpoint':
       'Thanks — everything checks out. This demo form is not connected to a mailbox yet, so please call or email us directly and we will pick it up straight away.',
     'form.ownerNote': 'Setup note for the site owner:',
+    'form.err.generic': 'Please check this field.',
+    'form.err.incomplete': 'A few details are still missing — they are marked above.',
+    'form.preferToCall': 'Prefer to call?',
+    'form.descriptionPlaceholder':
+      'Rough size of the area, whether there is a pool or existing deck, and what you want to use the space for.',
+    'form.photosHint':
+      'Photos help a lot. Mention that you have them and you will be told where to send them.',
 
     // --- footer -------------------------------------------------------------
     'footer.label': 'Footer',
@@ -148,6 +160,11 @@ export const ui = {
     'cta.call': 'Teléfono',
     'cta.email': 'Correo',
     'cta.or': 'O',
+    'cta.band.title': 'Cuéntenos cómo es su patio.',
+    'cta.band.body':
+      'Mande un par de fotos y medidas aproximadas y recibirá una respuesta real sobre qué cabe, qué hace falta para construirlo y cuánto cuesta — no un folleto.',
+    'areas.whereWeBuild': 'Dónde construimos',
+    'tiki.caption': 'Estamos añadiendo fotografías de tiki huts a esta galería.',
 
     // --- migas de pan -------------------------------------------------------
     'crumb.home': 'Inicio',
@@ -196,6 +213,13 @@ export const ui = {
     'form.status.noEndpoint':
       'Gracias — todo está correcto. Este formulario todavía no está conectado a un buzón, así que llámenos o escríbanos directamente y lo atendemos enseguida.',
     'form.ownerNote': 'Nota de configuración para el dueño del sitio:',
+    'form.err.generic': 'Revise este campo, por favor.',
+    'form.err.incomplete': 'Faltan algunos datos — están marcados arriba.',
+    'form.preferToCall': '¿Prefiere llamar?',
+    'form.descriptionPlaceholder':
+      'Medidas aproximadas de la zona, si hay piscina o terraza ya construida, y para qué quiere usar el espacio.',
+    'form.photosHint':
+      'Las fotos ayudan mucho. Diga que las tiene y le indicaremos adónde enviarlas.',
 
     // --- pie de página ------------------------------------------------------
     'footer.label': 'Pie de página',

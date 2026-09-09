@@ -12,16 +12,19 @@
  * and replace this component with <Gallery projects={projectsIn('tiki-huts')} />.
  */
 
+import { defaultLang, localizePath, type Lang } from '../i18n';
+import { useTranslations } from '../i18n/ui';
+
 export interface Props {
+  lang?: Lang;
   /** Shown to visitors above the drawing. */
   caption?: string;
   compact?: boolean;
 }
 
-const {
-  caption = 'Tiki hut photography is being added to this gallery.',
-  compact = false,
-} = Astro.props;
+const { lang = defaultLang, ...rest } = Astro.props;
+const t = useTranslations(lang);
+const { caption = t('tiki.caption'), compact = false } = rest;
 ---
 
 <figure class:list={['tiki-figure', compact && 'tiki-figure-compact']}>
@@ -67,7 +70,7 @@ const {
       <span class="placeholder-token">[TIKI_HUT_PHOTOS_NEEDED]</span>
     </p>
     <p class="tiki-caption-note">
-      In the meantime, the <a href="/gallery/">pergola and outdoor living gallery</a> shows
+      {t('tiki.meanwhile')} <a href={localizePath('/gallery/', lang)}>{t('tiki.galleryLink')}</a> shows
       the framing, finishing and site work that go into every structure we build.
     </p>
   </figcaption>

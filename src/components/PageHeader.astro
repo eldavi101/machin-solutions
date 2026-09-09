@@ -1,5 +1,9 @@
 ---
+import { defaultLang, localizePath, type Lang } from '../i18n';
+import { useTranslations } from '../i18n/ui';
+
 export interface Props {
+  lang?: Lang;
   eyebrow?: string;
   title: string;
   lede: string;
@@ -8,7 +12,8 @@ export interface Props {
   dark?: boolean;
 }
 
-const { eyebrow, title, lede, facts = [], dark = false } = Astro.props;
+const { eyebrow, title, lede, facts = [], dark = false, lang = defaultLang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <section class:list={['page-header', dark && 'section-dark']}>
@@ -31,8 +36,8 @@ const { eyebrow, title, lede, facts = [], dark = false } = Astro.props;
     }
 
     <div class="btn-row header-actions">
-      <a class="btn btn-primary" href="/contact/">Get a Free Estimate</a>
-      <a class="btn btn-ghost" href="/gallery/">View Our Work</a>
+      <a class="btn btn-primary" href={localizePath('/contact/', lang)}>{t('cta.freeEstimate')}</a>
+      <a class="btn btn-ghost" href={localizePath('/gallery/', lang)}>{t('cta.viewWork')}</a>
     </div>
   </div>
 </section>

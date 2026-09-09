@@ -1,7 +1,11 @@
 ---
 import { areasByCounty, landingAreas } from '../data/areas';
 
+import { defaultLang, localizePath, type Lang } from '../i18n';
+import { useTranslations } from '../i18n/ui';
+
 export interface Props {
+  lang?: Lang;
   eyebrow?: string;
   title?: string;
   intro?: string;
@@ -10,13 +14,15 @@ export interface Props {
   headingLevel?: 'h2' | 'h3';
 }
 
+const { lang = defaultLang, ...rest } = Astro.props;
+const t = useTranslations(lang);
 const {
-  eyebrow = 'Service areas',
-  title = 'Where we build',
+  eyebrow = t('footer.serviceAreas'),
+  title = t('areas.whereWeBuild'),
   intro,
   featuredOnly = false,
   headingLevel = 'h2',
-} = Astro.props;
+} = rest;
 
 const Heading = headingLevel;
 ---
@@ -34,7 +40,7 @@ const Heading = headingLevel;
         <ul class="featured-areas">
           {landingAreas.map((area) => (
             <li>
-              <a href={area.landing} class="area-card">
+              <a href={localizePath(area.landing, lang)} class="area-card">
                 <span class="area-name">{area.name}</span>
                 <span class="area-note">{area.note}</span>
                 <span class="area-cta" aria-hidden="true">
@@ -52,7 +58,7 @@ const Heading = headingLevel;
               <ul class="county-list">
                 {group.areas.map((area) => (
                   <li>
-                    {area.landing ? <a href={area.landing}>{area.name}</a> : <span>{area.name}</span>}
+                    {area.landing ? <a href={localizePath(area.landing, lang)}>{area.name}</a> : <span>{area.name}</span>}
                   </li>
                 ))}
               </ul>

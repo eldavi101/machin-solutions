@@ -1,10 +1,14 @@
 ---
+import { defaultLang, type Lang } from '../i18n';
+import { processSteps, sectionCopy } from '../i18n/content';
+
 export interface Step {
   title: string;
   body: string;
 }
 
 export interface Props {
+  lang?: Lang;
   eyebrow?: string;
   title?: string;
   intro?: string;
@@ -12,36 +16,15 @@ export interface Props {
   headingLevel?: 'h2' | 'h3';
 }
 
-const defaultSteps: Step[] = [
-  {
-    title: 'Tell us what you want to build',
-    body: 'Send photos of the space, rough dimensions and what you want to do under the structure. That is enough for a first, honest read on what will work.',
-  },
-  {
-    title: 'Site visit and measurements',
-    body: 'We come out, measure properly, check access for materials, look at where footings can go, and see how the structure would meet the house and the pool deck.',
-  },
-  {
-    title: 'Design and written estimate',
-    body: 'You get a design drawn for your yard — spans, post positions, roof type, finishes and everything built in — with a written estimate against it.',
-  },
-  {
-    title: 'Approvals and fabrication',
-    body: 'Drawings and paperwork go where they need to go, and the frame is fabricated to the approved dimensions while that runs.',
-  },
-  {
-    title: 'Installation',
-    body: 'Footings, frame, roof, then the finishing work — lighting, fans, screens, soffit panels. Your yard gets cleaned up before we leave it.',
-  },
-];
-
+const { lang = defaultLang, ...rest } = Astro.props;
+const copy = sectionCopy[lang];
 const {
-  eyebrow = 'How it works',
-  title = 'From first message to finished structure',
+  eyebrow = copy.processEyebrow,
+  title = copy.processTitle,
   intro,
-  steps = defaultSteps,
+  steps = processSteps[lang],
   headingLevel = 'h2',
-} = Astro.props;
+} = rest;
 
 const Heading = headingLevel;
 ---

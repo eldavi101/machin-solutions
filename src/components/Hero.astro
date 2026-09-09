@@ -3,7 +3,11 @@ import Picture from './Picture.astro';
 import { callHref, phoneLabel } from '../config/site';
 import { image as findImage, srcset } from '../lib/media';
 
+import { defaultLang, localizePath, type Lang } from '../i18n';
+import { useTranslations } from '../i18n/ui';
+
 export interface Props {
+  lang?: Lang;
   eyebrow?: string;
   title: string;
   body: string;
@@ -20,19 +24,21 @@ export interface Props {
   variant?: 'full' | 'split';
 }
 
+const { lang = defaultLang, ...rest } = Astro.props;
+const t = useTranslations(lang);
 const {
   eyebrow,
   title,
   body,
   imageSlug,
   imageAlt,
-  primaryLabel = 'Get a Free Estimate',
-  primaryHref = '/contact/',
-  secondaryLabel = 'View Our Work',
-  secondaryHref = '/gallery/',
+  primaryLabel = t('cta.freeEstimate'),
+  primaryHref = localizePath('/contact/', lang),
+  secondaryLabel = t('cta.viewWork'),
+  secondaryHref = localizePath('/gallery/', lang),
   bullets = [],
   variant = 'split',
-} = Astro.props;
+} = rest;
 
 const hero = findImage(imageSlug);
 const phone = phoneLabel();

@@ -1,7 +1,11 @@
 ---
 import { callHref, phoneLabel } from '../config/site';
 
+import { defaultLang, localizePath, type Lang } from '../i18n';
+import { useTranslations } from '../i18n/ui';
+
 export interface Props {
+  lang?: Lang;
   title?: string;
   body?: string;
   primaryLabel?: string;
@@ -11,15 +15,17 @@ export interface Props {
   headingLevel?: 'h2' | 'h3';
 }
 
+const { lang = defaultLang, ...rest } = Astro.props;
+const t = useTranslations(lang);
 const {
-  title = 'Tell us about your backyard.',
-  body = 'Send a couple of photos and rough dimensions and you will get a real answer about what fits, what it takes and what it costs — not a brochure.',
-  primaryLabel = 'Get a Free Estimate',
-  primaryHref = '/contact/',
+  title = t('cta.band.title'),
+  body = t('cta.band.body'),
+  primaryLabel = t('cta.freeEstimate'),
+  primaryHref = localizePath('/contact/', lang),
   secondaryLabel,
   secondaryHref,
   headingLevel = 'h2',
-} = Astro.props;
+} = rest;
 
 const Heading = headingLevel;
 const phone = phoneLabel();

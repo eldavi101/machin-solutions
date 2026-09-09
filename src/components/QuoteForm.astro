@@ -1,6 +1,8 @@
 ---
 import { site, callHref, real, phoneLabel } from '../config/site';
 import { areas } from '../data/areas';
+import { defaultLang, type Lang } from '../i18n';
+import { useTranslations } from '../i18n/ui';
 
 export interface Props {
   /** Pre-select a service when the form sits on a service page. */
@@ -8,14 +10,34 @@ export interface Props {
   /** Pre-fill the city on a location landing page. */
   city?: string;
   compact?: boolean;
+  lang?: Lang;
 }
 
-const { service, city, compact = false } = Astro.props;
+const { service, city, compact = false, lang = defaultLang } = Astro.props;
+const t = useTranslations(lang);
 
 const endpoint = site.formEndpoint;
 const phone = phoneLabel();
 const email = real(site.email);
 const cities = areas.map((area) => area.name);
+
+// The validator runs in the browser, so its strings have to travel with the page.
+// They go as inert JSON rather than through define:vars, which Astro wraps in an
+// IIFE and which would corrupt the payload -- that bug already cost this project a
+// dead gallery once.
+const formMessages = {
+  'qf-name': t('form.err.name'),
+  'qf-phone': t('form.err.phone'),
+  'qf-email': t('form.err.email'),
+  'qf-service': t('form.err.service'),
+  _generic: t('form.err.generic'),
+  _incomplete: t('form.err.incomplete'),
+  _sending: t('form.status.sending'),
+  _submit: t('form.submit'),
+  _sent: t('form.status.sent'),
+  _failed: t('form.status.failed'),
+  _noEndpoint: t('form.status.noEndpoint'),
+};
 ---
 
 <form
@@ -29,7 +51,7 @@ const cities = areas.map((area) => area.name);
 >
   <div class="field-grid">
     <p class="field">
-      <label for="qf-name">Name <span class="req" aria-hidden="true">*</span></label>
+      <label for="qf-name">{t('form.name')} <span class="req" aria-hidden="true">*</span></label>
       <input
         type="text"
         id="qf-name"
@@ -42,7 +64,7 @@ const cities = areas.map((area) => area.name);
     </p>
 
     <p class="field">
-      <label for="qf-phone">Phone <span class="req" aria-hidden="true">*</span></label>
+      <label for="qf-phone">{t('form.phone')} <span class="req" aria-hidden="true">*</span></label>
       <input
         type="tel"
         id="qf-phone"
@@ -50,14 +72,14 @@ const cities = areas.map((area) => area.name);
         autocomplete="tel"
         inputmode="tel"
         required
-        placeholder="(305) 000-0000"
+        placeholder={t('form.phonePlaceholder')}
         aria-describedby="qf-phone-error"
       />
       <span class="error" id="qf-phone-error" data-error-for="qf-phone" hidden></span>
     </p>
 
     <p class="field">
-      <label for="qf-email">Email <span class="req" aria-hidden="true">*</span></label>
+      <label for="qf-email">{t('form.email')} <span class="req" aria-hidden="true">*</span></label>
       <input
         type="email"
         id="qf-email"
@@ -70,7 +92,7 @@ const cities = areas.map((area) => area.name);
     </p>
 
     <p class="field">
-      <label for="qf-city">City</label>
+      <label for="qf-city">{t('form.city')}</label>
       <input
         type="text"
         id="qf-city"
@@ -85,52 +107,50 @@ const cities = areas.map((area) => area.name);
     </p>
 
     <p class="field field-wide">
-      <label for="qf-service">Service needed <span class="req" aria-hidden="true">*</span></label>
+      <label for="qf-service">{t('form.service')} <span class="req" aria-hidden="true">*</span></label>
       <select id="qf-service" name="service" required aria-describedby="qf-service-error">
-        <option value="">Choose a service…</option>
-        <option value="Pergola" selected={service === 'Pergola'}>Pergola</option>
-        <option value="Tiki Hut" selected={service === 'Tiki Hut'}>Tiki Hut</option>
+        <option value="">{t('form.serviceChoose')}</option>
+        <option value="Pergola" selected={service === 'Pergola'}>{t('form.servicePergola')}</option>
+        <option value="Tiki Hut" selected={service === 'Tiki Hut'}>{t('form.serviceTiki')}</option>
         <option value="Other Outdoor Project" selected={service === 'Other Outdoor Project'}>
-          Other Outdoor Project
+          {t('form.serviceOther')}
         </option>
       </select>
       <span class="error" id="qf-service-error" data-error-for="qf-service" hidden></span>
     </p>
 
     <p class="field field-wide">
-      <label for="qf-message">Project description</label>
+      <label for="qf-message">{t('form.description')}</label>
       <textarea
         id="qf-message"
         name="message"
         rows="5"
-        placeholder="Rough size of the area, whether there is a pool or existing deck, and what you want to use the space for."
+        placeholder={t('form.descriptionPlaceholder')}
       ></textarea>
-      <span class="hint">
-        Photos help a lot. Mention that you have them and you will be told where to send them.
-      </span>
+      <span class="hint">{t('form.photosHint')}</span>
     </p>
   </div>
 
   {/* Simple honeypot: real visitors never see or fill this. */}
   <p class="hp" aria-hidden="true">
-    <label for="qf-company">Company</label>
+    <label for="qf-company">{t('footer.company')}</label>
     <input type="text" id="qf-company" name="_gotcha" tabindex="-1" autocomplete="off" />
   </p>
 
   <div class="form-actions">
-    <button type="submit" class="btn btn-primary">Request My Free Estimate</button>
+    <button type="submit" class="btn btn-primary">{t('form.submit')}</button>
     <a class="btn btn-ghost" href={callHref()}>
-      {phone ? `Call ${phone}` : 'Prefer to call?'}
+      {phone ? `${t('cta.call')} ${phone}` : t('form.preferToCall')}
     </a>
   </div>
 
   <p class="form-note" id="quote-form-note">
     {
       endpoint ? (
-        <>No obligation. Your details are used to prepare your estimate and nothing else.</>
+        <>{t('form.privacy')}</>
       ) : (
         <>
-          <strong>Setup note for the site owner:</strong> this form validates but is not yet
+          <strong>{t('form.ownerNote')}</strong> this form validates but is not yet
           wired to a backend — GitHub Pages serves static files only. Set{' '}
           <code>formEndpoint</code> in <code>src/config/site.ts</code> to a form service URL
           (Formspree, Basin, Web3Forms, a Cloudflare Worker…) and submissions start being
@@ -235,6 +255,8 @@ const cities = areas.map((area) => area.name);
   .form-status[data-tone='error'] { border-color: #a4342a; background: #fbeeec; }
 </style>
 
+<script is:inline type="application/json" data-form-messages set:html={JSON.stringify(formMessages)} />
+
 <script>
   const form = document.querySelector<HTMLFormElement>('[data-quote-form]');
 
@@ -242,12 +264,10 @@ const cities = areas.map((area) => area.name);
     const status = form.querySelector<HTMLElement>('[data-form-status]');
     const endpoint = form.dataset.endpoint;
 
-    const messages: Record<string, string> = {
-      'qf-name': 'Please tell us your name.',
-      'qf-phone': 'A phone number lets us call you back with an answer.',
-      'qf-email': 'Please enter an email address we can reply to.',
-      'qf-service': 'Let us know which kind of project this is.',
-    };
+    const messageNode = document.querySelector<HTMLScriptElement>('[data-form-messages]');
+    const messages: Record<string, string> = messageNode
+      ? JSON.parse(messageNode.textContent || '{}')
+      : {};
 
     const setError = (field: HTMLInputElement | HTMLSelectElement, message: string | null) => {
       const target = form.querySelector<HTMLElement>(`[data-error-for="${field.id}"]`);
@@ -262,7 +282,7 @@ const cities = areas.map((area) => area.name);
 
     const validateField = (field: HTMLInputElement | HTMLSelectElement) => {
       const valid = field.checkValidity();
-      setError(field, valid ? null : (messages[field.id] ?? 'Please check this field.'));
+      setError(field, valid ? null : (messages[field.id] ?? messages._generic));
       return valid;
     };
 
@@ -289,7 +309,7 @@ const cities = areas.map((area) => area.name);
       if (invalid.length > 0) {
         event.preventDefault();
         invalid[0].focus();
-        show('error', 'A few details are still missing — they are marked above.');
+        show('error', messages._incomplete);
         return;
       }
 
@@ -297,16 +317,13 @@ const cities = areas.map((area) => area.name);
         // No backend is configured yet, so keep the visitor moving rather than
         // pretending the message was sent.
         event.preventDefault();
-        show(
-          'ok',
-          'Thanks — everything checks out. This demo form is not connected to a mailbox yet, so please call or email us directly and we will pick it up straight away.',
-        );
+        show('ok', messages._noEndpoint);
         return;
       }
 
       event.preventDefault();
       const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
-      if (button) { button.disabled = true; button.textContent = 'Sending…'; }
+      if (button) { button.disabled = true; button.textContent = messages._sending; }
 
       try {
         const response = await fetch(endpoint, {
@@ -316,11 +333,11 @@ const cities = areas.map((area) => area.name);
         });
         if (!response.ok) throw new Error(String(response.status));
         form.reset();
-        show('ok', 'Thanks — your request is in. We will be in touch to arrange a site visit.');
+        show('ok', messages._sent);
       } catch {
-        show('error', 'Something went wrong sending that. Please call or email us instead.');
+        show('error', messages._failed);
       } finally {
-        if (button) { button.disabled = false; button.textContent = 'Request My Free Estimate'; }
+        if (button) { button.disabled = false; button.textContent = messages._submit; }
       }
     });
   }

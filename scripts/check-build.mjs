@@ -22,6 +22,22 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dist = path.join(root, 'dist');
 const SITE_ORIGIN = 'https://machinsolutions.com';
 
+/**
+ * High-frequency English chrome. If any of these survives into a /es/ page, some
+ * component is rendering without its `lang` prop. Deliberately short and specific:
+ * these are strings that appear on every page, so a miss is loud, and none of them
+ * is a word that legitimately appears in Spanish copy.
+ */
+const ENGLISH_MARKERS = [
+  'Get a Free Estimate',
+  'Skip to main content',
+  'Popular service areas',
+  'All South Florida service areas',
+  'Request My Free Estimate',
+  'All rights reserved.',
+  'Choose a service',
+];
+
 const problems = [];
 const warnings = [];
 const placeholders = new Map();
@@ -104,6 +120,8 @@ async function main() {
   let assetCount = 0;
   let schemaUrlCount = 0;
   let schemaCount = 0;
+  let hreflangCount = 0;
+  const hreflangEdges = [];
 
   for (const file of pages) {
     const rel = path.relative(dist, file).replaceAll('\\', '/');
@@ -136,6 +154,54 @@ async function main() {
     const h1s = html.match(/<h1[\s>]/g) ?? [];
     if (h1s.length === 0) fail(rel, 'no <h1>');
     if (h1s.length > 1) fail(rel, `${h1s.length} <h1> elements — there should be exactly one`);
+
+    // --- bilingual checks -------------------------------------------------
+    // The Spanish tree lives under /es/. Every one of these has bitten a real
+    // bilingual site: a page declaring the wrong language to screen readers, an
+    // hreflang pointing at a 404, a one-sided pair Google silently ignores, or an
+    // English string left behind because a component never got its `lang` prop.
+    const inSpanishTree = rel === 'es/index.html' || rel.startsWith('es/');
+    const expectedLang = inSpanishTree ? 'es-US' : 'en-US';
+    const declaredLang = html.match(/<html lang="([^"]+)"/)?.[1];
+    if (declaredLang !== expectedLang) {
+      fail(rel, `<html lang> is "${declaredLang}" but this page is in the ${inSpanishTree ? 'Spanish' : 'English'} tree (expected "${expectedLang}")`);
+    }
+
+    const expectedLocale = inSpanishTree ? 'es_US' : 'en_US';
+    const declaredLocale = html.match(/<meta property="og:locale" content="([^"]+)"/)?.[1];
+    if (declaredLocale !== expectedLocale) {
+      fail(rel, `og:locale is "${declaredLocale}", expected "${expectedLocale}"`);
+    }
+
+    const alts = [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g)]
+      .map(([, lang, href]) => ({ lang, href }));
+    if (alts.length > 0) {
+      const withoutDefault = alts.filter((a) => a.lang !== 'x-default');
+      if (!alts.some((a) => a.lang === 'x-default')) {
+        fail(rel, 'has hreflang alternates but no x-default');
+      }
+      if (withoutDefault.length < 2) {
+        fail(rel, 'declares hreflang but lists fewer than two languages');
+      }
+      for (const alt of alts) {
+        hreflangCount += 1;
+        const altPath = alt.href.replace(SITE_ORIGIN, '');
+        if (!resolveTarget(altPath)) {
+          fail(rel, `hreflang ${alt.lang} points at a missing page -> ${altPath}`);
+        }
+        if (alt.lang !== 'x-default') hreflangEdges.push({ from: rel, to: altPath, lang: alt.lang });
+      }
+    }
+
+    if (inSpanishTree) {
+      // A cheap leak detector. It cannot catch every untranslated sentence, but it
+      // does catch the thing that actually happens: a component that never received
+      // its `lang` prop and is still rendering the English chrome.
+      const leaks = ENGLISH_MARKERS.filter((marker) => html.includes(marker));
+      for (const leak of leaks) {
+        fail(rel, `untranslated English string on a Spanish page: "${leak}"`);
+      }
+    }
 
     if (!/<meta property="og:image"/.test(html)) fail(rel, 'missing og:image');
     if (!/<meta name="twitter:card"/.test(html)) fail(rel, 'missing twitter:card');
@@ -229,6 +295,20 @@ async function main() {
 
   // --- sitemap and robots -------------------------------------------------
   const sitemapIndex = path.join(dist, 'sitemap-index.xml');
+  // Google ignores a one-sided hreflang: if /faq/ says "the Spanish version is
+  // /es/faq/" but /es/faq/ does not say the reverse, the pair is not confirmed and
+  // neither page benefits. Check both directions.
+  for (const edge of hreflangEdges) {
+    const targetFile = resolveTarget(edge.to);
+    if (!targetFile) continue;
+    const targetHtml = await readFile(targetFile, 'utf8');
+    const sourcePath = '/' + edge.from.replace(/index\.html$/, '').replace(/\.html$/, '/');
+    const normalised = sourcePath === '//' ? '/' : sourcePath;
+    if (!targetHtml.includes(`href="${SITE_ORIGIN}${normalised}"`)) {
+      fail(edge.from, `hreflang is one-sided: ${edge.to} does not point back at ${normalised}`);
+    }
+  }
+
   if (!existsSync(sitemapIndex)) fail('dist', 'sitemap-index.xml was not generated');
   else {
     const sitemapFiles = files.filter((f) => /sitemap-\d+\.xml$/.test(f));
@@ -265,6 +345,11 @@ async function main() {
   console.log(`internal links checked: ${linkCount}`);
   console.log(`asset references checked: ${assetCount}`);
   console.log(`JSON-LD URLs resolved: ${schemaUrlCount}`);
+  console.log(`hreflang links checked: ${hreflangCount}`);
+  console.log(
+    `pages by language: ${pages.filter((f) => !path.relative(dist, f).replaceAll('\\', '/').startsWith('es/')).length} en, ` +
+      `${pages.filter((f) => path.relative(dist, f).replaceAll('\\', '/').startsWith('es/')).length} es`,
+  );
   console.log(`JSON-LD blocks parsed: ${schemaCount}`);
   console.log(`media payload in dist: ${(mediaBytes / 1e6).toFixed(1)} MB`);
 
