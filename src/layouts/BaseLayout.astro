@@ -5,6 +5,9 @@ import Footer from '../components/Footer.astro';
 import StickyCta from '../components/StickyCta.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { site, absolute } from '../config/site';
+import { alternates, defaultLang, htmlLang, ogLocale, type Lang } from '../i18n';
+import { existsIn } from '../i18n/routes';
+import { useTranslations } from '../i18n/ui';
 import type { Crumb } from '../components/Breadcrumbs.astro';
 
 export interface Props {
@@ -12,8 +15,18 @@ export interface Props {
   title: string;
   /** Meta description, written for click-through as well as intent. ~150–160 chars. */
   description: string;
-  /** Site-relative path of this page, always with a trailing slash. */
+  /**
+   * Site-relative path of this page, always with a trailing slash, INCLUDING the
+   * language prefix — so `/es/pergolas/`, not `/pergolas/`. The hreflang block and
+   * the language switcher derive the counterpart path from it.
+   */
   path: string;
+  /**
+   * Which language this page is written in. Always passed explicitly: components
+   * must never sniff it from the URL, or the rule ends up duplicated in sixteen
+   * files and drifts.
+   */
+  lang?: Lang;
   /** Breadcrumb trail; omit on the home page. */
   crumbs?: Crumb[];
   /** Site-relative path to the social share image. */
@@ -33,6 +46,7 @@ const {
   title,
   description,
   path,
+  lang = defaultLang,
   crumbs,
   ogImage = '/og/machin-solutions-og.jpg',
   ogImageAlt = 'A modern aluminium pergola over a South Florida pool deck, built by Machin Solutions.',
@@ -45,10 +59,14 @@ const {
 
 const canonical = absolute(path);
 const ogImageUrl = absolute(ogImage);
+const t = useTranslations(lang);
+// Only pages that exist get an hreflang entry. Advertising /es/faq/ before it is
+// written tells Google to crawl a 404, which is worse than having no alternate.
+const langAlternates = alternates(path).filter((alt) => existsIn(path, alt.lang));
 ---
 
 <!doctype html>
-<html lang="en-US">
+<html lang={htmlLang[lang]}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -56,6 +74,20 @@ const ogImageUrl = absolute(ogImage);
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {/* Every page declares both language versions plus x-default. Google treats a
+        one-sided hreflang as unconfirmed and ignores it, so these have to be
+        emitted on BOTH trees, pointing at each other. */}
+{
+      langAlternates.length > 1 &&
+        langAlternates.map((alt) => (
+          <link rel="alternate" hreflang={htmlLang[alt.lang]} href={absolute(alt.path)} />
+        ))
+    }
+    {
+      langAlternates.length > 1 && (
+        <link rel="alternate" hreflang="x-default" href={absolute(langAlternates[0].path)} />
+      )
+    }
     {noindex && <meta name="robots" content="noindex, follow" />}
     <meta name="theme-color" content="#161a18" />
 
@@ -102,7 +134,7 @@ const ogImageUrl = absolute(ogImage);
 
     <meta property="og:site_name" content={site.name} />
     <meta property="og:type" content={ogType} />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content={ogLocale[lang]} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
@@ -125,13 +157,13 @@ const ogImageUrl = absolute(ogImage);
   </head>
 
   <body class={bodyClass}>
-    <a class="skip-link" href="#main">Skip to main content</a>
-    <Header currentPath={path} />
-    {crumbs && crumbs.length > 0 && <Breadcrumbs crumbs={crumbs} />}
+    <a class="skip-link" href="#main">{t('nav.skipToContent')}</a>
+    <Header currentPath={path} lang={lang} />
+    {crumbs && crumbs.length > 0 && <Breadcrumbs crumbs={crumbs} lang={lang} />}
     <main id="main">
       <slot />
     </main>
-    <Footer />
-    <StickyCta />
+    <Footer lang={lang} />
+    <StickyCta lang={lang} />
   </body>
 </html>

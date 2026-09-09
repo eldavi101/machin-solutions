@@ -1,6 +1,14 @@
 ---
 import { callHref, phoneLabel } from '../config/site';
+import { defaultLang, localizePath, type Lang } from '../i18n';
+import { useTranslations } from '../i18n/ui';
 
+export interface Props {
+  lang?: Lang;
+}
+
+const { lang = defaultLang } = Astro.props;
+const t = useTranslations(lang);
 const phone = phoneLabel();
 ---
 
@@ -12,13 +20,13 @@ const phone = phoneLabel();
         fill="currentColor"
       />
     </svg>
-    <span>{phone ? 'Call now' : 'Contact us'}</span>
+    <span>{phone ? t('cta.callNow') : t('cta.requestQuote')}</span>
   </a>
-  <a class="sticky-btn sticky-quote" href="/contact/">
+  <a class="sticky-btn sticky-quote" href={localizePath('/contact/', lang)}>
     <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
       <path d="M4 5h16v3H4zm0 5.5h16v3H4zM4 16h10v3H4z" fill="currentColor" />
     </svg>
-    <span>Get a quote</span>
+    <span>{t('cta.getQuote')}</span>
   </a>
 </div>
 

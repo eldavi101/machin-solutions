@@ -1,6 +1,16 @@
 ---
 import { site, callHref, emailHref, real, phoneLabel, phoneAltLabel, callAltHref, emailAltHref } from '../config/site';
 import { landingAreas } from '../data/areas';
+import { defaultLang, localizePath, type Lang } from '../i18n';
+import { useTranslations } from '../i18n/ui';
+
+export interface Props {
+  lang?: Lang;
+}
+
+const { lang = defaultLang } = Astro.props;
+const t = useTranslations(lang);
+const L = (path: string) => localizePath(path, lang);
 
 const year = new Date().getFullYear();
 const phone = phoneLabel();
@@ -14,32 +24,32 @@ const licence = real(site.licenseNumber);
 
 const columns = [
   {
-    title: 'Pergolas',
+    title: t('footer.pergolas'),
     links: [
-      { href: '/pergolas/', label: 'Pergolas overview' },
-      { href: '/pergolas/custom/', label: 'Custom pergolas' },
-      { href: '/pergolas/aluminum/', label: 'Aluminum pergolas' },
-      { href: '/pergolas/wood/', label: 'Wood pergolas' },
-      { href: '/pergolas/installation/', label: 'Pergola installation' },
+      { href: L('/pergolas/'), label: t('footer.pergolasOverview') },
+      { href: L('/pergolas/custom/'), label: t('footer.customPergolas') },
+      { href: L('/pergolas/aluminum/'), label: t('footer.aluminumPergolas') },
+      { href: L('/pergolas/wood/'), label: t('footer.woodPergolas') },
+      { href: L('/pergolas/installation/'), label: t('footer.pergolaInstallation') },
     ],
   },
   {
-    title: 'Tiki Huts',
+    title: t('nav.tikiHuts'),
     links: [
-      { href: '/tiki-huts/', label: 'Tiki huts overview' },
-      { href: '/tiki-huts/chickee-huts/', label: 'Chickee huts' },
-      { href: '/tiki-huts/construction/', label: 'Tiki hut construction' },
-      { href: '/outdoor-living/', label: 'Outdoor living structures' },
+      { href: L('/tiki-huts/'), label: t('footer.tikiOverview') },
+      { href: L('/tiki-huts/chickee-huts/'), label: t('footer.chickeeHuts') },
+      { href: L('/tiki-huts/construction/'), label: t('footer.tikiConstruction') },
+      { href: L('/outdoor-living/'), label: t('footer.outdoorStructures') },
     ],
   },
   {
-    title: 'Company',
+    title: t('footer.company'),
     links: [
-      { href: '/gallery/', label: 'Our work' },
-      { href: '/about/', label: 'About us' },
-      { href: '/service-areas/', label: 'Service areas' },
-      { href: '/faq/', label: 'FAQ' },
-      { href: '/contact/', label: 'Request a quote' },
+      { href: L('/gallery/'), label: t('footer.ourWork') },
+      { href: L('/about/'), label: t('footer.about') },
+      { href: L('/service-areas/'), label: t('footer.serviceAreas') },
+      { href: L('/faq/'), label: t('footer.faq') },
+      { href: L('/contact/'), label: t('cta.requestQuote') },
     ],
   },
 ];
@@ -50,20 +60,17 @@ const columns = [
     <div class="footer-top">
       <div class="footer-brand">
         <p class="footer-name">Machin Solutions</p>
-        <p class="footer-tag">
-          Custom pergolas, tiki huts and outdoor living structures built for South Florida
-          backyards — Miami-Dade, Broward and the Upper Keys.
-        </p>
+        <p class="footer-tag">{t('footer.tagline')}</p>
         <div class="footer-contact">
-          <a class="btn btn-primary" href="/contact/">Get a Free Estimate</a>
+          <a class="btn btn-primary" href={L('/contact/')}>{t('cta.freeEstimate')}</a>
           <a class="footer-line" href={callHref()}>
-            <span class="footer-label">Call</span>
+            <span class="footer-label">{t('cta.call')}</span>
             {phone ? phone : <span class="placeholder-token">[PHONE_NUMBER]</span>}
           </a>
           {
             phoneAlt && callAlt && (
               <a class="footer-line" href={callAlt}>
-                <span class="footer-label">Or</span>
+                <span class="footer-label">{t('cta.or')}</span>
                 {phoneAlt}
               </a>
             )
@@ -71,12 +78,12 @@ const columns = [
           {
             mailto ? (
               <a class="footer-line" href={mailto}>
-                <span class="footer-label">Email</span>
+                <span class="footer-label">{t('cta.email')}</span>
                 {email}
               </a>
             ) : (
               <span class="footer-line">
-                <span class="footer-label">Email</span>
+                <span class="footer-label">{t('cta.email')}</span>
                 <span class="placeholder-token">[EMAIL]</span>
               </span>
             )
@@ -84,7 +91,7 @@ const columns = [
           {
             emailAlt && mailtoAlt && (
               <a class="footer-line" href={mailtoAlt}>
-                <span class="footer-label">Or</span>
+                <span class="footer-label">{t('cta.or')}</span>
                 {emailAlt}
               </a>
             )
@@ -92,7 +99,7 @@ const columns = [
         </div>
       </div>
 
-      <nav class="footer-nav" aria-label="Footer">
+      <nav class="footer-nav" aria-label={t('footer.label')}>
         {
           columns.map((column) => (
             <div class="footer-col">
@@ -111,36 +118,34 @@ const columns = [
     </div>
 
     <div class="footer-areas">
-      <h2 class="footer-col-title">Popular service areas</h2>
+      <h2 class="footer-col-title">{t('footer.popularAreas')}</h2>
       <ul class="area-links">
         {
           landingAreas.map((area) => (
             <li>
-              <a href={area.landing}>
-                {area.name === 'Miami' ? 'Pergolas in Miami' : `Pergolas in ${area.name}`}
-              </a>
+              <a href={L(area.landing)}>{`${t('footer.pergolasIn')} ${area.name}`}</a>
             </li>
           ))
         }
-        <li><a href="/miami-tiki-huts/">Tiki huts in Miami</a></li>
-        <li><a href="/service-areas/">All South Florida service areas</a></li>
+        <li><a href={L('/miami-tiki-huts/')}>{`${t('footer.tikiHutsIn')} Miami`}</a></li>
+        <li><a href={L('/service-areas/')}>{t('footer.allAreas')}</a></li>
       </ul>
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; {year} Machin Solutions. All rights reserved.</p>
+      <p>&copy; {year} Machin Solutions. {t('footer.rights')}</p>
       <p class="footer-meta">
         {
           licence ? (
-            <span>Licence {licence}</span>
+            <span>{t('footer.licence')} {licence}</span>
           ) : (
             <span>
-              Licence <span class="placeholder-token">[LICENSE_NUMBER]</span>
+              {t('footer.licence')} <span class="placeholder-token">[LICENSE_NUMBER]</span>
             </span>
           )
         }
         <span aria-hidden="true">·</span>
-        <span>Serving Miami-Dade, Broward &amp; the Upper Keys</span>
+        <span>{t('footer.serving')}</span>
       </p>
     </div>
   </div>

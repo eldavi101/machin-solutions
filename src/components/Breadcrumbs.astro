@@ -1,4 +1,7 @@
 ---
+import { defaultLang, localizePath, type Lang } from '../i18n';
+import { useTranslations } from '../i18n/ui';
+
 export interface Crumb {
   href?: string;
   label: string;
@@ -6,13 +9,15 @@ export interface Crumb {
 
 export interface Props {
   crumbs: Crumb[];
+  lang?: Lang;
 }
 
-const { crumbs } = Astro.props;
-const trail: Crumb[] = [{ href: '/', label: 'Home' }, ...crumbs];
+const { crumbs, lang = defaultLang } = Astro.props;
+const t = useTranslations(lang);
+const trail: Crumb[] = [{ href: localizePath('/', lang), label: t('crumb.home') }, ...crumbs];
 ---
 
-<nav class="breadcrumbs" aria-label="Breadcrumb">
+<nav class="breadcrumbs" aria-label={t('crumb.label')}>
   <div class="shell">
     <ol>
       {

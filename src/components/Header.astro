@@ -1,23 +1,41 @@
 ---
 import { site, callHref, phoneLabel } from '../config/site';
+import { defaultLang, langNames, localizePath, stripLang, type Lang } from '../i18n';
+import { counterpart } from '../i18n/routes';
+import { useTranslations } from '../i18n/ui';
 
 export interface Props {
+  /** Path of the current page, language prefix included. */
   currentPath: string;
+  lang?: Lang;
 }
 
-const { currentPath } = Astro.props;
+const { currentPath, lang = defaultLang } = Astro.props;
+const t = useTranslations(lang);
+
+/** Nav hrefs are written as logical paths and localised once, here. */
+const L = (path: string) => localizePath(path, lang);
 
 const nav = [
-  { href: '/pergolas/', label: 'Pergolas' },
-  { href: '/tiki-huts/', label: 'Tiki Huts' },
-  { href: '/outdoor-living/', label: 'Outdoor Living' },
-  { href: '/gallery/', label: 'Our Work' },
-  { href: '/service-areas/', label: 'Service Areas' },
-  { href: '/about/', label: 'About' },
+  { href: L('/pergolas/'), label: t('nav.pergolas') },
+  { href: L('/tiki-huts/'), label: t('nav.tikiHuts') },
+  { href: L('/outdoor-living/'), label: t('nav.outdoorLiving') },
+  { href: L('/gallery/'), label: t('nav.gallery') },
+  { href: L('/service-areas/'), label: t('nav.serviceAreas') },
+  { href: L('/about/'), label: t('nav.about') },
 ];
 
-const isCurrent = (href: string) => currentPath === href || (href !== '/' && currentPath.startsWith(href));
+const logical = stripLang(currentPath);
+const isCurrent = (href: string) => currentPath === href || (href !== L('/') && currentPath.startsWith(href));
 const phone = phoneLabel();
+
+// The switcher points at THIS page in the other language, not at the other home
+// page. Sending someone reading /pergolas/aluminum/ to /es/ is the classic i18n
+// mistake and it loses the visitor.
+const otherLang: Lang = lang === 'en' ? 'es' : 'en';
+// null while this page has no counterpart yet. A switcher that links to a page
+// nobody has written is a 404 in the header, which is the worst place for one.
+const otherHref = counterpart(logical, otherLang);
 ---
 
 <header class="site-header">
@@ -25,7 +43,7 @@ const phone = phoneLabel();
     {/* No aria-label: the visible text is the accessible name. An aria-label that
         does not contain the visible text breaks WCAG 2.5.3 (Label in Name) and
         leaves voice-control users unable to say what they can read. */}
-    <a href="/" class="brand">
+    <a href={L('/')} class="brand">
       <span class="brand-mark" aria-hidden="true">
         <svg viewBox="0 0 32 32" width="30" height="30" focusable="false">
           <path d="M2 12 16 4l14 8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square" />
@@ -47,10 +65,25 @@ const phone = phoneLabel();
       data-nav-toggle
     >
       <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
-      <span class="nav-toggle-label">Menu</span>
+      <span class="nav-toggle-label">{t('nav.menu')}</span>
     </button>
 
-    <nav id="primary-nav" class="primary-nav" aria-label="Primary" data-nav>
+    {/* Language switcher. Sits outside the collapsible nav on purpose: it has to be
+        visible on a phone without opening the menu first. Two states, both always
+        shown, so it reads as a switch rather than as a link to somewhere new. */}
+{
+      otherHref && (
+        <div class="lang-switch" role="group" aria-label={t('lang.label')}>
+          <span class="lang-current" aria-current="true">{lang === 'en' ? 'EN' : 'ES'}</span>
+          <a class="lang-other" href={otherHref} hreflang={otherLang} lang={otherLang}>
+            <span aria-hidden="true">{otherLang === 'en' ? 'EN' : 'ES'}</span>
+            <span class="visually-hidden">{langNames[otherLang]}</span>
+          </a>
+        </div>
+      )
+    }
+
+    <nav id="primary-nav" class="primary-nav" aria-label={t('nav.primary')} data-nav>
       <ul class="nav-list">
         {
           nav.map((item) => (
@@ -66,7 +99,7 @@ const phone = phoneLabel();
         <a class="btn btn-ghost nav-call" href={callHref()}>
           {phone ? phone : <span class="placeholder-token">[PHONE_NUMBER]</span>}
         </a>
-        <a class="btn btn-primary" href="/contact/">Get a Free Estimate</a>
+        <a class="btn btn-primary" href={L('/contact/')}>{t('cta.freeEstimate')}</a>
       </div>
     </nav>
   </div>
@@ -112,6 +145,44 @@ const phone = phoneLabel();
     text-transform: uppercase;
     color: var(--ink-faint);
     font-weight: 600;
+  }
+
+  /* Two-state switch: the active language is a solid chip, the other is a link.
+     Both visible at all times so it reads as a toggle, and it never collapses into
+     the mobile menu — a Spanish speaker must find it without opening anything. */
+  .lang-switch {
+    display: inline-flex;
+    align-items: stretch;
+    border: 1.5px solid var(--line-strong);
+    border-radius: var(--radius);
+    overflow: hidden;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-right: 0.15rem;
+  }
+  .lang-current,
+  .lang-other {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.6rem;
+    min-height: 2.6rem;
+    padding: 0 0.55rem;
+  }
+  .lang-current {
+    background: var(--graphite-900);
+    color: #fff;
+  }
+  .lang-other {
+    text-decoration: none;
+    color: var(--ink-soft);
+    background: transparent;
+  }
+  .lang-other:hover,
+  .lang-other:focus-visible {
+    background: var(--sand-100);
+    color: var(--ink);
   }
 
   .nav-toggle {
