@@ -5,10 +5,9 @@
 > romper, y lo que falta. No re-derives nada de esto leyendo el código.
 
 **Última actualización:** 8 de septiembre de 2026
-**Último cambio funcional que describe:** `6b92372` — teléfonos y correos reales,
-desplegado y verificado en producción.
-**Estado general:** publicado, en producción y funcionando. `main` y `origin/main`
-sincronizados. Falta información del negocio, no código.
+**Último cambio funcional que describe:** `593449d` — sitio bilingüe completo
+(inglés y español), más la dirección real del negocio.
+**Estado general:** publicado y funcionando. Falta información del negocio, no código.
 
 **Para saber si este archivo está desactualizado**, sin depender de un hash escrito a
 mano:
@@ -25,9 +24,12 @@ actualízalo al terminar tu tarea.
 
 ## 0. Para retomar — siguiente sesión
 
-El sitio está **entero, desplegado y verificado**. No hay nada roto ni a medias, así que
-no hace falta arreglar nada antes de empezar: cualquier tarea nueva parte de una base
-limpia.
+El sitio está **entero y verificado**, y es **bilingüe**: 21 páginas en inglés y las
+mismas 21 en español. No hay nada roto ni a medias, así que no hace falta arreglar nada
+antes de empezar: cualquier tarea nueva parte de una base limpia.
+
+**Si añade o edita contenido, hágalo en los DOS idiomas.** Media página traducida es
+peor que ninguna. Ver §15.
 
 **Comprobación de 30 segundos antes de tocar nada:**
 
@@ -160,18 +162,25 @@ marca**. No los corras por rutina: reescriben archivos binarios ya commiteados.
 ```
 src/
   config/site.ts        ← FUENTE ÚNICA de todos los datos del negocio (ver §6)
+  i18n/
+    index.ts            ← idiomas, rutas y localizePath (ver §15)
+    ui.ts               ← cadenas de interfaz en los dos idiomas
+    content.ts          ← prosa que vive dentro de componentes (value props, proceso)
+    routes.ts           ← qué páginas existen ya en español, leído del sistema de archivos
   data/
     media.json          ← manifiesto de la galería: qué foto, qué proyecto, qué categoría
     areas.ts            ← 20 ciudades; 4 con página propia (landing: true)
     faqs.ts             ← generalFaqs, pergolaFaqs, tikiFaqs, galleryFaqs,
                           contactFaqs, siteFaqs
+    faqs.es.ts          ← las mismas 33 preguntas en español, mismos placeholders
   lib/
     media.ts            ← acceso tipado al manifiesto generado
     schema.ts           ← constructores de JSON-LD (ver §8, tiene una regla dura)
   layouts/BaseLayout.astro
   components/           ← 16 componentes (Header, Footer, Hero, Gallery, QuoteForm,
                           StickyCta, Faq, TikiPlaceholder, …)
-  pages/                ← 21 páginas
+  pages/                ← 21 páginas en inglés
+    es/                 ← las mismas 21 en español, misma estructura de carpetas
 scripts/
   process-media.mjs     ← Gallery/ → public/media/ (AVIF+WebP+JPEG, vídeo, pósters)
   check-build.mjs       ← la auditoría (§7)
@@ -467,7 +476,7 @@ estaba caducada y bloqueaba los push.
 
 ## 14. Historial resumido
 
-16 commits. Los que explican decisiones vivas:
+21 commits. Los que explican decisiones vivas:
 
 - `94bda58` inicialización · `3f80e50` páginas de pérgolas · `a918fbd` tiki huts, outdoor
   living, galería y ciudades
@@ -482,6 +491,72 @@ estaba caducada y bloqueaba los push.
 - `c99f7ce` `Create CNAME` — **commit creado por GitHub, no por nosotros** (ver §13)
 - `6b92372` **teléfonos y correos reales** (ver §6)
 - `032cde8` `PROJECT_STATE.md` y `CLAUDE.md` como punto de entrada
+- `cf09d2d` **dirección real del negocio** (30760 SW 212 Ave, Homestead)
+- `cc4c3b5` infraestructura bilingüe (ver §15)
+- `635e8cd` componentes y auditoría bilingües
+- `593449d` **las 21 páginas en español**
 
 Los dos últimos se rebasearon sobre el commit de GitHub, así que sus hashes cambiaron
 respecto a los originales locales. El contenido es el mismo.
+
+---
+
+## 15. El sitio es bilingüe
+
+**Inglés en la raíz (`/pergolas/`), español bajo `/es/` (`/es/pergolas/`).** El inglés es
+el idioma por defecto y sus URLs no cambiaron: ya estaban indexadas.
+
+### Los slugs NO se traducen, y es deliberado
+
+`/es/pergolas/`, no `/es/pergolas-a-medida/`. Razones, por orden de peso:
+
+1. **El hreflang correcto es lo que de verdad posiciona un sitio bilingüe**, y hay que
+   mantenerlo exacto en las 21 parejas. Con slugs en inglés el mapeo es mecánico
+   (`/x/` ↔ `/es/x/`); con slugs traducidos es una tabla a mano que se desincroniza en
+   cuanto alguien añade una página.
+2. La auditoría resuelve enlaces por ruta. Un mapa de slugs obligaría a un helper en cada
+   enlace interno, y el que se olvide es un 404.
+3. Los términos principales — *pergola*, *tiki hut*, *chickee* — son los mismos en el
+   español de Miami. Los únicos slugs que ganarían algo (`/galeria/`, `/contacto/`) están
+   en las páginas de menos valor.
+
+Si algún día se quieren slugs bonitos en español, se añaden como **capa de
+redirecciones** sobre un sitio que ya funciona. No se rehace el enrutado.
+
+### Cómo está montado
+
+- **`src/i18n/index.ts`** — `localizePath(ruta, idioma)`, `stripLang`, `alternates`.
+  Todo enlace interno de un componente pasa por `localizePath`.
+- **`src/i18n/ui.ts`** — cadenas de interfaz (navegación, botones, formulario, pie).
+  `useTranslations(lang)` devuelve `t(clave)`, con respaldo al inglés si falta una clave.
+- **`src/i18n/content.ts`** — la prosa que vive dentro de componentes: los seis value
+  props, los cinco pasos del proceso y sus encabezados.
+- **`src/i18n/routes.ts`** — deriva del sistema de archivos qué páginas existen en
+  español. El conmutador y el hreflang solo se dibujan donde hay contraparte, así que el
+  repo queda desplegable aunque falte una traducción.
+- **`src/data/faqs.es.ts`** — las FAQs en español, con los **mismos** tokens
+  `[PLACEHOLDER]` que el inglés.
+- **`src/data/areas.ts`** — cada ciudad tiene `note` y `noteEs`.
+
+### Reglas
+
+- **Los componentes reciben `lang` como prop y NUNCA lo deducen de la URL.** Esa regla
+  duplicada en dieciséis archivos es como se pudre un i18n.
+- **Si añade una página, añádala en los dos idiomas.** Si de verdad no puede, el
+  conmutador simplemente no aparecerá en ella — el sitio no se rompe — pero dígalo.
+- **Si edita copy en un idioma, edítelo en el otro.** No hay detector automático de
+  divergencia de contenido, solo de cadenas de interfaz olvidadas.
+- **Los bloques `<style>` de las páginas españolas se copian del original inglés**, no se
+  escriben a mano. Son traducciones de la copia, no rediseños.
+- **Las páginas `noindex` no llevan hreflang ni conmutador.** GitHub Pages sirve la 404
+  para cualquier ruta inexistente, así que `/404/` no es una dirección real.
+
+### Qué vigila la auditoría
+
+`npm run audit` falla si: `<html lang>` u `og:locale` no cuadran con el árbol, un
+hreflang apunta a una página que no existe, un hreflang es unilateral (Google ignora los
+pares no confirmados), falta `x-default`, o aparece una cadena inglesa de alta frecuencia
+en una página `/es/` — esto último caza el componente al que se olvidó pasarle `lang`.
+
+Estado actual: **21 páginas en cada idioma, 120 enlaces hreflang recíprocos, 40 URLs de
+sitemap, sin problemas.** Lighthouse mide idéntico en las dos ramas (98/98).

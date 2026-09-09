@@ -38,12 +38,17 @@ describe, y lo que haya cambiado).
    PRs, y cualquier despliegue. El push dispara el despliegue a producción.
    **Nunca cambies DNS.**
 
-7. **Datos del negocio → `src/config/site.ts`, nunca en las páginas.** Es la fuente única
+7. **El sitio es bilingüe: inglés en la raíz, español bajo `/es/`.** Si añade o edita
+   contenido, hágalo en los **dos** idiomas. Los componentes reciben `lang` como prop y
+   nunca lo deducen de la URL. Los enlaces internos pasan por `localizePath`. Los slugs
+   NO se traducen, y es deliberado — ver §15 de `PROJECT_STATE.md` antes de cambiarlo.
+
+8. **Datos del negocio → `src/config/site.ts`, nunca en las páginas.** Es la fuente única
    para las 21 páginas, header, footer, CTAs, JSON-LD y Open Graph. Para mostrar el
    teléfono en pantalla usa `phoneLabel()`, nunca `site.phone` (ese es sólo para `tel:`
    y JSON-LD).
 
-8. **No inventes un endpoint para el formulario.** GitHub Pages no tiene backend.
+9. **No inventes un endpoint para el formulario.** GitHub Pages no tiene backend.
    `formEndpoint: null` es deliberado.
 
 ## Antes de dar por terminado
@@ -61,5 +66,6 @@ Haz commits lógicos y separados, no uno gigante.
 
 ## Idioma
 
-El sitio es para clientes de South Florida: **todo el contenido de cara al público va en
-inglés**. La documentación interna (`PROJECT_STATE.md`, este archivo) va en español.
+El contenido de cara al público va en **inglés y en español**, en paralelo: el inglés en
+la raíz y el español bajo `/es/`. La documentación interna (`PROJECT_STATE.md`, este
+archivo) va en español.
