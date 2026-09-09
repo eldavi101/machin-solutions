@@ -43,10 +43,10 @@ export const site = {
   email: 'machindavid2@gmail.com',
   emailAlt: 'machinfarms@gmail.com',
   address: {
-    street: '[BUSINESS_ADDRESS]',
-    locality: 'Miami',
+    street: '30760 SW 212 Ave',
+    locality: 'Homestead',
     region: 'FL',
-    postalCode: '[POSTAL_CODE]',
+    postalCode: '33030',
     country: 'US',
   },
   licenseNumber: '[LICENSE_NUMBER]',
@@ -75,7 +75,16 @@ export const site = {
     { days: ['Saturday'], opens: '09:00', closes: '14:00' },
   ],
 
-  /** Geographic centre used for the LocalBusiness service radius. */
+  /**
+   * Centre of the SERVICE AREA, not the business location — it feeds the GeoCircle in
+   * `serviceArea`, which spans Miami-Dade, Broward and the Upper Keys. It stays on Miami
+   * because that is the middle of the area served; the business itself sits in Homestead,
+   * at the southern edge of it.
+   *
+   * There is deliberately no `geo` for the premises: that needs real coordinates for
+   * 30760 SW 212 Ave, and guessing them would be inventing precision. Geocode the address
+   * properly and add it, or leave it out.
+   */
   geo: { latitude: 25.7617, longitude: -80.1918, radiusKm: 80 },
 } as const;
 
