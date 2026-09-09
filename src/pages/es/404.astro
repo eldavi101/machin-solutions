@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { callHref, phoneLabel } from '../../config/site';
+
+const lang = 'es' as const;
+const path = '/es/404/';
+const title = 'Página No Encontrada | Machin Solutions';
+const description =
+  'Esa página no existe. Aquí están las pérgolas, los tiki huts, nuestro trabajo y el presupuesto.';
+
+const phone = phoneLabel();
+
+const links = [
+  {
+    href: '/es/pergolas/',
+    label: 'Pérgolas',
+    note: 'Estructuras a medida, de aluminio, madera, lamas y techo sólido.',
+  },
+  {
+    href: '/es/tiki-huts/',
+    label: 'Tiki Huts',
+    note: 'Tiki huts y chickee huts tradicionales de palma.',
+  },
+  {
+    href: '/es/outdoor-living/',
+    label: 'Espacios Exteriores',
+    note: 'Cabañas, patios cubiertos y cocinas exteriores.',
+  },
+  {
+    href: '/es/gallery/',
+    label: 'Nuestro Trabajo',
+    note: 'Proyectos terminados por todo el sur de Florida.',
+  },
+  {
+    href: '/es/service-areas/',
+    label: 'Zonas de Servicio',
+    note: 'Dónde construimos, ciudad por ciudad.',
+  },
+  {
+    href: '/es/contact/',
+    label: 'Pedir Presupuesto',
+    note: 'Mande fotos y reciba una respuesta real.',
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} lang={lang} noindex>
+  <section class="section notfound">
+    <div class="shell">
+      <p class="eyebrow">404</p>
+      <h1>Esa página no está aquí</h1>
+      <p class="lede">
+        Puede que el enlace esté desactualizado, o que la dirección tenga una errata. Todo lo
+        que hay en la web está a un clic aquí abajo.
+      </p>
+
+      <ul class="lost-links">
+        {
+          links.map((link) => (
+            <li>
+              <a href={link.href}>
+                <span class="lost-label">{link.label}</span>
+                <span class="lost-note">{link.note}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="btn-row notfound-actions">
+        <a class="btn btn-primary" href="/es/">Volver a la página de inicio</a>
+        <a class="btn btn-ghost" href={callHref()}>
+          {phone ? `Llamar ${phone}` : 'Contactar'}
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .notfound { padding-block: var(--space-2xl) var(--space-3xl); }
+  .notfound .lede { margin-top: var(--space-s); }
+
+  .lost-links {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-xl) 0 0;
+    display: grid;
+    gap: var(--space-s);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  }
+  .lost-links a {
+    display: grid;
+    gap: 0.25rem;
+    height: 100%;
+    padding: var(--space-m);
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: border-color 0.18s ease, transform 0.18s ease;
+  }
+  .lost-links a:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+  .lost-label { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); }
+  .lost-note { font-size: 0.9rem; color: var(--ink-soft); }
+
+  .notfound-actions { margin-top: var(--space-xl); }
+</style>

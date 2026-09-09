@@ -62,7 +62,13 @@ const ogImageUrl = absolute(ogImage);
 const t = useTranslations(lang);
 // Only pages that exist get an hreflang entry. Advertising /es/faq/ before it is
 // written tells Google to crawl a 404, which is worse than having no alternate.
-const langAlternates = alternates(path).filter((alt) => existsIn(path, alt.lang));
+//
+// noindex pages are excluded entirely. The 404 page is the case that matters: it is
+// served by GitHub Pages for ANY missing path, so "/404/" is not an address a visitor
+// ever reaches, and pointing hreflang at it tells Google to crawl a URL that 404s.
+const langAlternates = noindex
+  ? []
+  : alternates(path).filter((alt) => existsIn(path, alt.lang));
 ---
 
 <!doctype html>
@@ -158,7 +164,7 @@ const langAlternates = alternates(path).filter((alt) => existsIn(path, alt.lang)
 
   <body class={bodyClass}>
     <a class="skip-link" href="#main">{t('nav.skipToContent')}</a>
-    <Header currentPath={path} lang={lang} />
+    <Header currentPath={path} lang={lang} showLangSwitch={!noindex} />
     {crumbs && crumbs.length > 0 && <Breadcrumbs crumbs={crumbs} lang={lang} />}
     <main id="main">
       <slot />

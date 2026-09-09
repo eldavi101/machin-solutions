@@ -1,0 +1,270 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHeader from '../../../components/PageHeader.astro';
+import TikiPlaceholder from '../../../components/TikiPlaceholder.astro';
+import ProcessSteps from '../../../components/ProcessSteps.astro';
+import Faq from '../../../components/Faq.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import QuoteForm from '../../../components/QuoteForm.astro';
+import { tikiFaqsEs } from '../../../data/faqs.es';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../../../lib/schema';
+
+const lang = 'es' as const;
+const path = '/es/tiki-huts/';
+const title = 'Tiki Huts y Chickee Huts en el Sur de Florida';
+const description =
+  'Constructores de tiki huts y chickee huts en el sur de Florida. Estructuras tradicionales de palma con los lados abiertos para patios, piscinas y espacios comerciales.';
+
+const crumbs = [{ label: 'Tiki Huts' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Diseño y construcción de tiki huts y chickee huts',
+    description,
+    path,
+    serviceType: 'Tiki hut construction',
+    offers: [
+      'Construcción de tiki huts a medida',
+      'Construcción de chickee huts',
+      'Tiki huts para patio y piscina',
+      'Estructuras comerciales de palma y barras tiki',
+      'Reposición de palma y reparación de tiki huts',
+    ],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+
+const kinds = [
+  {
+    name: 'Tiki huts de patio',
+    body: 'Un destino en sombra dentro del patio, más que una prolongación de la casa: donde acaban los sillones, la mesa y, con el tiempo, todo el mundo.',
+  },
+  {
+    name: 'Tiki huts junto a la piscina',
+    body: 'Sombra profunda al lado del agua sin cortar la brisa, que es exactamente en lo que un techo de palma con los lados abiertos es bueno en julio.',
+  },
+  {
+    name: 'Chickee huts',
+    body: 'La forma tradicional seminola y miccosukee de la que viene todo el estilo: estructura abierta, sin paredes, techo de palma muy inclinado.',
+    href: '/es/tiki-huts/chickee-huts/',
+  },
+  {
+    name: 'Barras tiki',
+    body: 'Un techo de palma sobre una barra, con la estructura proyectada alrededor del mostrador, los equipos y la iluminación desde el principio.',
+  },
+  {
+    name: 'Estructuras comerciales',
+    body: 'Sombra de palma para restaurantes, resorts, marinas y espacios de eventos, donde la durabilidad y el acceso para mantenimiento importan más que en ningún otro sitio.',
+  },
+  {
+    name: 'Reposición de palma y reparación',
+    body: 'La palma es una superficie de desgaste. Cuando se adelgaza, la estructura normalmente se queda y el techo se renueva.',
+    href: '/es/tiki-huts/construction/',
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  lang={lang}
+  crumbs={crumbs}
+  schema={schema}
+>
+  <PageHeader
+    lang={lang}
+    eyebrow="Tiki huts y chickee huts"
+    title="Tiki Huts y Chickee Huts, Construidos a la Manera Tradicional"
+    lede="Una estructura de lados abiertos bajo un techo de palma muy inclinado es una de las pocas construcciones pensadas de verdad para este clima: da sombra profunda, deja pasar la brisa y evacúa un aguacero de verano por fuera mientras por debajo se mantiene seco. Resulta además que es la forma de refugio más antigua que se ha construido en el sur de Florida."
+    facts={[
+      { label: 'Estructuras', value: 'Tiki huts, chickee huts, barras de palma y refugios de sombra' },
+      { label: 'Palma', value: 'Sabal natural, o palma sintética cuando el mantenimiento tiene que ser mínimo' },
+      { label: 'Para', value: 'Patios residenciales, terrazas de piscina y espacios comerciales' },
+      { label: 'También', value: 'Reposición de palma y reparación de estructuras existentes' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>Por qué un tiki hut y no una pérgola</h2>
+      <p>
+        Resuelven el mismo problema por caminos opuestos. Una{' '}
+        <a href="/es/pergolas/">pérgola</a> es una estructura moderna y calculada: líneas
+        precisas, un techo que se puede sellar por completo y capacidad para sostener una
+        cocina, un televisor e iluminación empotrada. Un tiki hut es una estructura
+        tradicional: sin paredes, con un techo grueso de palma muy inclinado, y una sensación
+        más cercana a estar bajo un árbol que bajo un techo.
+      </p>
+      <p>
+        La diferencia práctica es la ventilación y la profundidad de la sombra. La palma es
+        gruesa y aísla — el espacio de debajo va bastante más fresco que la terraza al sol —
+        y como no hay paredes, la brisa que haya pasa directamente a través. Esa combinación
+        es la razón de que la forma haya sobrevivido aquí durante siglos, y de que siga
+        funcionando junto a una piscina en una tarde quieta de agosto.
+      </p>
+      <p>
+        A cambio, un techo de palma es una superficie natural y de desgaste, no una superficie
+        sellada, y no es la estructura de la que colgar una cocina exterior y un televisor. Si
+        lo que quiere es una sala seca capaz de sostener equipos, quiere una pérgola. Si lo
+        que quiere es sombra, brisa y carácter, quiere esto.
+      </p>
+
+      <h2>¿Tiki hut o chickee hut?</h2>
+      <p>
+        En el sur de Florida las dos palabras describen la misma estructura y se usan
+        indistintamente. <strong>Chickee</strong> es el término seminola y miccosukee del
+        refugio de palma con los lados abiertos del que procede la forma: una estructura
+        elevada, sin paredes, con un techo de palma sabal muy inclinado.{' '}
+        <strong>Tiki hut</strong> es el nombre que esa misma estructura adoptó comercialmente,
+        y es lo que busca la mayoría de la gente.
+      </p>
+      <p>
+        Construimos las dos, porque son la misma cosa.{' '}
+        <a href="/es/tiki-huts/chickee-huts/">Más sobre los chickee huts y la tradición que hay detrás →</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Qué construimos</p>
+        <h2>Estructuras de tiki hut</h2>
+      </div>
+      <ul class="kind-grid">
+        {
+          kinds.map((kind) => (
+            <li class="kind-card">
+              <h3>{kind.href ? <a href={kind.href}>{kind.name}</a> : kind.name}</h3>
+              <p>{kind.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Nuestro trabajo</p>
+        <h2>Fotografías de tiki huts</h2>
+      </div>
+      <TikiPlaceholder lang={lang} caption="Todavía no hay fotografías de tiki huts en esta galería." />
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="shell prose">
+      <h2>Materiales y cómo envejecen</h2>
+      <p>
+        Un hut tradicional es una estructura de madera — ciprés o madera tratada — que sostiene
+        un techo de palma construido con hojas de sabal en capas. La pendiente es fuerte a
+        propósito: el agua corre por la superficie exterior lo bastante rápido como para no
+        llegar nunca a empapar las capas de debajo, que es lo que mantiene seco el espacio.
+      </p>
+      <p>
+        La palma natural es una superficie de desgaste. Se curte, se adelgaza y acaba
+        necesitando reposición, y la velocidad depende de la exposición al sol, la lluvia, los
+        árboles que cuelguen encima y de lo bien construido que estuviera el techo de origen.
+        Reponer la palma es parte normal de tener uno, no un fallo: la estructura se queda, el
+        techo se renueva.{' '}
+        <span class="placeholder-token">[THATCH_LIFESPAN]</span> — añada la duración y el
+        intervalo de reposición que esté dispuesto a sostener.
+      </p>
+      <p>
+        La palma sintética es la alternativa. Dura bastante más con mucho menos mantenimiento,
+        y suele ser la opción correcta para emplazamientos comerciales o para quien no quiera
+        un ciclo de mantenimiento. Renuncia a parte de la textura y el carácter de la palma
+        real, que en una estructura de patio es una pérdida real que conviene sopesar.
+      </p>
+      <p>
+        El tratamiento ignífugo es una cuestión aparte y a menudo un requisito, sobre todo en
+        estructuras comerciales.{' '}
+        <span class="placeholder-token">[FIRE_RETARDANT_POLICY]</span> — indique aquí qué se
+        ofrece y dónde es obligatorio.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>Permisos</h2>
+      <p>
+        Que un tiki hut necesite permiso depende de su departamento de edificación, del tamaño
+        y la altura de la estructura y de cómo se ancle — y las normas no son iguales en
+        Miami-Dade, Broward y el condado de Monroe. Algunas administraciones tratan ciertas
+        estructuras chickee tradicionales de forma distinta a otras construcciones auxiliares.
+      </p>
+      <p>
+        No le vamos a dar una respuesta legal en una página web, porque una respuesta general
+        no vale nada frente a su dirección y su estructura concretas.{' '}
+        <span class="placeholder-token">[PERMIT_POLICY]</span> — indique exactamente cómo lo
+        gestiona Machin Solutions para que aquí haya una respuesta real.
+      </p>
+    </div>
+  </section>
+
+  <ProcessSteps
+    lang={lang}
+    eyebrow="Cómo funciona"
+    title="Cómo va un proyecto de tiki hut"
+    intro="La misma secuencia que cualquier estructura que construimos: entender el espacio, diseñarlo, acordarlo por escrito y construirlo."
+  />
+
+  <section class="section section-sand">
+    <div class="shell form-band">
+      <div class="prose">
+        <h2>Pregunte por un tiki hut</h2>
+        <p>
+          Díganos aproximadamente cuánta sombra quiere, dónde iría dentro del patio y si es
+          residencial o comercial. Las fotos del sitio ayudan más que ninguna otra cosa.
+        </p>
+      </div>
+      <QuoteForm lang={lang} service="Tiki Hut" compact />
+    </div>
+  </section>
+
+  <Faq
+    lang={lang}
+    faqs={tikiFaqsEs}
+    eyebrow="Preguntas sobre tiki huts"
+    title="Lo que la gente pregunta sobre los tiki huts"
+  />
+
+  <CtaBand
+    lang={lang}
+    title="¿Pensando en un hut para el patio?"
+    body="Mande una foto de dónde iría. Recibirá una lectura honesta de si al espacio le encaja mejor un hut de palma o una pérgola."
+    secondaryLabel="Comparar con pérgolas"
+    secondaryHref="/es/pergolas/"
+  />
+</BaseLayout>
+<style>
+  .kind-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-m);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  }
+  .kind-card {
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: var(--space-m);
+    box-shadow: var(--shadow-sm);
+  }
+  .kind-card h3 { font-size: var(--step-1); }
+  .kind-card h3 a { text-decoration: none; }
+  .kind-card h3 a:hover { color: var(--accent); text-decoration: underline; }
+  .kind-card p { margin-top: 0.45rem; color: var(--ink-soft); font-size: 0.95rem; }
+
+  .form-band { display: grid; gap: var(--space-l); }
+  @media (min-width: 62rem) {
+    .form-band { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--space-2xl); align-items: start; }
+  }
+</style>

@@ -1,0 +1,219 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHeader from '../../../components/PageHeader.astro';
+import TikiPlaceholder from '../../../components/TikiPlaceholder.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import QuoteForm from '../../../components/QuoteForm.astro';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../../../lib/schema';
+
+const lang = 'es' as const;
+const path = '/es/tiki-huts/construction/';
+const title = 'Construcción e Instalación de Tiki Huts | Sur de Florida';
+const description =
+  'Construcción de tiki huts en el sur de Florida: cómo se levantan la estructura y el techo de palma, obra residencial y comercial, y reposición.';
+
+const crumbs = [{ href: '/es/tiki-huts/', label: 'Tiki Huts' }, { label: 'Construcción e instalación' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Construcción, instalación y reposición de palma en tiki huts',
+    description,
+    path,
+    serviceType: 'Tiki hut installation',
+    offers: [
+      'Construcción de tiki huts residenciales',
+      'Construcción de tiki huts comerciales',
+      'Instalación de tiki huts',
+      'Reposición de palma en tiki huts',
+      'Reparación de tiki huts',
+    ],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+
+const stages = [
+  {
+    title: 'Emplazamiento',
+    body: 'Dónde va el hut decide casi todo lo bueno que va a ser. La brisa dominante, el recorrido del sol, la distancia a la piscina y a la casa, y qué se va a estar mirando desde debajo: todo eso se recorre antes de marcar nada.',
+  },
+  {
+    title: 'Cimentaciones y postes',
+    body: 'Los postes se colocan para sostener el techo y, más importante, para resistir la succión. Un techo de palma es ligero, y eso hace que la carga que manda sea el viento y no el peso.',
+  },
+  {
+    title: 'Estructura y pares',
+    body: 'La viga perimetral y los pares fijan la pendiente. La pendiente es lo que hace que el techo evacúe el agua, así que es una decisión estructural, no estética.',
+  },
+  {
+    title: 'Colocación de la palma',
+    body: 'Las hojas se colocan en capas desde el borde inferior hacia arriba, solapando cada hilada sobre la anterior, hasta que no queda ningún camino de agua a través del techo. Esta es la parte lenta, y donde se nota el oficio.',
+  },
+  {
+    title: 'Remate y acabado',
+    body: 'Detalle de cumbrera, recorte de bordes y cualquier soporte de iluminación o ventilador. Después se retiran del sitio los recortes y los restos de palma, que son muchos.',
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  lang={lang}
+  crumbs={crumbs}
+  schema={schema}
+>
+  <PageHeader
+    lang={lang}
+    eyebrow="Construcción e instalación"
+    title="Construcción de Tiki Huts en el Sur de Florida"
+    lede="Construir un tiki hut son dos trabajos en uno: una estructura de madera que tiene que resistir la succión en un temporal, y un techo de palma que tiene que evacuar el agua únicamente por cómo está colocado. Ninguna de las dos partes perdona atajos, y normalmente es el techo el que delata una obra apresurada — en una sola temporada."
+    facts={[
+      { label: 'Obra nueva', value: 'Huts residenciales de patio y piscina, y estructuras comerciales' },
+      { label: 'Huts existentes', value: 'Reposición de palma, reparación y mantenimiento' },
+      { label: 'Palma', value: 'Sabal natural, o sintética cuando el mantenimiento debe ser mínimo' },
+      { label: 'Zona de servicio', value: 'Miami-Dade, Broward y los Cayos Altos' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">En obra</p>
+        <h2>Cómo se levanta un hut</h2>
+      </div>
+      <ol class="stages">
+        {
+          stages.map((stage, index) => (
+            <li>
+              <span class="stage-num" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+              <h3>{stage.title}</h3>
+              <p>{stage.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell prose">
+      <h2>Obra residencial y comercial</h2>
+      <p>
+        <strong>Los huts residenciales</strong> suelen ir de un solo espacio que hace bien una
+        cosa: sombra junto a la piscina, un sitio cubierto para una mesa, un destino al fondo
+        del patio. La escala es modesta, el acceso suele ser justo, y el acabado importa porque
+        se ve todos los días desde la ventana de la cocina.
+      </p>
+      <p>
+        <strong>Las estructuras comerciales</strong> — restaurantes, resorts, marinas, espacios
+        de eventos — cambian las prioridades. Las luces crecen, la estructura tiene que soportar
+        un uso más intenso, y el plan de mantenimiento importa desde el primer día, porque un
+        techo que pide atención a los tres años es un asunto muy distinto en una propiedad
+        comercial. Además es más probable que apliquen requisitos de tratamiento ignífugo.{' '}
+        <span class="placeholder-token">[FIRE_RETARDANT_POLICY]</span> — indique qué se ofrece
+        y dónde es obligatorio.
+      </p>
+
+      <h2>Reposición de palma y reparación</h2>
+      <p>
+        La palma se gasta. Es la naturaleza del material, y reponerla es una parte normal y
+        esperable de tener un hut, no la señal de que algo salió mal. La estructura se queda;
+        el techo se desmonta y se rehace.
+      </p>
+      <p>
+        Señales de que al techo le toca: adelgazamiento visible en la cumbrera o en los aleros,
+        luz que entra desde abajo, agua que llega al espacio con lluvia normal y no solo con
+        aguaceros de viento, y mucha caída de restos después de las tormentas. Si ve algo de
+        eso, conviene mirarlo antes y no después de la próxima temporada de huracanes.
+      </p>
+      <p>
+        <span class="placeholder-token">[TIKI_SERVICE_SCOPE]</span> — confirme aquí si se
+        ofrecen reposición y reparación en huts construidos por otros contratistas, y qué
+        límites hay sobre lo que se puede intervenir.
+      </p>
+
+      <h2>Plazos y permisos</h2>
+      <p>
+        Colocar la palma es trabajo a mano y marca el ritmo de la obra. Más allá de eso, el
+        tiempo total depende del diseño, de los planos que hagan falta, de la revisión del
+        departamento de edificación y de la disponibilidad de material — nada de lo cual ocurre
+        en su patio.{' '}
+        <span class="placeholder-token">[LEAD_TIME]</span> — añada plazos realistas en cuanto se
+        puedan indicar con precisión.
+      </p>
+      <p>
+        Los requisitos de permiso varían según la administración y según la estructura, y
+        algunos departamentos de edificación tratan las estructuras chickee tradicionales de
+        forma distinta a otras construcciones auxiliares.{' '}
+        <span class="placeholder-token">[PERMIT_POLICY]</span> — describa exactamente cómo se
+        gestiona.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Nuestro trabajo</p>
+        <h2>Fotografías de obra</h2>
+      </div>
+      <TikiPlaceholder
+        lang={lang}
+        caption="Aquí se irán añadiendo fotografías de obra de proyectos de tiki hut."
+      />
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell form-band">
+      <div class="prose">
+        <h2>Pida presupuesto de tiki hut</h2>
+        <p>
+          Para un hut nuevo, díganos aproximadamente qué tamaño y dónde iría. Para una
+          estructura existente, las fotografías del techo — desde debajo además de por fuera —
+          son el camino más rápido a una respuesta útil.
+        </p>
+      </div>
+      <QuoteForm lang={lang} service="Tiki Hut" compact />
+    </div>
+  </section>
+
+  <CtaBand
+    lang={lang}
+    title="¿Obra nueva o un techo que ya cumplió?"
+    body="En cualquiera de los dos casos, empiece por fotografías. Responden más preguntas que una llamada."
+    secondaryLabel="Sobre los chickee huts"
+    secondaryHref="/es/tiki-huts/chickee-huts/"
+  />
+</BaseLayout>
+<style>
+  .stages {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-m);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  }
+  .stages li {
+    padding-top: var(--space-s);
+    border-top: 2px solid var(--line-strong);
+  }
+  .stage-num {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.3rem;
+  }
+  .stages h3 { font-size: var(--step-1); }
+  .stages p { margin-top: 0.45rem; color: var(--ink-soft); font-size: 0.95rem; }
+
+  .form-band { display: grid; gap: var(--space-l); }
+  @media (min-width: 62rem) {
+    .form-band { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--space-2xl); align-items: start; }
+  }
+</style>

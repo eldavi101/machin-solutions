@@ -1,0 +1,169 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Gallery from '../../components/Gallery.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import { projectsIn } from '../../lib/media';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../../lib/schema';
+
+const lang = 'es' as const;
+const path = '/es/kendall-pergolas/';
+const title = 'Pérgolas en Kendall FL | Cubiertas y Estructuras de Piscina';
+const description =
+  'Pérgolas en Kendall: ampliar patios consolidados, trabajar alrededor de cerramientos de piscina y sustituir estructuras de madera deterioradas.';
+
+const crumbs = [{ href: '/es/service-areas/', label: 'Zonas de servicio' }, { label: 'Kendall' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Diseño e instalación de pérgolas en Kendall, Florida',
+    description,
+    path,
+    serviceType: 'Pergola construction',
+    areaServed: ['Kendall, Florida', 'Miami-Dade County, Florida'],
+    offers: [
+      'Pérgolas a medida',
+      'Cubiertas de patio adosadas',
+      'Sustitución de pérgolas',
+      'Ampliación de cerramientos con mosquitera',
+    ],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  lang={lang}
+  crumbs={crumbs}
+  schema={schema}
+>
+  <PageHeader
+    lang={lang}
+    eyebrow="Kendall"
+    title="Pérgolas en Kendall, Trabajando con lo que Ya Está Ahí"
+    lede="Kendall está consolidado. La mayoría de las casas llevan décadas ahí, la mayoría de los patios tienen vegetación madura, y muchísimos ya tienen algo detrás: un cerramiento de piscina con mosquitera, una losa que se echó para un patio, o una estructura de madera que ha llegado en silencio al final de su vida. Construir aquí suele ir de ampliar o sustituir más que de partir de cero."
+    facts={[
+      { label: 'Parcela típica', value: 'Vivienda consolidada, jardín maduro, patio o cerramiento existente' },
+      { label: 'Obra típica', value: 'Cubiertas adosadas, ampliaciones de cerramiento y sustituciones' },
+      { label: 'Condicionante', value: 'Enlazar limpiamente con lo que ya hay en la propiedad' },
+      { label: 'Trabajo frecuente', value: 'Sustituir estructuras de madera deterioradas' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>Cerramientos y jaulas de piscina</h2>
+      <p>
+        Buena parte de las casas de Kendall tienen un cerramiento de piscina con mosquitera, y
+        ese es el factor que más condiciona cómo se diseña una estructura nueva. Hay tres
+        enfoques viables, y cuál aplica depende de la jaula y de lo que usted quiera de verdad.
+      </p>
+      <p>
+        <strong>Construir libre de él.</strong> Una estructura exenta situada fuera de la
+        huella del cerramiento, que le da un espacio realmente abierto y sin mosquitera junto a
+        la piscina enjaulada. Suele ser lo mejor de las dos cosas: nadar protegido, comer al
+        aire libre.
+      </p>
+      <p>
+        <strong>Prolongarlo.</strong> Una zona cubierta que recoge donde termina la jaula,
+        normalmente adosada a la casa, con el enlace detallado para que el agua salga lejos
+        tanto de la pared como de la estructura del cerramiento y no se meta en la junta.
+      </p>
+      <p>
+        <strong>Sustituir una parte.</strong> Cuando una jaula está envejecida, quitar un tramo
+        y poner en su lugar una estructura de techo sólido le da una habitación exterior seca y
+        usable en vez de una con mosquitera. Es una obra mayor y conviene hablarla con
+        franqueza antes de que nadie se comprometa.
+      </p>
+
+      <h2>Sustituir una estructura de madera que se ha ido</h2>
+      <p>
+        Las pérgolas de madera construidas en Kendall hace veinte o treinta años están, en
+        muchísimos casos, para cambiar. Las señales son constantes: postes blandos por la base,
+        vigas rajadas alrededor de las fijaciones, un techo que nunca llegó a evacuar bien el
+        agua, y un descuelgue general que no arregla ningún repintado.
+      </p>
+      <p>
+        La sustitución es un trabajo sencillo y un buen momento para replantearse el material.
+        Si el sitio está bajo arbolado maduro y fuera del sol directo, la madera sigue siendo
+        una elección legítima — la versión honesta de ese argumento está en la{' '}
+        <a href="/es/pergolas/wood/">página de pérgolas de madera</a>. Si está a cielo abierto,
+        este es el momento de pasarse al{' '}
+        <a href="/es/pergolas/aluminum/">aluminio</a> y cortar el ciclo de mantenimiento para
+        siempre.
+      </p>
+      <p>
+        Le diremos claramente si lo que tiene merece una reparación o si le sale mejor empezar
+        de nuevo. A veces la estructura está sana y solo hay que rehacer el techo, que es una
+        obra mucho menor de lo que la gente espera.
+      </p>
+
+      <h2>La vegetación madura cambia el diseño</h2>
+      <p>
+        Los patios consolidados de Kendall suelen tener árboles de verdad, y eso es una ventaja
+        que merece la pena aprovechar en el diseño en vez de eliminar. El arbolado existente le
+        quita filo al sol, lo que abre opciones de material y a menudo significa que una
+        estructura más pequeña hace el trabajo.
+      </p>
+      <p>
+        La limitación práctica son las raíces. Los sistemas radiculares maduros descartan
+        posiciones de cimentación igual que lo hacen las tuberías de la piscina, y se detectan
+        en la visita técnica y no la mañana de la excavación. Las ramas que cuelgan encima
+        también importan para un{' '}
+        <a href="/es/tiki-huts/">techo de palma</a>, donde la hojarasca constante acorta
+        bastante la vida de la cubierta.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Nuestro trabajo</p>
+        <h2>Estructuras construidas alrededor de piscinas y terrazas existentes</h2>
+      </div>
+      <Gallery projects={projectsIn('pergolas')} limit={2} lang={lang} />
+      <p style="margin-top:var(--space-l)">
+        <a class="btn btn-dark" href="/es/gallery/">Ver todos los proyectos</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell form-band">
+      <div class="prose">
+        <h2>Pida presupuesto de pérgola en Kendall</h2>
+        <p>
+          Si ya hay una estructura o un cerramiento detrás, fotografíelo desde debajo además de
+          desde el patio: eso es lo que enseña si la estructura está sana. Las medidas
+          aproximadas y hacia dónde da la parte trasera de la casa completan el cuadro.
+        </p>
+        <p>
+          Vea también <a href="/es/miami-pergolas/">Miami</a>,{' '}
+          <a href="/es/homestead-pergolas/">Homestead</a> y la{' '}
+          <a href="/es/service-areas/">lista completa de zonas de servicio</a>.
+        </p>
+      </div>
+      <QuoteForm lang={lang} service="Pergola" city="Kendall" compact />
+    </div>
+  </section>
+
+  <CtaBand
+    lang={lang}
+    title="¿Ampliar, sustituir o empezar de cero?"
+    body="Mande fotografías de lo que hay ahora. La mitad de la respuesta suele estar a la vista en ellas."
+    secondaryLabel="Opciones de pérgola"
+    secondaryHref="/es/pergolas/"
+  />
+</BaseLayout>
+<style>
+  .form-band { display: grid; gap: var(--space-l); }
+  @media (min-width: 62rem) {
+    .form-band { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--space-2xl); align-items: start; }
+  }
+</style>

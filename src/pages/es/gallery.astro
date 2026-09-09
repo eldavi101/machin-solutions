@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Gallery from '../../components/Gallery.astro';
+import TikiPlaceholder from '../../components/TikiPlaceholder.astro';
+import Faq from '../../components/Faq.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { galleryFaqsEs } from '../../data/faqs.es';
+import { projects, allImages, allVideos, galleryStats } from '../../lib/media';
+import {
+  breadcrumbSchema,
+  webPageSchema,
+  gallerySchema,
+  imageObjectSchema,
+  videoObjectSchema,
+} from '../../lib/schema';
+
+const lang = 'es' as const;
+const path = '/es/gallery/';
+const title = 'Nuestro Trabajo | Galería de Pérgolas y Exteriores, Miami';
+const description =
+  'Proyectos terminados de pérgolas, cabañas y espacios exteriores en Miami y el sur de Florida. Fotos reales de estructuras que construimos.';
+
+const crumbs = [{ label: 'Nuestro trabajo' }];
+
+const media = [
+  ...allImages.map((image) => imageObjectSchema(image, image.project.title)),
+  ...allVideos.map((clip) => videoObjectSchema(clip, clip.project.title)),
+];
+
+const schema = [
+  gallerySchema(path, media),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  lang={lang}
+  crumbs={crumbs}
+  schema={schema}
+>
+  <PageHeader
+    lang={lang}
+    eyebrow="Nuestro trabajo"
+    title="Pérgolas, Cabañas y Proyectos de Exterior"
+    lede="Cada fotografía de aquí es una estructura que construyó Machin Solutions, tomada en obra. Algunas están hechas con las escaleras todavía puestas y la terraza aún sucia, porque así es como se ve un proyecto real un día antes de estar terminado. Sin fotos de banco de imágenes y sin renders."
+    facts={[
+      { label: 'Proyectos', value: `${galleryStats.projects} estructuras terminadas` },
+      { label: 'Fotografías', value: `${galleryStats.images} fotos tomadas en obra` },
+      { label: 'Vídeo', value: `${galleryStats.videos} clips de recorrido` },
+      { label: 'Ubicaciones', value: 'Patios de Miami-Dade y Broward' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell">
+      {/* h2, no h3: estas secciones siguen al h1 de la página sin nada en medio. */}
+      <Gallery projects={projects} filters headingLevel="h2" lang={lang} />
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Tiki huts</p>
+        <h2>Proyectos de tiki hut</h2>
+        <p class="lede" style="margin-top:var(--space-s)">
+          Construimos tiki huts y chickee huts, pero todavía no hay ninguna fotografía de
+          tiki hut en esta galería — y no vamos a poner un pie de foto de tiki hut a una
+          pérgola.
+        </p>
+      </div>
+      <TikiPlaceholder
+        lang={lang}
+        caption="Todavía no se han aportado fotografías de tiki huts para esta galería."
+      />
+    </div>
+  </section>
+
+  <Faq
+    lang={lang}
+    faqs={galleryFaqsEs}
+    eyebrow="Sobre estos proyectos"
+    title="Preguntas sobre nuestro trabajo"
+  />
+
+  <CtaBand
+    lang={lang}
+    title="¿Ve algo parecido a lo que quiere?"
+    body="Nombre el proyecto en el formulario y cuéntenos en qué se diferencia su patio. Es un punto de partida mucho mejor que una página en blanco."
+    secondaryLabel="Ver pérgolas"
+    secondaryHref="/es/pergolas/"
+  />
+</BaseLayout>

@@ -1,0 +1,269 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHeader from '../../../components/PageHeader.astro';
+import Picture from '../../../components/Picture.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import QuoteForm from '../../../components/QuoteForm.astro';
+import { image as findImage } from '../../../lib/media';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../../../lib/schema';
+
+const lang = 'es' as const;
+const path = '/es/pergolas/aluminum/';
+const title = 'Pérgolas de Aluminio en Miami | Machin Solutions';
+const description =
+  'Pérgolas de aluminio para Miami: acabado en polvo que resiste pudrición, termitas, salitre y sol, con techo de lamas orientables o panel aislado.';
+
+const crumbs = [{ href: '/es/pergolas/', label: 'Pérgolas' }, { label: 'Pérgolas de aluminio' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Diseño e instalación de pérgolas de aluminio',
+    description,
+    path,
+    serviceType: 'Aluminum pergola installation',
+    offers: [
+      'Pérgolas de aluminio de techo fijo',
+      'Pérgolas de aluminio de lamas orientables',
+      'Cubiertas de panel aislado',
+      'Estructuras de cabaña en aluminio',
+    ],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+
+const comparison = [
+  {
+    attribute: 'Pudrición y termitas',
+    aluminium: 'Imposible: no hay nada orgánico que atacar.',
+    wood: 'Un riesgo real y permanente en este clima. El tratamiento a presión lo frena; no lo elimina.',
+  },
+  {
+    attribute: 'Alabeo y grietas',
+    aluminium: 'Mantiene la línea. Los perfiles siguen rectos con los ciclos de calor y humedad.',
+    wood: 'Se mueve con la humedad. Acopamiento, fendas y extremos abiertos son normales con el tiempo.',
+  },
+  {
+    attribute: 'Acabado con los años',
+    aluminium: 'Pintura en polvo de fábrica, curada al horno. Aguanta el color años de sol.',
+    wood: 'Tinte o pintura sobre una superficie de desgaste. Cuente con repintar por ciclos.',
+  },
+  {
+    attribute: 'Mantenimiento',
+    aluminium: 'Lavarla. Ese es el mantenimiento.',
+    wood: 'Limpiar, lijar, volver a sellar y sustituir las piezas que fallen.',
+  },
+  {
+    attribute: 'Aire salino',
+    aluminium: 'Muy bueno, con la aleación, el recubrimiento y los tornillos inoxidables correctos.',
+    wood: 'Malo cerca de aguas abiertas salvo que esté muy bien protegida.',
+  },
+  {
+    attribute: 'Luz para un mismo tamaño',
+    aluminium: 'Luces libres mayores con perfiles más esbeltos: menos postes estorbando.',
+    wood: 'Necesita más canto o más postes para salvar la misma luz.',
+  },
+  {
+    attribute: 'Calidez y carácter',
+    aluminium: 'Moderno y preciso. Los paneles de techo con aspecto de madera recuperan parte de la calidez.',
+    wood: 'Veta de madera real. No hay nada que la iguale, y esa es una razón legítima para elegirla.',
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  lang={lang}
+  crumbs={crumbs}
+  schema={schema}
+>
+  <PageHeader
+    lang={lang}
+    eyebrow="Pérgolas de aluminio"
+    title="Pérgolas de Aluminio para el Calor, la Lluvia y el Salitre de Miami"
+    lede="En el sur de Florida el aluminio es la respuesta por defecto por una razón: es el material que no pierde la discusión con este clima. Sin pudrición, sin termitas, sin alabeos, sin repintados anuales — y con perfiles más esbeltos que salvan luces mayores con menos postes estorbando."
+    facts={[
+      { label: 'Estructura', value: 'Perfiles estructurales de aluminio con acabado en polvo' },
+      { label: 'Opciones de techo', value: 'Viguetas abiertas, lamas orientables o panel sólido aislado' },
+      { label: 'Acabados', value: 'Estructura a juego con paneles de techo y lamas de aspecto madera' },
+      { label: 'Mantenimiento', value: 'Lavado — sin ciclos de sellado, lijado ni repintado' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell split">
+      <div class="prose">
+        <h2>Por qué aquí gana el aluminio</h2>
+        <p>
+          El sur de Florida es un entorno inusualmente duro para las estructuras exteriores.
+          La radiación ultravioleta es prácticamente de todo el año, la humedad mantiene la
+          madera en movimiento, las tormentas de verano lo empapan todo una y otra vez, las
+          termitas son endémicas y, cerca de aguas abiertas, hay sal en el aire. Un material
+          que simplemente aguanta un clima templado no aguanta necesariamente este.
+        </p>
+        <p>
+          El aluminio elimina de golpe casi toda esa lista. No tiene nada que se coman las
+          termitas, nada que se pudra y ninguna veta que se acope o se raje. El color es una
+          pintura en polvo curada al horno, no un tinte superficial, así que aguanta bajo el
+          sol en vez de irse en polvo. Y como los perfiles son resistentes en relación con su
+          tamaño, una estructura puede cruzar una terraza de piscina con vigas más esbeltas y
+          menos postes — que suele ser lo que la gente quiere de verdad visualmente, no solo
+          estructuralmente.
+        </p>
+        <p>
+          El caso del aire salino merece nota aparte. Cerca del agua importan la aleación, el
+          recubrimiento y cada tornillo. Los herrajes inoxidables y un recubrimiento bien
+          especificado son la diferencia entre una estructura que parece nueva a los cinco
+          años y otra con churretes y picaduras. Si su propiedad está en un canal, en la costa
+          o en los Cayos, dígalo pronto: cambia la especificación.
+        </p>
+
+        <h2>Qué puede sostener una estructura de aluminio</h2>
+        <p>
+          El aluminio es además el material más fácil para integrar cosas. Los perfiles son
+          huecos, así que el cableado va por dentro de la estructura y no por tubo visto. Por
+          eso los focos empotrados, los altavoces enrasados, los soportes homologados de
+          ventilador y el cableado oculto del televisor son lo normal en estas estructuras, en
+          vez de un extra con soluciones a la vista.
+        </p>
+        <p>
+          Combina bien con paneles de techo de composite y aspecto madera, que es como la
+          mayoría de los proyectos de nuestra{' '}
+          <a href="/es/gallery/">galería</a> recuperan calidez en una estructura metálica: una
+          estructura de aluminio con un cielorraso en tono madera se lee mucho más suave que
+          el metal desnudo, y sin nada del mantenimiento.
+        </p>
+      </div>
+
+      <figure class="side-figure">
+        <Picture
+          image={findImage('poolside-pergola-outdoor-kitchen-miami-01')}
+          sizes="(min-width: 62rem) 32vw, 92vw"
+          ratio="3 / 4"
+        />
+        <figcaption>
+          Estructura de aluminio con techo de aspecto madera sobre una cocina exterior junto a
+          la piscina — focos, altavoces y cableado van todos por dentro de la estructura.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Aluminio frente a madera</p>
+        <h2>Una comparación honesta</h2>
+        <p class="lede" style="margin-top:var(--space-s)">
+          El aluminio es la opción correcta para la mayoría de los patios del sur de Florida,
+          pero no para todos. Aquí está el intercambio sin barniz comercial.
+        </p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Aspecto</th>
+              <th scope="col">Aluminio</th>
+              <th scope="col">Madera</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              comparison.map((row) => (
+                <tr>
+                  <th scope="row">{row.attribute}</th>
+                  <td>{row.aluminium}</td>
+                  <td>{row.wood}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <p class="table-note">
+        Si le importa más el carácter que el mantenimiento, lea los argumentos a favor de las{' '}
+        <a href="/es/pergolas/wood/">pérgolas de madera</a> antes de decidir.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell split-form">
+      <div class="prose">
+        <h2>¿Lamas o techo sólido?</h2>
+        <p>
+          Sobre una estructura de aluminio el techo es una decisión aparte, y es la que
+          determina para qué se va a poder usar el espacio.
+        </p>
+        <p>
+          <strong>Los techos de lamas orientables</strong> tienen palas que giran: abiertas
+          para luz y ventilación, cerradas para sombra y protección de lluvia. Encajan en un
+          espacio de uso diario, o en un patio donde el ángulo del sol cambia mucho entre la
+          mañana y el final de la tarde. Cuestan más y añaden piezas móviles, lo que es un
+          intercambio justo cuando esa flexibilidad se usa.
+        </p>
+        <p>
+          <strong>Los paneles sólidos aislados</strong> sellan el techo por completo. El
+          espacio se mantiene seco en un aguacero y bastante más fresco debajo, y se consigue
+          un cielorraso real donde empotrar iluminación y ventiladores. Esto es lo que hace
+          viable una cocina exterior o un televisor montado, en vez de optimista.
+        </p>
+        <p>
+          <strong>Las viguetas abiertas</strong> son la imagen clásica de la pérgola: sombra y
+          un dibujo de luz que se mueve, pero la lluvia entra. Preciosas sobre un patio,
+          equivocadas sobre unos equipos.
+        </p>
+        <p>
+          Muchas de las estructuras grandes que construimos combinan dos de estas: sólido
+          sobre la cocina, abierto o de lamas sobre la zona de estar.
+        </p>
+      </div>
+
+      <div class="form-column">
+        <h2 class="form-title">Presupueste una pérgola de aluminio</h2>
+        <p class="form-hint">Díganos la luz que hay que salvar y qué va debajo.</p>
+        <QuoteForm lang={lang} service="Pergola" compact />
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    lang={lang}
+    title="¿No sabe qué techo necesita su patio?"
+    body="Describa cómo usa el espacio y hacia dónde está orientado. Con eso suele bastar para darle una recomendación clara antes de que nadie vaya a verlo."
+    secondaryLabel="Ver pérgolas de madera"
+    secondaryHref="/es/pergolas/wood/"
+  />
+</BaseLayout>
+<style>
+  .split { display: grid; gap: var(--space-xl); }
+  .side-figure { margin: 0; }
+  .side-figure :global(img) { width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
+  .side-figure figcaption { margin-top: 0.7rem; font-size: 0.88rem; color: var(--ink-faint); line-height: 1.6; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--bg-raised); }
+  table { border-collapse: collapse; width: 100%; min-width: 40rem; font-size: 0.94rem; }
+  th, td { padding: 0.85rem 1rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+  thead th { background: var(--sand-100); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  tbody th { font-weight: 650; width: 12rem; }
+  td { color: var(--ink-soft); }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+
+  .table-note { margin-top: var(--space-s); font-size: 0.93rem; color: var(--ink-soft); }
+
+  .split-form { display: grid; gap: var(--space-xl); }
+  .form-column { align-self: start; }
+  .form-title { font-size: var(--step-2); }
+  .form-hint { margin: 0.4rem 0 var(--space-s); color: var(--ink-soft); font-size: 0.95rem; }
+
+  @media (min-width: 62rem) {
+    .split { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: var(--space-2xl); align-items: start; }
+    .split-form { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: var(--space-2xl); }
+    .form-column { position: sticky; top: 6rem; }
+  }
+</style>

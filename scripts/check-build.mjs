@@ -14,7 +14,7 @@
  * Exits non-zero when anything in the "problems" list is non-empty.
  */
 import { readFile, readdir, stat } from 'node:fs/promises';
-import { existsSync } from 'node:fs';
+import { existsSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -95,7 +95,10 @@ function resolveTarget(href) {
   if (clean === '' || clean === '/') return path.join(dist, 'index.html');
   const relative = clean.replace(/^\//, '');
   const direct = path.join(dist, relative);
-  if (existsSync(direct)) {
+  // statSync, not existsSync: "/pergolas/" resolves to the DIRECTORY dist/pergolas,
+  // which exists but is not a page. That went unnoticed for as long as callers only
+  // checked truthiness; the first caller that actually read the file got EISDIR.
+  if (existsSync(direct) && statSync(direct).isFile()) {
     return direct;
   }
   // Directory-format routes: /pergolas/ -> dist/pergolas/index.html
@@ -231,7 +234,9 @@ async function main() {
         fail(rel, `invalid JSON-LD: ${(error).message}`);
       }
     }
-    if (!sawSchema && !rel.startsWith('404')) warn(rel, 'no structured data on this page');
+    // The 404 page carries no structured data by design, in either language.
+    const is404 = rel === '404.html' || rel.endsWith('/404/index.html');
+    if (!sawSchema && !is404) warn(rel, 'no structured data on this page');
 
     // --- internal links ---------------------------------------------------
     for (const href of attr(html, /<a[^>]+href="([^"]+)"/g)) {

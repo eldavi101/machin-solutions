@@ -1,0 +1,194 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHeader from '../../../components/PageHeader.astro';
+import Picture from '../../../components/Picture.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import QuoteForm from '../../../components/QuoteForm.astro';
+import { image as findImage } from '../../../lib/media';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../../../lib/schema';
+
+const lang = 'es' as const;
+const path = '/es/pergolas/wood/';
+const title = 'Pérgolas de Madera en Miami | Madera y Aspecto Madera';
+const description =
+  'Pérgolas de madera en Miami y el sur de Florida: cuándo la madera real es la opción correcta, qué le cuesta en mantenimiento y las alternativas de aspecto madera.';
+
+const crumbs = [{ href: '/es/pergolas/', label: 'Pérgolas' }, { label: 'Pérgolas de madera' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Diseño y construcción de pérgolas de madera',
+    description,
+    path,
+    serviceType: 'Wood pergola construction',
+    offers: [
+      'Construcción de pérgolas de madera',
+      'Sistemas de techo y lamas con aspecto madera',
+      'Sustitución de pérgolas de madera',
+    ],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  lang={lang}
+  crumbs={crumbs}
+  schema={schema}
+>
+  <PageHeader
+    lang={lang}
+    eyebrow="Pérgolas de madera"
+    title="Pérgolas de Madera: Cuándo la Madera Es de Verdad la Elección Correcta"
+    lede="Nada se parece a la madera real, y ningún constructor honesto va a decirle lo contrario. Pero en un clima con sol todo el año, termitas endémicas y temporada de lluvias, la madera es un compromiso — así que conviene tener claro cuándo compensa y cuándo un acabado de aspecto madera le da el mismo resultado sin el mantenimiento."
+    facts={[
+      { label: 'Encaja mejor en', value: 'Parcelas con sombra, casas antiguas y espacios donde manda el carácter' },
+      { label: 'El intercambio', value: 'Un ciclo real de repintado y sustitución de piezas con el tiempo' },
+      { label: 'Alternativa', value: 'Estructura de aluminio con techo y lamas de aspecto madera' },
+      { label: 'También ofrecemos', value: 'Sustitución de estructuras de madera deterioradas' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell split">
+      <div class="prose">
+        <h2>Los argumentos a favor de la madera</h2>
+        <p>
+          La madera real tiene una profundidad de veta, un color que cambia con la luz y una
+          suavidad — bajo los pies y sobre la cabeza — que los materiales técnicos imitan pero
+          nunca alcanzan del todo. En una casa antigua de Miami — un rancho de los años
+          cincuenta, una vivienda de estilo español que ya tiene detalles en madera — una
+          pérgola de madera puede ser lo único que parezca que estaba ahí desde siempre.
+        </p>
+        <p>
+          La madera además se comporta mejor de lo que dice su fama cuando las condiciones
+          acompañan. Bajo una copa de árboles madura, lejos de lo peor del sol directo y del
+          aire salino, una estructura de madera bien construida y bien acabada tiene una vida
+          larga y atractiva. Los fracasos que la gente recuerda suelen ser estructuras que
+          pasaron una década a pleno sol y sin sellar.
+        </p>
+
+        <h2>Qué le cuesta la madera, sin adornos</h2>
+        <p>
+          Una pérgola de madera en el sur de Florida es un objeto que se mantiene, no un
+          objeto que se instala. Cuente con un ciclo real: limpiar, lijar y volver a sellar o
+          teñir con una periodicidad que depende de la exposición. Cuente con algo de
+          movimiento — acopamiento, fendas, extremos abiertos en las fijaciones — porque la
+          madera responde a la humedad y este es un sitio húmedo. Y cuente con que, con el
+          tiempo, alguna pieza se sustituye.
+        </p>
+        <p>
+          Las termitas son la otra consideración y aquí no son una hipótesis. El tratamiento a
+          presión y un buen detalle constructivo — mantener la madera separada del suelo,
+          ventilada y fuera del agua estancada — reducen bastante el riesgo. No lo eliminan.
+        </p>
+        <p>
+          Nada de esto es razón para no construir en madera. Es razón para entrar sabiendo a
+          qué se compromete, para que la estructura se mantenga en vez de irse deteriorando en
+          silencio.
+        </p>
+
+        <h2>El camino intermedio: aspecto madera sobre estructura de aluminio</h2>
+        <p>
+          Mucha gente que pide una pérgola de madera en realidad quiere la calidez de la
+          madera, no la madera en sí. Si ese es su caso, la opción más sólida suele ser una{' '}
+          <a href="/es/pergolas/aluminum/">estructura de aluminio</a> con acabado en polvo que
+          sostiene paneles de techo y lamas de composite con aspecto madera: la veta y el tono
+          justo donde más se ven, y una estructura que no se pudre, no se alabea, no alimenta
+          termitas y no hay que repintar.
+        </p>
+        <p>
+          Varias de las estructuras de nuestra{' '}
+          <a href="/es/gallery/">galería</a> están construidas exactamente así: estructura de
+          aluminio grafito con un cielorraso cálido en tono madera. En las fotos, y de pie
+          debajo, se leen como madera.
+        </p>
+
+        <h2>Sustituir una pérgola de madera deteriorada</h2>
+        <p>
+          Si ya tiene una estructura de madera que se ha ido — postes blandos por la base,
+          vigas rajadas, un techo que nunca llegó a evacuar bien el agua — la sustitución es un
+          trabajo sencillo y un buen momento para replantearse el material. Le diremos con
+          franqueza si lo que tiene es reparable o si le sale mejor empezar de nuevo.
+        </p>
+      </div>
+
+      <figure class="side-figure">
+        <Picture
+          image={findImage('covered-patio-wood-soffit-miami-01')}
+          sizes="(min-width: 62rem) 34vw, 92vw"
+          ratio="4 / 3"
+        />
+        <figcaption>
+          Techo y pared de lamas con aspecto madera sobre una estructura calculada — la calidez
+          de la madera por encima, sin el ciclo de repintado por debajo.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell split-form">
+      <div class="prose">
+        <h2>Cómo decidir</h2>
+        <p>Tres preguntas suelen zanjarlo:</p>
+        <ol>
+          <li>
+            <strong>¿Cómo de expuesto está el sitio?</strong> Sol pleno todo el día, o cerca de
+            aguas abiertas, empuja con fuerza hacia el aluminio. Una sombra profunda bajo
+            árboles maduros abre la puerta a la madera.
+          </li>
+          <li>
+            <strong>¿Se va a mantener de verdad?</strong> Si la respuesta honesta es que nadie
+            va a lijar y sellar una pérgola cada pocos años, elija el material que no lo
+            necesita.
+          </li>
+          <li>
+            <strong>¿Quiere madera, o quiere el aspecto de la madera?</strong> Si es el
+            aspecto, un techo de aspecto madera le lleva casi todo el camino por una fracción
+            del coste a largo plazo.
+          </li>
+        </ol>
+        <p>
+          Díganos hacia dónde se inclina y por qué, y recibirá una recomendación clara —
+          incluido cuando esa recomendación sea no construir en madera.
+        </p>
+      </div>
+
+      <div class="form-column">
+        <h2 class="form-title">Pregunte por una obra en madera</h2>
+        <p class="form-hint">Mencione la exposición y el aspecto que busca.</p>
+        <QuoteForm lang={lang} service="Pergola" compact />
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    lang={lang}
+    title="¿Madera, aluminio o algo intermedio?"
+    body="Mande una foto del sitio y de la casa contra la que va. El material es más fácil de aconsejar de lo que la gente espera cuando se ve el contexto."
+    secondaryLabel="Comparar con aluminio"
+    secondaryHref="/es/pergolas/aluminum/"
+  />
+</BaseLayout>
+<style>
+  .split { display: grid; gap: var(--space-xl); }
+  .side-figure { margin: 0; }
+  .side-figure :global(img) { width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
+  .side-figure figcaption { margin-top: 0.7rem; font-size: 0.88rem; color: var(--ink-faint); line-height: 1.6; }
+
+  .split-form { display: grid; gap: var(--space-xl); }
+  .form-column { align-self: start; }
+  .form-title { font-size: var(--step-2); }
+  .form-hint { margin: 0.4rem 0 var(--space-s); color: var(--ink-soft); font-size: 0.95rem; }
+
+  @media (min-width: 62rem) {
+    .split { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: var(--space-2xl); align-items: start; }
+    .split-form { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: var(--space-2xl); }
+    .form-column { position: sticky; top: 6rem; }
+  }
+</style>

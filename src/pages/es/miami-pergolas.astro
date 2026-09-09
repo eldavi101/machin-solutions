@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Gallery from '../../components/Gallery.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import { projectsIn } from '../../lib/media';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../../lib/schema';
+
+const lang = 'es' as const;
+const path = '/es/miami-pergolas/';
+const title = 'Pérgolas en Miami FL | Constructores de Pérgolas';
+const description =
+  'Constructores de pérgolas en Miami — Coconut Grove, Coral Gables, Pinecrest, Shenandoah y The Roads. Estructuras de aluminio y madera a medida para patios de ciudad.';
+
+const crumbs = [{ href: '/es/service-areas/', label: 'Zonas de servicio' }, { label: 'Miami' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Diseño e instalación de pérgolas en Miami, Florida',
+    description,
+    path,
+    serviceType: 'Pergola construction',
+    areaServed: ['Miami, Florida', 'Miami-Dade County, Florida'],
+    offers: [
+      'Pérgolas a medida',
+      'Pérgolas de aluminio',
+      'Cubiertas de patio adosadas',
+      'Cabañas de piscina',
+    ],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+
+const neighbourhoods = [
+  'Coconut Grove', 'Coral Gables', 'The Roads', 'Shenandoah', 'Brickell', 'Little Havana',
+  'Silver Bluff', 'Morningside', 'Upper Eastside', 'Pinecrest', 'South Miami', 'Key Biscayne',
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  lang={lang}
+  crumbs={crumbs}
+  schema={schema}
+>
+  <PageHeader
+    lang={lang}
+    eyebrow="Miami"
+    title="Pérgolas en Miami, Hechas para Patios de Ciudad"
+    lede="Los patios de Miami rara vez son generosos y casi nunca son cuadrados. Entre parcelas antiguas con árboles maduros, obra nueva con revisión estricta de la HOA y el problema constante del sol bajo del oeste asomando por encima del tejado del vecino, aquí una pérgola es tanto un ejercicio de encaje como de construcción."
+    facts={[
+      { label: 'Barrios', value: 'Grove, Gables, The Roads, Shenandoah, Pinecrest y toda la ciudad' },
+      { label: 'Obra típica', value: 'Cubiertas de patio adosadas y estructuras exentas compactas' },
+      { label: 'Limitación habitual', value: 'Acceso lateral estrecho y retranqueos traseros justos' },
+      { label: 'Materiales', value: 'Aluminio por defecto; madera cuando la casa lo pide' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>Qué implica de verdad construir una pérgola en Miami</h2>
+      <p>
+        El parque de viviendas de la ciudad es genuinamente variado, y la estructura sale de
+        ahí. Los barrios antiguos — The Roads, Shenandoah, Silver Bluff, parte del Grove —
+        suelen significar parcelas más pequeñas, vegetación madura y casas con carácter
+        arquitectónico real. La estructura tiene que ceder el protagonismo al edificio en vez
+        de competir con él, lo que normalmente pide un perfil más bajo, una estructura más
+        esbelta y acabados que recojan algo que ya está ahí.
+      </p>
+      <p>
+        La obra nueva y las urbanizaciones cerradas tienen el problema contrario: espacio de
+        sobra pero muy poca sombra, y a menudo un proceso de revisión de diseño que superar
+        antes de levantar nada. El color, la altura y el material pueden estar limitados, lo
+        cual está bien siempre que se sepa en fase de diseño y no después de fabricar.
+      </p>
+      <p>
+        La limitación que aparece prácticamente en todo Miami es el acceso. Los perfiles largos
+        de aluminio y los paneles aislados de cubierta tienen que llegar físicamente al fondo
+        de la propiedad, y muchas parcelas urbanas tienen un portón lateral apenas más ancho
+        que una carretilla. Es manejable: solo cambia cómo se acopia la estructura, y conviene
+        comprobarlo en la primera visita y no con un camión aparcado en la calle.
+      </p>
+
+      <h2>El problema del sol que nadie prevé</h2>
+      <p>
+        Los patios de Miami están a menudo encajonados entre casas vecinas, lo que significa
+        que el sol que les llega entra bajo y de lado, sobre todo al final de la tarde. Un
+        techo que da sombra perfecta al mediodía puede dejarle entrecerrando los ojos a las
+        cuatro, que es justo cuando la mayoría de la gente está fuera.
+      </p>
+      <p>
+        La solución es sencilla cuando se proyecta: un panel fijo de lamas o una pantalla
+        enrollable en el lado oeste, o un{' '}
+        <a href="/es/pergolas/aluminum/">tramo de techo de lamas orientables</a> que se pueda
+        cerrar según baja el sol. Añadirlo después es posible y siempre parece un añadido.
+      </p>
+
+      <h2>Materiales para una parcela de Miami</h2>
+      <p>
+        Aquí el aluminio es lo habitual por las mismas razones que en todo el sur de Florida:
+        sin pudrición, sin termitas, sin ciclo de repintado, y con perfiles más esbeltos que
+        salvan una luz con menos postes, cosa que importa más en un patio pequeño que en uno
+        grande. En una propiedad del Gables o del Grove bajo arbolado de verdad, o contra una
+        casa antigua con detalles de madera, la{' '}
+        <a href="/es/pergolas/wood/">madera</a> vuelve a ser una opción legítima.
+      </p>
+      <p>
+        En Key Biscayne, a lo largo de la bahía y en cualquier sitio con sal en el aire, la
+        especificación se aprieta: importan la aleación, el recubrimiento y cada tornillo.
+        Mencionarlo pronto no cuesta nada; descubrirlo tarde cuesta una estructura.
+      </p>
+
+      <h2>Barrios en los que trabajamos</h2>
+      <ul class="hoods">
+        {neighbourhoods.map((hood) => <li>{hood}</li>)}
+      </ul>
+      <p class="hood-note">
+        En el resto de Miami-Dade, vea{' '}
+        <a href="/es/homestead-pergolas/">Homestead</a>,{' '}
+        <a href="/es/kendall-pergolas/">Kendall</a> y{' '}
+        <a href="/es/hialeah-pergolas/">Hialeah</a>, o la{' '}
+        <a href="/es/service-areas/">lista completa de zonas de servicio</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Nuestro trabajo</p>
+        <h2>Pérgolas que hemos construido por Miami</h2>
+      </div>
+      <Gallery projects={projectsIn('pergolas')} limit={2} lang={lang} />
+      <p style="margin-top:var(--space-l)">
+        <a class="btn btn-dark" href="/es/gallery/">Ver todos los proyectos</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell form-band">
+      <div class="prose">
+        <h2>Pida presupuesto de pérgola en Miami</h2>
+        <p>
+          Mande fotografías del patio, medidas aproximadas y una nota sobre hacia dónde está
+          orientado. Si sabe el ancho del portón lateral, dígalo: ahorra una conversación.
+        </p>
+        <p>
+          Si no tiene claro si quiere una pérgola o algo más parecido a un{' '}
+          <a href="/es/tiki-huts/">tiki hut</a>, describa cómo usaría el espacio y le diremos
+          cuál le encaja mejor al patio.
+        </p>
+      </div>
+      <QuoteForm lang={lang} service="Pergola" city="Miami" compact />
+    </div>
+  </section>
+
+  <CtaBand
+    lang={lang}
+    title="¿Un patio en Miami que necesita sombra?"
+    body="Con fotografías y medidas aproximadas basta para empezar. Recibirá una respuesta real sobre qué cabe."
+    secondaryLabel="Opciones de pérgola"
+    secondaryHref="/es/pergolas/"
+  />
+</BaseLayout>
+<style>
+  .hoods {
+    list-style: none;
+    padding: 0;
+    margin-top: var(--space-s);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .hoods li {
+    font-size: 0.9rem;
+    padding: 0.25rem 0.7rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    color: var(--ink-soft);
+  }
+  .hood-note { font-size: 0.94rem; }
+
+  .form-band { display: grid; gap: var(--space-l); }
+  @media (min-width: 62rem) {
+    .form-band { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--space-2xl); align-items: start; }
+  }
+</style>

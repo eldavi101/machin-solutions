@@ -1,0 +1,204 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import Faq from '../../components/Faq.astro';
+import { contactFaqsEs } from '../../data/faqs.es';
+import { site, callHref, emailHref, real, phoneLabel, phoneAltLabel, callAltHref, emailAltHref } from '../../config/site';
+import { breadcrumbSchema, webPageSchema, organizationSchema } from '../../lib/schema';
+
+const lang = 'es' as const;
+const path = '/es/contact/';
+const title = 'Pedir Presupuesto | Machin Solutions, Miami';
+const description =
+  'Pida un presupuesto gratis para una pérgola, un tiki hut o una estructura exterior en Miami y el sur de Florida. Mande fotos y medidas y reciba una respuesta real.';
+
+const crumbs = [{ label: 'Pedir presupuesto' }];
+
+const phone = phoneLabel();
+const email = real(site.email);
+const mailto = emailHref();
+const phoneAlt = phoneAltLabel();
+const callAlt = callAltHref();
+const emailAlt = real(site.emailAlt);
+const mailtoAlt = emailAltHref();
+
+const schema = [
+  organizationSchema(),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+
+// site.hours stores English day names because that is what schema.org expects in the
+// JSON-LD. Translate only what the visitor reads; the structured data keeps English.
+const DAYS_ES: Record<string, string> = {
+  Monday: 'Lunes',
+  Tuesday: 'Martes',
+  Wednesday: 'Miércoles',
+  Thursday: 'Jueves',
+  Friday: 'Viernes',
+  Saturday: 'Sábado',
+  Sunday: 'Domingo',
+};
+
+const hoursLines = site.hours.map((slot) => {
+  const first = DAYS_ES[slot.days[0]] ?? slot.days[0];
+  const last = DAYS_ES[slot.days[slot.days.length - 1]] ?? slot.days[slot.days.length - 1];
+  const days = slot.days.length > 1 ? `${first}–${last}` : first;
+  return `${days}: ${slot.opens} – ${slot.closes}`;
+});
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  lang={lang}
+  crumbs={crumbs}
+  schema={schema}
+>
+  <section class="section contact-top">
+    <div class="shell contact-grid">
+      <div class="contact-copy">
+        <p class="eyebrow">Presupuesto gratis</p>
+        <h1>Cuéntenos su Proyecto</h1>
+        <p class="lede">
+          El camino más rápido a una respuesta real son unas cuantas fotos y medidas
+          aproximadas. Mande eso y recibirá una lectura honesta de qué cabe, qué hace falta
+          para construirlo y cuánto cuesta — no un folleto y una llamada de seguimiento.
+        </p>
+
+        <dl class="contact-details">
+          <div>
+            <dt>Teléfono</dt>
+            <dd>
+              <a href={callHref()}>
+                {phone ? phone : <span class="placeholder-token">[PHONE_NUMBER]</span>}
+              </a>
+              {phoneAlt && callAlt && (
+                <>
+                  <br />
+                  <a href={callAlt}>{phoneAlt}</a>
+                </>
+              )}
+            </dd>
+          </div>
+          <div>
+            <dt>Correo</dt>
+            <dd>
+              {
+                mailto ? (
+                  <a href={mailto}>{email}</a>
+                ) : (
+                  <span class="placeholder-token">[EMAIL]</span>
+                )
+              }
+              {emailAlt && mailtoAlt && (
+                <>
+                  <br />
+                  <a href={mailtoAlt}>{emailAlt}</a>
+                </>
+              )}
+            </dd>
+          </div>
+          <div>
+            <dt>Zona</dt>
+            <dd>
+              Miami-Dade, Broward y los Cayos Altos.{' '}
+              <a href="/es/service-areas/">Ver todas las zonas de servicio</a>
+            </dd>
+          </div>
+          <div>
+            <dt>Horario</dt>
+            <dd>
+              {hoursLines.map((line) => (
+                <span class="hours-line">{line}</span>
+              ))}
+            </dd>
+          </div>
+          <div>
+            <dt>Dirección</dt>
+            <dd>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=30760+SW+212+Ave+Homestead+FL+33030"
+                target="_blank"
+                rel="noopener"
+              >
+                30760 SW 212 Ave<br />
+                Homestead, FL 33030
+              </a>
+            </dd>
+          </div>
+        </dl>
+
+        <div class="helpful">
+          <h2>Qué mandar</h2>
+          <ul>
+            <li>Dos o tres fotos del espacio, desde ángulos distintos</li>
+            <li>Medidas aproximadas de la zona que quiere cubrir</li>
+            <li>Si ya hay piscina, terraza o cerramiento con mosquitera</li>
+            <li>Qué quiere hacer debajo: comer, cocinar, estar, sombra para los niños</li>
+            <li>Lo que ya sepa que quiere integrado: iluminación, ventiladores, televisor, pantallas</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="form-column">
+        <QuoteForm lang={lang} />
+      </div>
+    </div>
+  </section>
+
+  <Faq lang={lang} faqs={contactFaqsEs} eyebrow="Antes de enviar" title="Qué pasa después" />
+</BaseLayout>
+<style>
+  .contact-top { padding-top: var(--space-xl); }
+  .contact-grid { display: grid; gap: var(--space-xl); }
+  .contact-copy .lede { margin-top: var(--space-m); }
+
+  .contact-details {
+    margin: var(--space-l) 0 0;
+    display: grid;
+    gap: var(--space-s);
+  }
+  .contact-details > div {
+    display: grid;
+    gap: 0.15rem;
+    padding-top: 0.7rem;
+    border-top: 1px solid var(--line);
+  }
+  .contact-details dt {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .contact-details dd { margin: 0; font-size: 0.98rem; }
+  .contact-details a { font-weight: 600; }
+  .hours-line { display: block; }
+  .detail-note {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 0.86rem;
+    color: var(--ink-faint);
+    line-height: 1.55;
+  }
+
+  .helpful { margin-top: var(--space-l); }
+  .helpful h2 { font-size: var(--step-2); }
+  .helpful ul {
+    margin-top: var(--space-s);
+    padding-left: 1.15rem;
+    color: var(--ink-soft);
+    display: grid;
+    gap: 0.35rem;
+    font-size: 0.97rem;
+  }
+
+  .form-column { align-self: start; }
+
+  @media (min-width: 62rem) {
+    .contact-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--space-2xl); }
+    .form-column { position: sticky; top: 6rem; }
+  }
+</style>

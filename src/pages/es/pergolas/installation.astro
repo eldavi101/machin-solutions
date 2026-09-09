@@ -1,0 +1,244 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHeader from '../../../components/PageHeader.astro';
+import ProcessSteps from '../../../components/ProcessSteps.astro';
+import Picture from '../../../components/Picture.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import QuoteForm from '../../../components/QuoteForm.astro';
+import { image as findImage } from '../../../lib/media';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../../../lib/schema';
+
+const lang = 'es' as const;
+const path = '/es/pergolas/installation/';
+const title = 'Instalación de Pérgolas en Miami | Construcción y Montaje';
+const description =
+  'Instalación de pérgolas en Miami y el sur de Florida: cimentaciones, estructura, techo y remates. Qué pasa de verdad en obra, cuánto dura y cómo le dejamos el patio.';
+
+const crumbs = [{ href: '/es/pergolas/', label: 'Pérgolas' }, { label: 'Instalación de pérgolas' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Instalación y construcción de pérgolas',
+    description,
+    path,
+    serviceType: 'Pergola installation',
+    offers: [
+      'Instalación de pérgolas exentas',
+      'Instalación de pérgolas adosadas',
+      'Sustitución de pérgolas',
+      'Mejoras y pantallas para pérgolas',
+    ],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+
+const onsite = [
+  {
+    title: 'Replanteo',
+    body: 'La estructura se marca en el suelo en su posición real antes de excavar nada. Este es el último momento fácil para moverla quince centímetros, y merece la pena recorrerlo con nosotros.',
+  },
+  {
+    title: 'Cimentaciones',
+    body: 'Excavación, armado y hormigonado, dimensionados para las cargas que la estructura va a ver de verdad — incluida la succión, que es la carga que importa en un temporal. El tiempo de fraguado no se negocia.',
+  },
+  {
+    title: 'Estructura',
+    body: 'Postes colocados y aplomados sobre los anclajes, vigas montadas y unidas. La estructura sube más rápido de lo que la gente espera; la precisión viene del replanteo y de las cimentaciones que hay debajo.',
+  },
+  {
+    title: 'Techo',
+    body: 'Viguetas, lamas o paneles aislados instalados y sellados, con las pendientes puestas para que el agua vaya donde tiene que ir y no por el borde delantero sobre sus sillones.',
+  },
+  {
+    title: 'Remates',
+    body: 'Paneles de techo, lamas de privacidad, iluminación, ventiladores, altavoces y el soporte del televisor si lo hay. Aquí es donde una estructura deja de parecer un esqueleto y empieza a parecer terminada.',
+  },
+  {
+    title: 'Limpieza y entrega',
+    body: 'Tierra retirada, terraza baldeada, recortes y embalajes fuera. Le explicamos qué se ha construido y cómo se maneja todo lo que se mueve.',
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  lang={lang}
+  crumbs={crumbs}
+  schema={schema}
+>
+  <PageHeader
+    lang={lang}
+    eyebrow="Instalación de pérgolas"
+    title="Instalación de Pérgolas en Miami y el Sur de Florida"
+    lede="Una pérgola vale lo que valga el día que se monta. Casi todo lo que separa una estructura que sigue a escuadra a los diez años de otra que no, ocurre por debajo de la terraza y dentro de las uniones — antes de que nadie vea una viga terminada."
+    facts={[
+      { label: 'Incluye', value: 'Instalaciones exentas, adosadas, de sustitución y de mejora' },
+      { label: 'En obra', value: 'Replanteo, cimentaciones, estructura, techo, remates y limpieza' },
+      { label: 'Trabaja con', value: 'Piscinas, terrazas, cerramientos y jardinería ya existentes' },
+      { label: 'Zona de servicio', value: 'Miami-Dade, Broward y los Cayos Altos' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell split">
+      <div class="prose">
+        <h2>Exenta o adosada</h2>
+        <p>
+          <strong>Las estructuras adosadas</strong> se enlazan con la casa — normalmente con la
+          cornisa o con la estructura del tejado — y prolongan hacia fuera la línea de cubierta.
+          Se sienten parte del edificio, necesitan menos superficie y ponen menos postes en el
+          patio. El detalle crítico son la unión y el babero: el agua tiene que salir lejos de
+          la pared, no hacia dentro, y el enlace tiene que llevar la carga a algo capaz de
+          recibirla.
+        </p>
+        <p>
+          <strong>Las estructuras exentas</strong> se sostienen sobre sus propios cuatro (o
+          seis, u ocho) postes y van donde de verdad hace falta la sombra: en medio de la
+          terraza, cruzando una piscina, alrededor de un brasero, al fondo del patio. Evitan
+          tocar la casa por completo, que en tejados antiguos o poco convencionales suele ser
+          la respuesta más limpia. La mayoría de los proyectos de piscina de nuestra{' '}
+          <a href="/es/gallery/">galería</a> son exentos exactamente por eso.
+        </p>
+
+        <h2>Trabajar con lo que ya hay</h2>
+        <p>
+          Casi ninguna instalación ocurre sobre una losa vacía. El vaso de la piscina, las
+          tuberías, los desagües de la terraza, el riego, la electricidad, las raíces de los
+          árboles, los cerramientos y los retranqueos de la parcela van descartando posiciones
+          de poste, y se detectan antes de cerrar el diseño, no la mañana de la excavación.
+        </p>
+        <p>
+          El acceso importa tanto como el patio. Los perfiles largos de aluminio y los paneles
+          aislados tienen que llegar físicamente al fondo de la propiedad. Los portones
+          laterales estrechos, las esquinas justas y las vallas de los vecinos son de lo más
+          normal, y conviene comprobarlos en la visita técnica y no descubrirlos con un camión
+          en la calle.
+        </p>
+
+        <h2>Cuánto tarda</h2>
+        <p>
+          La obra en sí suele ser la parte más corta del calendario. La mayor parte del tiempo
+          se va en revisiones de diseño, planos de ingeniería cuando hacen falta, la revisión
+          del departamento de edificación y el plazo de fabricación del aluminio a medida —
+          nada de lo cual ocurre en su patio.
+        </p>
+        <p>
+          En obra, las cimentaciones y su fraguado son el coste fijo en tiempo; la estructura
+          sube rápido y los remates son los que llenan los días restantes.{' '}
+          <span class="placeholder-token">[LEAD_TIME]</span> — aquí deberían ir plazos típicos
+          realistas en cuanto se puedan indicar con precisión.
+        </p>
+
+        <h2>Permisos y aprobaciones</h2>
+        <p>
+          Los permisos los fija su departamento de edificación y dependen del tamaño de la
+          estructura, la altura, cómo se ancle y dónde se sitúe en la parcela. Los requisitos
+          no son iguales en Miami-Dade, Broward y el condado de Monroe, y no es algo sobre lo
+          que convenga tomar una respuesta general de ninguna web.{' '}
+          <span class="placeholder-token">[PERMIT_POLICY]</span> — describa aquí exactamente
+          cómo gestiona Machin Solutions las solicitudes de permiso y los planos de ingeniería.
+        </p>
+      </div>
+
+      <figure class="side-figure">
+        <Picture
+          image={findImage('rain-curtain-pool-cabana-miami-02')}
+          sizes="(min-width: 62rem) 32vw, 92vw"
+          ratio="3 / 4"
+        />
+        <figcaption>
+          Una estructura exenta montándose junto a una piscina terminada — replanteada y
+          cimentada para librar el vaso, la coronación y el drenaje de la terraza.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">En obra</p>
+        <h2>Qué pasa de verdad en su patio</h2>
+      </div>
+      <ol class="onsite">
+        {
+          onsite.map((step, index) => (
+            <li>
+              <span class="onsite-num" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+              <h3>{step.title}</h3>
+              <p>{step.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <ProcessSteps
+    lang={lang}
+    eyebrow="De principio a fin"
+    title="La secuencia completa del proyecto"
+    intro="La instalación es la parte visible. Aquí es donde encaja dentro del trabajo entero."
+  />
+
+  <section class="section section-sand">
+    <div class="shell form-band">
+      <div class="prose">
+        <h2>Concierte una visita técnica</h2>
+        <p>
+          El camino más rápido a una respuesta real es alguien de pie en el espacio con una
+          cinta métrica. Mande fotos y medidas aproximadas y la organizamos.
+        </p>
+      </div>
+      <QuoteForm lang={lang} service="Pergola" compact />
+    </div>
+  </section>
+
+  <CtaBand
+    lang={lang}
+    title="¿Listo para construirla?"
+    body="Díganos qué quiere cubrir y dónde. Le diremos qué hace falta para instalarlo ahí."
+    secondaryLabel="Ver opciones de pérgola"
+    secondaryHref="/es/pergolas/"
+  />
+</BaseLayout>
+<style>
+  .split { display: grid; gap: var(--space-xl); }
+  .side-figure { margin: 0; }
+  .side-figure :global(img) { width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
+  .side-figure figcaption { margin-top: 0.7rem; font-size: 0.88rem; color: var(--ink-faint); line-height: 1.6; }
+
+  .onsite {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-m);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  }
+  .onsite li {
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: var(--space-m);
+  }
+  .onsite-num {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.3rem;
+  }
+  .onsite h3 { font-size: var(--step-1); }
+  .onsite p { margin-top: 0.45rem; color: var(--ink-soft); font-size: 0.95rem; }
+
+  .form-band { display: grid; gap: var(--space-l); }
+  @media (min-width: 62rem) {
+    .split { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: var(--space-2xl); align-items: start; }
+    .form-band { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--space-2xl); align-items: start; }
+  }
+</style>

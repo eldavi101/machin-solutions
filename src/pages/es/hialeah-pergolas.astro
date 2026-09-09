@@ -1,0 +1,172 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Gallery from '../../components/Gallery.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import { projectsIn } from '../../lib/media';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../../lib/schema';
+
+const lang = 'es' as const;
+const path = '/es/hialeah-pergolas/';
+const title = 'Pérgolas en Hialeah FL | Cubiertas para Patios Pequeños';
+const description =
+  'Pérgolas y cubiertas de patio en Hialeah: estructuras adosadas dimensionadas para parcelas compactas, cubiertas de entrada y cochera, y sombra útil en un patio pequeño.';
+
+const crumbs = [{ href: '/es/service-areas/', label: 'Zonas de servicio' }, { label: 'Hialeah' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Instalación de pérgolas y cubiertas de patio en Hialeah, Florida',
+    description,
+    path,
+    serviceType: 'Pergola construction',
+    areaServed: ['Hialeah, Florida', 'Miami-Dade County, Florida'],
+    offers: [
+      'Cubiertas de patio adosadas',
+      'Pérgolas compactas a medida',
+      'Cubiertas de entrada y cochera',
+      'Pérgolas de aluminio',
+    ],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  lang={lang}
+  crumbs={crumbs}
+  schema={schema}
+>
+  <PageHeader
+    lang={lang}
+    eyebrow="Hialeah"
+    title="Pérgolas en Hialeah: Sacar Sombra Útil de un Patio Pequeño"
+    lede="Los patios de Hialeah son compactos, muy aprovechados y casi siempre limitados por un muro o una valla por todos los lados. Eso no es una limitación sobre lo que se puede construir: es un encargo de diseño. Cuando no hay margen de error, las proporciones y la posición de los postes importan mucho más que en una parcela grande y abierta, y una estructura bien encajada transforma el espacio como nunca lo hará una sobredimensionada."
+    facts={[
+      { label: 'Parcela típica', value: 'Compacta, con muro o valla, a menudo con acceso lateral justo' },
+      { label: 'Obra típica', value: 'Cubiertas de patio adosadas y estructuras exentas esbeltas' },
+      { label: 'Condicionante', value: 'Máxima sombra útil con la mínima superficie ocupada' },
+      { label: 'También habitual', value: 'Cubiertas de entrada, cochera y acceso' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>Los patios pequeños premian más el trabajo a medida, no menos</h2>
+      <p>
+        Existe la idea extendida de que una estructura a medida es algo que se hace en una
+        propiedad grande, y que en una pequeña uno se conforma con una cubierta de medida
+        estándar. En la práctica es justo al revés.
+      </p>
+      <p>
+        En una parcela grande, una estructura treinta centímetros más profunda de la cuenta o
+        con un poste quince centímetros desviado apenas se nota. En un patio de Hialeah, ese
+        mismo error es la diferencia entre un espacio por el que se pasa con comodidad y otro
+        en el que hay que ponerse de lado para rodear la mesa. La posición de los postes, el
+        vuelo de la viga y la altura libre tienen que estar bien, y una medida de catálogo no
+        puede dárselo por definición.
+      </p>
+      <p>
+        La buena noticia es que las estructuras pequeñas son el trabajo a medida más barato.
+        Luces más cortas significan perfiles más ligeros, zapatas más pequeñas y una obra más
+        rápida. Aquí lo de "a medida" no es la opción premium: es la sensata.
+      </p>
+
+      <h2>Adosada suele ser la respuesta</h2>
+      <p>
+        En un patio compacto, cada poste que planta es superficie que pierde. Una estructura
+        adosada — que enlaza con la casa y prolonga la línea del tejado hacia fuera — pone solo
+        dos postes en el patio en vez de cuatro, lo que en una terraza pequeña es una
+        diferencia sustancial en cómo se siente el espacio y en cómo se puede colocar el
+        mobiliario.
+      </p>
+      <p>
+        El detalle que importa es el enlace. Tiene que llevar la carga a algo capaz de
+        recibirla, y tiene que evacuar el agua lejos de la pared en vez de hacia la junta. En
+        las casas de tejado plano y de teja que abundan por Hialeah, las dos cosas son
+        perfectamente resolubles: solo hay que hacerlas bien y no deprisa. Más sobre esto en la{' '}
+        <a href="/es/pergolas/installation/">página de instalación de pérgolas</a>.
+      </p>
+
+      <h2>Muros, sol y privacidad</h2>
+      <p>
+        Un patio cerrado por muros de fábrica retiene el calor, y los propios muros devuelven
+        el sol al espacio por la tarde. En esta situación, un techo sólido o aislado ayuda
+        bastante más que uno de viguetas abiertas, porque corta la carga directa en vez de solo
+        filtrarla — y le da un cielorraso para un ventilador, que en un patio cerrado marca una
+        diferencia real.
+      </p>
+      <p>
+        La privacidad suele venir de regalo con los muros, pero es habitual que le miren desde
+        una segunda planta vecina. Una pantalla de lamas en un lado de la estructura lo
+        resuelve sin cerrar el espacio, y de paso protege del sol bajo del oeste.
+      </p>
+
+      <h2>Entradas, cocheras y accesos</h2>
+      <p>
+        No toda estructura en Hialeah va en el patio trasero. Las cubiertas sobre la zona de
+        aparcamiento de la entrada, la ampliación de una cochera o un acceso en sombra son
+        peticiones habituales, y se construyen igual que cualquier otra estructura: replanteo,
+        cimentaciones, estructura, techo. Las limitaciones son distintas (altura libre para
+        vehículos, retranqueos, visibilidad desde la calle) pero los principios son idénticos.
+      </p>
+      <p>
+        Aquí el <a href="/es/pergolas/aluminum/">aluminio</a> es casi siempre el material:
+        mantiene una línea limpia, no necesita repintado y queda bien contra la fábrica
+        revocada y pintada que domina el barrio.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Nuestro trabajo</p>
+        <h2>Estructuras compactas, bien proporcionadas</h2>
+      </div>
+      <Gallery projects={projectsIn('pergolas')} limit={2} lang={lang} />
+      <p style="margin-top:var(--space-l)">
+        <a class="btn btn-dark" href="/es/gallery/">Ver todos los proyectos</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell form-band">
+      <div class="prose">
+        <h2>Pida presupuesto de pérgola en Hialeah</h2>
+        <p>
+          Fotografíe el patio desde la puerta trasera y desde la esquina más lejana, y dénos las
+          medidas aproximadas del espacio incluyendo las líneas de muro o valla. Mencione el
+          ancho del portón lateral: en una parcela compacta eso decide cómo se acopia la
+          estructura.
+        </p>
+        <p>
+          Vea también <a href="/es/miami-pergolas/">Miami</a>,{' '}
+          <a href="/es/kendall-pergolas/">Kendall</a> y la{' '}
+          <a href="/es/service-areas/">lista completa de zonas de servicio</a>.
+        </p>
+      </div>
+      <QuoteForm lang={lang} service="Pergola" city="Hialeah" compact />
+    </div>
+  </section>
+
+  <CtaBand
+    lang={lang}
+    title="Un patio pequeño es un problema con solución."
+    body="Mande fotografías y medidas y recibirá una lectura honesta de qué cabe — incluido cuando la estructura correcta sea más pequeña de lo que se estaba imaginando."
+    secondaryLabel="Opciones de pérgola"
+    secondaryHref="/es/pergolas/"
+  />
+</BaseLayout>
+<style>
+  .form-band { display: grid; gap: var(--space-l); }
+  @media (min-width: 62rem) {
+    .form-band { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--space-2xl); align-items: start; }
+  }
+</style>

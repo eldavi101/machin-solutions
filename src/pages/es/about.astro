@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import ValueProps from '../../components/ValueProps.astro';
+import Picture from '../../components/Picture.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { image as findImage } from '../../lib/media';
+import { site, real } from '../../config/site';
+import { breadcrumbSchema, webPageSchema, organizationSchema } from '../../lib/schema';
+
+const lang = 'es' as const;
+const path = '/es/about/';
+const title = 'Sobre Machin Solutions | Constructores de Pérgolas y Tiki Huts';
+const description =
+  'Quién construye su estructura: Machin Solutions diseña e instala pérgolas, tiki huts y estructuras exteriores en Miami-Dade, Broward y los Cayos Altos.';
+
+const crumbs = [{ label: 'Nosotros' }];
+
+const licence = real(site.licenseNumber);
+
+const schema = [
+  organizationSchema(),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  lang={lang}
+  crumbs={crumbs}
+  schema={schema}
+>
+  <PageHeader
+    lang={lang}
+    eyebrow="Sobre nosotros"
+    title="Quien Mide su Patio es Quien Construye en Él"
+    lede="Machin Solutions diseña, construye e instala pérgolas, tiki huts y estructuras exteriores por todo el sur de Florida. Esa frase entera es deliberada: no somos una operación de venta que le pasa el trabajo a quien esté libre, y aquí no construye nada un equipo que no ha visto el terreno."
+  />
+
+  <section class="section">
+    <div class="shell split">
+      <div class="prose">
+        <h2>Qué hacemos</h2>
+        <p>
+          Dos tipos de estructura, bien hechas.{' '}
+          <a href="/es/pergolas/">Pérgolas y cabañas</a> modernas y calculadas — aluminio o
+          madera, abiertas, de lamas orientables o de techo sólido, con iluminación,
+          ventiladores, cocinas, televisores y pantallas. Y{' '}
+          <a href="/es/tiki-huts/">tiki huts y chickee huts</a> tradicionales — una estructura
+          de madera abierta bajo un techo de palma muy inclinado, que sigue siendo la mejor
+          estructura de sombra pura que se ha construido nunca para este clima.
+        </p>
+        <p>
+          La mayor parte de nuestro trabajo es residencial: terrazas de piscina, patios y
+          jardines de Miami-Dade y Broward. También construimos{' '}
+          <a href="/es/outdoor-living/">espacios exteriores completos</a>, donde la
+          estructura, la cocina, la pared del televisor y la iluminación se dibujan como una
+          sola cosa en vez de irse añadiendo por capas a lo largo de cinco años.
+        </p>
+
+        <h2>Cómo trabajamos</h2>
+        <p>
+          Todo proyecto empieza con alguien de pie en su patio con una cinta métrica. No como
+          detalle simpático, sino porque la posición de los postes, las luces, los ángulos de
+          sol, el drenaje y el acceso de materiales los deciden cosas que no se ven en una
+          foto. Esa visita es lo que convierte el presupuesto en una cifra real y no en una
+          cifra optimista.
+        </p>
+        <p>
+          A partir de ahí recibe un diseño dibujado para su espacio, un presupuesto por
+          escrito frente a ese diseño, y una respuesta franca cuando lo que ha pedido no es lo
+          que le conviene. Preferimos convencerle de una estructura más pequeña que funcione
+          que venderle una más grande que le coma el patio.
+        </p>
+        <p>
+          En obra, las prioridades son las partes que nadie fotografía: cimentaciones
+          dimensionadas para las cargas que la estructura va a ver de verdad, herrajes de
+          anclaje homologados para succión y uniones que transmiten el esfuerzo en lugar de
+          apoyarse en él. Eso es lo que decide si dentro de diez años la estructura sigue a
+          escuadra.
+        </p>
+
+        <h2>Lo que no vamos a hacer</h2>
+        <p>
+          No damos una cifra sin ver el espacio, porque un número dado a ciegas es una
+          suposición disfrazada de respuesta. No ponemos en esta web la foto de algo que no
+          hayamos construido nosotros — cada imagen de aquí es una estructura de Machin
+          Solutions, varias tomadas a media instalación con las escaleras todavía puestas. Y
+          no le vamos a dar en una página web una respuesta rotunda sobre los permisos de su
+          dirección concreta, porque esa es una pregunta legal de verdad y merece una
+          respuesta de verdad.
+        </p>
+      </div>
+
+      <figure class="side-figure">
+        <Picture
+          image={findImage('backlit-evening-cabana-miami-01')}
+          sizes="(min-width: 62rem) 34vw, 92vw"
+          ratio="3 / 4"
+        />
+        <figcaption>
+          Una cabaña terminada al anochecer — la iluminación, el despiece de lamas y el hueco
+          del televisor, todo proyectado dentro de la estructura desde el principio.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <ValueProps lang={lang} eyebrow="Cómo construimos" title="Lo que nos importa, por orden" dark />
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>Credenciales</h2>
+      <p>
+        Esta sección está deliberadamente vacía de afirmaciones. Los años de actividad, el
+        número de proyectos, el número de licencia, los datos del seguro, los premios y las
+        certificaciones son cosas que solo deberían aparecer en una web cuando son ciertas y
+        verificables — así que se quedan como marcadores hasta que el negocio los rellene.
+      </p>
+      <ul class="credential-list">
+        <li>
+          <strong>Licencia:</strong>{' '}
+          {licence ? licence : <span class="placeholder-token">[LICENSE_NUMBER]</span>}
+        </li>
+        <li>
+          <strong>Seguro:</strong> <span class="placeholder-token">[INSURANCE_DETAILS]</span>
+        </li>
+        <li>
+          <strong>Años de actividad:</strong>{' '}
+          <span class="placeholder-token">[YEARS_IN_BUSINESS]</span>
+        </li>
+        <li>
+          <strong>Garantía:</strong> <span class="placeholder-token">[WARRANTY_TERMS]</span>
+        </li>
+        <li>
+          <strong>Perfil de Google Business:</strong>{' '}
+          <span class="placeholder-token">[GOOGLE_BUSINESS_PROFILE]</span>
+        </li>
+      </ul>
+      <p class="credential-note">
+        Rellenar esto es el cambio de contenido de mayor valor que se puede hacer en esta web
+        — tanto para los visitantes que deciden si fiarse del negocio como para la búsqueda
+        local.
+      </p>
+    </div>
+  </section>
+
+  <CtaBand
+    lang={lang}
+    title="¿Quiere que lo hablemos?"
+    body="Mande fotos del espacio y lo que tiene en mente. Le contestará una persona que las ha leído."
+    secondaryLabel="Ver nuestro trabajo"
+    secondaryHref="/es/gallery/"
+  />
+</BaseLayout>
+<style>
+  .split { display: grid; gap: var(--space-xl); }
+  .side-figure { margin: 0; }
+  .side-figure :global(img) { width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
+  .side-figure figcaption { margin-top: 0.7rem; font-size: 0.88rem; color: var(--ink-faint); line-height: 1.6; }
+
+  .credential-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.6rem;
+    margin-top: var(--space-m);
+  }
+  .credential-list li {
+    padding: 0.65rem 0.9rem;
+    background: var(--sand-100);
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    font-size: 0.96rem;
+  }
+  .credential-note { font-size: 0.93rem; color: var(--ink-faint); }
+
+  @media (min-width: 62rem) {
+    .split { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: var(--space-2xl); align-items: start; }
+  }
+</style>

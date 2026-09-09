@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import AreaGrid from '../../components/AreaGrid.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { areasByCounty, landingAreas } from '../../data/areas';
+import { breadcrumbSchema, webPageSchema, serviceSchema } from '../../lib/schema';
+
+const lang = 'es' as const;
+const path = '/es/service-areas/';
+const title = 'Zonas de Servicio | Miami-Dade, Broward y los Cayos';
+const description =
+  'Dónde construye Machin Solutions: Miami-Dade, Broward y los Cayos Altos. Zonas de servicio ciudad por ciudad para pérgolas, tiki huts y estructuras exteriores.';
+
+const crumbs = [{ label: 'Zonas de servicio' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Construcción de pérgolas y tiki huts en el sur de Florida',
+    description,
+    path,
+    serviceType: 'Outdoor structure construction',
+    areaServed: ['Miami-Dade County, Florida', 'Broward County, Florida', 'Monroe County, Florida'],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  lang={lang}
+  crumbs={crumbs}
+  schema={schema}
+>
+  <PageHeader
+    lang={lang}
+    eyebrow="Zonas de servicio"
+    title="Construimos en Miami-Dade, Broward y los Cayos"
+    lede="Los patios no son iguales en todo el sur de Florida. Una parcela ancha y sin árboles de una urbanización de Homestead pide una estructura distinta a un solar de Coral Gables bajo arbolado maduro, y una propiedad a pie de canal en Fort Lauderdale cambia la especificación antes de dibujar nada. Aquí está dónde trabajamos y qué suele ser distinto en cada sitio."
+    facts={[
+      { label: 'Condados', value: 'Miami-Dade, Broward y Monroe' },
+      {
+        label: 'Ciudades listadas',
+        value: `${areasByCounty.reduce((n, g) => n + g.areas.length, 0)} en el sur de Florida`,
+      },
+      { label: 'Páginas de ciudad', value: `${landingAreas.length} ciudades con página propia` },
+      { label: '¿No está en la lista?', value: 'Pregunte igual — es una guía, no una valla' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>Qué cambia de una ciudad a otra</h2>
+      <p>
+        Las condiciones de diseño cambian de verdad en una región de este tamaño, y cambian la
+        estructura, no solo el tiempo de desplazamiento.
+      </p>
+      <p>
+        <strong>La exposición</strong> es la mayor de todas. Las urbanizaciones nuevas de
+        Homestead, Pembroke Pines y parte de Doral suelen tener parcelas anchas y llanas con
+        poca vegetación madura: sol pleno casi todo el día y viento de campo abierto sin nada
+        que lo frene. Zonas consolidadas como Coral Gables, Pinecrest y el Kendall antiguo
+        tienen arbolado, que suaviza el sol y abre opciones de material que a cielo abierto
+        serían mala idea.
+      </p>
+      <p>
+        <strong>La cercanía al agua</strong> cambia la especificación de raíz. En los canales
+        de Fort Lauderdale, en el borde costero de Cutler Bay y en cualquier punto de los
+        Cayos, el salitre convierte la aleación, el recubrimiento y la metalurgia de los
+        tornillos en algo decisivo, no accesorio. Una estructura especificada para un patio
+        interior de Hialeah no sería la correcta para Islamorada.
+      </p>
+      <p>
+        <strong>El tamaño y el acceso a la parcela</strong> deciden tanto como lo demás. Los
+        perfiles largos de aluminio y los paneles aislados tienen que llegar físicamente al
+        fondo de la propiedad. Los portones laterales estrechos y los retranqueos justos son
+        habituales en los barrios antiguos de Miami y son perfectamente manejables: solo hay
+        que saberlo antes de tener un camión en la calle.
+      </p>
+      <p>
+        <strong>La revisión local</strong> también difiere. Los requisitos no son idénticos en
+        Miami-Dade, Broward y el condado de Monroe, y la revisión de diseño de la HOA es un
+        factor en muchas de las comunidades planificadas más nuevas.
+      </p>
+    </div>
+  </section>
+
+  <AreaGrid
+    lang={lang}
+    featuredOnly
+    eyebrow="Páginas de ciudad"
+    title="Ciudades con página propia"
+    intro="Son las zonas por las que más nos preguntan, cada una con contenido específico sobre lo que implica construir allí."
+  />
+
+  <AreaGrid
+    lang={lang}
+    eyebrow="Lista completa"
+    title="Todas las ciudades donde trabajamos"
+    intro="Agrupadas por condado. Las ciudades en negrita tienen página propia; el resto se atienden exactamente igual."
+  />
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>¿No está en la lista?</h2>
+      <p>
+        Esta zona es una guía, no un límite. Si está justo fuera, o no sabe si su dirección
+        cuenta como Miami-Dade o Broward, pregunte: lo peor que puede pasar es un no claro, y
+        cuesta un mensaje.
+      </p>
+      <p>
+        Para obra comercial, el radio práctico suele ser mayor que para proyectos
+        residenciales. Díganos dónde y qué, y recibirá una respuesta honesta sobre si somos
+        las personas indicadas.
+      </p>
+    </div>
+  </section>
+
+  <CtaBand
+    lang={lang}
+    title="¿Construye en algún punto del sur de Florida?"
+    body="Díganos la ciudad y qué quiere cubrir. Si trabajamos allí, tendrá una respuesta real en el mismo mensaje."
+    secondaryLabel="Ver nuestro trabajo"
+    secondaryHref="/es/gallery/"
+  />
+</BaseLayout>

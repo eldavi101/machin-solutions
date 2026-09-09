@@ -1,0 +1,237 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHeader from '../../../components/PageHeader.astro';
+import Picture from '../../../components/Picture.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import QuoteForm from '../../../components/QuoteForm.astro';
+import { image as findImage } from '../../../lib/media';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../../../lib/schema';
+
+const lang = 'es' as const;
+const path = '/es/pergolas/custom/';
+const title = 'Pérgolas a Medida | Dibujadas para su Propio Patio';
+const description =
+  'Diseño de pérgolas a medida en el sur de Florida: luces, postes, tipo de techo y acabados dibujados para su patio, no elegidos de un catálogo.';
+
+const crumbs = [{ href: '/es/pergolas/', label: 'Pérgolas' }, { label: 'Pérgolas a medida' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Diseño y construcción de pérgolas a medida',
+    description,
+    path,
+    serviceType: 'Custom pergola design',
+    offers: [
+      'Diseño de pérgolas a medida',
+      'Construcción de pérgolas en voladizo',
+      'Cubiertas integradas para cocina exterior',
+      'Integración de pared de televisor e iluminación',
+    ],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+
+const decisions = [
+  {
+    q: '¿Cuánta luz hay que salvar?',
+    a: 'La luz manda en todo: canto de viga, sección de poste, tamaño de zapata y precio. Una estructura que cruza una terraza de piscina sin un poste en medio es una obra distinta a otra que puede apoyar los postes donde le convenga.',
+  },
+  {
+    q: '¿Dónde pueden ir realmente los postes?',
+    a: 'El vaso de la piscina, las tuberías, los desagües de la terraza, el riego, las raíces de los árboles y los retranqueos van descartando posiciones. La colocación de los postes suele ser la primera limitación real que aparece en obra.',
+  },
+  {
+    q: '¿Qué va a hacer debajo?',
+    a: 'Comer pide una altura libre y una iluminación distintas a estar tumbado. Una cocina pide un techo seco y electricidad. Un televisor pide una pared, un soporte y sombra sobre la pantalla a las horas en que se usa.',
+  },
+  {
+    q: '¿Por dónde entra el sol?',
+    a: 'Un techo que da sombra perfecta al mediodía puede ser inútil a las cuatro de la tarde. El sol bajo del oeste es el que arruina estructuras que por lo demás están bien, y se resuelve con un panel de testero o un tramo de lamas — si se ha previsto.',
+  },
+  {
+    q: '¿Cómo se encuentra con la casa?',
+    a: 'Una estructura adosada tiene que enlazar limpiamente con la cornisa o con la línea del tejado y evacuar el agua lejos de la pared. Una exenta tiene que parecer deliberada y no aparcada ahí.',
+  },
+  {
+    q: '¿De qué es, y con qué acabado?',
+    a: 'El material fija el mantenimiento; el acabado fija si se lee como algo premium o como un kit. El despiece de lamas, las fijaciones ocultas y un color coherente entre postes, vigas y techo son donde se nota la diferencia.',
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  lang={lang}
+  crumbs={crumbs}
+  schema={schema}
+>
+  <PageHeader
+    lang={lang}
+    eyebrow="Pérgolas a medida"
+    title="Pérgolas a Medida, Dibujadas para el Patio al que Van"
+    lede="Las pérgolas de catálogo vienen en medidas de catálogo. Los patios reales tienen una piscina en el sitio equivocado, una puerta que se abre justo donde quiere ir un poste, y un sol de tarde que llega desde una dirección concreta. Una estructura a medida resuelve todo eso antes de fabricar nada."
+    facts={[
+      { label: 'Qué incluye', value: 'Diseño, coordinación de ingeniería, fabricación e instalación' },
+      { label: 'Materiales', value: 'Aluminio con acabado en polvo, madera, sistemas de composite' },
+      { label: 'Usos típicos', value: 'Terrazas de piscina, cocinas exteriores, patios, entradas' },
+      { label: 'Dónde', value: 'Miami-Dade, Broward y los Cayos Altos' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell split">
+      <div class="prose">
+        <h2>Qué significa aquí "a medida"</h2>
+        <p>
+          Toda estructura que construimos empieza como un dibujo de su patio, no como una
+          página de catálogo. Eso no es una gama superior: es la única forma de conseguir una
+          estructura que apoye los postes donde realmente pueden ir, salve lo que hay que
+          salvar y dé sombra a la terraza a las horas en que usted está fuera.
+        </p>
+        <p>
+          En la práctica, a medida significa que el canto de la viga se calcula para su luz en
+          vez de darse por supuesto, que la retícula de postes se define alrededor del vaso de
+          la piscina y de las tuberías, que el tipo de techo se elige por lo que va a hacer
+          debajo, y que la iluminación, los ventiladores, los altavoces y las pantallas se
+          proyectan dentro de la estructura en lugar de atornillarse después. Significa además
+          que los acabados se eligen para acompañar a su casa: el color de la estructura, la
+          dirección de las lamas, si las fijaciones se ven o no.
+        </p>
+
+        <h2>Las seis decisiones que dan forma a la estructura</h2>
+        <p>
+          Un diseño a medida es en realidad una serie de decisiones tomadas en el orden
+          correcto. Estas son las que importan, y las que le iremos explicando en la visita
+          técnica.
+        </p>
+      </div>
+
+      <figure class="side-figure">
+        <Picture
+          image={findImage('cantilevered-pergola-media-wall-miami-03')}
+          sizes="(min-width: 62rem) 32vw, 92vw"
+          ratio="3 / 4"
+        />
+        <figcaption>
+          Detalle de unión poste-viga en una estructura a medida. Estructura oculta, ritmo a la
+          vista — la parte que decide si una pérgola se lee como arquitectura o como un kit.
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="shell">
+      <ol class="decisions">
+        {
+          decisions.map((item) => (
+            <li class="decision">
+              <h3>{item.q}</h3>
+              <p>{item.a}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell split-form">
+      <div class="prose">
+        <h2>Qué va integrado</h2>
+        <p>
+          Las cosas que hacen que una estructura exterior sea de verdad usable son todas cosas
+          que hay que planificar antes de fabricar. Añadir cualquiera después significa tubo
+          visto, soportes a la vista y un resultado peor.
+        </p>
+        <ul>
+          <li><strong>Iluminación empotrada</strong> — focos alojados en el techo, no sujetos a una viga.</li>
+          <li><strong>Ventiladores de techo</strong> — con refuerzo y soporte homologado proyectados en la estructura.</li>
+          <li><strong>Televisores de exterior</strong> — sobre una pared hecha a propósito, con la pantalla en sombra a las horas en que se usa.</li>
+          <li><strong>Altavoces</strong> — enrasados, cableados por dentro de la estructura.</li>
+          <li><strong>Pantallas de privacidad y sombra</strong> — paneles fijos de lamas o pantallas enrollables en el lado expuesto.</li>
+          <li><strong>Cocinas exteriores y barras</strong> — coordinadas con el techo para que servicios, extracción y altura libre funcionen.</li>
+        </ul>
+        <p>
+          Puede ver todo esto en la{' '}
+          <a href="/es/gallery/">galería de proyectos terminados</a> — las paredes de
+          televisor, la iluminación empotrada, las lamas de privacidad. Nada de eso se añadió
+          después.
+        </p>
+
+        <h2>A medida no tiene por qué significar grande</h2>
+        <p>
+          Un patio pequeño suele beneficiarse más de una estructura a medida que uno grande.
+          Cuando no hay margen de error, la diferencia entre una pérgola que encaja y otra que
+          agobia el espacio son unos pocos centímetros en la posición del poste y en el vuelo
+          de la viga — exactamente lo que una medida de catálogo no le puede dar. Si su patio
+          es justo, dígalo: es un problema con solución, no un motivo de descarte.
+        </p>
+      </div>
+
+      <div class="form-column">
+        <h2 class="form-title">Empiece un diseño a medida</h2>
+        <p class="form-note">Con fotos y medidas aproximadas basta para arrancar.</p>
+        <QuoteForm lang={lang} service="Pergola" compact />
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    lang={lang}
+    title="Todo patio tiene una estructura que le encaja."
+    body="Mande fotos de su espacio y le diremos qué va a funcionar en él — incluso cuando la respuesta honesta sea algo más pequeño de lo que se estaba imaginando."
+    secondaryLabel="Comparar materiales"
+    secondaryHref="/es/pergolas/aluminum/"
+  />
+</BaseLayout>
+<style>
+  .split { display: grid; gap: var(--space-xl); }
+  .side-figure { margin: 0; }
+  .side-figure :global(img) { width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
+  .side-figure figcaption {
+    margin-top: 0.7rem;
+    font-size: 0.88rem;
+    color: var(--ink-faint);
+    line-height: 1.6;
+  }
+
+  .decisions {
+    margin-top: var(--space-xl);
+    padding: 0;
+    list-style: none;
+    counter-reset: decision;
+    display: grid;
+    gap: var(--space-m);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  }
+  .decision {
+    counter-increment: decision;
+    padding: var(--space-m);
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+  }
+  .decision h3 { font-size: var(--step-1); }
+  .decision h3::before {
+    content: counter(decision, decimal-leading-zero);
+    display: block;
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.3rem;
+  }
+  .decision p { margin-top: 0.45rem; color: var(--ink-soft); font-size: 0.95rem; }
+
+  .split-form { display: grid; gap: var(--space-xl); }
+  .form-column { align-self: start; }
+  .form-title { font-size: var(--step-2); }
+  .form-note { margin: 0.4rem 0 var(--space-s); color: var(--ink-soft); font-size: 0.95rem; }
+
+  @media (min-width: 62rem) {
+    .split { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: var(--space-2xl); align-items: start; }
+    .split-form { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: var(--space-2xl); }
+    .form-column { position: sticky; top: 6rem; }
+  }
+</style>

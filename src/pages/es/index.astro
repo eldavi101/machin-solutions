@@ -1,0 +1,253 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import ServiceCards from '../../components/ServiceCards.astro';
+import ValueProps from '../../components/ValueProps.astro';
+import ProcessSteps from '../../components/ProcessSteps.astro';
+import AreaGrid from '../../components/AreaGrid.astro';
+import Gallery from '../../components/Gallery.astro';
+import Faq from '../../components/Faq.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { generalFaqsEs } from '../../data/faqs.es';
+import { projects, image as findImage, srcset } from '../../lib/media';
+import { organizationSchema, websiteSchema, webPageSchema } from '../../lib/schema';
+
+const lang = 'es' as const;
+const path = '/es/';
+const title = 'Pérgolas y Tiki Huts en Miami | Machin Solutions';
+const description =
+  'Pérgolas a medida, tiki huts y estructuras exteriores para patios del sur de Florida. Diseño, construcción e instalación en Miami-Dade y Broward. Presupuesto gratis.';
+
+const hero = findImage('rain-curtain-pool-cabana-miami-01');
+
+const services = [
+  {
+    title: 'Pérgolas',
+    href: '/es/pergolas/',
+    imageSlug: 'cantilevered-pergola-media-wall-miami-01',
+    body: 'Pérgolas exentas y adosadas en aluminio y madera — viguetas abiertas, techos de lamas orientables o paneles sólidos aislados, dibujadas para la luz que su patio necesita de verdad.',
+    points: [
+      'Estructuras a medida, de aluminio, de madera y de lamas',
+      'Iluminación, ventiladores, altavoces y pantallas integrados',
+      'Terrazas de piscina, patios, cocinas exteriores y entradas',
+    ],
+    cta: 'Ver opciones de pérgola',
+  },
+  {
+    title: 'Tiki Huts',
+    href: '/es/tiki-huts/',
+    imageSlug: null,
+    body: 'Tiki huts y chickee huts tradicionales de lados abiertos — una estructura de madera bajo un techo de palma muy inclinado que da sombra profunda sin cortar la brisa.',
+    points: [
+      'Tiki huts, chickee huts y barras de palma',
+      'Estructuras residenciales y comerciales',
+      'Palma sabal natural o palma sintética',
+    ],
+    cta: 'Ver opciones de tiki hut',
+  },
+];
+
+const recent = projects.slice(0, 3);
+
+const schema = [
+  organizationSchema(),
+  websiteSchema(),
+  webPageSchema({
+    path,
+    name: title,
+    description,
+    primaryImage: `/media/${hero.slug}-1600.jpg`,
+  }),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  lang={lang}
+  schema={schema}
+  preload={{
+    srcset: srcset(hero, 'avif'),
+    sizes: '100vw',
+    type: 'image/avif',
+  }}
+>
+  <Hero
+    lang={lang}
+    variant="full"
+    eyebrow="Miami · Miami-Dade · Broward · Los Cayos"
+    title="Pérgolas y Tiki Huts a Medida en Miami y el Sur de Florida"
+    body="Machin Solutions diseña, construye e instala pérgolas, tiki huts y estructuras exteriores que convierten un patio caluroso y desaprovechado en la parte de la casa donde todo el mundo quiere estar."
+    imageSlug="rain-curtain-pool-cabana-miami-01"
+    bullets={['Diseño, construcción e instalación', 'Aluminio, madera y palma', 'Residencial y comercial']}
+  />
+
+  <section class="section-tight trust-strip">
+    <div class="shell">
+      <ul class="trust-list">
+        <li>
+          <strong>Construido para el clima de aquí</strong>
+          <span>Sol pleno, aguaceros de verano, aire salino y temporada de huracanes son las condiciones de diseño.</span>
+        </li>
+        <li>
+          <strong>Una estructura, completamente terminada</strong>
+          <span>Iluminación, ventiladores, televisores, altavoces y pantallas proyectados dentro, no atornillados después.</span>
+        </li>
+        <li>
+          <strong>Proyectos reales, fotos reales</strong>
+          <span>Todo lo que hay en nuestra galería es una estructura que construimos, fotografiada en obra.</span>
+        </li>
+        <li>
+          <strong>Respuestas claras sobre el precio</strong>
+          <span>Mande fotos y medidas y recibirá una cifra real, no una horquilla pensada para conseguir una visita.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Qué construimos</p>
+        <h2>Dos cosas, bien hechas</h2>
+        <p class="lede" style="margin-top:var(--space-s)">
+          La mayoría de los patios del sur de Florida necesitan una de dos cosas: una
+          estructura moderna que sostenga una cocina, un televisor y sombra completa, o un
+          hut tradicional de palma que dé sombra profunda y deje pasar la brisa. Construimos
+          las dos, y le diremos cuál le encaja.
+        </p>
+      </div>
+      <ServiceCards cards={services} lang={lang} />
+    </div>
+  </section>
+
+  <ValueProps dark lang={lang} />
+
+  <section class="section">
+    <div class="shell">
+      <div class="section-head work-head">
+        <div>
+          <p class="eyebrow">Proyectos recientes</p>
+          <h2>Estructuras que hemos construido en el sur de Florida</h2>
+        </div>
+        <a class="btn btn-ghost" href="/es/gallery/">Ver la galería completa</a>
+      </div>
+      <Gallery projects={recent} lang={lang} />
+    </div>
+  </section>
+
+  <ProcessSteps
+    lang={lang}
+    intro="Sin sorpresas y sin desapariciones a mitad de obra. Así funciona un proyecto desde su primer mensaje hasta el día en que recupera el patio."
+  />
+
+  <AreaGrid
+    lang={lang}
+    featuredOnly
+    title="Damos servicio en Miami y el sur de Florida"
+    intro="Los condados de Miami-Dade y Broward más los Cayos Altos. Estas ciudades tienen página propia; la lista completa está en la página de zonas de servicio."
+  />
+
+  <section class="section testimonials" aria-labelledby="testimonials-title">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">En sus propias palabras</p>
+        <h2 id="testimonials-title">Lo que dicen los propietarios</h2>
+      </div>
+      <div class="testimonial-slots">
+        <blockquote class="testimonial-slot">
+          <p>
+            Esta sección está preparada para reseñas reales y atribuidas de clientes. Aquí no
+            se ha escrito nada en nombre del negocio.
+          </p>
+          <footer>
+            <span class="placeholder-token">[TESTIMONIAL_1]</span>
+          </footer>
+        </blockquote>
+        <blockquote class="testimonial-slot">
+          <p>
+            Pegue una reseña auténtica, el nombre del cliente y su ciudad. Cuando haya
+            reseñas reales, se pueden activar los datos estructurados Review y
+            AggregateRating en <code>src/lib/schema.ts</code>.
+          </p>
+          <footer>
+            <span class="placeholder-token">[TESTIMONIAL_2]</span>
+          </footer>
+        </blockquote>
+        <blockquote class="testimonial-slot">
+          <p>
+            Enlazar aquí el perfil de Google Business es el cambio de mayor valor que se puede
+            hacer en esta página para la búsqueda local.
+          </p>
+          <footer>
+            <span class="placeholder-token">[GOOGLE_BUSINESS_PROFILE]</span>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <Faq
+    lang={lang}
+    faqs={generalFaqsEs}
+    eyebrow="Preguntas"
+    title="Lo que la gente pregunta antes de construir"
+    intro="Si su pregunta no está aquí, hágala en el formulario de presupuesto — la responde una persona."
+  />
+
+  <CtaBand
+    lang={lang}
+    title="¿Listo para ver qué cabe en su patio?"
+    body="Mande fotos y medidas aproximadas y recibirá una respuesta clara sobre qué va a funcionar, qué hace falta para construirlo y cuánto cuesta."
+  />
+</BaseLayout>
+
+<style>
+  .trust-strip { background: var(--sand-100); border-block: 1px solid var(--line); }
+  .trust-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-m);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  }
+  .trust-list li { display: grid; gap: 0.25rem; }
+  .trust-list strong { font-size: 0.98rem; }
+  .trust-list span { font-size: 0.91rem; color: var(--ink-soft); line-height: 1.55; }
+
+  .work-head {
+    max-width: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: var(--space-m);
+  }
+
+  .testimonials { background: var(--sand-100); }
+  .testimonial-slots {
+    display: grid;
+    gap: var(--space-m);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  }
+  .testimonial-slot {
+    margin: 0;
+    padding: var(--space-m);
+    background: var(--bg-raised);
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius-lg);
+    display: grid;
+    gap: var(--space-s);
+  }
+  .testimonial-slot p { color: var(--ink-soft); font-size: 0.95rem; }
+  .testimonial-slot code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.9em;
+    background: var(--sand-100);
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+  }
+  .testimonial-slot footer { margin-top: auto; }
+</style>

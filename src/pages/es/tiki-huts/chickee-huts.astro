@@ -1,0 +1,177 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHeader from '../../../components/PageHeader.astro';
+import TikiPlaceholder from '../../../components/TikiPlaceholder.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import QuoteForm from '../../../components/QuoteForm.astro';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../../../lib/schema';
+
+const lang = 'es' as const;
+const path = '/es/tiki-huts/chickee-huts/';
+const title = '¿Qué es un Chickee Hut? Refugios Tradicionales de Palma';
+const description =
+  'Qué es un chickee hut, cómo se construyen la estructura y el techo de palma, por qué importa la pendiente y en qué se diferencia de un tiki hut.';
+
+const crumbs = [{ href: '/es/tiki-huts/', label: 'Tiki Huts' }, { label: 'Chickee Huts' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Construcción de chickee huts',
+    description,
+    path,
+    serviceType: 'Chickee hut construction',
+    offers: [
+      'Construcción de chickee huts',
+      'Cubierta tradicional de palma',
+      'Reposición de palma en chickees',
+    ],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  lang={lang}
+  crumbs={crumbs}
+  schema={schema}
+>
+  <PageHeader
+    lang={lang}
+    eyebrow="Chickee huts"
+    title="Chickee Huts: la Estructura de Sombra Original del Sur de Florida"
+    lede="Antes de que aquí hubiera pérgolas o cubiertas de patio, estaba el chickee: una estructura elevada y abierta, sin paredes, con un techo muy inclinado de palma en capas. Es una forma de construir desarrollada por los pueblos seminola y miccosukee específicamente para este calor, esta lluvia y esta humedad, y nada de lo construido desde entonces la ha mejorado en sombra pura y ventilación."
+    facts={[
+      { label: 'Forma', value: 'Lados abiertos, sin paredes, techo de palma muy inclinado' },
+      { label: 'Estructura', value: 'Ciprés o madera tratada a presión' },
+      { label: 'Techo', value: 'Palma sabal en capas, o sintética si el mantenimiento debe ser mínimo' },
+      { label: 'Es lo mismo que', value: 'Lo que casi todo el mundo llama tiki hut' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>Chickee, tiki hut, choza de palma: ¿qué diferencia hay?</h2>
+      <p>
+        A efectos prácticos, ninguna. <strong>Chickee</strong> es la palabra seminola y
+        miccosukee para el refugio de palma con los lados abiertos, y es el término más
+        antiguo y más exacto para la estructura. <strong>Tiki hut</strong> es el nombre que
+        esa misma forma adoptó comercialmente en Florida — toma prestada la imaginería
+        polinesia y no algo local — pero es la expresión que hoy usa y busca casi todo el
+        mundo.
+      </p>
+      <p>
+        También verá <em>choza de palma</em>, <em>palapa</em> y{' '}
+        <em>techo tropical de palma</em>. Todo describe lo mismo: una estructura, sin paredes,
+        y un techo grueso de hojas de palma en capas con mucha pendiente.
+      </p>
+      <p>
+        En esta web usamos los dos nombres porque los dos son correctos y la gente llega
+        usando ambos. Lo que importa es la estructura, no la etiqueta.
+      </p>
+
+      <h2>Cómo se construye de verdad un chickee</h2>
+      <p>
+        Merece la pena entender la lógica constructiva, porque explica por qué la estructura
+        funciona y dónde falla cuando está mal hecha.
+      </p>
+      <p>
+        <strong>La estructura</strong> es de madera — tradicionalmente ciprés, que es
+        naturalmente duradero, y hoy a menudo madera tratada a presión. Los postes se empotran
+        en el terreno o se apoyan en cimentaciones, sosteniendo una viga perimetral y después
+        los pares que dan al techo su pendiente. La estructura es la parte permanente; bien
+        hecha, dura bastante más que el techo que lleva encima.
+      </p>
+      <p>
+        <strong>El techo</strong> es donde está el oficio. Las hojas de palma sabal se colocan
+        en capas desde el borde inferior hacia arriba, solapando cada hilada sobre la anterior,
+        hasta que el techo es tan grueso que no queda ningún camino por el que corra el agua.
+        La pendiente fuerte no es una decisión estética: es lo que hace que el agua corra
+        rápido por la superficie exterior en vez de irse metiendo entre las capas. Un techo de
+        palma con poca pendiente gotea; uno inclinado y bien grueso, no.
+      </p>
+      <p>
+        <strong>Los lados abiertos</strong> son igual de deliberados. Unas paredes atraparían
+        el calor bajo un techo que ya aísla bien. Dejar la estructura abierta permite que el
+        aire pase a través, que es la razón de que estar bajo un buen chickee en un día de
+        calor se sienta radicalmente distinto a estar bajo un techo macizo del mismo tamaño.
+      </p>
+
+      <h2>Qué implica tener uno</h2>
+      <p>
+        Un techo de palma es una superficie natural y de desgaste. Se curte, se adelgaza con el
+        tiempo y acaba necesitando renovación — ese es el trato, y no es un defecto. Cuánto
+        dura un techo depende de la exposición al sol, de la lluvia, de si los árboles le tiran
+        hojarasca encima y, sobre todo, de con cuánto grosor y cuánto oficio se colocó.
+      </p>
+      <p>
+        Reponer la palma conserva la estructura y renueva el techo, que es un trabajo bastante
+        menor que construir desde cero.{' '}
+        <span class="placeholder-token">[THATCH_LIFESPAN]</span> — añada aquí la duración
+        realista y el intervalo de reposición.
+      </p>
+      <p>
+        La palma sintética es la alternativa de bajo mantenimiento: mucha más vida útil, mucho
+        menos cuidado, a costa de parte de la textura que hace que la de verdad merezca la
+        pena. Para una propiedad comercial o para un dueño que no quiere un ciclo de
+        mantenimiento, suele ser la respuesta sensata.
+      </p>
+
+      <h2>Permisos y normativa local</h2>
+      <p>
+        Los requisitos difieren según la administración y según la estructura, y algunos
+        departamentos de edificación tratan ciertas estructuras chickee tradicionales de forma
+        distinta a otras construcciones auxiliares. Esa es una pregunta legal real sobre su
+        dirección concreta, no algo que una página web deba responder con rotundidad.{' '}
+        <span class="placeholder-token">[PERMIT_POLICY]</span> — indique cómo se gestiona.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Nuestro trabajo</p>
+        <h2>Fotografías de chickee huts</h2>
+      </div>
+      <TikiPlaceholder
+        lang={lang}
+        caption="Aquí se irán añadiendo fotografías de chickee huts terminados."
+      />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell form-band">
+      <div class="prose">
+        <h2>Pregunte por un chickee hut</h2>
+        <p>
+          Díganos dónde iría, de qué tamaño aproximado, y si quiere palma natural o sintética.
+          Si no lo tiene claro, describa cómo lo usaría y le hacemos una recomendación.
+        </p>
+        <p>
+          Si todavía está sopesando un hut frente a una estructura moderna, las{' '}
+          <a href="/es/pergolas/">páginas de pérgolas</a> exponen el otro lado del intercambio.
+        </p>
+      </div>
+      <QuoteForm lang={lang} service="Tiki Hut" compact />
+    </div>
+  </section>
+
+  <CtaBand
+    lang={lang}
+    title="Una estructura que merece la pena hacer bien."
+    body="La palma es trabajo de oficio, y la diferencia entre un techo que dura y uno que no está enteramente en cómo se colocó. Empiece por una conversación sobre su espacio."
+    secondaryLabel="Construcción de tiki huts"
+    secondaryHref="/es/tiki-huts/construction/"
+  />
+</BaseLayout>
+<style>
+  .form-band { display: grid; gap: var(--space-l); }
+  @media (min-width: 62rem) {
+    .form-band { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--space-2xl); align-items: start; }
+  }
+</style>

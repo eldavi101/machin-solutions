@@ -8,9 +8,11 @@ export interface Props {
   /** Path of the current page, language prefix included. */
   currentPath: string;
   lang?: Lang;
+  /** Off on noindex pages, where the counterpart URL is not a real address. */
+  showLangSwitch?: boolean;
 }
 
-const { currentPath, lang = defaultLang } = Astro.props;
+const { currentPath, lang = defaultLang, showLangSwitch = true } = Astro.props;
 const t = useTranslations(lang);
 
 /** Nav hrefs are written as logical paths and localised once, here. */
@@ -35,7 +37,7 @@ const phone = phoneLabel();
 const otherLang: Lang = lang === 'en' ? 'es' : 'en';
 // null while this page has no counterpart yet. A switcher that links to a page
 // nobody has written is a 404 in the header, which is the worst place for one.
-const otherHref = counterpart(logical, otherLang);
+const otherHref = showLangSwitch ? counterpart(logical, otherLang) : null;
 ---
 
 <header class="site-header">

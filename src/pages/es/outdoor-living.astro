@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Gallery from '../../components/Gallery.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import { projectsIn } from '../../lib/media';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../../lib/schema';
+
+const lang = 'es' as const;
+const path = '/es/outdoor-living/';
+const title = 'Estructuras para Exteriores | Cabañas y Cocinas Exteriores';
+const description =
+  'Estructuras exteriores en el sur de Florida: cabañas de piscina, patios cubiertos, cocinas exteriores y paredes de televisor, como un único espacio.';
+
+const crumbs = [{ label: 'Espacios exteriores' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Diseño y construcción de estructuras para exteriores',
+    description,
+    path,
+    serviceType: 'Outdoor living structure construction',
+    offers: [
+      'Construcción de cabañas de piscina',
+      'Construcción de patios cubiertos',
+      'Cubiertas para cocinas exteriores',
+      'Paredes de televisor para exterior',
+      'Pantallas de privacidad y sombra',
+    ],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+
+const elements = [
+  {
+    name: 'Cabañas de piscina',
+    body: 'Una estructura exenta al otro lado de la piscina que convierte la terraza en un destino y no en un pasillo. Suele ser donde acaban la cocina, la barra y los sillones.',
+  },
+  {
+    name: 'Patios cubiertos',
+    body: 'Un techo sólido o aislado que prolonga la casa hacia fuera y le da una sala de verdad, seca y más fresca, donde los muebles pueden vivir todo el año.',
+  },
+  {
+    name: 'Cocinas exteriores',
+    body: 'La estructura y la cocina diseñadas a la vez, para que la altura libre, la extracción, la electricidad, el agua y el desarrollo de encimera se resuelvan en vez de chocar.',
+  },
+  {
+    name: 'Paredes de televisor',
+    body: 'Una pared construida a propósito que sostiene el televisor y los altavoces, situada de modo que la pantalla esté en sombra a las horas en que se usa de verdad.',
+  },
+  {
+    name: 'Pantallas de privacidad',
+    body: 'Paneles fijos de lamas o pantallas enrollables en el lado expuesto — para los vecinos, para el sol bajo del oeste, o para las dos cosas.',
+  },
+  {
+    name: 'Elementos de agua',
+    body: 'Cortinas de lluvia y elementos parecidos integrados en el borde del techo, no añadidos al lado. Vea el proyecto de la cabaña en la galería.',
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  lang={lang}
+  crumbs={crumbs}
+  schema={schema}
+>
+  <PageHeader
+    lang={lang}
+    eyebrow="Espacios exteriores"
+    title="Estructuras Exteriores Construidas Como un Único Espacio Terminado"
+    lede="Los mejores patios del sur de Florida no son una pérgola más una parrilla más un televisor. Son una sola estructura diseñada para sostenerlo todo — donde la iluminación va en el techo, el cableado va dentro de la estructura, y la cocina y el techo se dibujaron a la vez."
+    facts={[
+      { label: 'Estructuras', value: 'Cabañas, patios cubiertos, cubiertas de cocina, paredes de televisor' },
+      { label: 'Integrado', value: 'Iluminación, ventiladores, altavoces, pantallas y elementos de agua' },
+      { label: 'Compatible con', value: 'Piscinas, terrazas y cerramientos ya existentes' },
+      { label: 'Zona de servicio', value: 'Miami-Dade, Broward y los Cayos Altos' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>Por qué importa diseñarlo como una sola cosa</h2>
+      <p>
+        La mayoría de los patios se construyen por capas, con años de diferencia. Primero la
+        piscina, después la terraza, luego alguien añade una parrilla, después se pone una
+        estructura de sombra sobre una parte, y al final se cuelga un televisor en un sitio
+        donde funciona a medias. Cada paso es razonable por separado, y el resultado es un
+        espacio que nunca acaba de cuadrar.
+      </p>
+      <p>
+        Diseñar la estructura y todo lo que va a sostener al mismo tiempo cambia el resultado
+        de formas concretas y visibles. La iluminación queda empotrada en el techo en vez de
+        sujeta a una viga. El cableado de altavoces y televisor va por dentro de los perfiles
+        huecos en vez de por tubo visto bajando por un poste. Un ventilador cuelga de un
+        refuerzo puesto para él, a una altura que de verdad funciona. Los desarrollos de
+        encimera y los bordes del techo se alinean. La pantalla está en sombra a las cuatro de
+        la tarde porque alguien comprobó dónde iba a estar el sol.
+      </p>
+      <p>
+        Nada de eso es caro de planificar. Todo eso es caro — o imposible — de añadir después.
+      </p>
+
+      <h2>Qué llevan estas estructuras</h2>
+    </div>
+
+    <div class="shell element-wrap">
+      <ul class="element-grid">
+        {
+          elements.map((element) => (
+            <li class="element">
+              <h3>{element.name}</h3>
+              <p>{element.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Nuestro trabajo</p>
+        <h2>Proyectos de espacios exteriores</h2>
+        <p class="lede" style="margin-top:var(--space-s)">
+          Cabañas, patios cubiertos y cocinas exteriores que hemos construido por el sur de
+          Florida — varios fotografiados a media instalación.
+        </p>
+      </div>
+      <Gallery projects={projectsIn('outdoor-living')} lang={lang} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell form-band">
+      <div class="prose">
+        <h2>Por dónde empezar</h2>
+        <p>
+          El primer mensaje más útil es una descripción de cómo quiere usar el espacio —
+          cocinar, comer, estar, ver algo, todo a la vez — más fotografías desde un par de
+          ángulos y medidas aproximadas.
+        </p>
+        <p>
+          A partir de ahí podemos decirle si lo suyo es una{' '}
+          <a href="/es/pergolas/">pérgola</a>, una cabaña completa o algo intermedio, y qué
+          hace falta para construirlo donde usted quiere.
+        </p>
+      </div>
+      <QuoteForm lang={lang} service="Other Outdoor Project" compact />
+    </div>
+  </section>
+
+  <CtaBand
+    lang={lang}
+    title="Una sola estructura, bien planificada."
+    body="Cuéntenos todo lo que quiere que haga el espacio. Sale mucho más barato resolverlo sobre el papel que en obra."
+    secondaryLabel="Ver la galería completa"
+    secondaryHref="/es/gallery/"
+  />
+</BaseLayout>
+<style>
+  .element-wrap { margin-top: var(--space-l); }
+  .element-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-m);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  }
+  .element { padding-top: var(--space-s); border-top: 2px solid var(--line-strong); }
+  .element h3 { font-size: var(--step-1); }
+  .element p { margin-top: 0.4rem; color: var(--ink-soft); font-size: 0.95rem; }
+
+  .form-band { display: grid; gap: var(--space-l); }
+  @media (min-width: 62rem) {
+    .form-band { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--space-2xl); align-items: start; }
+  }
+</style>

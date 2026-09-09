@@ -1,0 +1,177 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import TikiPlaceholder from '../../components/TikiPlaceholder.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../../lib/schema';
+
+const lang = 'es' as const;
+const path = '/es/miami-tiki-huts/';
+const title = 'Tiki Huts en Miami FL | Chozas de Palma para Patio y Piscina';
+const description =
+  'Constructores de tiki huts en Miami: chickee huts de palma para patios, piscinas y espacios comerciales, y reposición de palma en huts existentes.';
+
+const crumbs = [{ href: '/es/service-areas/', label: 'Zonas de servicio' }, { label: 'Tiki huts en Miami' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Construcción de tiki huts y chickee huts en Miami, Florida',
+    description,
+    path,
+    serviceType: 'Tiki hut construction',
+    areaServed: ['Miami, Florida', 'Miami-Dade County, Florida'],
+    offers: [
+      'Construcción de tiki huts de patio',
+      'Chickee huts junto a la piscina',
+      'Estructuras comerciales de palma',
+      'Reposición de palma en tiki huts',
+    ],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  lang={lang}
+  crumbs={crumbs}
+  schema={schema}
+>
+  <PageHeader
+    lang={lang}
+    eyebrow="Tiki huts en Miami"
+    title="Tiki Huts para Patios y Piscinas de Miami"
+    lede="De todas las formas de dar sombra a un patio de Miami, la choza de palma es la única que se inventó aquí. Una estructura abierta bajo un techo empinado de palma sabal da la sombra más profunda que existe y deja pasar la brisa a través — que en una tarde quieta de agosto junto a una piscina vale más que cualquier cantidad de ingeniería."
+    facts={[
+      { label: 'Estructuras', value: 'Huts de patio y de piscina, barras tiki, sombra comercial' },
+      { label: 'Palma', value: 'Sabal natural, o sintética cuando el mantenimiento debe ser mínimo' },
+      { label: 'También ofrecemos', value: 'Reposición de palma y reparación de huts existentes' },
+      { label: 'Zona', value: 'Miami y el conjunto del condado de Miami-Dade' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>Por qué un hut funciona especialmente bien en Miami</h2>
+      <p>
+        Los patios de Miami tienden a estar cerrados — por muros, por vallas, por las casas
+        vecinas — y los espacios cerrados retienen el calor. Esa es exactamente la condición en
+        la que una estructura de lados abiertos es buena. Un techo de palma aísla mucho mejor
+        de lo que su peso sugiere, y como no hay paredes debajo, el movimiento de aire que
+        haya en el patio pasa a través en vez de detenerse contra un muro.
+      </p>
+      <p>
+        La otra razón es el carácter. Una{' '}
+        <a href="/es/pergolas/">pérgola moderna</a> se lee como una prolongación de la casa:
+        precisa, calculada, parte del edificio. Un hut se lee como un destino dentro del patio,
+        un sitio aparte al que uno sale. En una parcela pequeña de Miami, esa diferencia
+        psicológica es sorprendentemente grande.
+      </p>
+      <p>
+        El intercambio es honesto y conviene decirlo: un techo de palma es una superficie
+        natural y de desgaste, y no es la estructura de la que colgar una cocina exterior, un
+        televisor e iluminación empotrada. Si quiere una habitación seca capaz de sostener
+        equipos, quiere una pérgola. Si quiere sombra, aire y algo con alma, esta es la mejor
+        respuesta.
+      </p>
+
+      <h2>Dónde va un hut en un patio de Miami</h2>
+      <p>
+        El emplazamiento decide la mayor parte de lo buena que va a ser la estructura, y en la
+        ciudad hay unas cuantas consideraciones constantes.
+      </p>
+      <p>
+        <strong>Separado de la casa, no pegado a ella.</strong> Un hut se ve y funciona mejor
+        con espacio alrededor. Metido contra el muro del fondo pierde a la vez la ventilación y
+        la sensación de estar en otro sitio.
+      </p>
+      <p>
+        <strong>Libre de árboles que cuelguen encima.</strong> El arbolado maduro es un activo
+        en casi cualquier patio de Miami, pero la hojarasca constante y el goteo acortan
+        bastante la vida de un techo de palma. Un hut en un claro dura bastante más que uno bajo
+        un ficus.
+      </p>
+      <p>
+        <strong>Junto a la piscina, no sobre ella.</strong> La colocación clásica y la mejor es
+        al borde de la terraza: le da una sombra a la que retirarse sin dar sombra al agua.
+      </p>
+      <p>
+        <strong>El acceso importa.</strong> La palma y la madera de la estructura tienen que
+        llegar al fondo de la propiedad, y muchas parcelas urbanas tienen portones laterales
+        estrechos. Es manejable: solo hay que saberlo pronto.
+      </p>
+
+      <h2>Permisos en Miami-Dade</h2>
+      <p>
+        Que un hut necesite permiso depende de su departamento de edificación, del tamaño y la
+        altura de la estructura y de cómo se ancle. Algunas administraciones tratan ciertas
+        estructuras chickee tradicionales de forma distinta a otras construcciones auxiliares, y
+        esta es una pregunta legal real sobre su dirección concreta, no algo que una página web
+        deba responder con rotundidad.{' '}
+        <span class="placeholder-token">[PERMIT_POLICY]</span> — indique exactamente cómo
+        gestiona Machin Solutions los permisos para que aquí haya una respuesta real.
+      </p>
+
+      <h2>Rehacer el techo de un hut existente en Miami</h2>
+      <p>
+        Muchas propiedades de Miami ya tienen un hut que ha llegado en silencio al final de la
+        vida de su techo. El adelgazamiento en la cumbrera o en los aleros, la luz que se ve
+        desde abajo y el agua que entra con lluvia normal — y no solo con aguaceros de viento —
+        apuntan todos en la misma dirección. La estructura normalmente se queda; el techo se
+        rehace. Más sobre eso en la{' '}
+        <a href="/es/tiki-huts/construction/">página de construcción y reposición de palma</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Nuestro trabajo</p>
+        <h2>Fotografías de tiki huts en Miami</h2>
+      </div>
+      <TikiPlaceholder
+        lang={lang}
+        caption="Aquí se irán añadiendo fotografías de tiki huts terminados en Miami."
+      />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell form-band">
+      <div class="prose">
+        <h2>Pida presupuesto de tiki hut en Miami</h2>
+        <p>
+          Fotografíe el punto donde iría, idealmente desde la casa y desde el lado opuesto del
+          patio, y díganos aproximadamente cuánta sombra quiere. Si es un hut ya existente,
+          fotografíe también el techo desde abajo.
+        </p>
+        <p>
+          ¿No lo tiene claro entre un hut y una estructura moderna? Describa cómo usaría el
+          espacio y recibirá una recomendación directa. La{' '}
+          <a href="/es/tiki-huts/">visión general de tiki huts</a> y las{' '}
+          <a href="/es/pergolas/">páginas de pérgolas</a> exponen las dos caras.
+        </p>
+      </div>
+      <QuoteForm lang={lang} service="Tiki Hut" city="Miami" compact />
+    </div>
+  </section>
+
+  <CtaBand
+    lang={lang}
+    title="Sombra, brisa y un sitio al que salir."
+    body="Mande una fotografía de dónde iría. Recibirá una lectura honesta de si un hut es lo correcto para ese punto."
+    secondaryLabel="Visión general de tiki huts"
+    secondaryHref="/es/tiki-huts/"
+  />
+</BaseLayout>
+<style>
+  .form-band { display: grid; gap: var(--space-l); }
+  @media (min-width: 62rem) {
+    .form-band { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--space-2xl); align-items: start; }
+  }
+</style>

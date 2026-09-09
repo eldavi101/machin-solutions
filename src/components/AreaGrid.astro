@@ -42,7 +42,7 @@ const Heading = headingLevel;
             <li>
               <a href={localizePath(area.landing, lang)} class="area-card">
                 <span class="area-name">{area.name}</span>
-                <span class="area-note">{area.note}</span>
+                <span class="area-note">{lang === 'es' ? area.noteEs : area.note}</span>
                 <span class="area-cta" aria-hidden="true">
                   Pergolas in {area.name} →
                 </span>

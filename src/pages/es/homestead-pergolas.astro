@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Gallery from '../../components/Gallery.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import { projectsIn } from '../../lib/media';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../../lib/schema';
+
+const lang = 'es' as const;
+const path = '/es/homestead-pergolas/';
+const title = 'Pérgolas en Homestead FL | Pérgolas a Medida';
+const description =
+  'Pérgolas para patios de Homestead: parcelas anchas, sin árboles y a pleno sol. Estructuras de aluminio dimensionadas para la luz y el viento.';
+
+const crumbs = [{ href: '/es/service-areas/', label: 'Zonas de servicio' }, { label: 'Homestead' }];
+
+const schema = [
+  serviceSchema({
+    name: 'Diseño e instalación de pérgolas en Homestead, Florida',
+    description,
+    path,
+    serviceType: 'Pergola construction',
+    areaServed: ['Homestead, Florida', 'Miami-Dade County, Florida'],
+    offers: [
+      'Pérgolas a medida',
+      'Pérgolas de aluminio',
+      'Estructuras exentas para piscina',
+      'Cubiertas para cocina exterior',
+    ],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  lang={lang}
+  crumbs={crumbs}
+  schema={schema}
+>
+  <PageHeader
+    lang={lang}
+    eyebrow="Homestead"
+    title="Pérgolas en Homestead: Sombra Donde No Hay Ninguna"
+    lede="Homestead tiene el problema contrario al centro de Miami. Las parcelas son anchas, llanas y generosas — y están prácticamente sin sombra. Las urbanizaciones nuevas vienen con césped, una losa y nada lo bastante alto como para romper el sol, por lo que aquí una estructura suele ser la primera sombra que ha tenido nunca la propiedad."
+    facts={[
+      { label: 'Parcela típica', value: 'Urbanización reciente, ancha y abierta, con poca vegetación madura' },
+      { label: 'Obra típica', value: 'Estructuras exentas mayores, con luces de verdad' },
+      { label: 'Condicionante', value: 'Sol todo el día y viento de campo abierto' },
+      { label: 'Extras habituales', value: 'Cocinas exteriores, pantallas y ventiladores de techo' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>Qué es distinto al construir aquí</h2>
+      <p>
+        El rasgo que define un patio de Homestead es la exposición. En las promociones nuevas
+        que se extienden al sur y al oeste de la ciudad, las casas se levantan más rápido de lo
+        que madura la jardinería, lo que deja muchas propiedades con sol sobre la terraza desde
+        media mañana hasta que se pone. No hay sombra prestada del roble del vecino ni nada que
+        frene el viento que cruza el terreno abierto y los campos de detrás.
+      </p>
+      <p>
+        Eso cambia el diseño de dos formas concretas. Primero, la estructura tiene que ser lo
+        bastante grande como para importar: una cubierta pequeña en una parcela ancha y
+        luminosa crea una mancha de sombra que nadie usa, y la recomendación honesta suele ser
+        mayor de lo que la gente pide de entrada. Segundo, el viento es una carga de diseño de
+        verdad y no una nota al pie. En una parcela abierta la estructura recibe más viento del
+        que recibiría la misma estructura encajada entre casas en la ciudad, y eso va directo
+        al tamaño de las zapatas y a la especificación de los anclajes.
+      </p>
+      <p>
+        La parte buena es que las parcelas de Homestead son las más fáciles del sur de Florida
+        para construir. El acceso suele ser cómodo, hay sitio para acopiar material, y las
+        posiciones de poste rara vez están limitadas por nada que no sea la piscina. Cuando un
+        patio da tanta libertad, el diseño puede ir de lo que usted quiere y no de lo que cabe.
+      </p>
+
+      <h2>La escala es la decisión</h2>
+      <p>
+        Con espacio disponible, la pregunta deja de ser "¿cabrá?" y pasa a ser "¿cuánto patio
+        debería cubrir esto?". Una estructura que da sombra a una mesa de comedor es un asunto
+        distinto de otra que cubre la mesa, una zona de estar, una parrilla y parte de la
+        terraza de la piscina — y en una parcela de Homestead las dos son físicamente posibles.
+      </p>
+      <p>
+        Las luces mayores son justo donde el{' '}
+        <a href="/es/pergolas/aluminum/">aluminio</a> se gana el sueldo: perfiles más esbeltos
+        salvan más distancia, lo que significa menos postes plantados en medio de un patio por
+        lo demás despejado. A este tamaño también merece la pena combinar tipos de techo: una
+        parte sólida aislada sobre la cocina y la zona de estar, y una parte abierta o de lamas
+        sobre el resto.
+      </p>
+
+      <h2>Sol, viento y qué integrar</h2>
+      <p>
+        En una parcela sin sombra, dos añadidos hacen más que ninguna otra cosa por lo usable
+        que resulta el espacio. <strong>Los ventiladores de techo</strong> bajo un techo sólido
+        mueven aire suficiente como para cambiar cómo se siente el espacio en agosto, y
+        necesitan refuerzos proyectados dentro de la estructura, no puestos después.{' '}
+        <strong>Las pantallas</strong> en el lado oeste — lamas fijas o pantallas enrollables —
+        son lo que hace el espacio usable a las cinco de la tarde y no solo después del
+        atardecer.
+      </p>
+      <p>
+        Las promociones nuevas de Homestead suelen tener una revisión de diseño de la HOA que
+        cubre cualquier cosa visible desde la calle o desde las propiedades vecinas. Saque las
+        normas antes de que el diseño avance mucho: las limitaciones de color y altura son
+        fáciles de manejar pronto y caras de descubrir tarde.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Nuestro trabajo</p>
+        <h2>Estructuras construidas para parcelas abiertas</h2>
+      </div>
+      <Gallery projects={projectsIn('outdoor-living')} limit={2} lang={lang} />
+      <p style="margin-top:var(--space-l)">
+        <a class="btn btn-dark" href="/es/gallery/">Ver todos los proyectos</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell form-band">
+      <div class="prose">
+        <h2>Pida presupuesto de pérgola en Homestead</h2>
+        <p>
+          Con fotografías del patio y medidas aproximadas de la zona que quiere cubrir basta
+          para empezar. Diga hacia dónde da la parte trasera de la casa: en una parcela abierta
+          ese solo dato cambia el diseño más que ninguna otra cosa que pueda contarnos.
+        </p>
+        <p>
+          Vea también <a href="/es/kendall-pergolas/">Kendall</a>,{' '}
+          <a href="/es/miami-pergolas/">Miami</a> y la{' '}
+          <a href="/es/service-areas/">lista completa de zonas de servicio</a>.
+        </p>
+      </div>
+      <QuoteForm lang={lang} service="Pergola" city="Homestead" compact />
+    </div>
+  </section>
+
+  <CtaBand
+    lang={lang}
+    title="¿Un patio que no tiene más que sol?"
+    body="Es el tipo de proyecto más fácil de acertar — y aquel en el que una estructura marca la mayor diferencia."
+    secondaryLabel="Opciones de pérgola"
+    secondaryHref="/es/pergolas/"
+  />
+</BaseLayout>
+<style>
+  .form-band { display: grid; gap: var(--space-l); }
+  @media (min-width: 62rem) {
+    .form-band { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--space-2xl); align-items: start; }
+  }
+</style>

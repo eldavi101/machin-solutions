@@ -1,0 +1,324 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import Gallery from '../../../components/Gallery.astro';
+import ProcessSteps from '../../../components/ProcessSteps.astro';
+import Faq from '../../../components/Faq.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import QuoteForm from '../../../components/QuoteForm.astro';
+import { pergolaFaqsEs } from '../../../data/faqs.es';
+import { projectsIn } from '../../../lib/media';
+import { serviceSchema, breadcrumbSchema, webPageSchema } from '../../../lib/schema';
+
+const lang = 'es' as const;
+const path = '/es/pergolas/';
+const title = 'Pérgolas en el Sur de Florida | Machin Solutions';
+const description =
+  'Constructores de pérgolas en Miami-Dade, Broward y los Cayos. Aluminio, madera, lamas orientables y techo sólido para piscinas y patios.';
+
+const crumbs = [{ label: 'Pérgolas' }];
+
+const types = [
+  {
+    name: 'Pérgolas a medida',
+    href: '/es/pergolas/custom/',
+    body: 'Dibujadas desde cero para la luz que hay que salvar, las vistas y el uso que le da al espacio. Aquí es lo normal, no una mejora que se paga aparte.',
+  },
+  {
+    name: 'Pérgolas de aluminio',
+    href: '/es/pergolas/aluminum/',
+    body: 'Estructuras de aluminio con acabado en polvo que no se pudren, no se alabean ni alimentan termitas, y aguantan el acabado años de sol y aire salino.',
+  },
+  {
+    name: 'Pérgolas de madera',
+    href: '/es/pergolas/wood/',
+    body: 'Madera de verdad donde la calidez importa y el mantenimiento se asume — normalmente bajo arbolado o junto a una casa antigua.',
+  },
+  {
+    name: 'Pérgolas modernas',
+    href: '/es/pergolas/custom/',
+    body: 'Luces limpias, fijaciones ocultas, voladizos profundos y despiece de lamas. El lenguaje sobre el que está construida la mayoría de nuestra galería.',
+  },
+  {
+    name: 'Pérgolas exentas',
+    href: '/es/pergolas/installation/',
+    body: 'Colocadas donde de verdad hace falta la sombra — sobre la terraza de la piscina, alrededor de un brasero, al fondo del patio — sin enlazar con la casa.',
+  },
+  {
+    name: 'Pérgolas adosadas',
+    href: '/es/pergolas/installation/',
+    body: 'Prolongan la línea del tejado desde la casa, de modo que el espacio cubierto se lee como parte del edificio y no como un añadido al jardín.',
+  },
+];
+
+const roofs = [
+  {
+    name: 'Viguetas abiertas',
+    body: 'La pérgola clásica: un ritmo de vigas que rompe el sol y proyecta un dibujo que se mueve sobre la terraza. Filtra la luz, no detiene la lluvia.',
+    best: 'Ideal para: patios donde quiere sombra y carácter más que una sala seca.',
+  },
+  {
+    name: 'Techo de lamas orientables',
+    body: 'Palas que giran para abrir el techo al cielo o cerrarlo del todo contra la lluvia. Una sola estructura que hace los dos trabajos cuando usted quiere.',
+    best: 'Ideal para: espacios de uso diario, donde el ángulo del sol cambia mucho durante el día.',
+  },
+  {
+    name: 'Panel sólido aislado',
+    body: 'Un techo estanco que mantiene el espacio completamente seco y bastante más fresco debajo, y le da un cielorraso donde empotrar focos y ventiladores.',
+    best: 'Ideal para: cocinas exteriores, televisores montados y muebles que no quiere estar moviendo.',
+  },
+  {
+    name: 'Combinación',
+    body: 'Una parte sólida sobre los equipos y otra abierta o de lamas sobre la zona de estar. La mayoría de las estructuras grandes que construimos acaban aquí.',
+    best: 'Ideal para: luces mayores que hacen más de un trabajo a la vez.',
+  },
+];
+
+const schema = [
+  serviceSchema({
+    name: 'Diseño, construcción e instalación de pérgolas a medida',
+    description,
+    path,
+    serviceType: 'Pergola construction',
+    offers: [
+      'Diseño de pérgolas a medida',
+      'Instalación de pérgolas de aluminio',
+      'Construcción de pérgolas de madera',
+      'Instalación de pérgolas de lamas orientables',
+      'Construcción de cubiertas de techo sólido',
+      'Sustitución y mejora de pérgolas',
+    ],
+  }),
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  lang={lang}
+  crumbs={crumbs}
+  schema={schema}
+>
+  <Hero
+    lang={lang}
+    eyebrow="Pérgolas"
+    title="Constructores de Pérgolas para Patios del Sur de Florida"
+    body="Aquí una pérgola tiene que hacer algo más que quedar bien en un folleto. Tiene que aguantar el sol pleno, los aguaceros de verano y la temporada de huracanes, y tiene que convertir un patio caluroso y desaprovechado en un sitio donde uno se sienta a las dos de la tarde."
+    imageSlug="cantilevered-pergola-media-wall-miami-01"
+    secondaryLabel="Ver proyectos de pérgolas"
+    secondaryHref="/es/gallery/"
+    bullets={['Diseño, construcción e instalación', 'Aluminio, madera y lamas', 'Miami-Dade, Broward y los Cayos']}
+  />
+
+  <section class="section">
+    <div class="shell prose">
+      <h2>Qué cambia de verdad una pérgola</h2>
+      <p>
+        Un patio del sur de Florida suele ser inservible durante casi todas las horas de luz.
+        El sol da directo, la terraza de la piscina está lo bastante caliente como para
+        molestar descalzo, y los muebles que compró se quedan vacíos hasta el atardecer. Una
+        pérgola le da una habitación definida y en sombra dentro del patio — y en cuanto esa
+        habitación existe, lo demás viene solo: la parrilla se va para allá, la mesa se usa,
+        y la piscina deja de ser algo que se mira desde dentro de casa.
+      </p>
+      <p>
+        Las ventajas prácticas se acumulan. La sombra sobre una terraza de piscina baja la
+        temperatura de la superficie lo suficiente como para cambiar cómo se siente el
+        espacio. Una estructura cubierta protege los muebles de exterior, un televisor o una
+        cocina exterior del sol y de la lluvia que los envejecen. Y una estructura bien
+        construida y con permiso se lee como metros terminados y no como un añadido temporal
+        — que es como aparece el día que venda la casa.
+      </p>
+      <p>
+        La otra mitad del asunto es sencillamente el aspecto. Una pérgola es el objeto más
+        grande que va a poner nunca en un patio. Acierte con las proporciones y el acabado y
+        ancla todo el espacio; falle y parece un cobertizo de coches. Esa es la parte a la
+        que merece la pena dedicar tiempo antes de encargar nada.
+      </p>
+
+      <h2>Tipos de pérgola que construimos</h2>
+      <p>
+        Todo proyecto empieza como un dibujo a medida, pero estas son las categorías con las
+        que llega la mayoría de la gente. Si no sabe cuál le corresponde a su patio, es un
+        punto de partida perfectamente normal: describa el espacio y se lo decimos.
+      </p>
+    </div>
+
+    <div class="shell type-wrap">
+      <ul class="type-grid">
+        {
+          types.map((type) => (
+            <li class="type-card">
+              <h3>
+                <a href={type.href}>{type.name}</a>
+              </h3>
+              <p>{type.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Opciones de techo</p>
+        <h2>Elegir el techo es la decisión de verdad</h2>
+        <p class="lede" style="margin-top:var(--space-s)">
+          El material fija el mantenimiento. El techo fija para qué se va a poder usar el
+          espacio — y es la elección que más gente falla cuando compra por precio.
+        </p>
+      </div>
+
+      <div class="roof-grid">
+        {
+          roofs.map((roof) => (
+            <article class="roof-card">
+              <h3>{roof.name}</h3>
+              <p>{roof.body}</p>
+              <p class="roof-best">{roof.best}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Servicios de pérgola</p>
+        <h2>Diseño, construcción, instalación y mejoras</h2>
+      </div>
+      <div class="service-split">
+        <div class="prose">
+          <h3>Diseño de pérgolas</h3>
+          <p>
+            Mediciones, ángulos de sol, posición de puertas y ventanas, coronación de la
+            piscina, drenajes y dónde pueden ir físicamente las cimentaciones — y después un
+            dibujo que resuelve todo eso. Ve la estructura antes de que exista, y en esta
+            fase los cambios no cuestan nada.
+          </p>
+
+          <h3>Construcción de pérgolas</h3>
+          <p>
+            Cimentaciones dimensionadas para las cargas que la estructura va a ver de verdad,
+            herrajes de anclaje homologados para succión y uniones viga-poste que transmiten
+            el esfuerzo en lugar de apoyarse en él. Las estructuras se fabrican con las
+            medidas aprobadas, no se cortan a ojo en obra.
+          </p>
+
+          <h3>Instalación de pérgolas</h3>
+          <p>
+            Replanteo, cimentaciones, estructura, techo y después los remates: paneles de
+            techo, iluminación, ventiladores, pantallas. El acopio de material se planifica
+            según sus accesos, y la obra se deja limpia antes de que el equipo se vaya.{' '}
+            <a href="/es/pergolas/installation/">Más sobre cómo va la instalación →</a>
+          </p>
+
+          <h3>Sustitución y mejoras</h3>
+          <p>
+            Una estructura de madera que ya no tiene arreglo, un techo que nunca llegó a
+            parar la lluvia, o una estructura sana a la que hay que añadirle iluminación,
+            ventiladores, pantallas o un techo sólido. La sustitución y la mejora se
+            presupuestan igual que la obra nueva.
+          </p>
+        </div>
+
+        <div class="form-column">
+          <h3 class="form-title">Pida presupuesto de pérgola</h3>
+          <QuoteForm lang={lang} service="Pergola" compact />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Nuestro trabajo</p>
+        <h2>Pérgolas que hemos construido</h2>
+      </div>
+      <Gallery projects={projectsIn('pergolas')} lang={lang} />
+      <p style="margin-top:var(--space-l)">
+        <a class="btn btn-dark" href="/es/gallery/">Ver todos los proyectos</a>
+      </p>
+    </div>
+  </section>
+
+  <ProcessSteps
+    lang={lang}
+    eyebrow="Cómo funciona"
+    title="Cómo va un proyecto de pérgola"
+    intro="La misma secuencia siempre, tanto si es una cubierta de dos postes sobre una parrilla como una estructura en voladizo cruzando la terraza de la piscina."
+  />
+
+  <Faq
+    lang={lang}
+    faqs={pergolaFaqsEs}
+    eyebrow="Preguntas sobre pérgolas"
+    title="Lo que la gente pregunta sobre pérgolas"
+  />
+
+  <CtaBand
+    lang={lang}
+    title="Díganos qué quiere cubrir."
+    body="Con fotos del espacio y medidas aproximadas basta para darle una respuesta real sobre qué cabe y qué hace falta para construirlo."
+    secondaryLabel="Ver tiki huts"
+    secondaryHref="/es/tiki-huts/"
+  />
+</BaseLayout>
+<style>
+  .type-wrap { margin-top: var(--space-l); }
+  .type-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-m);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  }
+  .type-card {
+    padding-top: var(--space-s);
+    border-top: 2px solid var(--line-strong);
+  }
+  .type-card h3 { font-size: var(--step-1); }
+  .type-card h3 a { text-decoration: none; }
+  .type-card h3 a:hover { color: var(--accent); text-decoration: underline; }
+  .type-card p { margin-top: 0.4rem; color: var(--ink-soft); font-size: 0.96rem; }
+
+  .roof-grid {
+    display: grid;
+    gap: var(--space-m);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  }
+  .roof-card {
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: var(--space-m);
+    box-shadow: var(--shadow-sm);
+  }
+  .roof-card h3 { font-size: var(--step-1); }
+  .roof-card p { margin-top: 0.5rem; color: var(--ink-soft); font-size: 0.95rem; }
+  .roof-best {
+    font-size: 0.88rem !important;
+    font-weight: 600;
+    color: var(--ink) !important;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .service-split { display: grid; gap: var(--space-xl); }
+  .form-column { align-self: start; }
+  .form-title { margin-bottom: var(--space-s); font-size: var(--step-2); }
+
+  @media (min-width: 62rem) {
+    .service-split { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: var(--space-2xl); }
+    .form-column { position: sticky; top: 6rem; }
+  }
+</style>

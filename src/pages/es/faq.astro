@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Faq from '../../components/Faq.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { siteFaqsEs } from '../../data/faqs.es';
+import { breadcrumbSchema, webPageSchema } from '../../lib/schema';
+
+const lang = 'es' as const;
+const path = '/es/faq/';
+const title = 'Preguntas Frecuentes | Precio, Permisos, Mantenimiento';
+const description =
+  'Respuestas claras sobre cuánto cuesta una estructura exterior en el sur de Florida, por qué nadie da precio por teléfono, huracanes, mantenimiento, HOA y plazos.';
+
+const crumbs = [{ label: 'Preguntas frecuentes' }];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    inLanguage: 'es-US',
+    mainEntity: siteFaqsEs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+    })),
+  },
+  breadcrumbSchema(crumbs, path),
+  webPageSchema({ path, name: title, description }),
+];
+
+const elsewhere = [
+  {
+    href: '/es/pergolas/',
+    label: 'Preguntas sobre pérgolas',
+    note: 'Materiales, tipos de techo, exenta o adosada, anclajes.',
+  },
+  {
+    href: '/es/tiki-huts/',
+    label: 'Preguntas sobre tiki huts',
+    note: 'Palma, chickee huts, duración, reposición, uso junto a la piscina.',
+  },
+  {
+    href: '/es/gallery/',
+    label: 'Preguntas sobre nuestro trabajo',
+    note: 'De quién son estos proyectos y hasta dónde puede parecerse el suyo.',
+  },
+  {
+    href: '/es/contact/',
+    label: 'Antes de escribirnos',
+    note: 'Qué pasa después de enviar el formulario y qué conviene incluir.',
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  lang={lang}
+  crumbs={crumbs}
+  schema={schema}
+>
+  <PageHeader
+    lang={lang}
+    eyebrow="Preguntas frecuentes"
+    title="Las Preguntas Que Salen Antes de Construir"
+    lede="Precio, temporales, permisos, mantenimiento y asociaciones de vecinos — las cosas que la gente quiere saber de verdad y sobre las que rara vez recibe una respuesta clara. Las preguntas propias de cada servicio están en las páginas de pérgolas y tiki huts, para que nada se conteste dos veces."
+  />
+
+  <Faq
+    lang={lang}
+    faqs={siteFaqsEs}
+    title="Preguntas generales"
+    intro="Si su pregunta no está aquí, mándela por el formulario de presupuesto. La responde una persona, no una carta tipo."
+    schema={false}
+  />
+
+  <section class="section section-sand">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Más respuestas</p>
+        <h2>Preguntas por servicio</h2>
+        <p class="lede" style="margin-top:var(--space-s)">
+          Están respondidas en su contexto, en las páginas a las que pertenecen, en vez de
+          repetidas aquí.
+        </p>
+      </div>
+      <ul class="elsewhere">
+        {
+          elsewhere.map((item) => (
+            <li>
+              <a href={item.href}>
+                <span class="elsewhere-label">{item.label}</span>
+                <span class="elsewhere-note">{item.note}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand
+    lang={lang}
+    title="¿Le queda alguna pregunta?"
+    body="Hágala en el formulario con una foto de su espacio. Recibirá una respuesta real, no un guion de llamada."
+    secondaryLabel="Ver nuestro trabajo"
+    secondaryHref="/es/gallery/"
+  />
+</BaseLayout>
+<style>
+  .elsewhere {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-s);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  }
+  .elsewhere a {
+    display: grid;
+    gap: 0.3rem;
+    height: 100%;
+    padding: var(--space-m);
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: border-color 0.18s ease, transform 0.18s ease;
+  }
+  .elsewhere a:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+  .elsewhere-label { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); }
+  .elsewhere-note { font-size: 0.92rem; color: var(--ink-soft); }
+</style>
