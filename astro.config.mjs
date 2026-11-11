@@ -37,7 +37,7 @@ export default defineConfig({
     sitemap({
       filter: (page) => !page.includes('/404'),
       changefreq: 'monthly',
-      lastmod: new Date(),
+      // Omit lastmod: a deployment date is not a content modification date.
       // Emits <xhtml:link rel="alternate" hreflang="..."> for every page pair, which
       // is how Google learns the two trees are the same content in two languages.
       i18n: {

@@ -29,3 +29,4 @@ desktop.ini
 
 # original, unoptimized source media (never committed — lives outside the repo)
 Gallery/
+.gstack/

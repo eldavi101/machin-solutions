@@ -79,7 +79,7 @@ const langAlternates = noindex
 
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
+    {!noindex && <link rel="canonical" href={canonical} />}
     {/* Every page declares both language versions plus x-default. Google treats a
         one-sided hreflang as unconfirmed and ignores it, so these have to be
         emitted on BOTH trees, pointing at each other. */}

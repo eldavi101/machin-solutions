@@ -118,6 +118,7 @@ async function main() {
   const titles = new Map();
   const descriptions = new Map();
   const canonicals = new Set();
+  const indexableUrls = new Set();
 
   let linkCount = 0;
   let assetCount = 0;
@@ -129,6 +130,15 @@ async function main() {
   for (const file of pages) {
     const rel = path.relative(dist, file).replaceAll('\\', '/');
     const html = await readFile(file, 'utf8');
+    const isErrorPage = rel === '404.html' || rel === 'es/404/index.html';
+    const expectedUrl = SITE_ORIGIN + '/' + rel.replace(/index\.html$/, '');
+    const head = /<head\b[^>]*>([\s\S]*?)<\/head>/.exec(html)?.[1] ?? '';
+    const robotTags = [...head.matchAll(/<meta\b[^>]*name="(?:robots|googlebot|bingbot)"[^>]*content="([^"]*)"/gi)];
+    const blocked = robotTags.some(([, rules]) => /\b(noindex|none)\b/i.test(rules));
+    if (isErrorPage && !blocked) fail(rel, 'error page must declare noindex');
+    if (!isErrorPage && blocked) fail(rel, 'indexable page accidentally declares noindex');
+    if (/<meta\b[^>]*http-equiv="refresh"/i.test(head)) fail(rel, 'meta refresh creates a redirect instead of a direct page');
+    if (!isErrorPage) indexableUrls.add(expectedUrl);
 
     // --- head essentials --------------------------------------------------
     const title = /<title>([\s\S]*?)<\/title>/.exec(html)?.[1]?.trim();
@@ -150,9 +160,12 @@ async function main() {
     }
 
     const canonical = /<link rel="canonical" href="([^"]*)"/.exec(html)?.[1];
-    if (!canonical) fail(rel, 'missing canonical');
+    if (!canonical && !isErrorPage) fail(rel, 'missing canonical');
+    else if (canonical && isErrorPage) fail(rel, 'error page must not advertise a canonical');
+    else if (canonical && canonical !== expectedUrl) fail(rel, `canonical must point directly at ${expectedUrl}, found ${canonical}`);
     else if (canonicals.has(canonical)) fail(rel, `duplicate canonical URL ${canonical}`);
-    else canonicals.add(canonical);
+    else if (canonical) canonicals.add(canonical);
+    if (!isErrorPage && [...head.matchAll(/<link\b[^>]*rel="canonical"/g)].length !== 1) fail(rel, 'expected exactly one canonical in head');
 
     const h1s = html.match(/<h1[\s>]/g) ?? [];
     if (h1s.length === 0) fail(rel, 'no <h1>');
@@ -220,6 +233,9 @@ async function main() {
         const parsed = JSON.parse(json);
         if (!parsed['@context']) fail(rel, 'JSON-LD block has no @context');
         if (!parsed['@type']) fail(rel, 'JSON-LD block has no @type');
+        if (parsed['@type'] === 'WebPage' && parsed.inLanguage !== expectedLang) {
+          fail(rel, `WebPage schema language must be ${expectedLang}`);
+        }
 
         // Every URL inside the structured data has to resolve too. A 404 in an
         // ImageObject or a BreadcrumbList is invisible on the page and in the
@@ -240,7 +256,16 @@ async function main() {
 
     // --- internal links ---------------------------------------------------
     for (const href of attr(html, /<a[^>]+href="([^"]+)"/g)) {
-      if (/^(https?:|mailto:|tel:|#)/.test(href)) continue;
+      if (/^(mailto:|tel:|#)/.test(href)) continue;
+      if (/^https?:/.test(href)) {
+        const url = new URL(href);
+        if (url.hostname !== 'machinsolutions.com' && url.hostname !== 'www.machinsolutions.com') continue;
+        if (url.origin !== SITE_ORIGIN) fail(rel, `internal link uses a noncanonical origin -> ${href}`);
+        linkCount += 1;
+        if (!resolveTarget(url.pathname)) fail(rel, `broken absolute internal link -> ${href}`);
+        continue;
+      }
+      if (/^javascript:/i.test(href)) fail(rel, `uncrawlable navigation -> ${href}`);
       if (!href.startsWith('/')) {
         warn(rel, `relative link "${href}" — prefer site-absolute paths`);
         continue;
@@ -325,12 +350,22 @@ async function main() {
     for (const url of urls) {
       const target = resolveTarget(new URL(url).pathname);
       if (!target) fail('sitemap', `lists a URL with no page in dist: ${url}`);
+      if (!indexableUrls.has(url)) fail('sitemap', `URL is not an indexable canonical page: ${url}`);
+    }
+    for (const url of indexableUrls) {
+      if (!urls.has(url)) fail('sitemap', `missing indexable page: ${url}`);
     }
     if ([...urls].some((url) => url.includes('/404'))) fail('sitemap', '404 page should not be listed');
     console.log(`sitemap: ${urls.size} URLs, all resolvable`);
   }
 
   if (!existsSync(path.join(dist, 'robots.txt'))) fail('dist', 'robots.txt missing');
+  else {
+    const robots = await readFile(path.join(dist, 'robots.txt'), 'utf8');
+    if (!/^User-agent:\s*\*\s*$/mi.test(robots)) fail('robots.txt', 'missing general crawler group');
+    if (/^Disallow:\s*\S+/mi.test(robots)) fail('robots.txt', 'unexpected crawl restriction; review before publishing');
+    if (!robots.includes(`Sitemap: ${SITE_ORIGIN}/sitemap-index.xml`)) fail('robots.txt', 'missing canonical sitemap declaration');
+  }
   const cname = path.join(dist, 'CNAME');
   if (!existsSync(cname)) fail('dist', 'CNAME missing — GitHub Pages will drop the custom domain');
   else {

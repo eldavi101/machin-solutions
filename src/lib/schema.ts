@@ -94,7 +94,7 @@ export function websiteSchema(): Record<string, unknown> {
     url: site.url,
     name: site.name,
     description: site.tagline,
-    inLanguage: 'en-US',
+    inLanguage: ['en-US', 'es-US'],
     publisher: { '@id': ORG_ID },
   };
 }
@@ -219,7 +219,7 @@ export function webPageSchema(input: {
     description: input.description,
     isPartOf: { '@id': WEBSITE_ID },
     about: { '@id': ORG_ID },
-    inLanguage: 'en-US',
+    inLanguage: input.path === '/es/' || input.path.startsWith('/es/') ? 'es-US' : 'en-US',
   };
   if (input.primaryImage) {
     node.primaryImageOfPage = { '@type': 'ImageObject', contentUrl: absolute(input.primaryImage) };
