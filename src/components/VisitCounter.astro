@@ -1,0 +1,46 @@
+---
+import { defaultLang, type Lang } from '../i18n';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = defaultLang } = Astro.props;
+const spanish = lang === 'es';
+// One badge URL across both language trees: all pages share the same total.
+// Keep the label stable too, so language switches do not change the request URL.
+const badge = 'https://hits.sh/machinsolutions.com.svg?view=today-total&label=Views&color=c89562&labelColor=252b27';
+---
+
+<div class="visit-counter">
+  <a
+    href="https://hits.sh/machinsolutions.com/"
+    target="_blank"
+    rel="noopener noreferrer nofollow"
+    aria-label={spanish ? 'Ver estadísticas de visitas (se abre en otra pestaña)' : 'View visit statistics (opens in a new tab)'}
+  >
+    <span>{spanish ? 'Páginas vistas · hoy / total' : 'Page views · today / total'}</span>
+    <img
+      src={badge}
+      alt={spanish ? 'Contador de páginas vistas: hoy y total' : 'Page view counter: today and total'}
+      width="160"
+      height="20"
+      loading="eager"
+      decoding="async"
+      fetchpriority="low"
+      referrerpolicy="no-referrer"
+      data-visit-counter
+    />
+  </a>
+  <span class="counter-note">
+    {spanish ? 'Desde su activación · sin cookies' : 'Since activation · no cookies'}
+  </span>
+</div>
+
+<style>
+  .visit-counter { display: grid; gap: 0.35rem; }
+  a { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; color: inherit; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  img { width: 160px; height: 20px; object-fit: contain; object-position: left; }
+  .counter-note { font-size: 0.75rem; }
+</style>

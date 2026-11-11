@@ -3,12 +3,14 @@ import { site, callHref, emailHref, real, phoneLabel, phoneAltLabel, callAltHref
 import { landingAreas } from '../data/areas';
 import { defaultLang, localizePath, type Lang } from '../i18n';
 import { useTranslations } from '../i18n/ui';
+import VisitCounter from './VisitCounter.astro';
 
 export interface Props {
   lang?: Lang;
+  showVisitCounter?: boolean;
 }
 
-const { lang = defaultLang } = Astro.props;
+const { lang = defaultLang, showVisitCounter = true } = Astro.props;
 const t = useTranslations(lang);
 const L = (path: string) => localizePath(path, lang);
 
@@ -134,6 +136,7 @@ const columns = [
 
     <div class="footer-bottom">
       <p>&copy; {year} Machin Solutions. {t('footer.rights')}</p>
+      {showVisitCounter && <VisitCounter lang={lang} />}
       <p class="footer-meta">
         {
           licence ? (
