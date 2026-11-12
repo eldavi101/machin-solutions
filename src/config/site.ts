@@ -36,10 +36,10 @@ export const site = {
   // `phone` is the dialable form (used in tel: links and JSON-LD); `phoneDisplay` is
   // what visitors read. Always render phoneDisplay via phoneLabel() — rendering
   // `phone` directly puts "+17869926153" on the page.
-  phone: '+17869926153',
-  phoneDisplay: '(786) 992-6153',
-  phoneAlt: '+17867750816',
-  phoneAltDisplay: '(786) 775-0816',
+  phone: '+17867750816',
+  phoneDisplay: '(786) 775-0816',
+  phoneAlt: '+17869926153',
+  phoneAltDisplay: '(786) 992-6153',
   email: 'machindavid2@gmail.com',
   emailAlt: 'machinfarms@gmail.com',
   address: {
