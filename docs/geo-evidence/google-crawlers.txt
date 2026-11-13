@@ -1,0 +1,4 @@
+Checked: 2026-11-12 America/New_York
+Source: https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers
+Method: gstack browse goto (HTTP 200), text inspection
+Audit notes (paraphrase): Crawler categories checked. Googlebot Search and product-specific tokens have different purposes.

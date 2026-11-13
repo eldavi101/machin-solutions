@@ -1,0 +1,10 @@
+date_local,timezone,query_id,query,platform,status,brand_mention,linked_citation,explicit_recommendation,evidence,notes
+2026-11-12,America/New_York,Q01,pergola builders Miami,Google Search and AI Overviews,blocked_captcha,NA,NA,NA,geo-evidence/search-pergola-miami.txt,No valid search response
+2026-11-12,America/New_York,Q02,pergola cost Miami,Bing web,observed_low_relevance,0,0,NA,geo-evidence/search-cost-miami.txt,Traditional results; not Copilot; mainly products and definitions
+2026-11-12,America/New_York,Q05,tiki hut builders Miami,Bing web,observed_low_relevance,0,0,NA,geo-evidence/search-tiki-miami.txt,Traditional results; not a valid local competitive sample
+2026-11-12,America/New_York,Q15,Machin Solutions Homestead pergolas,Google Search,blocked_captcha,NA,NA,NA,geo-evidence/search-brand.txt,No valid search response
+2026-11-12,America/New_York,Q15,"""Machin Solutions"" Homestead",Bing web,observed_low_relevance,0,0,NA,geo-evidence/bing-brand.txt,Not evidence of general absence from index
+2026-11-12,America/New_York,Q01,Who builds custom pergolas in Miami?,ChatGPT Search,not_tested_http_403,NA,NA,NA,geo-evidence/chatgpt-access.txt,Platform inaccessible; query not submitted
+2026-11-12,America/New_York,Q01,Who builds custom pergolas in Miami?,Gemini,not_tested_signin_required,NA,NA,NA,geo-evidence/gemini-access.txt,Query not submitted
+2026-11-12,America/New_York,Q01,Who builds custom pergolas in Miami?,Perplexity,not_tested_navigation_aborted,NA,NA,NA,geo-evidence/perplexity-access.txt,Query not submitted
+2026-11-12,America/New_York,Q01,Who builds custom pergolas in Miami?,Bing Copilot,not_tested_signin_required,NA,NA,NA,geo-evidence/copilot-access.txt,Query not submitted; web SERP is not Copilot

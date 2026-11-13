@@ -1,4 +1,5 @@
 ---
+import ServiceDecisionGuide from '../../components/ServiceDecisionGuide.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import TikiPlaceholder from '../../components/TikiPlaceholder.astro';
@@ -27,7 +28,6 @@ const schema = [
       'Chickee hut construction',
       'Backyard and poolside tiki huts',
       'Commercial tiki structures and thatched bars',
-      'Tiki hut re-thatching and repair',
     ],
   }),
   breadcrumbSchema(crumbs, path),
@@ -57,8 +57,8 @@ const kinds = [
     body: 'Thatched shade for restaurants, resorts, marinas and event spaces, where durability and maintenance access matter more than anywhere.',
   },
   {
-    name: 'Re-thatching and repair',
-    body: 'Thatch is a wearing surface. When it thins, the frame usually stays and the roof gets renewed.',
+    name: 'Planning maintenance',
+    body: 'Thatch is a wearing surface. Confirm directly whether repair or re-thatching of your existing structure can be included.',
     href: '/tiki-huts/construction/',
   },
 ];
@@ -73,9 +73,11 @@ const kinds = [
       { label: 'Structures', value: 'Tiki huts, chickee huts, thatched bars and shade shelters' },
       { label: 'Thatch', value: 'Natural sabal palm, or synthetic thatch where upkeep has to be low' },
       { label: 'For', value: 'Residential backyards, pool decks and commercial spaces' },
-      { label: 'Also', value: 'Re-thatching and repair of existing structures' },
+      { label: 'Existing huts', value: 'Ask about the scope of repairs and re-thatching before booking' },
     ]}
   />
+
+  <ServiceDecisionGuide service="tiki-huts" />
 
   <section class="section">
     <div class="shell prose">

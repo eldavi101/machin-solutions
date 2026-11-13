@@ -1,4 +1,5 @@
 ---
+import ServiceDecisionGuide from '../../components/ServiceDecisionGuide.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
 import Gallery from '../../components/Gallery.astro';
@@ -99,11 +100,13 @@ const schema = [
     title="Pergola Builders for South Florida Backyards"
     body="A pergola here has to do more than look good in a brochure. It has to hold up to full sun, summer downpours and hurricane season, and it has to make a hot, unused patio into somewhere you sit at two in the afternoon."
     imageSlug="cantilevered-pergola-media-wall-miami-01"
-    primaryLabel="Get a Free Estimate"
+    primaryLabel="Get an Estimate"
     secondaryLabel="See pergola projects"
     secondaryHref="/gallery/"
     bullets={['Design, build and install', 'Aluminium, wood and louvered', 'Miami-Dade, Broward & the Keys']}
   />
+
+  <ServiceDecisionGuide service="pergolas" />
 
   <section class="section">
     <div class="shell prose">
@@ -219,7 +222,7 @@ const schema = [
         </div>
 
         <div class="form-column">
-          <h3 class="form-title">Get a pergola estimate</h3>
+          <h3 class="form-title">Get a pergolan estimate</h3>
           <QuoteForm service="Pergola" compact />
         </div>
       </div>

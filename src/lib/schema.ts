@@ -37,7 +37,7 @@ export function organizationSchema(): Record<string, unknown> {
     areaServed: [
       { '@type': 'AdministrativeArea', name: 'Miami-Dade County, Florida' },
       { '@type': 'AdministrativeArea', name: 'Broward County, Florida' },
-      { '@type': 'AdministrativeArea', name: 'Monroe County, Florida' },
+      { '@type': 'Place', name: 'Upper Florida Keys, Florida' },
     ],
     serviceArea: {
       '@type': 'GeoCircle',

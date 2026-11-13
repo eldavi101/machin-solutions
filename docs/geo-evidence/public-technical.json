@@ -1,0 +1,189 @@
+{
+  "checkedAt": "2026-11-13T03:21:13.243Z",
+  "origin": "https://machinsolutions.com",
+  "results": [
+    {
+      "path": "/",
+      "status": 200,
+      "finalUrl": "https://machinsolutions.com/",
+      "xRobotsTag": null,
+      "canonical": "https://machinsolutions.com/",
+      "robots": null,
+      "h1": [
+        "Custom Pergolas & Tiki Huts in Miami and South Florida"
+      ],
+      "mainTextLength": 19086,
+      "decisionGuide": false,
+      "schemaTypes": [
+        [
+          "HomeAndConstructionBusiness",
+          "GeneralContractor"
+        ],
+        "WebSite",
+        "WebPage",
+        "FAQPage"
+      ],
+      "unverifiedFaqSchema": true
+    },
+    {
+      "path": "/pergolas/",
+      "status": 200,
+      "finalUrl": "https://machinsolutions.com/pergolas/",
+      "xRobotsTag": null,
+      "canonical": "https://machinsolutions.com/pergolas/",
+      "robots": null,
+      "h1": [
+        "Pergola Builders for South Florida Backyards"
+      ],
+      "mainTextLength": 20681,
+      "decisionGuide": false,
+      "schemaTypes": [
+        "Service",
+        "BreadcrumbList",
+        "WebPage",
+        "FAQPage"
+      ],
+      "unverifiedFaqSchema": false
+    },
+    {
+      "path": "/es/pergolas/",
+      "status": 200,
+      "finalUrl": "https://machinsolutions.com/es/pergolas/",
+      "xRobotsTag": null,
+      "canonical": "https://machinsolutions.com/es/pergolas/",
+      "robots": null,
+      "h1": [
+        "Constructores de Pérgolas para Patios del Sur de Florida"
+      ],
+      "mainTextLength": 21990,
+      "decisionGuide": false,
+      "schemaTypes": [
+        "Service",
+        "BreadcrumbList",
+        "WebPage",
+        "FAQPage"
+      ],
+      "unverifiedFaqSchema": false
+    },
+    {
+      "path": "/tiki-huts/",
+      "status": 200,
+      "finalUrl": "https://machinsolutions.com/tiki-huts/",
+      "xRobotsTag": null,
+      "canonical": "https://machinsolutions.com/tiki-huts/",
+      "robots": null,
+      "h1": [
+        "Tiki Huts and Chickee Huts, Built the Traditional Way"
+      ],
+      "mainTextLength": 14914,
+      "decisionGuide": false,
+      "schemaTypes": [
+        "Service",
+        "BreadcrumbList",
+        "WebPage",
+        "FAQPage"
+      ],
+      "unverifiedFaqSchema": true
+    },
+    {
+      "path": "/es/tiki-huts/",
+      "status": 200,
+      "finalUrl": "https://machinsolutions.com/es/tiki-huts/",
+      "xRobotsTag": null,
+      "canonical": "https://machinsolutions.com/es/tiki-huts/",
+      "robots": null,
+      "h1": [
+        "Tiki Huts y Chickee Huts, Construidos a la Manera Tradicional"
+      ],
+      "mainTextLength": 16005,
+      "decisionGuide": false,
+      "schemaTypes": [
+        "Service",
+        "BreadcrumbList",
+        "WebPage",
+        "FAQPage"
+      ],
+      "unverifiedFaqSchema": true
+    },
+    {
+      "path": "/contact/",
+      "status": 200,
+      "finalUrl": "https://machinsolutions.com/contact/",
+      "xRobotsTag": null,
+      "canonical": "https://machinsolutions.com/contact/",
+      "robots": null,
+      "h1": [
+        "Tell Us About Your Project"
+      ],
+      "mainTextLength": 5491,
+      "decisionGuide": false,
+      "schemaTypes": [
+        [
+          "HomeAndConstructionBusiness",
+          "GeneralContractor"
+        ],
+        "BreadcrumbList",
+        "WebPage",
+        "FAQPage"
+      ],
+      "unverifiedFaqSchema": true
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200,
+      "finalUrl": "https://machinsolutions.com/robots.txt",
+      "xRobotsTag": null,
+      "canonical": null,
+      "robots": null,
+      "h1": [],
+      "mainTextLength": 0,
+      "decisionGuide": false,
+      "schemaTypes": [],
+      "unverifiedFaqSchema": false,
+      "text": "# https://machinsolutions.com/robots.txt\nUser-agent: *\nAllow: /\n\nSitemap: https://machinsolutions.com/sitemap-index.xml\n"
+    },
+    {
+      "path": "/sitemap-index.xml",
+      "status": 200,
+      "finalUrl": "https://machinsolutions.com/sitemap-index.xml",
+      "xRobotsTag": null,
+      "canonical": null,
+      "robots": null,
+      "h1": [],
+      "mainTextLength": 0,
+      "decisionGuide": false,
+      "schemaTypes": [],
+      "unverifiedFaqSchema": false,
+      "text": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><sitemap><loc>https://machinsolutions.com/sitemap-0.xml</loc></sitemap></sitemapindex>"
+    },
+    {
+      "path": "/sitemap-0.xml",
+      "status": 200,
+      "finalUrl": "https://machinsolutions.com/sitemap-0.xml",
+      "xRobotsTag": null,
+      "canonical": null,
+      "robots": null,
+      "h1": [],
+      "mainTextLength": 0,
+      "decisionGuide": false,
+      "schemaTypes": [],
+      "unverifiedFaqSchema": false,
+      "text": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:news=\"http://www.google.com/schemas/sitemap-news/0.9\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" xmlns:image=\"http://www.google.com/schemas/sitemap-image/1.1\" xmlns:video=\"http://www.google.com/schemas/sitemap-video/1.1\"><url><loc>https://machinsolutions.com/</loc><changefreq>monthly</changefreq><priority>1.0</priority><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/\"/><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/\"/></url><url><loc>https://machinsolutions.com/about/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/about/\"/><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/about/\"/></url><url><loc>https://machinsolutions.com/contact/</loc><changefreq>monthly</changefreq><priority>0.9</priority><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/contact/\"/><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/contact/\"/></url><url><loc>https://machinsolutions.com/es/</loc><changefreq>monthly</changefreq><priority>1.0</priority><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/\"/><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/\"/></url><url><loc>https://machinsolutions.com/es/about/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/about/\"/><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/about/\"/></url><url><loc>https://machinsolutions.com/es/contact/</loc><changefreq>monthly</changefreq><priority>0.9</priority><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/contact/\"/><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/contact/\"/></url><url><loc>https://machinsolutions.com/es/faq/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/faq/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/faq/\"/></url><url><loc>https://machinsolutions.com/es/gallery/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/gallery/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/gallery/\"/></url><url><loc>https://machinsolutions.com/es/hialeah-pergolas/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/hialeah-pergolas/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/hialeah-pergolas/\"/></url><url><loc>https://machinsolutions.com/es/homestead-pergolas/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/homestead-pergolas/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/homestead-pergolas/\"/></url><url><loc>https://machinsolutions.com/es/kendall-pergolas/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/kendall-pergolas/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/kendall-pergolas/\"/></url><url><loc>https://machinsolutions.com/es/miami-pergolas/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/miami-pergolas/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/miami-pergolas/\"/></url><url><loc>https://machinsolutions.com/es/miami-tiki-huts/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/miami-tiki-huts/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/miami-tiki-huts/\"/></url><url><loc>https://machinsolutions.com/es/outdoor-living/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/outdoor-living/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/outdoor-living/\"/></url><url><loc>https://machinsolutions.com/es/pergolas/</loc><changefreq>monthly</changefreq><priority>0.9</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/pergolas/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/pergolas/\"/></url><url><loc>https://machinsolutions.com/es/pergolas/aluminum/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/pergolas/aluminum/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/pergolas/aluminum/\"/></url><url><loc>https://machinsolutions.com/es/pergolas/custom/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/pergolas/custom/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/pergolas/custom/\"/></url><url><loc>https://machinsolutions.com/es/pergolas/installation/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/pergolas/installation/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/pergolas/installation/\"/></url><url><loc>https://machinsolutions.com/es/pergolas/wood/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/pergolas/wood/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/pergolas/wood/\"/></url><url><loc>https://machinsolutions.com/es/service-areas/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/service-areas/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/service-areas/\"/></url><url><loc>https://machinsolutions.com/es/tiki-huts/</loc><changefreq>monthly</changefreq><priority>0.9</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/tiki-huts/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/tiki-huts/\"/></url><url><loc>https://machinsolutions.com/es/tiki-huts/chickee-huts/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/tiki-huts/chickee-huts/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/tiki-huts/chickee-huts/\"/></url><url><loc>https://machinsolutions.com/es/tiki-huts/construction/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/tiki-huts/construction/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/tiki-huts/construction/\"/></url><url><loc>https://machinsolutions.com/faq/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/faq/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/faq/\"/></url><url><loc>https://machinsolutions.com/gallery/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/gallery/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/gallery/\"/></url><url><loc>https://machinsolutions.com/hialeah-pergolas/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/hialeah-pergolas/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/hialeah-pergolas/\"/></url><url><loc>https://machinsolutions.com/homestead-pergolas/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/homestead-pergolas/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/homestead-pergolas/\"/></url><url><loc>https://machinsolutions.com/kendall-pergolas/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/kendall-pergolas/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/kendall-pergolas/\"/></url><url><loc>https://machinsolutions.com/miami-pergolas/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/miami-pergolas/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/miami-pergolas/\"/></url><url><loc>https://machinsolutions.com/miami-tiki-huts/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/miami-tiki-huts/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/miami-tiki-huts/\"/></url><url><loc>https://machinsolutions.com/outdoor-living/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/outdoor-living/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/outdoor-living/\"/></url><url><loc>https://machinsolutions.com/pergolas/</loc><changefreq>monthly</changefreq><priority>0.9</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/pergolas/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/pergolas/\"/></url><url><loc>https://machinsolutions.com/pergolas/aluminum/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/pergolas/aluminum/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/pergolas/aluminum/\"/></url><url><loc>https://machinsolutions.com/pergolas/custom/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/pergolas/custom/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/pergolas/custom/\"/></url><url><loc>https://machinsolutions.com/pergolas/installation/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/pergolas/installation/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/pergolas/installation/\"/></url><url><loc>https://machinsolutions.com/pergolas/wood/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/pergolas/wood/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/pergolas/wood/\"/></url><url><loc>https://machinsolutions.com/service-areas/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/service-areas/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/service-areas/\"/></url><url><loc>https://machinsolutions.com/tiki-huts/</loc><changefreq>monthly</changefreq><priority>0.9</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/tiki-huts/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/tiki-huts/\"/></url><url><loc>https://machinsolutions.com/tiki-huts/chickee-huts/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/tiki-huts/chickee-huts/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/tiki-huts/chickee-huts/\"/></url><url><loc>https://machinsolutions.com/tiki-huts/construction/</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"es-US\" href=\"https://machinsolutions.com/es/tiki-huts/construction/\"/><xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"https://machinsolutions.com/tiki-huts/construction/\"/></url></urlset>"
+    },
+    {
+      "path": "/missing-geo-audit-page/",
+      "status": 404,
+      "finalUrl": "https://machinsolutions.com/missing-geo-audit-page/",
+      "xRobotsTag": null,
+      "canonical": null,
+      "robots": "noindex, follow",
+      "h1": [
+        "That page is not here"
+      ],
+      "mainTextLength": 560,
+      "decisionGuide": false,
+      "schemaTypes": [],
+      "unverifiedFaqSchema": false
+    }
+  ]
+}

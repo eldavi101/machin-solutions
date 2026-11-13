@@ -5,6 +5,7 @@
   "private": true,
   "description": "Machin Solutions — custom pergolas & tiki huts in Miami and South Florida.",
   "scripts": {
+    "test": "node --test scripts/site-assistant.test.mjs",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",

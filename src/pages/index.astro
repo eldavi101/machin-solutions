@@ -15,7 +15,7 @@ import { organizationSchema, websiteSchema, webPageSchema } from '../lib/schema'
 const path = '/';
 const title = 'Pergolas & Tiki Huts in Miami | Machin Solutions';
 const description =
-  'Custom pergolas, tiki huts and outdoor living structures for South Florida backyards. Design, build and installation across Miami-Dade and Broward. Free estimate.';
+  'Custom pergolas, tiki huts and outdoor living structures for South Florida backyards. Design, build and installation across Miami-Dade and Broward. Project estimate.';
 
 const hero = findImage('rain-curtain-pool-cabana-miami-01');
 
@@ -77,7 +77,7 @@ const schema = [
     title="Custom Pergolas & Tiki Huts in Miami and South Florida"
     body="Machin Solutions designs, builds and installs pergolas, tiki huts and outdoor living structures that turn a hot, unused backyard into the part of the house everyone actually wants to be in."
     imageSlug="rain-curtain-pool-cabana-miami-01"
-    primaryLabel="Get a Free Estimate"
+    primaryLabel="Get an Estimate"
     secondaryLabel="View Our Work"
     bullets={[
       'Design, build and installation',
@@ -150,44 +150,7 @@ const schema = [
     intro="Miami-Dade and Broward counties plus the Upper Keys. These cities have pages of their own; the full list is on the service areas page."
   />
 
-  <section class="section testimonials" aria-labelledby="testimonials-title">
-    <div class="shell">
-      <div class="section-head">
-        <p class="eyebrow">In your own words</p>
-        <h2 id="testimonials-title">What homeowners say</h2>
-      </div>
-      <div class="testimonial-slots">
-        <blockquote class="testimonial-slot">
-          <p>
-            This section is ready for real, attributed customer reviews. Nothing has been
-            written here on the business's behalf.
-          </p>
-          <footer>
-            <span class="placeholder-token">[TESTIMONIAL_1]</span>
-          </footer>
-        </blockquote>
-        <blockquote class="testimonial-slot">
-          <p>
-            Paste a genuine review, the customer's first name and their city. Once real
-            reviews are in place, Review and AggregateRating structured data can be switched
-            on in <code>src/lib/schema.ts</code>.
-          </p>
-          <footer>
-            <span class="placeholder-token">[TESTIMONIAL_2]</span>
-          </footer>
-        </blockquote>
-        <blockquote class="testimonial-slot">
-          <p>
-            Linking the Google Business Profile here is the highest-value change you can make
-            to this page for local search.
-          </p>
-          <footer>
-            <span class="placeholder-token">[GOOGLE_BUSINESS_PROFILE]</span>
-          </footer>
-        </blockquote>
-      </div>
-    </div>
-  </section>
+  {/* Add attributed testimonials only after genuine reviews are supplied. */}
 
   <Faq
     faqs={generalFaqs}
@@ -225,28 +188,5 @@ const schema = [
     gap: var(--space-m);
   }
 
-  .testimonials { background: var(--sand-100); }
-  .testimonial-slots {
-    display: grid;
-    gap: var(--space-m);
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
-  }
-  .testimonial-slot {
-    margin: 0;
-    padding: var(--space-m);
-    background: var(--bg-raised);
-    border: 1px dashed var(--line-strong);
-    border-radius: var(--radius-lg);
-    display: grid;
-    gap: var(--space-s);
-  }
-  .testimonial-slot p { color: var(--ink-soft); font-size: 0.95rem; }
-  .testimonial-slot code {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: 0.9em;
-    background: var(--sand-100);
-    padding: 0.1em 0.35em;
-    border-radius: 3px;
-  }
-  .testimonial-slot footer { margin-top: auto; }
+
 </style>

@@ -19,7 +19,7 @@ const schema = [
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     inLanguage: 'es-US',
-    mainEntity: siteFaqsEs.map((faq) => ({
+    mainEntity: siteFaqsEs.filter((faq) => !/\[[A-Z0-9_]+\]/.test(faq.answer)).map((faq) => ({
       '@type': 'Question',
       name: faq.question,
       acceptedAnswer: { '@type': 'Answer', text: faq.answer },

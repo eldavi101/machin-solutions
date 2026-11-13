@@ -16,7 +16,7 @@ const lang = 'es' as const;
 const path = '/es/';
 const title = 'Pérgolas y Tiki Huts en Miami | Machin Solutions';
 const description =
-  'Pérgolas a medida, tiki huts y estructuras exteriores para patios del sur de Florida. Diseño, construcción e instalación en Miami-Dade y Broward. Presupuesto gratis.';
+  'Pérgolas a medida, tiki huts y estructuras exteriores para patios del sur de Florida. Diseño, construcción e instalación en Miami-Dade y Broward. Presupuesto.';
 
 const hero = findImage('rain-curtain-pool-cabana-miami-01');
 
@@ -149,44 +149,7 @@ const schema = [
     intro="Los condados de Miami-Dade y Broward más los Cayos Altos. Estas ciudades tienen página propia; la lista completa está en la página de zonas de servicio."
   />
 
-  <section class="section testimonials" aria-labelledby="testimonials-title">
-    <div class="shell">
-      <div class="section-head">
-        <p class="eyebrow">En sus propias palabras</p>
-        <h2 id="testimonials-title">Lo que dicen los propietarios</h2>
-      </div>
-      <div class="testimonial-slots">
-        <blockquote class="testimonial-slot">
-          <p>
-            Esta sección está preparada para reseñas reales y atribuidas de clientes. Aquí no
-            se ha escrito nada en nombre del negocio.
-          </p>
-          <footer>
-            <span class="placeholder-token">[TESTIMONIAL_1]</span>
-          </footer>
-        </blockquote>
-        <blockquote class="testimonial-slot">
-          <p>
-            Pegue una reseña auténtica, el nombre del cliente y su ciudad. Cuando haya
-            reseñas reales, se pueden activar los datos estructurados Review y
-            AggregateRating en <code>src/lib/schema.ts</code>.
-          </p>
-          <footer>
-            <span class="placeholder-token">[TESTIMONIAL_2]</span>
-          </footer>
-        </blockquote>
-        <blockquote class="testimonial-slot">
-          <p>
-            Enlazar aquí el perfil de Google Business es el cambio de mayor valor que se puede
-            hacer en esta página para la búsqueda local.
-          </p>
-          <footer>
-            <span class="placeholder-token">[GOOGLE_BUSINESS_PROFILE]</span>
-          </footer>
-        </blockquote>
-      </div>
-    </div>
-  </section>
+  {/* Add attributed testimonials only after genuine reviews are supplied. */}
 
   <Faq
     lang={lang}
@@ -226,28 +189,5 @@ const schema = [
     gap: var(--space-m);
   }
 
-  .testimonials { background: var(--sand-100); }
-  .testimonial-slots {
-    display: grid;
-    gap: var(--space-m);
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
-  }
-  .testimonial-slot {
-    margin: 0;
-    padding: var(--space-m);
-    background: var(--bg-raised);
-    border: 1px dashed var(--line-strong);
-    border-radius: var(--radius-lg);
-    display: grid;
-    gap: var(--space-s);
-  }
-  .testimonial-slot p { color: var(--ink-soft); font-size: 0.95rem; }
-  .testimonial-slot code {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: 0.9em;
-    background: var(--sand-100);
-    padding: 0.1em 0.35em;
-    border-radius: 3px;
-  }
-  .testimonial-slot footer { margin-top: auto; }
+
 </style>

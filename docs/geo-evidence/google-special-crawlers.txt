@@ -1,0 +1,4 @@
+Checked: 2026-11-12 America/New_York
+Source: https://developers.google.com/search/docs/crawling-indexing/google-special-case-crawlers
+Method: gstack browse goto (HTTP 200), text inspection
+Audit notes (paraphrase): Official special-case crawler reference checked; decisive Google-Extended definition is archived separately.

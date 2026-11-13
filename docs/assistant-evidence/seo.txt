@@ -1,0 +1,14 @@
+﻿
+> machin-solutions@1.0.0 seo
+> node scripts/seo-map.mjs
+
+41 pages mapped.
+Cannibalization: no conflicts.
+  advisory /contact/ vs /miami-pergolas/ — primary keywords 67% similar — "pergola quote Miami" vs "pergolas Miami" (shared: pergola, miami). Expected for a parent/child modifier split; check the modifier really is distinct.
+  advisory /faq/ vs /miami-pergolas/ — primary keywords 67% similar — "pergola cost Miami" vs "pergolas Miami" (shared: pergola, miami). Expected for a parent/child modifier split; check the modifier really is distinct.
+  advisory /gallery/ vs /miami-pergolas/ — primary keywords 67% similar — "pergola gallery Miami" vs "pergolas Miami" (shared: pergola, miami). Expected for a parent/child modifier split; check the modifier really is distinct.
+  advisory /miami-pergolas/ vs /pergolas/aluminum/ — primary keywords 67% similar — "pergolas Miami" vs "aluminum pergolas Miami" (shared: pergola, miami). Expected for a parent/child modifier split; check the modifier really is distinct.
+  advisory /miami-pergolas/ vs /pergolas/installation/ — primary keywords 67% similar — "pergolas Miami" vs "pergola installation Miami" (shared: pergola, miami). Expected for a parent/child modifier split; check the modifier really is distinct.
+  advisory /miami-pergolas/ vs /pergolas/wood/ — primary keywords 67% similar — "pergolas Miami" vs "wood pergolas Miami" (shared: pergola, miami). Expected for a parent/child modifier split; check the modifier really is distinct.
+No declared keyword for: /es/404/, /es/about/, /es/contact/, /es/faq/, /es/gallery/, /es/hialeah-pergolas/, /es/homestead-pergolas/, /es/, /es/kendall-pergolas/, /es/miami-pergolas/, /es/miami-tiki-huts/, /es/outdoor-living/, /es/pergolas/aluminum/, /es/pergolas/custom/, /es/pergolas/, /es/pergolas/installation/, /es/pergolas/wood/, /es/service-areas/, /es/tiki-huts/chickee-huts/, /es/tiki-huts/construction/, /es/tiki-huts/
+Written to docs/seo-audit.md

@@ -1,8 +1,10 @@
 ---
 import '../styles/global.css';
+import { organizationSchema } from '../lib/schema';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import StickyCta from '../components/StickyCta.astro';
+import SiteAssistant from '../components/SiteAssistant.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { site, absolute } from '../config/site';
 import { alternates, defaultLang, htmlLang, ogLocale, type Lang } from '../i18n';
@@ -156,7 +158,7 @@ const langAlternates = noindex
     <meta name="twitter:image:alt" content={ogImageAlt} />
 
     {
-      schema.map((block) => (
+      [...schema, ...(!noindex && !schema.some((block) => block['@id'] === `${site.url}/#organization`) ? [organizationSchema()] : [])].map((block) => (
         <script type="application/ld+json" set:html={JSON.stringify(block)} />
       ))
     }
@@ -171,5 +173,6 @@ const langAlternates = noindex
     </main>
     <Footer lang={lang} showVisitCounter={!noindex} />
     <StickyCta lang={lang} />
+    <SiteAssistant lang={lang} />
   </body>
 </html>

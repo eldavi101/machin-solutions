@@ -34,7 +34,7 @@ export const ui = {
     'lang.current': 'English',
 
     // --- calls to action ----------------------------------------------------
-    'cta.freeEstimate': 'Get a Free Estimate',
+    'cta.freeEstimate': 'Get an Estimate',
     'cta.requestQuote': 'Request a quote',
     'cta.getQuote': 'Get a quote',
     'cta.callNow': 'Call now',
@@ -77,7 +77,7 @@ export const ui = {
     'form.serviceTiki': 'Tiki Hut',
     'form.serviceOther': 'Other Outdoor Project',
     'form.description': 'Project description',
-    'form.submit': 'Request My Free Estimate',
+    'form.submit': 'Request My Estimate',
     'form.privacy':
       'No obligation. Your details are used to prepare your estimate and nothing else.',
     'form.phonePlaceholder': '(786) 000-0000',
@@ -152,7 +152,7 @@ export const ui = {
     'lang.current': 'Español',
 
     // --- llamadas a la acción -----------------------------------------------
-    'cta.freeEstimate': 'Presupuesto Gratis',
+    'cta.freeEstimate': 'Presupuesto',
     'cta.requestQuote': 'Pedir presupuesto',
     'cta.getQuote': 'Presupuesto',
     'cta.callNow': 'Llamar ahora',
@@ -195,7 +195,7 @@ export const ui = {
     'form.serviceTiki': 'Tiki Hut',
     'form.serviceOther': 'Otro proyecto exterior',
     'form.description': 'Descripción del proyecto',
-    'form.submit': 'Solicitar mi presupuesto gratis',
+    'form.submit': 'Solicitar mi presupuesto',
     'form.privacy':
       'Sin compromiso. Sus datos se usan para preparar el presupuesto y para nada más.',
     'form.phonePlaceholder': '(786) 000-0000',

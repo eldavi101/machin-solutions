@@ -1,6 +1,6 @@
 # SEO audit — Machin Solutions
 
-Generated from the production build on 2026-09-08.
+Generated from the production build on 2026-11-13.
 
 ## Keyword → page map
 
@@ -10,26 +10,47 @@ modifiers. Nothing is targeted twice.
 
 | URL | Primary keyword | Search intent | Words |
 | --- | --- | --- | --- |
-| `/about/` | Machin Solutions pergola builders | Navigational · trust | 737 |
-| `/contact/` | pergola quote Miami | Transactional · conversion | 641 |
-| `/faq/` | pergola cost Miami | Informational | 842 |
-| `/gallery/` | pergola gallery Miami | Commercial investigation · proof | 1188 |
-| `/hialeah-pergolas/` | pergolas Hialeah FL | Local commercial | 1168 |
-| `/homestead-pergolas/` | pergolas Homestead FL | Local commercial | 1124 |
-| `/` | pergolas and tiki huts Miami | Commercial · brand + combined service | 2199 |
-| `/kendall-pergolas/` | pergolas Kendall FL | Local commercial | 1095 |
-| `/miami-pergolas/` | pergolas Miami | Local commercial | 1112 |
-| `/miami-tiki-huts/` | tiki hut builders Miami | Local commercial | 1025 |
-| `/outdoor-living/` | outdoor living structures South Florida | Commercial · adjacent service | 1160 |
-| `/pergolas/aluminum/` | aluminum pergolas Miami | Commercial · material comparison | 1082 |
-| `/pergolas/custom/` | custom pergola design | Commercial · product detail | 1045 |
-| `/pergolas/` | pergola builders South Florida | Commercial · service hub | 2494 |
-| `/pergolas/installation/` | pergola installation Miami | Transactional · service | 1158 |
-| `/pergolas/wood/` | wood pergolas Miami | Commercial · material comparison | 951 |
-| `/service-areas/` | pergola contractors Miami-Dade and Broward | Commercial · geography | 635 |
-| `/tiki-huts/chickee-huts/` | chickee hut | Informational · terminology and craft | 1045 |
-| `/tiki-huts/construction/` | tiki hut construction | Transactional · service | 981 |
-| `/tiki-huts/` | tiki huts South Florida | Commercial · service hub | 2109 |
+| `/about/` | Machin Solutions pergola builders | Navigational · trust | 739 |
+| `/contact/` | pergola quote Miami | Transactional · conversion | 606 |
+| `/es/404/` | — | — | 97 |
+| `/es/about/` | — | — | 815 |
+| `/es/contact/` | — | — | 555 |
+| `/es/faq/` | — | — | 869 |
+| `/es/gallery/` | — | — | 1227 |
+| `/es/hialeah-pergolas/` | — | — | 1211 |
+| `/es/homestead-pergolas/` | — | — | 1199 |
+| `/es/` | — | — | 1973 |
+| `/es/kendall-pergolas/` | — | — | 1143 |
+| `/es/miami-pergolas/` | — | — | 1142 |
+| `/es/miami-tiki-huts/` | — | — | 1078 |
+| `/es/outdoor-living/` | — | — | 1213 |
+| `/es/pergolas/aluminum/` | — | — | 1207 |
+| `/es/pergolas/custom/` | — | — | 1124 |
+| `/es/pergolas/` | — | — | 2960 |
+| `/es/pergolas/installation/` | — | — | 1216 |
+| `/es/pergolas/wood/` | — | — | 1035 |
+| `/es/service-areas/` | — | — | 667 |
+| `/es/tiki-huts/chickee-huts/` | — | — | 1099 |
+| `/es/tiki-huts/construction/` | — | — | 1052 |
+| `/es/tiki-huts/` | — | — | 2188 |
+| `/faq/` | pergola cost Miami | Informational | 806 |
+| `/gallery/` | pergola gallery Miami | Commercial investigation · proof | 1186 |
+| `/hialeah-pergolas/` | pergolas Hialeah FL | Local commercial | 1181 |
+| `/homestead-pergolas/` | pergolas Homestead FL | Local commercial | 1137 |
+| `/` | pergolas and tiki huts Miami | Commercial · brand + combined service | 1851 |
+| `/kendall-pergolas/` | pergolas Kendall FL | Local commercial | 1108 |
+| `/miami-pergolas/` | pergolas Miami | Local commercial | 1125 |
+| `/miami-tiki-huts/` | tiki hut builders Miami | Local commercial | 1038 |
+| `/outdoor-living/` | outdoor living structures South Florida | Commercial · adjacent service | 1173 |
+| `/pergolas/aluminum/` | aluminum pergolas Miami | Commercial · material comparison | 1095 |
+| `/pergolas/custom/` | custom pergola design | Commercial · product detail | 1058 |
+| `/pergolas/` | pergola builders South Florida | Commercial · service hub | 2766 |
+| `/pergolas/installation/` | pergola installation Miami | Transactional · service | 1171 |
+| `/pergolas/wood/` | wood pergolas Miami | Commercial · material comparison | 964 |
+| `/service-areas/` | pergola contractors Miami-Dade and Broward | Commercial · geography | 633 |
+| `/tiki-huts/chickee-huts/` | chickee hut | Informational · terminology and craft | 1058 |
+| `/tiki-huts/construction/` | tiki hut construction | Transactional · service | 994 |
+| `/tiki-huts/` | tiki huts South Florida | Commercial · service hub | 2043 |
 
 ## Page-by-page metadata
 
@@ -45,11 +66,200 @@ modifiers. Nothing is targeted twice.
 ### `/contact/`
 
 - **Title** (41 chars): Request a Quote | Machin Solutions, Miami
-- **Meta description** (158 chars): Request a free estimate for a pergola, tiki hut or outdoor living structure in Miami and South Florida. Send photos and dimensions and get a real answer back.
+- **Meta description** (154 chars): Request an estimate for a pergola, tiki hut or outdoor living structure in Miami and South Florida. Send photos and dimensions and get a real answer back.
 - **H1**: Tell Us About Your Project
 - **Primary keyword**: pergola quote Miami
 - **Search intent**: Transactional · conversion
 - **H2 outline**: What to send · What happens next · Pergolas · Tiki Huts · Company · Popular service areas
+
+### `/es/404/`
+
+- **Title** (39 chars): Página No Encontrada | Machin Solutions
+- **Meta description** (95 chars): Esa página no existe. Aquí están las pérgolas, los tiki huts, nuestro trabajo y el presupuesto.
+- **H1**: Esa página no está aquí
+- **Primary keyword**: —
+- **Search intent**: —
+- **H2 outline**: Pérgolas · Tiki Huts · Empresa · Zonas de servicio principales
+
+### `/es/about/`
+
+- **Title** (62 chars): Sobre Machin Solutions | Constructores de Pérgolas y Tiki Huts
+- **Meta description** (151 chars): Quién construye su estructura: Machin Solutions diseña e instala pérgolas, tiki huts y estructuras exteriores en Miami-Dade, Broward y los Cayos Altos.
+- **H1**: Quien Mide su Patio es Quien Construye en Él
+- **Primary keyword**: —
+- **Search intent**: —
+- **H2 outline**: Qué hacemos · Cómo trabajamos · Lo que no vamos a hacer · Lo que nos importa, por orden · Credenciales · ¿Quiere que lo hablemos? · Pérgolas · Tiki Huts · Empresa · Zonas de servicio principales
+
+### `/es/contact/`
+
+- **Title** (43 chars): Pedir Presupuesto | Machin Solutions, Miami
+- **Meta description** (156 chars): Pida un presupuesto para una pérgola, un tiki hut o una estructura exterior en Miami y el sur de Florida. Mande fotos y medidas y reciba una respuesta real.
+- **H1**: Cuéntenos su Proyecto
+- **Primary keyword**: —
+- **Search intent**: —
+- **H2 outline**: Qué mandar · Qué pasa después · Pérgolas · Tiki Huts · Empresa · Zonas de servicio principales
+
+### `/es/faq/`
+
+- **Title** (54 chars): Preguntas Frecuentes | Precio, Permisos, Mantenimiento
+- **Meta description** (161 chars): Respuestas claras sobre cuánto cuesta una estructura exterior en el sur de Florida, por qué nadie da precio por teléfono, huracanes, mantenimiento, HOA y plazos.
+- **H1**: Las Preguntas Que Salen Antes de Construir
+- **Primary keyword**: —
+- **Search intent**: —
+- **H2 outline**: Preguntas generales · Preguntas por servicio · ¿Le queda alguna pregunta? · Pérgolas · Tiki Huts · Empresa · Zonas de servicio principales
+
+### `/es/gallery/`
+
+- **Title** (57 chars): Nuestro Trabajo | Galería de Pérgolas y Exteriores, Miami
+- **Meta description** (138 chars): Proyectos terminados de pérgolas, cabañas y espacios exteriores en Miami y el sur de Florida. Fotos reales de estructuras que construimos.
+- **H1**: Pérgolas, Cabañas y Proyectos de Exterior
+- **Primary keyword**: —
+- **Search intent**: —
+- **H2 outline**: Rain-Curtain Pool Cabana · Poolside Pergola & Outdoor Kitchen · Cantilevered Pergola with Media Wall · White Canopy Patio Pergola · Covered Patio with Wood-Look Soffit · Backlit Evening Cabana · Outdoor Kitchen Pergola with Stone Bar · Louvered Pergola over a Pool Deck · Proyectos de tiki hut · Preguntas sobre nuestro trabajo · ¿Ve algo parecido a lo que quiere? · Pérgolas · Tiki Huts · Empresa · Zonas de servicio principales
+
+### `/es/hialeah-pergolas/`
+
+- **Title** (55 chars): Pérgolas en Hialeah FL | Cubiertas para Patios Pequeños
+- **Meta description** (168 chars): Pérgolas y cubiertas de patio en Hialeah: estructuras adosadas dimensionadas para parcelas compactas, cubiertas de entrada y cochera, y sombra útil en un patio pequeño.
+- **H1**: Pérgolas en Hialeah: Sacar Sombra Útil de un Patio Pequeño
+- **Primary keyword**: —
+- **Search intent**: —
+- **H2 outline**: Los patios pequeños premian más el trabajo a medida, no menos · Adosada suele ser la respuesta · Muros, sol y privacidad · Entradas, cocheras y accesos · Estructuras compactas, bien proporcionadas · Pida presupuesto de pérgola en Hialeah · Un patio pequeño es un problema con solución. · Pérgolas · Tiki Huts · Empresa · Zonas de servicio principales
+
+### `/es/homestead-pergolas/`
+
+- **Title** (44 chars): Pérgolas en Homestead FL | Pérgolas a Medida
+- **Meta description** (141 chars): Pérgolas para patios de Homestead: parcelas anchas, sin árboles y a pleno sol. Estructuras de aluminio dimensionadas para la luz y el viento.
+- **H1**: Pérgolas en Homestead: Sombra Donde No Hay Ninguna
+- **Primary keyword**: —
+- **Search intent**: —
+- **H2 outline**: Qué es distinto al construir aquí · La escala es la decisión · Sol, viento y qué integrar · Estructuras construidas para parcelas abiertas · Pida presupuesto de pérgola en Homestead · ¿Un patio que no tiene más que sol? · Pérgolas · Tiki Huts · Empresa · Zonas de servicio principales
+
+### `/es/`
+
+- **Title** (48 chars): Pérgolas y Tiki Huts en Miami | Machin Solutions
+- **Meta description** (158 chars): Pérgolas a medida, tiki huts y estructuras exteriores para patios del sur de Florida. Diseño, construcción e instalación en Miami-Dade y Broward. Presupuesto.
+- **H1**: Pérgolas y Tiki Huts a Medida en Miami y el Sur de Florida
+- **Primary keyword**: —
+- **Search intent**: —
+- **H2 outline**: Dos cosas, bien hechas · Qué diferencia de verdad una buena estructura de una barata · Estructuras que hemos construido en el sur de Florida · Del primer mensaje a la estructura terminada · Damos servicio en Miami y el sur de Florida · Lo que la gente pregunta antes de construir · ¿Listo para ver qué cabe en su patio? · Pérgolas · Tiki Huts · Empresa · Zonas de servicio principales
+
+### `/es/kendall-pergolas/`
+
+- **Title** (59 chars): Pérgolas en Kendall FL | Cubiertas y Estructuras de Piscina
+- **Meta description** (143 chars): Pérgolas en Kendall: ampliar patios consolidados, trabajar alrededor de cerramientos de piscina y sustituir estructuras de madera deterioradas.
+- **H1**: Pérgolas en Kendall, Trabajando con lo que Ya Está Ahí
+- **Primary keyword**: —
+- **Search intent**: —
+- **H2 outline**: Cerramientos y jaulas de piscina · Sustituir una estructura de madera que se ha ido · La vegetación madura cambia el diseño · Estructuras construidas alrededor de piscinas y terrazas existentes · Pida presupuesto de pérgola en Kendall · ¿Ampliar, sustituir o empezar de cero? · Pérgolas · Tiki Huts · Empresa · Zonas de servicio principales
+
+### `/es/miami-pergolas/`
+
+- **Title** (48 chars): Pérgolas en Miami FL | Constructores de Pérgolas
+- **Meta description** (165 chars): Constructores de pérgolas en Miami — Coconut Grove, Coral Gables, Pinecrest, Shenandoah y The Roads. Estructuras de aluminio y madera a medida para patios de ciudad.
+- **H1**: Pérgolas en Miami, Hechas para Patios de Ciudad
+- **Primary keyword**: —
+- **Search intent**: —
+- **H2 outline**: Qué implica de verdad construir una pérgola en Miami · El problema del sol que nadie prevé · Materiales para una parcela de Miami · Barrios en los que trabajamos · Pérgolas que hemos construido por Miami · Pida presupuesto de pérgola en Miami · ¿Un patio en Miami que necesita sombra? · Pérgolas · Tiki Huts · Empresa · Zonas de servicio principales
+
+### `/es/miami-tiki-huts/`
+
+- **Title** (60 chars): Tiki Huts en Miami FL | Chozas de Palma para Patio y Piscina
+- **Meta description** (146 chars): Constructores de tiki huts en Miami: chickee huts de palma para patios, piscinas y espacios comerciales, y reposición de palma en huts existentes.
+- **H1**: Tiki Huts para Patios y Piscinas de Miami
+- **Primary keyword**: —
+- **Search intent**: —
+- **H2 outline**: Por qué un hut funciona especialmente bien en Miami · Dónde va un hut en un patio de Miami · Permisos en Miami-Dade · Rehacer el techo de un hut existente en Miami · Fotografías de tiki huts en Miami · Pida presupuesto de tiki hut en Miami · Sombra, brisa y un sitio al que salir. · Pérgolas · Tiki Huts · Empresa · Zonas de servicio principales
+
+### `/es/outdoor-living/`
+
+- **Title** (58 chars): Estructuras para Exteriores | Cabañas y Cocinas Exteriores
+- **Meta description** (148 chars): Estructuras exteriores en el sur de Florida: cabañas de piscina, patios cubiertos, cocinas exteriores y paredes de televisor, como un único espacio.
+- **H1**: Estructuras Exteriores Construidas Como un Único Espacio Terminado
+- **Primary keyword**: —
+- **Search intent**: —
+- **H2 outline**: Por qué importa diseñarlo como una sola cosa · Qué llevan estas estructuras · Proyectos de espacios exteriores · Por dónde empezar · Una sola estructura, bien planificada. · Pérgolas · Tiki Huts · Empresa · Zonas de servicio principales
+
+### `/es/pergolas/aluminum/`
+
+- **Title** (48 chars): Pérgolas de Aluminio en Miami | Machin Solutions
+- **Meta description** (145 chars): Pérgolas de aluminio para Miami: acabado en polvo que resiste pudrición, termitas, salitre y sol, con techo de lamas orientables o panel aislado.
+- **H1**: Pérgolas de Aluminio para el Calor, la Lluvia y el Salitre de Miami
+- **Primary keyword**: —
+- **Search intent**: —
+- **H2 outline**: Por qué aquí gana el aluminio · Qué puede sostener una estructura de aluminio · Una comparación honesta · ¿Lamas o techo sólido? · Presupueste una pérgola de aluminio · ¿No sabe qué techo necesita su patio? · Pérgolas · Tiki Huts · Empresa · Zonas de servicio principales
+
+### `/es/pergolas/custom/`
+
+- **Title** (50 chars): Pérgolas a Medida | Dibujadas para su Propio Patio
+- **Meta description** (142 chars): Diseño de pérgolas a medida en el sur de Florida: luces, postes, tipo de techo y acabados dibujados para su patio, no elegidos de un catálogo.
+- **H1**: Pérgolas a Medida, Dibujadas para el Patio al que Van
+- **Primary keyword**: —
+- **Search intent**: —
+- **H2 outline**: Qué significa aquí "a medida" · Las seis decisiones que dan forma a la estructura · Qué va integrado · A medida no tiene por qué significar grande · Empiece un diseño a medida · Todo patio tiene una estructura que le encaja. · Pérgolas · Tiki Huts · Empresa · Zonas de servicio principales
+
+### `/es/pergolas/`
+
+- **Title** (48 chars): Pérgolas en el Sur de Florida | Machin Solutions
+- **Meta description** (136 chars): Constructores de pérgolas en Miami-Dade, Broward y los Cayos. Aluminio, madera, lamas orientables y techo sólido para piscinas y patios.
+- **H1**: Constructores de Pérgolas para Patios del Sur de Florida
+- **Primary keyword**: —
+- **Search intent**: —
+- **H2 outline**: Qué saber antes de pedir un presupuesto · Qué cambia de verdad una pérgola · Tipos de pérgola que construimos · Elegir el techo es la decisión de verdad · Diseño, construcción, instalación y mejoras · Pérgolas que hemos construido · Cómo va un proyecto de pérgola · Lo que la gente pregunta sobre pérgolas · Díganos qué quiere cubrir. · Pérgolas · Tiki Huts · Empresa · Zonas de servicio principales
+
+### `/es/pergolas/installation/`
+
+- **Title** (57 chars): Instalación de Pérgolas en Miami | Construcción y Montaje
+- **Meta description** (165 chars): Instalación de pérgolas en Miami y el sur de Florida: cimentaciones, estructura, techo y remates. Qué pasa de verdad en obra, cuánto dura y cómo le dejamos el patio.
+- **H1**: Instalación de Pérgolas en Miami y el Sur de Florida
+- **Primary keyword**: —
+- **Search intent**: —
+- **H2 outline**: Exenta o adosada · Trabajar con lo que ya hay · Cuánto tarda · Permisos y aprobaciones · Qué pasa de verdad en su patio · La secuencia completa del proyecto · Concierte una visita técnica · ¿Listo para construirla? · Pérgolas · Tiki Huts · Empresa · Zonas de servicio principales
+
+### `/es/pergolas/wood/`
+
+- **Title** (53 chars): Pérgolas de Madera en Miami | Madera y Aspecto Madera
+- **Meta description** (162 chars): Pérgolas de madera en Miami y el sur de Florida: cuándo la madera real es la opción correcta, qué le cuesta en mantenimiento y las alternativas de aspecto madera.
+- **H1**: Pérgolas de Madera: Cuándo la Madera Es de Verdad la Elección Correcta
+- **Primary keyword**: —
+- **Search intent**: —
+- **H2 outline**: Los argumentos a favor de la madera · Qué le cuesta la madera, sin adornos · El camino intermedio: aspecto madera sobre estructura de aluminio · Sustituir una pérgola de madera deteriorada · Cómo decidir · Pregunte por una obra en madera · ¿Madera, aluminio o algo intermedio? · Pérgolas · Tiki Huts · Empresa · Zonas de servicio principales
+
+### `/es/service-areas/`
+
+- **Title** (51 chars): Zonas de Servicio | Miami-Dade, Broward y los Cayos
+- **Meta description** (159 chars): Dónde construye Machin Solutions: Miami-Dade, Broward y los Cayos Altos. Zonas de servicio ciudad por ciudad para pérgolas, tiki huts y estructuras exteriores.
+- **H1**: Construimos en Miami-Dade, Broward y los Cayos
+- **Primary keyword**: —
+- **Search intent**: —
+- **H2 outline**: Qué cambia de una ciudad a otra · Ciudades con página propia · Todas las ciudades donde trabajamos · ¿No está en la lista? · ¿Construye en algún punto del sur de Florida? · Pérgolas · Tiki Huts · Empresa · Zonas de servicio principales
+
+### `/es/tiki-huts/chickee-huts/`
+
+- **Title** (55 chars): ¿Qué es un Chickee Hut? Refugios Tradicionales de Palma
+- **Meta description** (144 chars): Qué es un chickee hut, cómo se construyen la estructura y el techo de palma, por qué importa la pendiente y en qué se diferencia de un tiki hut.
+- **H1**: Chickee Huts: la Estructura de Sombra Original del Sur de Florida
+- **Primary keyword**: —
+- **Search intent**: —
+- **H2 outline**: Chickee, tiki hut, choza de palma: ¿qué diferencia hay? · Cómo se construye de verdad un chickee · Qué implica tener uno · Permisos y normativa local · Fotografías de chickee huts · Pregunte por un chickee hut · Una estructura que merece la pena hacer bien. · Pérgolas · Tiki Huts · Empresa · Zonas de servicio principales
+
+### `/es/tiki-huts/construction/`
+
+- **Title** (56 chars): Construcción e Instalación de Tiki Huts | Sur de Florida
+- **Meta description** (143 chars): Construcción de tiki huts en el sur de Florida: cómo se levantan la estructura y el techo de palma, obra residencial y comercial, y reposición.
+- **H1**: Construcción de Tiki Huts en el Sur de Florida
+- **Primary keyword**: —
+- **Search intent**: —
+- **H2 outline**: Cómo se levanta un hut · Obra residencial y comercial · Reposición de palma y reparación · Plazos y permisos · Fotografías de obra · Pida presupuesto de tiki hut · ¿Obra nueva o un techo que ya cumplió? · Pérgolas · Tiki Huts · Empresa · Zonas de servicio principales
+
+### `/es/tiki-huts/`
+
+- **Title** (45 chars): Tiki Huts y Chickee Huts en el Sur de Florida
+- **Meta description** (167 chars): Constructores de tiki huts y chickee huts en el sur de Florida. Estructuras tradicionales de palma con los lados abiertos para patios, piscinas y espacios comerciales.
+- **H1**: Tiki Huts y Chickee Huts, Construidos a la Manera Tradicional
+- **Primary keyword**: —
+- **Search intent**: —
+- **H2 outline**: Qué saber antes de pedir un presupuesto · Por qué un tiki hut y no una pérgola · ¿Tiki hut o chickee hut? · Estructuras de tiki hut · Fotografías de tiki huts · Materiales y cómo envejecen · Permisos · Cómo va un proyecto de tiki hut · Pregunte por un tiki hut · Lo que la gente pregunta sobre los tiki huts · ¿Pensando en un hut para el patio? · Pérgolas · Tiki Huts · Empresa · Zonas de servicio principales
 
 ### `/faq/`
 
@@ -90,11 +300,11 @@ modifiers. Nothing is targeted twice.
 ### `/`
 
 - **Title** (52 chars): Pergolas &amp; Tiki Huts in Miami | Machin Solutions
-- **Meta description** (162 chars): Custom pergolas, tiki huts and outdoor living structures for South Florida backyards. Design, build and installation across Miami-Dade and Broward. Free estimate.
+- **Meta description** (165 chars): Custom pergolas, tiki huts and outdoor living structures for South Florida backyards. Design, build and installation across Miami-Dade and Broward. Project estimate.
 - **H1**: Custom Pergolas & Tiki Huts in Miami and South Florida
 - **Primary keyword**: pergolas and tiki huts Miami
 - **Search intent**: Commercial · brand + combined service
-- **H2 outline**: Two things, done properly · What actually separates a good structure from a cheap one · Structures we have built across South Florida · From first message to finished structure · Serving Miami and South Florida · What homeowners say · What people ask before they build · Ready to see what fits in your backyard? · Pergolas · Tiki Huts · Company · Popular service areas
+- **H2 outline**: Two things, done properly · What actually separates a good structure from a cheap one · Structures we have built across South Florida · From first message to finished structure · Serving Miami and South Florida · What people ask before they build · Ready to see what fits in your backyard? · Pergolas · Tiki Huts · Company · Popular service areas
 
 ### `/kendall-pergolas/`
 
@@ -157,7 +367,7 @@ modifiers. Nothing is targeted twice.
 - **H1**: Pergola Builders for South Florida Backyards
 - **Primary keyword**: pergola builders South Florida
 - **Search intent**: Commercial · service hub
-- **H2 outline**: What a pergola actually changes · Pergola types we build · Choosing the roof is the real decision · Design, construction, installation and upgrades · Pergolas we have built · How a pergola project runs · What people ask about pergolas · Tell us what you want to cover. · Pergolas · Tiki Huts · Company · Popular service areas
+- **H2 outline**: What to know before requesting a quote · What a pergola actually changes · Pergola types we build · Choosing the roof is the real decision · Design, construction, installation and upgrades · Pergolas we have built · How a pergola project runs · What people ask about pergolas · Tell us what you want to cover. · Pergolas · Tiki Huts · Company · Popular service areas
 
 ### `/pergolas/installation/`
 
@@ -211,7 +421,7 @@ modifiers. Nothing is targeted twice.
 - **H1**: Tiki Huts and Chickee Huts, Built the Traditional Way
 - **Primary keyword**: tiki huts South Florida
 - **Search intent**: Commercial · service hub
-- **H2 outline**: Why a tiki hut and not a pergola · Tiki hut or chickee hut? · Tiki hut structures · Tiki hut photography · Materials and how they age · Permits · How a tiki hut project runs · Ask about a tiki hut · What people ask about tiki huts · Thinking about a hut in the backyard? · Pergolas · Tiki Huts · Company · Popular service areas
+- **H2 outline**: What to know before requesting a quote · Why a tiki hut and not a pergola · Tiki hut or chickee hut? · Tiki hut structures · Tiki hut photography · Materials and how they age · Permits · How a tiki hut project runs · Ask about a tiki hut · What people ask about tiki huts · Thinking about a hut in the backyard? · Pergolas · Tiki Huts · Company · Popular service areas
 
 ## Cannibalization check
 
@@ -247,3 +457,26 @@ structure, not a problem to fix:
   They are meant to rank for different stages of the same search journey.
 
 Re-review this section whenever a page is added or retargeted.
+
+Pages with no declared primary keyword (add them to `scripts/seo-map.mjs`):
+- `/es/404/`
+- `/es/about/`
+- `/es/contact/`
+- `/es/faq/`
+- `/es/gallery/`
+- `/es/hialeah-pergolas/`
+- `/es/homestead-pergolas/`
+- `/es/`
+- `/es/kendall-pergolas/`
+- `/es/miami-pergolas/`
+- `/es/miami-tiki-huts/`
+- `/es/outdoor-living/`
+- `/es/pergolas/aluminum/`
+- `/es/pergolas/custom/`
+- `/es/pergolas/`
+- `/es/pergolas/installation/`
+- `/es/pergolas/wood/`
+- `/es/service-areas/`
+- `/es/tiki-huts/chickee-huts/`
+- `/es/tiki-huts/construction/`
+- `/es/tiki-huts/`

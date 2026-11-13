@@ -29,11 +29,11 @@ const SITE_ORIGIN = 'https://machinsolutions.com';
  * is a word that legitimately appears in Spanish copy.
  */
 const ENGLISH_MARKERS = [
-  'Get a Free Estimate',
+  'Get an Estimate',
   'Skip to main content',
   'Popular service areas',
   'All South Florida service areas',
-  'Request My Free Estimate',
+  'Request My Estimate',
   'All rights reserved.',
   'Choose a service',
 ];
@@ -233,6 +233,9 @@ async function main() {
         const parsed = JSON.parse(json);
         if (!parsed['@context']) fail(rel, 'JSON-LD block has no @context');
         if (!parsed['@type']) fail(rel, 'JSON-LD block has no @type');
+        if (parsed['@type'] === 'FAQPage' && /\[[A-Z0-9_]+\]/.test(json)) {
+          fail(rel, 'FAQ structured data contains unverified business placeholders');
+        }
         if (parsed['@type'] === 'WebPage' && parsed.inLanguage !== expectedLang) {
           fail(rel, `WebPage schema language must be ${expectedLang}`);
         }

@@ -1,0 +1,42 @@
+{
+  "url": "http://127.0.0.1:4321/pergolas/",
+  "open": true,
+  "expanded": "true",
+  "focused": "assistant-question",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "panel": {
+    "left": 1032,
+    "right": 1422,
+    "top": 282,
+    "bottom": 882
+  },
+  "horizontalOverflow": false,
+  "messages": [
+    "Hi! I’m Machi. I can help you find services, projects and answers on this website. What would you like to explore?",
+    "See projects",
+    "Browse our own pergola and outdoor living photographs. Tiki hut photography is not available on the site yet.Explore the project gallery"
+  ],
+  "links": [
+    {
+      "text": "Explore the project gallery",
+      "path": "/gallery/"
+    }
+  ],
+  "inputCleared": true,
+  "reducedMotion": false,
+  "networkSinceLoad": [
+    "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&display=swap",
+    "http://127.0.0.1:4321/_astro/about.C3a8GP7C.css",
+    "http://127.0.0.1:4321/_astro/contact.BXCv_EFN.css",
+    "http://127.0.0.1:4321/_astro/index.BrfEGXQL.css",
+    "http://127.0.0.1:4321/media/cantilevered-pergola-media-wall-miami-01-760.avif",
+    "http://127.0.0.1:4321/media/louvered-pergola-pool-deck-walkthrough-poster.webp",
+    "http://127.0.0.1:4321/_astro/SiteAssistant.astro_astro_type_script_index_0_lang.xrsqnoaU.js",
+    "https://hits.sh/machinsolutions.com.svg?view=today-total&label=Views&color=c89562&labelColor=252b27",
+    "https://fonts.gstatic.com/s/fraunces/v38/6NUu8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7iQcIfJD58njt0oc7qv8.woff2",
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2352564f' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E"
+  ]
+}

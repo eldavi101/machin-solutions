@@ -1,0 +1,29 @@
+﻿
+> machin-solutions@1.0.0 audit
+> node scripts/check-build.mjs
+
+sitemap: 40 URLs, all resolvable
+
+pages: 42
+internal links checked: 1712
+asset references checked: 1894
+JSON-LD URLs resolved: 596
+hreflang links checked: 120
+pages by language: 21 en, 21 es
+JSON-LD blocks parsed: 164
+media payload in dist: 22.0 MB
+
+--- Intentional placeholders still to fill in ---
+  [FIRE_RETARDANT_POLICY] — 4 page(s): es/tiki-huts/construction/index.html, es/tiki-huts/index.html, tiki-huts/construction/index.html, tiki-huts/index.html
+  [GOOGLE_BUSINESS_PROFILE] — 2 page(s): about/index.html, es/about/index.html
+  [INSURANCE_DETAILS] — 2 page(s): about/index.html, es/about/index.html
+  [LEAD_TIME] — 4 page(s): es/pergolas/installation/index.html, es/tiki-huts/construction/index.html, pergolas/installation/index.html, tiki-huts/construction/index.html
+  [LICENSE_NUMBER] — 42 page(s): 404.html, about/index.html, contact/index.html, es/404/index.html (+38 more)
+  [PERMIT_POLICY] — 10 page(s): es/miami-tiki-huts/index.html, es/pergolas/installation/index.html, es/tiki-huts/chickee-huts/index.html, es/tiki-huts/construction/index.html (+6 more)
+  [THATCH_LIFESPAN] — 4 page(s): es/tiki-huts/chickee-huts/index.html, es/tiki-huts/index.html, tiki-huts/chickee-huts/index.html, tiki-huts/index.html
+  [TIKI_HUT_PHOTOS_NEEDED] — 12 page(s): es/gallery/index.html, es/index.html, es/miami-tiki-huts/index.html, es/tiki-huts/chickee-huts/index.html (+8 more)
+  [TIKI_SERVICE_SCOPE] — 2 page(s): es/tiki-huts/construction/index.html, tiki-huts/construction/index.html
+  [WARRANTY_TERMS] — 2 page(s): about/index.html, es/about/index.html
+  [YEARS_IN_BUSINESS] — 2 page(s): about/index.html, es/about/index.html
+
+No problems found.

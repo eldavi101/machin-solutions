@@ -1,0 +1,15 @@
+﻿--- BEGIN UNTRUSTED EXTERNAL CONTENT (source: https://copilot.com/) ---
+en-US
+Skip to main content
+Copilot
+Features
+ChatCreatePromptsCoworkWork IQ
+DownloadPlans and Pricing
+More
+Sign inME
+Microsoft
+Welcome to Copilot
+Sign in to start chatting with Copilot and access your personalized experience.
+Sign in with a different account
+
+[Incidental application configuration and session identifiers omitted.]

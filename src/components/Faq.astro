@@ -22,6 +22,8 @@ const {
 } = Astro.props;
 
 const Heading = headingLevel;
+// Keep unanswered business questions in the data backlog, outside public copy and schema.
+const publishedFaqs = faqs.filter((faq) => !/\[[A-Z0-9_]+\]/.test(faq.answer));
 
 /** Turns [PLACEHOLDER_TOKENS] into visibly marked spans without allowing raw HTML through. */
 function render(answer: string): string {
@@ -35,7 +37,7 @@ function render(answer: string): string {
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: faqs.map((faq) => ({
+  mainEntity: publishedFaqs.map((faq) => ({
     '@type': 'Question',
     name: faq.question,
     acceptedAnswer: { '@type': 'Answer', text: faq.answer },
@@ -53,7 +55,7 @@ const faqSchema = {
 
     <div class="faq-list">
       {
-        faqs.map((faq, index) => (
+        publishedFaqs.map((faq, index) => (
           <details class="faq-item" open={index === 0}>
             <summary>
               <span>{faq.question}</span>
@@ -69,7 +71,7 @@ const faqSchema = {
   </div>
 </section>
 
-{schema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+{schema && faqSchema.mainEntity.length > 0 && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
 
 <style>
   .faq-section { padding-block: var(--space-2xl); }

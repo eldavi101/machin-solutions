@@ -1,5 +1,5 @@
 ---
-import { site, callHref, real, phoneLabel } from '../config/site';
+import { site, callHref, emailHref, real, phoneLabel } from '../config/site';
 import { areas } from '../data/areas';
 import { defaultLang, type Lang } from '../i18n';
 import { useTranslations } from '../i18n/ui';
@@ -39,6 +39,11 @@ const formMessages = {
   _noEndpoint: t('form.status.noEndpoint'),
 };
 ---
+
+{!endpoint && <p class="form-contact-note">
+  {lang === 'es' ? 'El formulario todavía no envía solicitudes. Para consultar su proyecto: ' : 'The form does not yet send enquiries. To discuss your project: '}
+  <a href={callHref()}>{phone}</a> · <a href={emailHref() ?? '#'}>{email}</a>
+</p>}
 
 <form
   class:list={['quote-form', compact && 'quote-form-compact']}

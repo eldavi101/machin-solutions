@@ -1,0 +1,117 @@
+---
+import type { Lang } from '../i18n';
+interface Props { lang?: Lang; }
+const { lang = 'en' } = Astro.props;
+const es = lang === 'es';
+const suggestions = es ? ['Ver proyectos', 'Precio de una pérgola', 'Zonas de servicio', 'Hablar con el equipo'] : ['See projects', 'Pergola price', 'Service areas', 'Talk to the team'];
+---
+<div class="site-assistant" data-site-assistant data-lang={lang}>
+  <button class="robot-launch" type="button" data-assistant-launch aria-haspopup="dialog" aria-expanded="false" aria-controls="machin-assistant" hidden>
+    <span class="robot-label">{es ? '¿Le ayudo?' : 'Need a hand?'}</span>
+    <svg class="robot" viewBox="0 0 88 96" width="66" height="72" aria-hidden="true" focusable="false">
+      <ellipse class="robot-shadow" cx="44" cy="89" rx="24" ry="4" fill="#161a18" opacity=".13" />
+      <g class="robot-body">
+        <path d="M44 13V7" stroke="#95592b" stroke-width="3"/><circle cx="44" cy="6" r="4" fill="#1d6b6d"/>
+        <rect x="14" y="19" width="60" height="43" rx="17" fill="#f4f0e8" stroke="#95592b" stroke-width="2.5"/>
+        <rect x="8" y="33" width="8" height="17" rx="4" fill="#c98f56"/><rect x="72" y="33" width="8" height="17" rx="4" fill="#c98f56"/>
+        <rect x="22" y="28" width="44" height="25" rx="10" fill="#262927"/>
+        <g class="robot-eyes" fill="#a6e8dd"><ellipse cx="33" cy="39" rx="4" ry="5"/><ellipse cx="55" cy="39" rx="4" ry="5"/></g>
+        <path d="M39 47q5 4 10 0" fill="none" stroke="#a6e8dd" stroke-width="2" stroke-linecap="round"/>
+        <rect x="29" y="63" width="30" height="17" rx="8" fill="#1d6b6d"/>
+        <path d="M33 80v5m22-5v5" stroke="#95592b" stroke-width="6" stroke-linecap="round"/>
+        <path d="M27 68l-8 5" stroke="#95592b" stroke-width="5" stroke-linecap="round"/>
+        <g class="robot-arm"><path d="M61 68l9-10 3-6" stroke="#95592b" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="74" cy="49" r="5" fill="#c98f56"/></g>
+        <path d="m39 70 5-4 5 4v6H39z" fill="#f4f0e8"/>
+      </g>
+    </svg>
+    <span class="sr-only">{es ? 'Abrir asistente de navegación Machi' : 'Open Machi navigation assistant'}</span>
+  </button>
+  <dialog id="machin-assistant" class="assistant-panel" aria-labelledby="assistant-title">
+    <header class="assistant-head">
+      <div><strong id="assistant-title">{es ? 'Machi, su guía' : 'Machi, your guide'}</strong><p>{es ? 'Encuentre su próximo espacio' : 'Find your next outdoor space'}</p></div>
+      <button type="button" class="assistant-close" data-assistant-close aria-label={es ? 'Cerrar asistente' : 'Close assistant'}>×</button>
+    </header>
+    <div class="assistant-log" role="log" aria-live="polite" aria-relevant="additions" aria-label={es ? 'Conversación con Machi' : 'Conversation with Machi'} data-assistant-log>
+      <p class="assistant-message">{es ? '¡Hola! Soy Machi. Le ayudo a encontrar servicios, proyectos y respuestas dentro de esta web. ¿Qué quiere explorar?' : 'Hi! I’m Machi. I can help you find services, projects and answers on this website. What would you like to explore?'}</p>
+    </div>
+    <div class="assistant-suggestions" aria-label={es ? 'Preguntas sugeridas' : 'Suggested questions'}>
+      {suggestions.map(label => <button type="button" data-assistant-suggestion>{label}</button>)}
+    </div>
+    <form class="assistant-form" data-assistant-form>
+      <label for="assistant-question">{es ? '¿Qué busca?' : 'What are you looking for?'}</label>
+      <div class="assistant-input-row"><input id="assistant-question" name="question" type="text" maxlength="300" autocomplete="off" placeholder={es ? 'Ej.: pérgolas para piscina' : 'E.g. pergolas for a pool'} required /><button type="submit">{es ? 'Enviar' : 'Send'}</button></div>
+    </form>
+    <p class="assistant-note">{es ? 'Guía automática local, sin IA generativa. Solo usa información del sitio. No envía ni guarda su conversación.' : 'Local automated guide, without generative AI. Uses site information only. Does not send or save your conversation.'}</p>
+  </dialog>
+</div>
+
+<script>
+  import { answerQuestion } from '../lib/site-assistant.mjs';
+  const root = document.querySelector<HTMLElement>('[data-site-assistant]');
+  if (root) {
+    const launch = root.querySelector<HTMLButtonElement>('[data-assistant-launch]')!;
+    const panel = root.querySelector<HTMLDialogElement>('dialog')!;
+    const log = root.querySelector<HTMLElement>('[data-assistant-log]')!;
+    const form = root.querySelector<HTMLFormElement>('[data-assistant-form]')!;
+    const input = form.querySelector<HTMLInputElement>('input')!;
+    const lang = root.dataset.lang === 'es' ? 'es' : 'en';
+    launch.hidden = false;
+    launch.addEventListener('click', () => { panel.showModal(); launch.setAttribute('aria-expanded', 'true'); input.focus(); });
+    root.querySelector('[data-assistant-close]')!.addEventListener('click', () => panel.close());
+    panel.addEventListener('close', () => { launch.setAttribute('aria-expanded', 'false'); launch.focus(); });
+    panel.addEventListener('click', event => { if (event.target === panel) { const box = panel.getBoundingClientRect(); if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) panel.close(); } });
+    function ask(value: string) {
+      const question = value.trim().slice(0, 300);
+      if (!question) return;
+      const user = document.createElement('p'); user.className = 'assistant-message assistant-user'; user.textContent = question; log.append(user);
+      const response = document.createElement('div'); response.className = 'assistant-message';
+      for (const answer of answerQuestion(question, lang)) {
+        const paragraph = document.createElement('p'); paragraph.textContent = answer.text;
+        const link = document.createElement('a'); link.href = answer.href; link.textContent = answer.label;
+        response.append(paragraph, link);
+      }
+      log.append(response);
+      // Bound the DOM for long sessions; no storage or external requests.
+      while (log.children.length > 21) log.firstElementChild?.remove();
+      log.scrollTop = log.scrollHeight;
+      input.value = ''; input.focus();
+    }
+    form.addEventListener('submit', event => { event.preventDefault(); ask(input.value); });
+    root.querySelectorAll<HTMLButtonElement>('[data-assistant-suggestion]').forEach(button => button.addEventListener('click', () => ask(button.textContent ?? '')));
+  }
+</script>
+
+<style>
+  .robot-launch { position: fixed; right: max(18px, env(safe-area-inset-right)); bottom: calc(var(--sticky-cta-height, 0px) + 16px); z-index: 100; display: flex; align-items: center; gap: 6px; padding: 4px; border: 0; background: transparent; color: var(--ink); cursor: pointer; transition: bottom .25s ease; }
+  .robot-launch[hidden] { display: none; }
+  .robot-label { background: var(--sand-50); border: 1px solid var(--line-strong); border-radius: 16px 16px 3px 16px; padding: 8px 12px; font-size: .85rem; box-shadow: var(--shadow-sm); }
+  .robot { overflow: visible; filter: drop-shadow(0 3px 5px #161a1820); }
+  .robot-body { animation: robot-bob 4s ease-in-out 3; transform-origin: center; }
+  .robot-eyes { animation: robot-blink 5s 3; transform-box: fill-box; transform-origin: center; }
+  .robot-launch:hover .robot-arm, .robot-launch:focus-visible .robot-arm { animation: robot-wave .6s ease-in-out 3; transform-origin: 61px 68px; }
+  .assistant-panel { position: fixed; inset: auto 18px calc(var(--sticky-cta-height, 0px) + 18px) auto; margin: 0; width: min(390px, calc(100vw - 24px)); max-width: none; height: min(600px, calc(100dvh - var(--sticky-cta-height, 0px) - 36px)); max-height: none; padding: 0; border: 1px solid var(--line-strong); border-radius: 20px; background: var(--sand-50); color: var(--ink); box-shadow: var(--shadow-lg); overflow: hidden; }
+  .assistant-panel[open] { display: flex; flex-direction: column; }
+  .assistant-panel::backdrop { background: rgb(22 26 24 / .25); }
+  .assistant-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 18px; border-bottom: 1px solid var(--line); background: var(--sand-100); }
+  .assistant-head strong { font-family: var(--font-display); font-size: 1.25rem; }
+  .assistant-head p { font-size: .8rem; color: var(--ink-soft); margin-top: 3px; }
+  .assistant-close { flex-shrink: 0; width: 44px; height: 44px; border: 1px solid var(--line-strong); border-radius: 50%; background: var(--sand-50); font-size: 1.7rem; color: var(--ink); cursor: pointer; }
+  .assistant-log { flex: 1; min-height: 72px; overflow-y: auto; overscroll-behavior: contain; padding: 16px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; font-size: .9rem; }
+  .assistant-log :global(.assistant-message) { max-width: 100%; border-radius: 14px 14px 14px 3px; padding: 12px 14px; background: var(--sand-200); overflow-wrap: anywhere; flex-shrink: 0; }
+  .assistant-log :global(.assistant-message a) { display: block; margin-top: 8px; font-weight: 600; }
+  .assistant-log :global(.assistant-message p + p) { margin-top: 12px; }
+  .assistant-log :global(.assistant-user) { align-self: flex-end; border-radius: 14px 14px 3px 14px; color: white; background: var(--lagoon-600); }
+  .assistant-suggestions { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 16px 12px; }
+  .assistant-suggestions button { border: 1px solid var(--line-strong); border-radius: 20px; background: white; color: var(--ink); font-size: .78rem; min-height: 36px; padding: 6px 10px; cursor: pointer; }
+  .assistant-form { padding: 0 16px; }
+  .assistant-form label { font-size: .8rem; font-weight: 600; }
+  .assistant-input-row { display: flex; gap: 6px; margin-top: 5px; }
+  .assistant-input-row input { min-width: 0; flex: 1; width: 100%; border: 1px solid var(--line-strong); border-radius: 8px; padding: 10px; font-size: 16px; }
+  .assistant-input-row button { border: 0; border-radius: 8px; background: var(--accent); color: white; padding: 10px 12px; font-weight: 600; cursor: pointer; }
+  .assistant-note { font-size: .7rem; line-height: 1.45; color: var(--ink-soft); padding: 10px 16px 14px; }
+  @keyframes robot-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px) rotate(-2deg); } }
+  @keyframes robot-blink { 0%,42%,48%,100% { transform: scaleY(1); } 45% { transform: scaleY(.12); } }
+  @keyframes robot-wave { 0%,100% { transform: rotate(0); } 50% { transform: rotate(18deg); } }
+  @media (max-width: 47.99rem) { .assistant-panel { right: 12px; } .robot-label { display: none; } }
+  @media (prefers-reduced-motion: reduce) { .robot-body, .robot-eyes, .robot-arm { animation: none !important; } .robot-launch { transition: none; } }
+</style>

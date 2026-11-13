@@ -1,5 +1,23 @@
 # Machin Solutions — estado del proyecto
 
+> **Machi (12 de noviembre de 2026):** guía de navegación local EN/ES con robocito
+> SVG animado, preguntas sugeridas y respuestas a partir del contenido del sitio.
+> Sin proveedor, API, modelo generativo ni envío/almacenamiento de conversaciones.
+> Ver `docs/site-assistant.md`. `npm test` comprueba respuestas y rutas después del
+> build y forma parte del workflow de publicación. El encargo actual autoriza push
+> de estas mejoras y del trabajo SEO anterior a GitHub.
+
+> **Actualización local, 12 de noviembre de 2026:** auditoría SEO/IA y mejoras sin publicar.
+> Ver `docs/geo-audit-2026-11-12.md`, matriz de consultas, línea base y evidencias.
+> Guías comerciales bilingües en los hubs de pérgolas y tiki huts; aviso de formulario
+> sin envío; CTA sin promesa de gratuidad no verificada; FAQ incompletas fuera del
+> contenido público y JSON-LD; testimonios vacíos retirados de ambas home; nodo del
+> negocio en cada página indexable y zona Upper Keys acotada. Se conservan los datos
+> pendientes en origen, sin inventarlos. El teléfono principal vigente en `site.ts`
+> es **(786) 775-0816**; el secundario **(786) 992-6153**. Las cifras históricas y la
+> tabla de placeholders de este documento son anteriores: manda la auditoría actual.
+> El push/deploy requiere autorización explícita según el encargo vigente.
+
 > **Si eres un agente y vas a trabajar en este proyecto: lee este archivo primero, entero,
 > antes de tocar nada.** Contiene las decisiones ya tomadas, las reglas que no se pueden
 > romper, y lo que falta. No re-derives nada de esto leyendo el código.
