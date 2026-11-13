@@ -3,6 +3,7 @@ return await (async () => {
   const launch = document.querySelector('[data-assistant-launch]');
   const log = document.querySelector('[data-assistant-log]');
   const bounds = panel.getBoundingClientRect();
+  const launcherBounds = launch.getBoundingClientRect();
   return JSON.stringify({
     url: location.href, open: panel.open,
     expanded: launch.getAttribute('aria-expanded'),
@@ -10,6 +11,7 @@ return await (async () => {
     viewport: { width: innerWidth, height: innerHeight },
     panel: {left: bounds.left, right: bounds.right, top: bounds.top, bottom: bounds.bottom},
     horizontalOverflow: document.documentElement.scrollWidth > innerWidth,
+    launcher: {left: launcherBounds.left, right: launcherBounds.right, width: launcherBounds.width},
     messages: [...log.children].map(x => x.textContent),
     links: [...log.querySelectorAll('a')].map(x => ({text: x.textContent, path: x.getAttribute('href')})),
     inputCleared: document.querySelector('#assistant-question').value === '',
